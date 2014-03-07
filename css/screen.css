@@ -1,0 +1,47 @@
+#map {
+  padding: 30px;
+  margin-bottom: 30px;
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 2.1428571435;
+  color: inherit;
+  background-color: #eeeeee;
+}
+
+#map h1,
+#map .h1 {
+  line-height: 1;
+  color: inherit;
+}
+
+#map p {
+  line-height: 1.4;
+}
+
+#map {
+  border-radius: 6px;
+}
+
+#mapr {
+  max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  #map {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .container #map {
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+  #map h1,
+  #map .h1 {
+    font-size: 63px;
+  }
+}
+
+#map {
+	height: 500px; 
+	border: 1px solid #ccc;
+	}

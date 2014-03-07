@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Template 1 - BIDS</title>
+
+        <!-- Core CSS -->
+        <link href="img/usdos-logo-seal.png" rel="shortcut icon">
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="assets/typeahead.js/typeahead.js-bootstrap.css" rel="stylesheet" type="text/css"> <!--https://github.com/jharding/typeahead.js-bootstrap.css-->
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
+		<link rel="stylesheet" href="../lib/Leaflet.markercluster/dist/MarkerCluster.css" />
+		<link rel="stylesheet" href="../lib/Leaflet.markercluster/dist/MarkerCluster.Default.css" />
+		<link rel="stylesheet" href="../lib/bootstrap-datepicker/css/datepicker.css">
+		<link rel="stylesheet" href="css/screen.css" />
+		
+		<script src="../lib/jquery/jquery-1.7.2.min.js"></script>
+		<script src="../lib/bootstrap-3.0.3/dist/js/bootstrap.min.js"></script>
+		<script src="../lib/jquery-number/jquery.number.min.js"></script>
+		<script src="../lib/backbone/backbone-min.js"></script>
+		<script src="../lib/underscore/underscore-min.js"></script>
+		<script src="../lib/backgrid-0.3.5/lib/backgrid.min.js"></script>
+		<script src="../lib/jquery-dateFormat/dist/jquery-dateFormat.min.js"></script>
+		<script src="../lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.2"></script>
+		<script type="text/javascript" src="js/host.js"></script>
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			siteParams();
+			ga('create', gaID, host);
+			ga('send', 'pageview');
+		</script>
+		
+        <!-- Custom styles for this template -->
+        <style>
+            html, body, #map {
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+            }
+            body {
+                padding-top: 50px;
+            }
+            input[type="radio"], input[type="checkbox"] {
+                margin: 0;
+            }
+            #loading {
+                position: absolute;
+                width: 220px;
+                height: 19px;
+                top: 50%;
+                left: 50%;
+                margin: -10px 0 0 -110px;
+                z-index: 20001;
+            }
+            #keywordBox {
+                -webkit-border-top-left-radius: 4px;
+                -webkit-border-bottom-left-radius: 4px;
+                -moz-border-top-left-radius: 4px;
+                -moz-border-bottom-left-radius: 4px;
+                border-top-left-radius: 4px;
+                border-bottom-left-radius: 4px;
+            }
+            .leaflet-control-layers label {
+                font-weight: normal;
+                margin-bottom: 0px;
+            }
+            .table {
+                margin-bottom: 0px;
+            }
+
+            .navbar .navbar-brand {
+                font-weight: bold;
+                font-size: 25px;
+                color: white;
+				font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+				letter-spacing: 1px;
+            }
+            .navbar-collapse.in {
+                overflow-y: hidden;
+            }
+            .tt-dropdown-menu {
+                overflow: auto;
+            }
+            .tt-hint, .tt-query {
+                display: block;
+                width: 100%;
+                height: 34px;
+                padding: 6px 12px;
+                font-size: 14px;
+                border-radius: 4px;
+            }
+            .typeahead-header {
+                margin: 0 5px 5px 5px;
+                padding: 3px 0;
+                border-bottom: 2px solid #333;
+            }
+            .tt-suggestion + .tt-suggestion {
+                border-top: 1px solid #ccc;
+            }
+            .search-container {
+                width: 250px;
+            }
+            .leaflet-control-layers-expanded {
+                opacity: 0.9;
+            }
+            .leaflet-popup-content {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+            .leaflet-popup-content-wrapper {
+                border-radius: 5px;
+            }
+            @media (max-width: 992px) {
+                .navbar .navbar-brand {
+                    font-size: 18px;
+                    float: left;
+                }
+                .search-container {
+                    width: 150px;
+                }
+            }
+            @media (max-width: 767px){
+                .search-container {
+                    width: 100%;
+                }
+                .url-break {
+                    word-break: break-all;
+                    word-break: break-word;
+                    -webkit-hyphens: auto;
+                    hyphens: auto;
+                }
+            }
+            /* Print Handling */
+            @media print {
+                .navbar {
+                    display: none !important;
+                }
+                .leaflet-control-container {
+                    display: none !important;
+                }
+            }
+			
+			.marker-cluster div {
+				color: white;
+				font-weight: bold;
+				text-shadow: 1px 1px 5px gray;
+			}
+			
+			.leaflet-popup-content {
+				margin-right: 19px;
+			}
+			
+			#viewdetails {
+				overflow-y:scroll;
+				height: 95px !important;
+			}
+			#viewComments {
+				overflow-y:scroll;
+				height: 95px !important;
+			}
+			.navbar-inverse {
+			background-color: rgb(25,95,164);
+			}
+			.navbar-collapse, .navbar-inverse .navbar-form {
+				border-color: rgb(25,95,164);
+			}
+			.marker-cluster-small {
+				background-color: rgba(217, 121, 37, 0.75);
+			}
+			.marker-cluster-medium {
+				background-color: rgba(217, 121, 37, 0.75);
+			}
+			.marker-cluster-large {
+				background-color: rgba(217, 121, 37, 0.75);
+			}
+        </style>
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+		
+	 </head>
+	 <body>
+		<script type="text/javascript" src="../newsilkroad/data/imports.js"></script>
+		<script type="text/javascript" src="../newsilkroad/data/exports.js"></script>
+		<script type="text/javascript" src="../newsilkroad/data/balance.js"></script>
+	
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Diplomacy Explorer</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+					<li class="dropdown">
+                        <a id="businessDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Business</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">&nbsp;&nbsp;Map 1</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 2</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 3</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 4</a></li>
+                        </ul>
+                    </li>
+					<li class="dropdown">
+                        <a id="environmentDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Environment</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">&nbsp;&nbsp;Map 1</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 2</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 3</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 4</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 5</a></li>
+                        </ul>
+                    </li>
+					<li class="dropdown">
+                        <a id="governanceDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Governance</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">&nbsp;&nbsp;Map 1</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 2</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 3</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 4</a></li>
+                        </ul>
+                    </li>
+					<li class="dropdown">
+                        <a id="peopleDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">People</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">&nbsp;&nbsp;Map 1</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 2</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 3</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 4</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 5</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 6</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 7</a></li>
+                        </ul>
+                    </li>
+					<li class="dropdown">
+                        <a id="securityDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Security</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">&nbsp;&nbsp;Map 1</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 2</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 3</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 4</a></li>
+							<li><a href="#">&nbsp;&nbsp;Map 5</a></li>
+                        </ul>
+                    </li>
+					<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#shareModal').modal('show'); return false;">Share</a></li>
+					<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#aboutModal').modal('show'); return false;">About</a></li>
+                    
+                </ul>
+            </div><!--/.navbar-collapse -->
+        </div>
+
+        <div id="map"></div>
+        <div id="loading" style="display:block;">
+            <div class="loading-indicator">
+                <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-info" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="aboutModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Diplomacy Explorer</h4>
+                    </div>
+
+                    <div class="modal-body">
+                         <ul id="aboutTabs" class="nav nav-tabs">
+                            <li class="active">
+								<a href="#faqs" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;FAQs</a>
+							</li>
+                            <li>
+								<a href="#about" data-toggle="tab"><i class="fa fa-check-square"></i>&nbsp;About the project</a>
+							</li>
+                            <li>
+								<a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a>
+							</li>
+                            <li>
+                                <a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a>
+                            </li>
+                        </ul>
+                        <div id="aboutTabsContent" class="tab-content" style="padding-top: 10px;">
+                            <div class="tab-pane fade active in" id="faqs">
+                                <p>Below are a number of frequently asked questions (FAQs). If an answer to your specific need is not provided, please contact our support team!</p>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Questions
+                                    </div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Question 1</li>
+                                        <li class="list-group-item">Question 2</li>
+                                        <li class="list-group-item">Question 3</li>
+                                        <li class="list-group-item">Question 4</li>
+                                        <li class="list-group-item">Question 5</li>
+                                        <li class="list-group-item">Question 6</li>
+                                        <li class="list-group-item">Question 7</li>
+                                        <li class="list-group-item">Question 8</li>
+                                        <li class="list-group-item">Question 9</li>
+                                        <li class="list-group-item">Question 10</li>
+                                    </ul>
+                                </div>
+                            </div>
+							<div class="tab-pane fade" id="about">
+                                <p>This is a proof-of-concept for a revamped and updated Diplomacy Explorer web app.</p>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Features
+                                    </div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">This app is mobile ready!</li>
+                                        <li class="list-group-item">Data citations and downloads</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade text-danger" id="disclaimer">
+                                <p>This tool and the information provided herein are solely a proof-of-concept being developed by the Office of eDiplomacy's Geo|DST, on behalf of Public Affairs. If you are interested in this project, please direct your feedback to eDip and Public Affairs!</p>
+                            </div>
+                            <div class="tab-pane fade" id="contact">
+                                <form id="contact-form">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label for="name">Name:</label>
+                                            <input type="text" class="form-control" id="name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email:</label>
+                                            <input type="text" class="form-control" id="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="comment">Comment:</label>
+                                            <textarea class="form-control" rows="3" id="comment"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Submit</button>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+		<div class="modal fade" id="shareModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Share</h4>
+                    </div>
+
+                    <div class="modal-body">
+							<div class="tab-pane fade active in" id="shareMethods">
+                                <p>Please share this map with a friend!</p>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Methods
+                                    </div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Facebook</li>
+                                        <li class="list-group-item">Twitter</li>
+                                        <li class="list-group-item">Pintrest</li>
+                                        <li class="list-group-item">Email</li>
+                                        <li class="list-group-item">Social Media Stuff</li>
+                                    </ul>
+                                </div>
+                            </div>
+							
+                       
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+		<div class="modal fade" id="leadModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Lead Details</h4>
+                    </div>
+                    <div class="modal-body">
+                         <ul id="leadTabs" class="nav nav-tabs">
+                            <li class="active">
+								<a href="#leadDescrip" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;Description</a>
+							</li>
+                            <li>
+								<a href="#leadComments" data-toggle="tab"><i class="fa fa-check-square"></i>&nbsp;Post Comments</a>
+							</li>
+                        </ul>
+                        <div id="aboutTabsContent" class="tab-content" style="padding-top: 10px;">
+                            <div class="tab-pane fade active in" id="leadDescrip">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Description
+                                    </div>
+                                    <div style="padding-left: 15px">
+										<p style="padding-top: 15px">
+											<span>feature.properties.Project_Description</span><br>
+										</p>
+									</div>
+                                </div>
+                            </div>
+							<div class="tab-pane fade" id="leadComments">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Post Comments
+                                    </div>
+                                    <div style="padding-left: 15px">
+										<p style="padding-top: 15px">
+											<span>feature.properties.Post_Comments</span><br>
+										</p>
+									</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+				
+		<script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js?2"></script>
+        <script type="text/javascript">
+			var urlHTWhole = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3Ahuman_trafficking_50m&outputformat=json";
+			
+			var geoHTJsonLayer;
+			function getHTGeoJson(data) {
+				geoHTJsonLayer = new L.geoJson(data, {style: humanTraffickingStyle});
+			}
+			
+			$.ajax({
+				url: urlHTWhole,
+				dataType: 'json',
+				jsonpCallback: getHTGeoJson,
+				success: getHTGeoJson
+			});
+			
+			var cmAttr = "<a href='mailto:dittemoremb@state.gov'>eDiplomacy Geo|DST</a>",
+			//cmAttr = 'Data: <a href="http://www.eia.gov/countries/data.cfm" title="U.S. Energy Information Administration">EIA</a>, <a href="http://www.openstreetmap.org/" title="&copy; OpenStreetMap contributors">OpenStreetMap</a>, <a href="http://www.cloudmade.com/" title="&copy; 2011 CloudMade">CloudMade</a>, <a href="http://www.stamen.com/" title="Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.">Stamen Design</a>',
+			cmUrl = 'http://{s}.tile.cloudmade.com/0de6cf4ab5c94f978d85a48c6413b382/{styleId}/256/{z}/{x}/{y}.png';
+		
+			var minimal   = L.tileLayer(cmUrl, {styleId: 22677, attribution: cmAttr});
+			
+			var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+				{ attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors' }
+			);
+
+			var overlays;			
+			var imports, exports, balance;
+		
+			imports = L.geoJson(importsData, {style: importsStyle});
+			exports = L.geoJson(exportsData, {style: exportsStyle});
+			balance = L.geoJson(balanceData, {style: balanceStyle});
+			
+			function getColorAll(d) {
+				return	d > 150				?	'#800026' :
+					d > 100 			?	'#BD0026' :
+					d > 50		  		?	'#E31A1C' :
+					d > 25				?	'#FC4E2A' :
+					d > 5				?	'#FD8D3C' :
+					d > -5 				?	'#CACF9B' :
+					d > -25				?	'#99DFF7' :
+					d > -50				?	'#51C5E8' :
+					d > -100			?	'#1AACD6' :
+					d > -150			?	'#18A2C9' :
+					d > -250			?	'#158DAF' :
+					d > -500			?	'#106F89' :
+					d > -1000			?	'#093B49' :
+											'#ddd';
+			}
+		
+			function getColorHT(d) {
+				return	d > 2				?	'#FC4E2A' :
+					d > 1				?	'#FD8D3C' :
+					d > 0 				?	'#CACF9B' :
+					d > -1				?	'#99DFF7' :
+											'#ddd';
+			}
+		
+			function importsStyle(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorAll(feature.properties.Value)
+				};	
+			}
+		
+			function exportsStyle(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorAll(feature.properties.Value)
+				};
+			}
+		
+			function balanceStyle(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorAll(feature.properties.Value)
+				};
+			}
+		
+			function humanTraffickingStyle(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorHT(feature.properties.Value)
+				};
+			}
+			
+			var map = new L.Map('map', {
+				center: [20, 10],
+				zoom: 3,
+				layers: [minimal]
+			});
+			
+			$(document).one("ajaxStop", function() {
+                $("#loading").hide();
+				overlays = {
+					"Imports (2012)":imports,
+					"Exports (2012)":exports,
+					"Trade Balance (2012)":balance,
+					"Human Trafficking":geoHTJsonLayer
+				};
+				L.control.layers(overlays).addTo(map);
+			});
+			
+        </script>
+    </body>
+</html>
