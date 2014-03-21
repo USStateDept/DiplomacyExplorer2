@@ -441,20 +441,314 @@
 				
 		<script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js?2"></script>
         <script type="text/javascript">
-			var urlHTWhole = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3Ahuman_trafficking_50m&outputformat=json";
+			var urlWholeHHHC = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3AHealth_Human_and_Humanitarian_Concerns_50m&outputformat=json";
+			var urlWholeGGHR = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3AGood_Governance_and_Human_Rights_50m&outputformat=json";
+			var urlWholeMLO = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3AMulti-Lateral_Organizations_50m&outputformat=json";
+			var urlWholeNuc = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3ANuclear_50m&outputformat=json";
+			var urlWholeTP = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3ATrade_Promotion_50m&outputformat=json";
 			
-			var geoHTJsonLayer;
-			function getHTGeoJson(data) {
-				geoHTJsonLayer = new L.geoJson(data, {style: humanTraffickingStyle});
+			var geoJsonLayerPEPFAR;
+			var geoJsonLayerHT;
+			var geoJsonLayerMGAC;
+			var geoJsonLayerICAO;
+			var geoJsonLayerFAO;
+			var geoJsonLayerOAS;
+			var geoJsonLayerUNGA;
+			var geoJsonLayerOSCE;
+			var geoJsonLayerOECD;
+			var geoJsonLayerNATO;
+			var geoJsonLayerEU;
+			var geoJsonLayerAU;
+			var geoJsonLayerUNHCR;
+			//var geoJsonLayerMLOIndex;
+			var geoJsonLayerNucSign;
+			var geoJsonLayerNucDepo;
+			var geoJsonLayerNucSignDepo;
+			var geoJsonLayerTPAPEC;
+			var geoJsonLayerTPNAFTA;
+			var geoJsonLayerTPWTO;
+			var geoJsonLayerTPASEAN;
+			var geoJsonLayerTPCBERA;
+			var geoJsonLayerTPCAFTA;
+			//var geoJsonLayerTPIndex;
+			
+			function getGeoJsonPEPFAR(data) {
+				geoJsonLayerPEPFAR = new L.geoJson(data, {style: StylePEPFAR});
 			}
 			
+			function getGeoJsonHT(data) {
+				geoJsonLayerHT = new L.geoJson(data, {style: StyleHT});
+			}
+			
+			function getGeoJsonMGAC(data) {
+				geoJsonLayerMGAC = new L.geoJson(data, {style: StyleMGAC});
+			}
+			
+			function getGeoJsonICAO(data) {
+				geoJsonLayerICAO = new L.geoJson(data, {style: StyleMLOMemberICAO});
+			}
+			
+			function getGeoJsonUNESCO(data) {
+				geoJsonLayerUNESCO = new L.geoJson(data, {style: StyleMLOMemberUNESCO});
+			}
+			
+			function getGeoJsonFAO(data) {
+				geoJsonLayerFAO = new L.geoJson(data, {style: StyleMLOMemberFAO});
+			}
+			
+			function getGeoJsonOAS(data) {
+				geoJsonLayerOAS = new L.geoJson(data, {style: StyleMLOMemberOAS});
+			}
+			
+			function getGeoJsonUNGA(data) {
+				geoJsonLayerUNGA = new L.geoJson(data, {style: StyleMLOMemberUNGA});
+			}
+			
+			function getGeoJsonOSCE(data) {
+				geoJsonLayerOSCE = new L.geoJson(data, {style: StyleMLOMemberOSCE});
+			}
+			
+			function getGeoJsonOECD(data) {
+				geoJsonLayerOECD = new L.geoJson(data, {style: StyleMLOMemberOECD});
+			}
+			
+			function getGeoJsonNATO(data) {
+				geoJsonLayerNATO = new L.geoJson(data, {style: StyleMLOMemberNATO});
+			}
+			
+			function getGeoJsonEU(data) {
+				geoJsonLayerEU = new L.geoJson(data, {style: StyleMLOMemberEU});
+			}
+			
+			function getGeoJsonAU(data) {
+				geoJsonLayerAU = new L.geoJson(data, {style: StyleMLOMemberAU});
+			}
+			
+			function getGeoJsonUNHCR(data) {
+				geoJsonLayerUNHCR = new L.geoJson(data, {style: StyleMLOMemberUNHCR});
+			}
+			/*
+			function getGeoJsonMLOIndex(data) {
+				geoJsonLayerMLOIndex = new L.geoJson(data, {style: StyleMLOIndex});
+			}
+			*/
+			function getGeoJsonNucSign(data) {
+				geoJsonLayerNucSign = new L.geoJson(data, {style: StyleNucSign});
+			}
+			
+			function getGeoJsonNucDepo(data) {
+				geoJsonLayerNucDepo = new L.geoJson(data, {style: StyleNucDepo});
+			}
+			
+			function getGeoJsonNucSignDepo(data) {
+				geoJsonLayerNucSignDepo = new L.geoJson(data, {style: StyleNucSignDepo});
+			}
+			
+			function getGeoJsonTPAPEC(data) {
+				geoJsonLayerTPAPEC = new L.geoJson(data, {style: StyleTPAPEC});
+			}
+			
+			function getGeoJsonTPNAFTA(data) {
+				geoJsonLayerTPNAFTA = new L.geoJson(data, {style: StyleTPNAFTA});
+			}
+			
+			function getGeoJsonTPWTO(data) {
+				geoJsonLayerTPWTO = new L.geoJson(data, {style: StyleTPWTO});
+			}
+			
+			function getGeoJsonTPASEAN(data) {
+				geoJsonLayerTPASEAN = new L.geoJson(data, {style: StyleTPASEAN});
+			}
+			
+			function getGeoJsonTPCBERA(data) {
+				geoJsonLayerTPCBERA = new L.geoJson(data, {style: StyleTPCBERA});
+			}
+			
+			function getGeoJsonTPCAFTA(data) {
+				geoJsonLayerTPCAFTA = new L.geoJson(data, {style: StyleTPCAFTA});
+			}
+			/*
+			function getGeoJsonTPIndex(data) {
+				geoJsonLayerTPIndex = new L.geoJson(data, {style: StyleTPIndex});
+			}
+			*/
 			$.ajax({
-				url: urlHTWhole,
+				url: urlWholeHHHC,
 				dataType: 'json',
-				jsonpCallback: getHTGeoJson,
-				success: getHTGeoJson
+				jsonpCallback: getGeoJsonPEPFAR,
+				success: getGeoJsonPEPFAR
 			});
 			
+			$.ajax({
+				url: urlWholeGGHR,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonHT,
+				success: getGeoJsonHT
+			});
+			
+			$.ajax({
+				url: urlWholeGGHR,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonMGAC,
+				success: getGeoJsonMGAC
+			});
+			
+			$.ajax({
+				url: urlWholeMLO,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonICAO,
+				success: getGeoJsonICAO
+			});
+			
+			$.ajax({
+				url: urlWholeMLO,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonUNESCO,
+				success: getGeoJsonUNESCO
+			});
+			
+			$.ajax({
+				url: urlWholeMLO,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonFAO,
+				success: getGeoJsonFAO
+			});
+			
+			$.ajax({
+				url: urlWholeMLO,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonOAS,
+				success: getGeoJsonOAS
+			});
+			
+			$.ajax({
+				url: urlWholeMLO,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonUNGA,
+				success: getGeoJsonUNGA
+			});
+			
+			$.ajax({
+				url: urlWholeMLO,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonOSCE,
+				success: getGeoJsonOSCE
+			});
+			
+			$.ajax({
+				url: urlWholeMLO,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonOECD,
+				success: getGeoJsonOECD
+			});
+			
+			$.ajax({
+				url: urlWholeMLO,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonNATO,
+				success: getGeoJsonNATO
+			});
+			
+			$.ajax({
+				url: urlWholeMLO,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonEU,
+				success: getGeoJsonEU
+			});
+			
+			$.ajax({
+				url: urlWholeMLO,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonAU,
+				success: getGeoJsonAU
+			});
+			
+			$.ajax({
+				url: urlWholeMLO,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonUNHCR,
+				success: getGeoJsonUNHCR
+			});
+			/*
+			$.ajax({
+				url: urlWholeMLO,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonMLOIndex,
+				success: getGeoJsonMLOIndex
+			});
+			*/
+			$.ajax({
+				url: urlWholeNuc,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonNucSign,
+				success: getGeoJsonNucSign
+			});
+			
+			
+			$.ajax({
+				url: urlWholeNuc,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonNucDepo,
+				success: getGeoJsonNucDepo
+			});
+			
+			
+			$.ajax({
+				url: urlWholeNuc,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonNucSignDepo,
+				success: getGeoJsonNucSignDepo
+			});
+			
+			$.ajax({
+				url: urlWholeTP,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonTPAPEC,
+				success: getGeoJsonTPAPEC
+			});
+			
+			$.ajax({
+				url: urlWholeTP,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonTPNAFTA,
+				success: getGeoJsonTPNAFTA
+			});
+			
+			$.ajax({
+				url: urlWholeTP,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonTPWTO,
+				success: getGeoJsonTPWTO
+			});
+			
+			$.ajax({
+				url: urlWholeTP,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonTPASEAN,
+				success: getGeoJsonTPASEAN
+			});
+			
+			$.ajax({
+				url: urlWholeTP,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonTPCBERA,
+				success: getGeoJsonTPCBERA
+			});
+			
+			$.ajax({
+				url: urlWholeTP,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonTPCAFTA,
+				success: getGeoJsonTPCAFTA
+			});
+			/*
+			$.ajax({
+				url: urlWholeTP,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonTPIndex,
+				success: getGeoJsonTPIndex
+			});
+			*/
 			var cmAttr = "<a href='mailto:dittemoremb@state.gov'>eDiplomacy Geo|DST</a>",
 			//cmAttr = 'Data: <a href="http://www.eia.gov/countries/data.cfm" title="U.S. Energy Information Administration">EIA</a>, <a href="http://www.openstreetmap.org/" title="&copy; OpenStreetMap contributors">OpenStreetMap</a>, <a href="http://www.cloudmade.com/" title="&copy; 2011 CloudMade">CloudMade</a>, <a href="http://www.stamen.com/" title="Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.">Stamen Design</a>',
 			cmUrl = 'http://{s}.tile.cloudmade.com/0de6cf4ab5c94f978d85a48c6413b382/{styleId}/256/{z}/{x}/{y}.png';
@@ -466,77 +760,375 @@
 			);
 
 			var overlays;			
-			var imports, exports, balance;
-		
-			imports = L.geoJson(importsData, {style: importsStyle});
-			exports = L.geoJson(exportsData, {style: exportsStyle});
-			balance = L.geoJson(balanceData, {style: balanceStyle});
 			
-			function getColorAll(d) {
-				return	d > 150				?	'#800026' :
-					d > 100 			?	'#BD0026' :
-					d > 50		  		?	'#E31A1C' :
-					d > 25				?	'#FC4E2A' :
-					d > 5				?	'#FD8D3C' :
-					d > -5 				?	'#CACF9B' :
-					d > -25				?	'#99DFF7' :
-					d > -50				?	'#51C5E8' :
-					d > -100			?	'#1AACD6' :
-					d > -150			?	'#18A2C9' :
-					d > -250			?	'#158DAF' :
-					d > -500			?	'#106F89' :
-					d > -1000			?	'#093B49' :
-											'#ddd';
+			function getColorPEPFAR(d) {
+				if (d == '3') {
+					return	'#FC4E2A'
+				} else if (d == '2') {
+					return	'#FD8D3C'
+				} else if (d == '1') {
+					return	'#CACF9B'
+				} else {
+					return	'#ddd';
+				}
 			}
 		
 			function getColorHT(d) {
-				return	d > 2				?	'#FC4E2A' :
-					d > 1				?	'#FD8D3C' :
-					d > 0 				?	'#CACF9B' :
-					d > -1				?	'#99DFF7' :
-											'#ddd';
+				if (d == 'Tier 3') {
+					return	'#FC4E2A'
+				} else if (d == 'Tier 3 Auto-Downgrade') {
+					return	'#FC4E2A'
+				} else if (d == 'Tier 2') {
+					return	'#FD8D3C'
+				} else if (d == 'Tier 2 Watch List') {
+					return	'#FD8D3C'
+				} else if (d == 'Tier 1') {
+					return	'#CACF9B'
+				} else {
+					return	'#ddd';
+				}
 			}
-		
-			function importsStyle(feature) {
+			
+			function getColorMGAC(d) {
+				if (d == 'Excellent') {
+					return	'#093B49'
+				} else if (d == 'Good') {
+					return	'#106F89'
+				} else if (d == 'Fair') {
+					return	'#158DAF'
+				} else if (d == 'Poor') {
+					return	'#18A2C9'
+				} else {
+					return	'#ddd';
+				}
+			}
+			
+			function getColorMLOMember(d) {
+				if (d == 'Member') {
+					return	'#FC4E2A'
+				} else if (d == 'Suspended') {
+					return	'#FC4E2A'
+				} else {
+					return	'#ddd';
+				}
+			}
+/*
+			function getColorMLOIndex(d) {
+				if (d == '8') {
+					return	'#093B49'
+				} else if (d == '8') {
+					return	'#093B49'
+				} else if (d == '7') {
+					return	'#106F89'
+				} else if (d == '6') {
+					return	'#106F89'
+				} else if (d == '5') {
+					return	'#158DAF'
+				} else if (d == '4') {
+					return	'#158DAF'
+				} else if (d == '3') {
+					return	'#18A2C9'
+				} else if (d == '2') {
+					return	'#1AACD6'
+				} else if (d == '1') {
+					return	'#51C5E8'
+				} else {
+					return	'#ddd';
+				}
+			}
+	*/		
+			function getColorNuc(d) {
+				if (d == 'X') {
+					return	'#FC4E2A'
+				} else {
+					return	'#ddd';
+				}
+			}
+			
+			function getColorNucSignDepo(d) {
+				if (d == '2') {
+					return	'#FC4E2A'
+				} else if (d == '1') {
+					return	'#FC4E2A'
+				} else {
+					return	'#ddd';
+				}
+			}
+			
+			function getColorTPMember(d) {
+				if (d == 'Member') {
+					return	'#FC4E2A'
+				} else if (d == 'Observer') {
+					return	'#FC4E2A'
+				} else {
+					return	'#ddd';
+				}
+			}
+/*
+			function getColorTPIndex(d) {
+				if (d == '4') {
+					return	'#093B49'
+				} else if (d == '3') {
+					return	'#106F89'
+				} else if (d == '2') {
+					return	'#158DAF'
+				} else if (d == '1') {
+					return	'#51C5E8'
+				} else {
+					return	'#ddd';
+				}
+			}
+	*/		
+			function StylePEPFAR(feature) {
 				return {
 					weight: 1,
 					opacity: 1,
 					color: 'white',
 					fillOpacity: 0.7,
-					fillColor: getColorAll(feature.properties.Value)
-				};	
-			}
-		
-			function exportsStyle(feature) {
-				return {
-					weight: 1,
-					opacity: 1,
-					color: 'white',
-					fillOpacity: 0.7,
-					fillColor: getColorAll(feature.properties.Value)
-				};
-			}
-		
-			function balanceStyle(feature) {
-				return {
-					weight: 1,
-					opacity: 1,
-					color: 'white',
-					fillOpacity: 0.7,
-					fillColor: getColorAll(feature.properties.Value)
-				};
-			}
-		
-			function humanTraffickingStyle(feature) {
-				return {
-					weight: 1,
-					opacity: 1,
-					color: 'white',
-					fillOpacity: 0.7,
-					fillColor: getColorHT(feature.properties.Value)
+					fillColor: getColorPEPFAR(feature.properties.PEPFAR)
 				};
 			}
 			
+			function StyleHT(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorHT(feature.properties.Human_Trafficking)
+				};
+			}
+			
+			function StyleMGAC(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMGAC(feature.properties.Maternity_Health_Access_to_Care)
+				};
+			}
+			
+			function StyleMLOMemberICAO(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.ICAO)
+				};
+			}
+			
+			function StyleMLOMemberUNESCO(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.UNESCO)
+				};
+			}
+			
+			function StyleMLOMemberFAO(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.FAO)
+				};
+			}
+			
+			function StyleMLOMemberOAS(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.OAS)
+				};
+			}
+			
+			function StyleMLOMemberUNGA(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.UNGA)
+				};
+			}
+			
+			function StyleMLOMemberOSCE(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.OSCE)
+				};
+			}
+			
+			function StyleMLOMemberOECD(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.OECD)
+				};
+			}
+			
+			function StyleMLOMemberNATO(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.NATO)
+				};
+			}
+			
+			function StyleMLOMemberEU(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.EU)
+				};
+			}
+			
+			function StyleMLOMemberAU(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.AU)
+				};
+			}
+			
+			function StyleMLOMemberUNHCR(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.UNHCR)
+				};
+			}
+			/*
+			function StyleMLOIndex(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOIndex(feature.properties.Index)
+				};
+			}
+			*/
+			function StyleNucSign(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorNuc(feature.properties.Signed)
+				};
+			}
+			
+			function StyleNucDepo(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorNuc(feature.properties.Deposited)
+				};
+			}
+			
+			function StyleNucSignDepo(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorNucSignDepo(feature.properties.SignedDeposited)
+				};
+			}
+			
+			function StyleTPAPEC(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorTPMember(feature.properties.APEC)
+				};
+			}
+			
+			function StyleTPNAFTA(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorTPMember(feature.properties.NAFTA)
+				};
+			}
+			
+			function StyleTPWTO(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorTPMember(feature.properties.WTO)
+				};
+			}
+			
+			function StyleTPASEAN(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorTPMember(feature.properties.ASEAN)
+				};
+			}
+			
+			function StyleTPCBERA(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorTPMember(feature.properties.CBERA)
+				};
+			}
+			
+			function StyleTPCAFTA(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorTPMember(feature.properties.CAFTA)
+				};
+			}
+			/*
+			function StyleTPIndex(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorTPIndex(feature.properties.Index)
+				};
+			}
+			*/
 			var map = new L.Map('map', {
 				center: [20, 10],
 				zoom: 3,
@@ -546,10 +1138,32 @@
 			$(document).one("ajaxStop", function() {
                 $("#loading").hide();
 				overlays = {
-					"Imports (2012)":imports,
-					"Exports (2012)":exports,
-					"Trade Balance (2012)":balance,
-					"Human Trafficking":geoHTJsonLayer
+					"PEPFAR":geoJsonLayerPEPFAR,
+					"Human Trafficking":geoJsonLayerHT,
+					"Maternity Health - Access to Care":geoJsonLayerMGAC,
+					"ICAO":geoJsonLayerICAO,
+					"UNESCO":geoJsonLayerUNESCO,
+					"FAO":geoJsonLayerFAO,
+					"OAS":geoJsonLayerOAS,
+					"UNGA":geoJsonLayerUNGA,
+					"OSCE":geoJsonLayerOSCE,
+					"OECD":geoJsonLayerOECD,
+					"NATO":geoJsonLayerNATO,
+					"EU":geoJsonLayerEU,
+					"AU":geoJsonLayerAU,
+					"UNHCR":geoJsonLayerUNHCR,
+					//"MLO Index":geoJsonLayerMLOIndex,
+					"Non-Proliferation Treaty - Signed":geoJsonLayerNucSign,
+					"Non-Proliferation Treaty - Deposited":geoJsonLayerNucDepo,
+					"Non-Proliferation Treaty - Signed & Deposited":geoJsonLayerNucSignDepo,
+					"APEC":geoJsonLayerTPAPEC,
+					"NAFTA":geoJsonLayerTPNAFTA,
+					"WTO":geoJsonLayerTPWTO,
+					"ASEAN":geoJsonLayerTPASEAN,
+					"CBERA":geoJsonLayerTPCBERA,
+					"CAFTA":geoJsonLayerTPCAFTA
+					//,"Trade Org Index":geoJsonLayerTPIndex
+					
 				};
 				L.control.layers(overlays).addTo(map);
 			});
