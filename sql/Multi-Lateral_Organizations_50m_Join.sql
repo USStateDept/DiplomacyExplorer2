@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS public."Multi-Lateral_Organizations_50m";
 CREATE TABLE public."Multi-Lateral_Organizations_50m" AS
 SELECT 
-	sovereignt,
+	name,
 	"Multi-Lateral_Organizations"."ICAO",
 	"Multi-Lateral_Organizations"."UNESCO",
 	"Multi-Lateral_Organizations"."FAO",
@@ -15,4 +15,4 @@ SELECT
 	"Multi-Lateral_Organizations"."UNHCR",
 	"Multi-Lateral_Organizations"."Index",
 	the_geom
-FROM opengeo."ne_50m_admin_0_sovereignty" LEFT OUTER JOIN public."Multi-Lateral_Organizations" ON (ne_50m_admin_0_sovereignty.sovereignt = "Multi-Lateral_Organizations"."Country");
+FROM opengeo."ne_50m_admin_0_countries_lakes" LEFT OUTER JOIN public."Multi-Lateral_Organizations" ON (ne_50m_admin_0_countries_lakes.name = "Multi-Lateral_Organizations"."Country");
