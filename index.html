@@ -8,7 +8,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Template 1 - BIDS</title>
+        <title>Diplomacy Explorer 2 - alpha</title>
 
         <!-- Core CSS -->
         <link href="img/usdos-logo-seal.png" rel="shortcut icon">
@@ -212,13 +212,15 @@
             <div class="navbar-collapse collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
 					<li class="dropdown">
-                        <a id="businessDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Business</a>
+                        <a id="businessDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Trade Promotion</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">&nbsp;&nbsp;Map 1</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 2</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 3</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 4</a></li>
-                        </ul>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),alert(allLayersGroup),map.addLayer(geoJsonLayerTPAPEC)">&nbsp;&nbsp;APEC Membership</a></li>
+							<li><a href="javascript:allLayersGroup.clearLayers(),alert(allLayersGroup),map.addLayer(geoJsonLayerTPASEAN)">&nbsp;&nbsp;ASEAN Membership</a></li>
+							<li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerTPCAFTA)">&nbsp;&nbsp;CAFTA Membership</a></li>
+							<li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerTPCBERA)">&nbsp;&nbsp;CBERA Membership</a></li>
+							<li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerTPNAFTA)">&nbsp;&nbsp;NAFTA Membership</a></li>
+							<li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerTPWTO)">&nbsp;&nbsp;WTO Membership</a></li>
+						</ul>
                     </li>
 					<li class="dropdown">
                         <a id="environmentDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Environment</a>
@@ -233,32 +235,34 @@
 					<li class="dropdown">
                         <a id="governanceDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Governance</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">&nbsp;&nbsp;Map 1</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 2</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 3</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 4</a></li>
+                            <label>Multi-Lateral Organizations<label>
+							<li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerICAO)">&nbsp;&nbsp;ICAO Membership</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerUNESCO)">&nbsp;&nbsp;UNESCO Membership</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerFAO)">&nbsp;&nbsp;FAO Membership</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerOAS)">&nbsp;&nbsp;OAS Membership</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerUNGA)">&nbsp;&nbsp;UN-GA Membership</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerOSCE)">&nbsp;&nbsp;OSCE Membership</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerOECD)">&nbsp;&nbsp;OECD Membership</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerNATO)">&nbsp;&nbsp;NATO Membership</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerEU)">&nbsp;&nbsp;EU Membership</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerAU)">&nbsp;&nbsp;AU Membership</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerUNHCR)">&nbsp;&nbsp;UNHCR Membership</a></li>
                         </ul>
                     </li>
 					<li class="dropdown">
                         <a id="peopleDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">People</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">&nbsp;&nbsp;Map 1</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 2</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 3</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 4</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 5</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 6</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 7</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerPEPFAR)">&nbsp;&nbsp;PEPFAR</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerMHAC)">&nbsp;&nbsp;Maternal Health - Access to Care</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerHT)">&nbsp;&nbsp;Human Trafficking</a></li>
                         </ul>
                     </li>
 					<li class="dropdown">
                         <a id="securityDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Security</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">&nbsp;&nbsp;Map 1</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 2</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 3</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 4</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 5</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerNucSign)">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerNucDepo)">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Deposited</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),map.addLayer(geoJsonLayerNucSignDepo)">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed & Deposited</a></li>
                         </ul>
                     </li>
 					<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#shareModal').modal('show'); return false;">Share</a></li>
@@ -447,10 +451,13 @@
 			var urlWholeNuc = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3ANuclear_50m&outputformat=json";
 			var urlWholeTP = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3ATrade_Promotion_50m&outputformat=json";
 			
+			var allLayersGroup;
+			
 			var geoJsonLayerPEPFAR;
 			var geoJsonLayerHT;
-			var geoJsonLayerMGAC;
+			var geoJsonLayerMHAC;
 			var geoJsonLayerICAO;
+			//var geoJsonLayerUNESCO;
 			var geoJsonLayerFAO;
 			var geoJsonLayerOAS;
 			var geoJsonLayerUNGA;
@@ -480,8 +487,8 @@
 				geoJsonLayerHT = new L.geoJson(data, {style: StyleHT});
 			}
 			
-			function getGeoJsonMGAC(data) {
-				geoJsonLayerMGAC = new L.geoJson(data, {style: StyleMGAC});
+			function getGeoJsonMHAC(data) {
+				geoJsonLayerMHAC = new L.geoJson(data, {style: StyleMHAC});
 			}
 			
 			function getGeoJsonICAO(data) {
@@ -589,8 +596,8 @@
 			$.ajax({
 				url: urlWholeGGHR,
 				dataType: 'json',
-				jsonpCallback: getGeoJsonMGAC,
-				success: getGeoJsonMGAC
+				jsonpCallback: getGeoJsonMHAC,
+				success: getGeoJsonMHAC
 			});
 			
 			$.ajax({
@@ -789,7 +796,7 @@
 				}
 			}
 			
-			function getColorMGAC(d) {
+			function getColorMHAC(d) {
 				if (d == 'Excellent') {
 					return	'#093B49'
 				} else if (d == 'Good') {
@@ -899,13 +906,13 @@
 				};
 			}
 			
-			function StyleMGAC(feature) {
+			function StyleMHAC(feature) {
 				return {
 					weight: 1,
 					opacity: 1,
 					color: 'white',
 					fillOpacity: 0.7,
-					fillColor: getColorMGAC(feature.properties.Maternity_Health_Access_to_Care)
+					fillColor: getColorMHAC(feature.properties.Maternity_Health_Access_to_Care)
 				};
 			}
 			
@@ -1137,10 +1144,10 @@
 			
 			$(document).one("ajaxStop", function() {
                 $("#loading").hide();
-				overlays = {
+				/*overlays = {
 					"PEPFAR":geoJsonLayerPEPFAR,
 					"Human Trafficking":geoJsonLayerHT,
-					"Maternity Health - Access to Care":geoJsonLayerMGAC,
+					"Maternity Health - Access to Care":geoJsonLayerMHAC,
 					"ICAO":geoJsonLayerICAO,
 					"UNESCO":geoJsonLayerUNESCO,
 					"FAO":geoJsonLayerFAO,
@@ -1164,8 +1171,36 @@
 					"CAFTA":geoJsonLayerTPCAFTA
 					//,"Trade Org Index":geoJsonLayerTPIndex
 					
-				};
-				L.control.layers(overlays).addTo(map);
+				};*/
+				//L.control.layers(overlays).addTo(map);
+				
+				allLayersGroup = new L.LayerGroup();
+				allLayersGroup.addLayer(geoJsonLayerPEPFAR);
+				allLayersGroup.addLayer(geoJsonLayerHT);
+				allLayersGroup.addLayer(geoJsonLayerMHAC);
+				allLayersGroup.addLayer(geoJsonLayerICAO);
+				allLayersGroup.addLayer(geoJsonLayerUNESCO);
+				allLayersGroup.addLayer(geoJsonLayerFAO);
+				allLayersGroup.addLayer(geoJsonLayerOAS);
+				allLayersGroup.addLayer(geoJsonLayerUNGA);
+				allLayersGroup.addLayer(geoJsonLayerOSCE);
+				allLayersGroup.addLayer(geoJsonLayerOECD);
+				allLayersGroup.addLayer(geoJsonLayerNATO);
+				allLayersGroup.addLayer(geoJsonLayerEU);
+				allLayersGroup.addLayer(geoJsonLayerAU);
+				allLayersGroup.addLayer(geoJsonLayerUNHCR);
+				//allLayersGroup.addLayer(geoJsonLayerMLOIndex);
+				allLayersGroup.addLayer(geoJsonLayerNucSign);
+				allLayersGroup.addLayer(geoJsonLayerNucDepo);
+				allLayersGroup.addLayer(geoJsonLayerNucSignDepo);
+				allLayersGroup.addLayer(geoJsonLayerTPAPEC);
+				allLayersGroup.addLayer(geoJsonLayerTPNAFTA);
+				allLayersGroup.addLayer(geoJsonLayerTPWTO);
+				allLayersGroup.addLayer(geoJsonLayerTPASEAN);
+				allLayersGroup.addLayer(geoJsonLayerTPCBERA);
+				allLayersGroup.addLayer(geoJsonLayerTPCAFTA);
+				//allLayersGroup.addLayer(geoJsonLayerTPIndex);
+			
 			});
 			
         </script>
