@@ -196,11 +196,7 @@
 		
 	 </head>
 	 <body>
-		<script type="text/javascript" src="../newsilkroad/data/imports.js"></script>
-		<script type="text/javascript" src="../newsilkroad/data/exports.js"></script>
-		<script type="text/javascript" src="../newsilkroad/data/balance.js"></script>
-	
-        <div class="navbar navbar-inverse navbar-fixed-top">
+	    <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -212,28 +208,31 @@
             <div class="navbar-collapse collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
 					<li class="dropdown">
-                        <a id="businessDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Trade Promotion</a>
+                        <a id="securityDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Security</a>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerTPAPEC),map.addLayer(allLayersGroup)">&nbsp;&nbsp;APEC Membership</a></li>
-							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerTPASEAN),map.addLayer(allLayersGroup)">&nbsp;&nbsp;ASEAN Membership</a></li>
-							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerTPCAFTA),map.addLayer(allLayersGroup)">&nbsp;&nbsp;CAFTA Membership</a></li>
-							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerTPCBERA),map.addLayer(allLayersGroup)">&nbsp;&nbsp;CBERA Membership</a></li>
-							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerTPNAFTA),map.addLayer(allLayersGroup)">&nbsp;&nbsp;NAFTA Membership</a></li>
-							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerTPWTO),map.addLayer(allLayersGroup)">&nbsp;&nbsp;WTO Membership</a></li>
-						</ul>
-                    </li>
-					<li class="dropdown">
-                        <a id="environmentDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Environment</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">&nbsp;&nbsp;Map 1</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 2</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 3</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 4</a></li>
-							<li><a href="#">&nbsp;&nbsp;Map 5</a></li>
+                            <h4>Nuclear Arms Control</h4>
+							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNucSign),map.addLayer(allLayersGroup)">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup)">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Deposited</a></li>
+                            <li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNucSignDepo),map.addLayer(allLayersGroup)">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed & Deposited</a></li>
+							<h4>Other</h4>
+							<li><a href="#">&nbsp;&nbsp;Counter-terrorism (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Counter-narcotics (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Border Security (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Securing the Seas/Maritime Piracy (tk)</a></li>
                         </ul>
                     </li>
 					<li class="dropdown">
-                        <a id="governanceDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Governance</a>
+                        <a id="environmentDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Protecting Resources</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">&nbsp;&nbsp;Climate Change (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Environmental Conservation (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Water Security (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Energy Policy (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Endangered Species (tk)</a></li>
+                        </ul>
+                    </li>
+					<li class="dropdown">
+                        <a id="businessDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Promoting Prosperity</a>
                         <ul class="dropdown-menu">
                             <h4>Multi-Lateral Organizations</h4>
 							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerICAO),map.addLayer(allLayersGroup)">&nbsp;&nbsp;ICAO Membership</a></li>
@@ -247,22 +246,56 @@
                             <li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerEU),map.addLayer(allLayersGroup)">&nbsp;&nbsp;EU Membership</a></li>
                             <li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerAU),map.addLayer(allLayersGroup)">&nbsp;&nbsp;AU Membership</a></li>
                             <li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerUNHCR),map.addLayer(allLayersGroup)">&nbsp;&nbsp;UNHCR Membership</a></li>
+							<h4>Trade Promotion</h4>
+							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerTPAPEC),map.addLayer(allLayersGroup)">&nbsp;&nbsp;APEC Membership</a></li>
+							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerTPASEAN),map.addLayer(allLayersGroup)">&nbsp;&nbsp;ASEAN Membership</a></li>
+							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerTPCAFTA),map.addLayer(allLayersGroup)">&nbsp;&nbsp;CAFTA Membership</a></li>
+							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerTPCBERA),map.addLayer(allLayersGroup)">&nbsp;&nbsp;CBERA Membership</a></li>
+							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerTPNAFTA),map.addLayer(allLayersGroup)">&nbsp;&nbsp;NAFTA Membership</a></li>
+							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerTPWTO),map.addLayer(allLayersGroup)">&nbsp;&nbsp;WTO Membership</a></li>
+							<h4>Other</h4>
+							<li><a href="#">&nbsp;&nbsp;Good Governance (trade legislation) (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Border Security (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Securing the Seas/Maritime Piracy (tk)</a></li>
+						</ul>
+                    </li>
+					<li class="dropdown">
+                        <a id="rightsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Respecting Rights</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">&nbsp;&nbsp;Free and Fair Elections (tk)</a></li>
+                            <li><a href="#">&nbsp;&nbsp;Independent Media (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Independent Judiciacy (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Minority Rights (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Women's Rights (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Religious Freedom (tk)</a></li>
+							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerHT),map.addLayer(allLayersGroup)">&nbsp;&nbsp;Human Trafficking</a></li>
                         </ul>
                     </li>
 					<li class="dropdown">
-                        <a id="peopleDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">People</a>
+                        <a id="livesDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Saving Lives</a>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerPEPFAR),map.addLayer(allLayersGroup)">&nbsp;&nbsp;PEPFAR</a></li>
+							<h4>Health Issues</h4>
+							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerPEPFAR),map.addLayer(allLayersGroup)">&nbsp;&nbsp;PEPFAR</a></li>
                             <li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerMHAC),map.addLayer(allLayersGroup)">&nbsp;&nbsp;Maternal Health - Access to Care</a></li>
-                            <li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerHT),map.addLayer(allLayersGroup)">&nbsp;&nbsp;Human Trafficking</a></li>
+							<li><a href="#">&nbsp;&nbsp;HIV/AIDS (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Avian Flu (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Malaria (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Polio (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Tuberculosis (tk)</a></li>							
+							<h4>Other</h4>
+							<li><a href="#">&nbsp;&nbsp;Counter-narcotics (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Disaster Assistance (tk)</a></li>
+							<li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerHT),map.addLayer(allLayersGroup)">&nbsp;&nbsp;Human Trafficking</a></li>
+							<li><a href="#">&nbsp;&nbsp;Refugee Assistance (tk)</a></li>
                         </ul>
                     </li>
 					<li class="dropdown">
-                        <a id="securityDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Security</a>
+                        <a id="infoDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Accessing Information</a>
                         <ul class="dropdown-menu">
-                            <li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNucSign),map.addLayer(allLayersGroup)">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed</a></li>
-                            <li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup)">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Deposited</a></li>
-                            <li><a href="javascript:allLayersGroup.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNucSignDepo),map.addLayer(allLayersGroup)">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed & Deposited</a></li>
+							<li><a href="#">&nbsp;&nbsp;Cyber Security (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Internet Freedom (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Intellectual Property Protection (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Science/Technology Promotion (tk)</a></li>
                         </ul>
                     </li>
 					<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#shareModal').modal('show'); return false;">Share</a></li>
@@ -447,7 +480,10 @@
         <script type="text/javascript">
 			var urlWhole = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APA_Data_50m&outputformat=json";
 			
-			var allLayersGroup;
+			var allLayersGroup = new L.LayerGroup();
+			
+			var activeLayer;
+			var activeLayerStyle;
 			
 			var geoJsonLayer;
 			
@@ -494,8 +530,6 @@
 				{ attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors' }
 			);
 
-			var overlays;			
-			
 			function getColorPEPFAR(d) {
 				if (d == '3') {
 					return	'#FC4E2A'
@@ -872,62 +906,6 @@
 			
 			$(document).one("ajaxStop", function() {
                 $("#loading").hide();
-				/*overlays = {
-					"PEPFAR":geoJsonLayerPEPFAR,
-					"Human Trafficking":geoJsonLayerHT,
-					"Maternity Health - Access to Care":geoJsonLayerMHAC,
-					"ICAO":geoJsonLayerICAO,
-					"UNESCO":geoJsonLayerUNESCO,
-					"FAO":geoJsonLayerFAO,
-					"OAS":geoJsonLayerOAS,
-					"UNGA":geoJsonLayerUNGA,
-					"OSCE":geoJsonLayerOSCE,
-					"OECD":geoJsonLayerOECD,
-					"NATO":geoJsonLayerNATO,
-					"EU":geoJsonLayerEU,
-					"AU":geoJsonLayerAU,
-					"UNHCR":geoJsonLayerUNHCR,
-					//"MLO Index":geoJsonLayerMLOIndex,
-					"Non-Proliferation Treaty - Signed":geoJsonLayerNucSign,
-					"Non-Proliferation Treaty - Deposited":geoJsonLayerNucDepo,
-					"Non-Proliferation Treaty - Signed & Deposited":geoJsonLayerNucSignDepo,
-					"APEC":geoJsonLayerTPAPEC,
-					"NAFTA":geoJsonLayerTPNAFTA,
-					"WTO":geoJsonLayerTPWTO,
-					"ASEAN":geoJsonLayerTPASEAN,
-					"CBERA":geoJsonLayerTPCBERA,
-					"CAFTA":geoJsonLayerTPCAFTA
-					//,"Trade Org Index":geoJsonLayerTPIndex
-					
-				};*/
-				//L.control.layers(overlays).addTo(map);
-				
-				allLayersGroup = new L.LayerGroup();
-				allLayersGroup.addLayer(geoJsonLayerPEPFAR);
-				allLayersGroup.addLayer(geoJsonLayerHT);
-				allLayersGroup.addLayer(geoJsonLayerMHAC);
-				allLayersGroup.addLayer(geoJsonLayerICAO);
-				allLayersGroup.addLayer(geoJsonLayerUNESCO);
-				allLayersGroup.addLayer(geoJsonLayerFAO);
-				allLayersGroup.addLayer(geoJsonLayerOAS);
-				allLayersGroup.addLayer(geoJsonLayerUNGA);
-				allLayersGroup.addLayer(geoJsonLayerOSCE);
-				allLayersGroup.addLayer(geoJsonLayerOECD);
-				allLayersGroup.addLayer(geoJsonLayerNATO);
-				allLayersGroup.addLayer(geoJsonLayerEU);
-				allLayersGroup.addLayer(geoJsonLayerAU);
-				allLayersGroup.addLayer(geoJsonLayerUNHCR);
-				//allLayersGroup.addLayer(geoJsonLayerMLOIndex);
-				allLayersGroup.addLayer(geoJsonLayerNucSign);
-				allLayersGroup.addLayer(geoJsonLayerNucDepo);
-				allLayersGroup.addLayer(geoJsonLayerNucSignDepo);
-				allLayersGroup.addLayer(geoJsonLayerTPAPEC);
-				allLayersGroup.addLayer(geoJsonLayerTPNAFTA);
-				allLayersGroup.addLayer(geoJsonLayerTPWTO);
-				allLayersGroup.addLayer(geoJsonLayerTPASEAN);
-				allLayersGroup.addLayer(geoJsonLayerTPCBERA);
-				allLayersGroup.addLayer(geoJsonLayerTPCAFTA);
-				//allLayersGroup.addLayer(geoJsonLayerTPIndex);			
 			});
 			/*
 			var legend = L.control({position: 'bottomleft'});
