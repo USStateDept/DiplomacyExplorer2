@@ -240,8 +240,7 @@
                             <h4>Nuclear Arms Control</h4>
 							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),map.addLayer(allLayersGroup),legendNucSign.addTo(map);">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed</a></li>
 							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup),legendNucDepo.addTo(map);">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Deposited</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSignDepo),map.addLayer(allLayersGroup),legendNucSignDepo.addTo(map);">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed & Deposited</a></li>
-                            <h4>Other</h4>
+							<h4>Other</h4>
 							<li><a href="#">&nbsp;&nbsp;Counter-terrorism (tk)</a></li>
 							<li><a href="#">&nbsp;&nbsp;Counter-narcotics (tk)</a></li>
 							<li><a href="#">&nbsp;&nbsp;Border Security (tk)</a></li>
@@ -534,7 +533,6 @@
 				geoJsonLayerUNHCR = new L.geoJson(data, {style: StyleMLOMemberUNHCR});
 				geoJsonLayerNucSign = new L.geoJson(data, {style: StyleNucSign});
 				geoJsonLayerNucDepo = new L.geoJson(data, {style: StyleNucDepo});
-				geoJsonLayerNucSignDepo = new L.geoJson(data, {style: StyleNucSignDepo});
 				geoJsonLayerTPAPEC = new L.geoJson(data, {style: StyleTPAPEC});
 				geoJsonLayerTPNAFTA = new L.geoJson(data, {style: StyleTPNAFTA});
 				geoJsonLayerTPWTO = new L.geoJson(data, {style: StyleTPWTO});
@@ -590,13 +588,15 @@
 			
 			function getColorMHAC(d) {
 				if (d == 'Excellent') {
-					return	'#093B49'
+					return	'#00BDFF'
 				} else if (d == 'Good') {
-					return	'#106F89'
+					return	'#009DD4'
 				} else if (d == 'Fair') {
-					return	'#158DAF'
+					return	'#007BA6'
 				} else if (d == 'Poor') {
-					return	'#18A2C9'
+					return	'#004E69'
+				} else if (d == 'Unsuitable') {
+					return	'#002430'
 				} else {
 					return	'#ddd';
 				}
@@ -606,7 +606,7 @@
 				if (d == 'Member') {
 					return	'#FC4E2A'
 				} else if (d == 'Suspended') {
-					return	'#FC4E2A'
+					return	'#FD8D3C'
 				} else {
 					return	'#ddd';
 				}
@@ -646,16 +646,6 @@
 			
 			function getColorNucDepo(d) {
 				if (d == 'X') {
-					return	'#FC4E2A'
-				} else {
-					return	'#ddd';
-				}
-			}
-			
-			function getColorNucSignDepo(d) {
-				if (d == '2') {
-					return	'#FC4E2A'
-				} else if (d == '1') {
 					return	'#FC4E2A'
 				} else {
 					return	'#ddd';
@@ -856,16 +846,6 @@
 				};
 			}
 			
-			function StyleNucSignDepo(feature) {
-				return {
-					weight: 1,
-					opacity: 1,
-					color: 'white',
-					fillOpacity: 0.7,
-					fillColor: getColorNucSignDepo(feature.properties.SignedDeposited)
-				};
-			}
-			
 			function StyleTPAPEC(feature) {
 				return {
 					weight: 1,
@@ -965,8 +945,6 @@
 			var legendTPWTO = L.control({position: 'bottomleft'});
 			var legendNucSign = L.control({position: 'bottomleft'});
 			var legendNucDepo = L.control({position: 'bottomleft'});
-			var legendNucSignDepo = L.control({position: 'bottomleft'});
-			var legendTP = L.control({position: 'bottomleft'});
 			var legendHT = L.control({position: 'bottomleft'});
 			var legendPEPFAR = L.control({position: 'bottomleft'});
 			var legendMHAC = L.control({position: 'bottomleft'});
@@ -991,7 +969,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorMLOMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1013,7 +991,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorMLOMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1035,7 +1013,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorMLOMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1057,7 +1035,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorMLOMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1079,7 +1057,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorMLOMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1101,7 +1079,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorMLOMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1123,7 +1101,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorMLOMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1145,7 +1123,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorMLOMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1167,7 +1145,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorMLOMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1186,10 +1164,10 @@
 					from;
 
 				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Suspended member', 'Not a member'];
+					from = ['Member', 'Suspended', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorMLOMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1211,7 +1189,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorMLOMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1233,7 +1211,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorTPMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1255,7 +1233,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorTPMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1277,7 +1255,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorTPMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1299,7 +1277,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorTPMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1321,7 +1299,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorTPMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1343,7 +1321,7 @@
 					from = ['Member', 'Not a member'];
 					
 					labels.push(
-						'<i style="background:' + getColorTPMember(from[i]) + '"></i>' +
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1356,16 +1334,16 @@
 				currentLegend = legendNucSign;
 				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
-					grades = ['X','null'],
+					grades = ['X'],
 					// this is something like a subheader
 					labels = [],
 					from;
 
 				for (var i = 0; i < grades.length; i++) {
-					from = ['Signed', 'Not signed'];
+					from = ['Signed'];
 					
 					labels.push(
-						'<i style="background:' + getColorNucSign(from[i]) + '"></i>' +
+						'<i style="background:' + getColorNucSign(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1378,38 +1356,16 @@
 				currentLegend = legendNucDepo;
 				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
-					grades = ['X','null'],
+					grades = ['X'],
 					// this is something like a subheader
 					labels = [],
 					from;
 
 				for (var i = 0; i < grades.length; i++) {
-					from = ['Deposited', 'Not deposited'];
+					from = ['Deposited'];
 					
 					labels.push(
-						'<i style="background:' + getColorNucDepo(from[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><br>' + labels.join('<br>');
-				return div;
-			};
-			
-			legendNucSignDepo.onAdd = function (map) {
-				currentLegend = legendNucSignDepo;
-				//console.log(clicked_id);
-				var div = L.DomUtil.create('div', 'info legend'),
-					grades = ['X','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Signed and Deposited', 'Not a signed and not deposited'];
-					
-					labels.push(
-						'<i style="background:' + getColorNucSignDepo(from[i]) + '"></i>' +
+						'<i style="background:' + getColorNucDepo(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1431,7 +1387,7 @@
 					from = ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case'];
 					
 					labels.push(
-						'<i style="background:' + getColorHT(from[i]) + '"></i>' +
+						'<i style="background:' + getColorHT(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1453,7 +1409,7 @@
 					from = ['1', '2', '3', 'No data'];
 					
 					labels.push(
-						'<i style="background:' + getColorPEPFAR(from[i]) + '"></i>' +
+						'<i style="background:' + getColorPEPFAR(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
@@ -1475,7 +1431,7 @@
 					from = ['Excellent', 'Good', 'Fair', 'Poor', 'Unsuitable', 'No data'];
 					
 					labels.push(
-						'<i style="background:' + getColorMHAC(from[i]) + '"></i>' +
+						'<i style="background:' + getColorMHAC(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
