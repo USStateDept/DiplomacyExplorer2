@@ -962,31 +962,32 @@
 			var sidebarNuc = L.control.sidebar("sidebarNuc", {
 				closeButton: true,
 				position: "left"
-			}).addTo(map);
+			});
 			
 			var sidebarIIP = L.control.sidebar("sidebarIIP", {
 				closeButton: true,
 				position: "left"
-			}).addTo(map);
+			});
 			
 			var sidebarAC = L.control.sidebar("sidebarAC", {
 				closeButton: true,
 				position: "left"
-			}).addTo(map);
+			});
 			
 			var sidebarTP = L.control.sidebar("sidebarTP", {
 				closeButton: true,
 				position: "left"
-			}).addTo(map);
+			});
 			
 			var sidebarPEPFAR = L.control.sidebar("sidebarPEPFAR", {
 				closeButton: true,
 				position: "left"
-			}).addTo(map);
+			});
+			
 			var sidebar = L.control.sidebar("sidebar", {
 				closeButton: true,
 				position: "left"
-			}).addTo(map);
+			});
 			
 			$(document).one("ajaxStop", function() {
                 $("#loading").hide();
@@ -1019,12 +1020,16 @@
 				allLayersGroup.clearLayers();
 				if (currentLegend.getPosition() === 'bottomleft') {
 					map.removeControl(currentLegend);
+				}
+				if (currentSidebar.getPosition() === 'left') {
 					map.removeControl(currentSidebar);
 				}
 			}
 			
 			legendICAO.onAdd = function (map) {
 				currentLegend = legendICAO;
+				currentSidebar = sidebar;
+				sidebar.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					labels = [],
@@ -1045,6 +1050,8 @@
 
 			legendUNESCO.onAdd = function (map) {
 				currentLegend = legendUNESCO;
+				currentSidebar = sidebar;
+				sidebar.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1066,6 +1073,8 @@
 
 			legendFAO.onAdd = function (map) {
 				currentLegend = legendFAO;
+				currentSidebar = sidebar;
+				sidebar.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1087,6 +1096,8 @@
 			
 			legendOAS.onAdd = function (map) {
 				currentLegend = legendOAS;
+				currentSidebar = sidebar;
+				sidebar.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1108,6 +1119,8 @@
 			
 			legendUNGA.onAdd = function (map) {
 				currentLegend = legendUNGA;
+				currentSidebar = sidebar;
+				sidebar.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1129,6 +1142,8 @@
 			
 			legendOSCE.onAdd = function (map) {
 				currentLegend = legendOSCE;
+				currentSidebar = sidebar;
+				sidebar.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1150,6 +1165,8 @@
 			
 			legendOECD.onAdd = function (map) {
 				currentLegend = legendOECD;
+				currentSidebar = sidebar;
+				sidebar.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1171,6 +1188,8 @@
 			
 			legendNATO.onAdd = function (map) {
 				currentLegend = legendNATO;
+				currentSidebar = sidebar;
+				sidebar.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1192,6 +1211,8 @@
 			
 			legendEU.onAdd = function (map) {
 				currentLegend = legendEU;
+				currentSidebar = sidebar;
+				sidebar.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1213,6 +1234,8 @@
 			
 			legendAU.onAdd = function (map) {
 				currentLegend = legendAU;
+				currentSidebar = sidebar;
+				sidebar.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member', 'Suspended', 'null'],
 					// this is something like a subheader
@@ -1234,6 +1257,8 @@
 					
 			legendUNHCR.onAdd = function (map) {
 				currentLegend = legendUNHCR;
+				currentSidebar = sidebar;
+				sidebar.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1255,6 +1280,8 @@
 			
 			legendTPAPEC.onAdd = function (map) {
 				currentLegend = legendTPAPEC;
+				currentSidebar = sidebarTP;
+				sidebarTP.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1276,6 +1303,8 @@
 
 			legendTPASEAN.onAdd = function (map) {
 				currentLegend = legendTPASEAN;
+				currentSidebar = sidebarTP;
+				sidebarTP.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1297,6 +1326,8 @@
 
 			legendTPCAFTA.onAdd = function (map) {
 				currentLegend = legendTPCAFTA;
+				currentSidebar = sidebarTP;
+				sidebarTP.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1318,6 +1349,8 @@
 
 			legendTPCBERA.onAdd = function (map) {
 				currentLegend = legendTPCBERA;
+				currentSidebar = sidebarTP;
+				sidebarTP.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1339,6 +1372,8 @@
 
 			legendTPNAFTA.onAdd = function (map) {
 				currentLegend = legendTPNAFTA;
+				currentSidebar = sidebarTP;
+				sidebarTP.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1360,6 +1395,8 @@
 
 			legendTPWTO.onAdd = function (map) {
 				currentLegend = legendTPWTO;
+				currentSidebar = sidebarTP;
+				sidebarTP.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1381,6 +1418,8 @@
 
 			legendNucSign.onAdd = function (map) {
 				currentLegend = legendNucSign;
+				currentSidebar = sidebarNuc;
+				sidebarNuc.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['X'],
 					// this is something like a subheader
@@ -1402,6 +1441,8 @@
 			
 			legendNucDepo.onAdd = function (map) {
 				currentLegend = legendNucDepo;
+				currentSidebar = sidebarDepo;
+				sidebarDepo.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['X'],
 					// this is something like a subheader
@@ -1423,6 +1464,8 @@
 			
 			legendHT.onAdd = function (map) {
 				currentLegend = legendHT;
+				currentSidebar = sidebar;
+				sidebar.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case'],
 					// this is something like a subheader
@@ -1444,6 +1487,8 @@
 			
 			legendPEPFAR.onAdd = function (map) {
 				currentLegend = legendPEPFAR;
+				currentSidebar = sidebarPEPFAR;
+				sidebarPEPFAR.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['1', '2', '3', 'No Data'],
 					// this is something like a subheader
@@ -1465,6 +1510,8 @@
 			
 			legendMHAC.onAdd = function (map) {
 				currentLegend = legendMHAC;
+				currentSidebar = sidebar;
+				sidebar.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Excellent', 'Good', 'Fair', 'Poor', 'Unsuitable', 'No data'],
 					// this is something like a subheader
