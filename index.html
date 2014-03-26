@@ -549,13 +549,9 @@
 			
 			var allLayersGroup = new L.LayerGroup();
 			
-			var allLegends;
-			
 			var currentLegend = L.control();
 			
-			var activeStyle;
-			
-			var geoJsonLayer;
+			var currentSidebar = L.control();
 			
 			function getGeoJson(data) {
 				geoJsonLayerPEPFAR = new L.geoJson(data, {style: StylePEPFAR});
@@ -1023,15 +1019,14 @@
 				allLayersGroup.clearLayers();
 				if (currentLegend.getPosition() === 'bottomleft') {
 					map.removeControl(currentLegend);
+					map.removeControl(currentSidebar);
 				}
 			}
 			
 			legendICAO.onAdd = function (map) {
 				currentLegend = legendICAO;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
-					// this is something like a subheader
 					labels = [],
 					from;
 
@@ -1050,7 +1045,6 @@
 
 			legendUNESCO.onAdd = function (map) {
 				currentLegend = legendUNESCO;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1072,7 +1066,6 @@
 
 			legendFAO.onAdd = function (map) {
 				currentLegend = legendFAO;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1094,7 +1087,6 @@
 			
 			legendOAS.onAdd = function (map) {
 				currentLegend = legendOAS;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1116,7 +1108,6 @@
 			
 			legendUNGA.onAdd = function (map) {
 				currentLegend = legendUNGA;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1138,7 +1129,6 @@
 			
 			legendOSCE.onAdd = function (map) {
 				currentLegend = legendOSCE;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1160,7 +1150,6 @@
 			
 			legendOECD.onAdd = function (map) {
 				currentLegend = legendOECD;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1182,7 +1171,6 @@
 			
 			legendNATO.onAdd = function (map) {
 				currentLegend = legendNATO;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1204,7 +1192,6 @@
 			
 			legendEU.onAdd = function (map) {
 				currentLegend = legendEU;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1226,7 +1213,6 @@
 			
 			legendAU.onAdd = function (map) {
 				currentLegend = legendAU;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member', 'Suspended', 'null'],
 					// this is something like a subheader
@@ -1248,7 +1234,6 @@
 					
 			legendUNHCR.onAdd = function (map) {
 				currentLegend = legendUNHCR;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1270,7 +1255,6 @@
 			
 			legendTPAPEC.onAdd = function (map) {
 				currentLegend = legendTPAPEC;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1292,7 +1276,6 @@
 
 			legendTPASEAN.onAdd = function (map) {
 				currentLegend = legendTPASEAN;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1314,7 +1297,6 @@
 
 			legendTPCAFTA.onAdd = function (map) {
 				currentLegend = legendTPCAFTA;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1336,7 +1318,6 @@
 
 			legendTPCBERA.onAdd = function (map) {
 				currentLegend = legendTPCBERA;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1358,7 +1339,6 @@
 
 			legendTPNAFTA.onAdd = function (map) {
 				currentLegend = legendTPNAFTA;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1380,7 +1360,6 @@
 
 			legendTPWTO.onAdd = function (map) {
 				currentLegend = legendTPWTO;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Member','null'],
 					// this is something like a subheader
@@ -1402,7 +1381,6 @@
 
 			legendNucSign.onAdd = function (map) {
 				currentLegend = legendNucSign;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['X'],
 					// this is something like a subheader
@@ -1424,7 +1402,6 @@
 			
 			legendNucDepo.onAdd = function (map) {
 				currentLegend = legendNucDepo;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['X'],
 					// this is something like a subheader
@@ -1446,7 +1423,6 @@
 			
 			legendHT.onAdd = function (map) {
 				currentLegend = legendHT;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case'],
 					// this is something like a subheader
@@ -1468,7 +1444,6 @@
 			
 			legendPEPFAR.onAdd = function (map) {
 				currentLegend = legendPEPFAR;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['1', '2', '3', 'No Data'],
 					// this is something like a subheader
@@ -1490,7 +1465,6 @@
 			
 			legendMHAC.onAdd = function (map) {
 				currentLegend = legendMHAC;
-				//console.log(clicked_id);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Excellent', 'Good', 'Fair', 'Poor', 'Unsuitable', 'No data'],
 					// this is something like a subheader
@@ -1509,7 +1483,6 @@
 				div.innerHTML = '<h4>Maternal Health</h4><h7>Access to Care</h7><br><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
 				return div;
 			};
-
         </script>
     </body>
 </html>
