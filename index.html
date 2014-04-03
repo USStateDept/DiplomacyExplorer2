@@ -19,7 +19,6 @@
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
 		<link rel="stylesheet" href="../lib/Leaflet.markercluster/dist/MarkerCluster.css" />
 		<link rel="stylesheet" href="../lib/Leaflet.markercluster/dist/MarkerCluster.Default.css" />
-		<link rel="stylesheet" href="../lib/bootstrap-datepicker/css/datepicker.css">
 		<link rel="stylesheet" href="css/main.css" />
 		<link rel="stylesheet" href="css/screen.css" />
 		
@@ -28,9 +27,6 @@
 		<script src="../lib/jquery-number/jquery.number.min.js"></script>
 		<script src="../lib/backbone/backbone-min.js"></script>
 		<script src="../lib/underscore/underscore-min.js"></script>
-		<script src="../lib/backgrid-0.3.5/lib/backgrid.min.js"></script>
-		<script src="../lib/jquery-dateFormat/dist/jquery-dateFormat.min.js"></script>
-		<script src="../lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 		<script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.2"></script>
 		<script type="text/javascript" src="js/host.js"></script>
 		<script>
@@ -117,7 +113,9 @@
                 opacity: 0.9;
             }
             .leaflet-popup-content {
-                margin-top: 5px;
+                overflow-y:scroll;
+				height: 120px !important;
+				margin-top: 5px;
                 margin-bottom: 5px;
                 margin-left: 5px;
                 margin-right: 5px;
@@ -214,6 +212,10 @@
 				margin-right: 8px;
 				opacity: 0.7;
 			}
+			.leaflet-sidebar .close {
+				right: 20px;
+				top: 20px;
+			}
 			
         </style>
 
@@ -296,7 +298,7 @@
 							<li><a href="#">&nbsp;&nbsp;Minority Rights (tk)</a></li>
 							<li><a href="#">&nbsp;&nbsp;Women's Rights (tk)</a></li>
 							<li><a href="#">&nbsp;&nbsp;Religious Freedom (tk)</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),map.addLayer(allLayersGroup),legendHT.addTo(map);">&nbsp;&nbsp;Human Trafficking</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendHT.addTo(map);">&nbsp;&nbsp;Human Trafficking</a></li>
                         </ul>
                     </li>
 					<li class="dropdown">
@@ -334,42 +336,42 @@
 
         <div id="map"></div>
         <div id="sidebarAC">
-			<h2>Arms Control</h2>
-			<p class="lorem">While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</p>
+			<h4>Arms Control</h4>
+			<h5 class="lorem">While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h5>
 		</div>
 		<div id="sidebarNuc">
-			<h2>Nuclear Nonproliferation</h2>
-			<p class="lorem">A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</p>
-			<p class="lorem">The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world. </p>
+			<h4>Nuclear Nonproliferation</h4>
+			<h5 class="lorem">A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h5>
+			<h5 class="lorem">The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world. </h5>
 		</div>
 		<div id="sidebarIIP">
-			<h2>International Intellectual Property Enforcement</h2>
-			<p class="lorem">From California’s Silicon Valley to Texas’s Clean Energy Incubator and the Biotech Beltway around Washington, D.C., the United States is the world leader in innovative products and services. American – and their international counterparts --companies, workers, researchers, scientists, entertainers, and entrepreneurs have a right to benefit from their inventions and creative products.  </p>
-			<p class="lorem">Equitable innovation policies around the world and robust laws and enforcement measures are needed to protect intellectual property rights for all of us—business, labor, academia, and government.  Not only do counterfeit products such as pirated CDs and DVDs, fake or unlicensed pharmaceuticals, and even fake airplane parts undercut US economic security by an estimated $5 trillion per year, they often pose a threat to the health and safety of the public.  </p>
-			<p class="lorem">The Office of International Intellectual Property Enforcement promotes American and global innovation by advocating for the effective protection and enforcement of intellectual property rights (IPR) around the world.  It negotiates with international organizations, oversees the distribution of training and technical assistance funds to help developing countries build IPR law enforcement capacity, and undertakes public diplomacy programs to generate awareness of the importance of IPR protection in the global economy. </p>
+			<h4>International Intellectual Property Enforcement</h4>
+			<h5 class="lorem">From California’s Silicon Valley to Texas’s Clean Energy Incubator and the Biotech Beltway around Washington, D.C., the United States is the world leader in innovative products and services. American – and their international counterparts --companies, workers, researchers, scientists, entertainers, and entrepreneurs have a right to benefit from their inventions and creative products.  </h5>
+			<h5 class="lorem">Equitable innovation policies around the world and robust laws and enforcement measures are needed to protect intellectual property rights for all of us—business, labor, academia, and government.  Not only do counterfeit products such as pirated CDs and DVDs, fake or unlicensed pharmaceuticals, and even fake airplane parts undercut US economic security by an estimated $5 trillion per year, they often pose a threat to the health and safety of the public.  </h5>
+			<h5 class="lorem">The Office of International Intellectual Property Enforcement promotes American and global innovation by advocating for the effective protection and enforcement of intellectual property rights (IPR) around the world.  It negotiates with international organizations, oversees the distribution of training and technical assistance funds to help developing countries build IPR law enforcement capacity, and undertakes public diplomacy programs to generate awareness of the importance of IPR protection in the global economy. </h5>
 		</div>
 		<div id="sidebarTP">
-			<h2>Trade Promotion</h2>
-			<p class="lorem">The United States Government, through multiple agencies, advances U.S. trade policy objectives by opening new export opportunities for American businesses, farmers, ranchers and workers through global, regional and bilateral trade initiatives - including free trade agreements (FTAs) and the World Trade Organization (WTO). In partnership these agencies work to maximize the benefits of open markets for global economic development, address and resolve trade disputes, strengthen intellectual property enforcement, and improve access for U.S. goods and services abroad.</p>
-			<p class="lorem">The Office of the U.S. Trade Representative (USTR) is responsible for developing and coordinating U.S. international trade, commodity, and direct investment policy, and overseeing negotiations with other countries.</p>
-			<p class="lorem">The U.S. Commercial Service is the trade promotion arm of the U.S. Department of Commerce’s International Trade Administration. U.S. Commercial Service trade professionals in over 100 U.S. cities and in more than 75 countries help U.S. companies get started in exporting or increasing sales to new global markets. The U.S. Commercial Service offers the trade counseling, market intelligence, business matchmaking, and commercial diplomacy you need to connect with lucrative business opportunities.</p>
-			<p class="lorem">National Export Initiative</p>
-			<p class="lorem">To strengthen America’s economy, support additional jobs here at home, and ensure long-term, sustainable growth, President Obama launched a government-wide strategy to promote exports. The National Export Initiative (NEI) is one essential component of that strategy.</p>
-			<p class="lorem">The Obama Administration has made it a top priority to improve the conditions that directly affect the private sector’s ability to export, working to remove trade barriers abroad, help firms of all sizes and farmers overcome hurdles to entering new markets, and assist with financing. In addition, we have renewed and revitalized our efforts to promote American exports abroad. These efforts are paying off – and helping to change the way America does business. Now more than at any time in our history, Americans are selling more U.S. goods and services to the 95 percent of consumers who live outside of our borders.</p>
-			<p class="lorem">The United States Government, through multiple agencies, advances U.S. trade policy objectives by opening new export opportunities for American businesses, farmers, ranchers and workers through global, regional and bilateral trade initiatives - including free trade agreements (FTAs) and the World Trade Organization (WTO). In partnership these agencies work to maximize the benefits of open markets for global economic development, address and resolve trade disputes, strengthen intellectual property enforcement, and improve access for U.S. goods and services abroad.</p>
+			<h4>Trade Promotion</h4>
+			<h5 class="lorem">The United States Government, through multiple agencies, advances U.S. trade policy objectives by opening new export opportunities for American businesses, farmers, ranchers and workers through global, regional and bilateral trade initiatives - including free trade agreements (FTAs) and the World Trade Organization (WTO). In partnership these agencies work to maximize the benefits of open markets for global economic development, address and resolve trade disputes, strengthen intellectual property enforcement, and improve access for U.S. goods and services abroad.</h5>
+			<h5 class="lorem">The Office of the U.S. Trade Representative (USTR) is responsible for developing and coordinating U.S. international trade, commodity, and direct investment policy, and overseeing negotiations with other countries.</h5>
+			<h5 class="lorem">The U.S. Commercial Service is the trade promotion arm of the U.S. Department of Commerce’s International Trade Administration. U.S. Commercial Service trade professionals in over 100 U.S. cities and in more than 75 countries help U.S. companies get started in exporting or increasing sales to new global markets. The U.S. Commercial Service offers the trade counseling, market intelligence, business matchmaking, and commercial diplomacy you need to connect with lucrative business opportunities.</h5>
+			<h5 class="lorem">National Export Initiative</h5>
+			<h5 class="lorem">To strengthen America’s economy, support additional jobs here at home, and ensure long-term, sustainable growth, President Obama launched a government-wide strategy to promote exports. The National Export Initiative (NEI) is one essential component of that strategy.</h5>
+			<h5 class="lorem">The Obama Administration has made it a top priority to improve the conditions that directly affect the private sector’s ability to export, working to remove trade barriers abroad, help firms of all sizes and farmers overcome hurdles to entering new markets, and assist with financing. In addition, we have renewed and revitalized our efforts to promote American exports abroad. These efforts are paying off – and helping to change the way America does business. Now more than at any time in our history, Americans are selling more U.S. goods and services to the 95 percent of consumers who live outside of our borders.</h5>
+			<h5 class="lorem">The United States Government, through multiple agencies, advances U.S. trade policy objectives by opening new export opportunities for American businesses, farmers, ranchers and workers through global, regional and bilateral trade initiatives - including free trade agreements (FTAs) and the World Trade Organization (WTO). In partnership these agencies work to maximize the benefits of open markets for global economic development, address and resolve trade disputes, strengthen intellectual property enforcement, and improve access for U.S. goods and services abroad.</h5>
 		</div>
 		<div id="sidebarPEPFAR">
-			<h2>PEPFAR</h2>
-			<p class="lorem">After decades of sporadic assistance to the growing issue of HIV/AIDS around the world, the international community has come together to deal with this and other health issues that impact the stability of our shrinking world.</p>
-			<p class="lorem">Besides contributing to international initiatives including the Global Fund to Fight Aids, Tuberculosis and Malaria, the United States implemented the President's Emergency Plan for AIDS Relief (PEPFAR) to partner with local governmental and non-governmental health agencies to develop programs to prevent, test, and treat the disease. PEPFAR investments also help to alleviate suffering from other diseases across the global health spectrum.</p>
-			<p class="lorem">Since 2008, the number of individuals receiving lifesaving anti-retroviral therapy has more than tripled and more than one million babies have been born without HIV due to PEPFAR-supported programs.  And the moment has arrived when creating an AIDS-free generation is truly within reach.</p>
-			<p class="lorem">PEPFAR has also served to transform the way that development is done.  While continuing to rapidly expand access to lifesaving HIV services, PEPFAR has moved from an emergency state to a more sustainable footing, creating a robust health care delivery capability -- often where little to none previously existed -- that is being used not only to address HIV, but also a broader range of health issues.  </p>
-			<p class="lorem">Since 2011, U.S. Department of State has created Partnership Frameworks, a series of joint strategic plans with foreign governments, such as South Africa and Botswana, through which  a true and enduring partnership with host countries has evolved -- one that positions them to assume greater ownership of their national HIV response. The plans aim to promote a sustainable approach to combating HIV/AIDS in partner countries through service delivery, policy reform, and coordinated financial commitments. </p>
+			<h4>PEPFAR</h4>
+			<h5 class="lorem">After decades of sporadic assistance to the growing issue of HIV/AIDS around the world, the international community has come together to deal with this and other health issues that impact the stability of our shrinking world.</h5>
+			<h5 class="lorem">Besides contributing to international initiatives including the Global Fund to Fight Aids, Tuberculosis and Malaria, the United States implemented the President's Emergency Plan for AIDS Relief (PEPFAR) to partner with local governmental and non-governmental health agencies to develop programs to prevent, test, and treat the disease. PEPFAR investments also help to alleviate suffering from other diseases across the global health spectrum.</h5>
+			<h5 class="lorem">Since 2008, the number of individuals receiving lifesaving anti-retroviral therapy has more than tripled and more than one million babies have been born without HIV due to PEPFAR-supported programs.  And the moment has arrived when creating an AIDS-free generation is truly within reach.</h5>
+			<h5 class="lorem">PEPFAR has also served to transform the way that development is done.  While continuing to rapidly expand access to lifesaving HIV services, PEPFAR has moved from an emergency state to a more sustainable footing, creating a robust health care delivery capability -- often where little to none previously existed -- that is being used not only to address HIV, but also a broader range of health issues.  </h5>
+			<h5 class="lorem">Since 2011, U.S. Department of State has created Partnership Frameworks, a series of joint strategic plans with foreign governments, such as South Africa and Botswana, through which  a true and enduring partnership with host countries has evolved -- one that positions them to assume greater ownership of their national HIV response. The plans aim to promote a sustainable approach to combating HIV/AIDS in partner countries through service delivery, policy reform, and coordinated financial commitments. </h5>
 		</div>
 		<div id="sidebar">
-			<h2>Issue Header Here</h2>
-			<p class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris massa turpis, ultrices eu eros a, tempor rhoncus felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque mi arcu, mattis sit amet massa quis, vestibulum bibendum orci. Etiam mollis non nunc eget bibendum. Vestibulum vel justo massa. Suspendisse nec semper turpis. Etiam nec nibh ullamcorper nunc vulputate cursus. Ut sagittis feugiat lacus, feugiat molestie leo laoreet eget. Nunc viverra volutpat lobortis. Pellentesque ipsum arcu, facilisis eget imperdiet vitae, tristique aliquam sem. Etiam sollicitudin, risus vel posuere dictum, ligula nibh interdum dolor, eu consequat risus ligula id diam. Nulla et accumsan eros. Donec erat leo, varius vitae nunc et, aliquet interdum arcu. Aliquam lacinia purus eget enim condimentum semper. Mauris vitae turpis in lectus imperdiet venenatis.</p>
-			<p class="lorem">Integer lacinia nisl ac est feugiat, vel tristique turpis vehicula. Integer in neque purus. Integer suscipit auctor tincidunt. Mauris in tortor vel turpis fermentum interdum. Sed sed laoreet arcu. Nullam vitae libero consectetur, lobortis dui vel, dignissim nulla. Phasellus eget diam eget massa porta placerat</p>
+			<h4>Issue Header Here</h4>
+			<h5 class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris massa turpis, ultrices eu eros a, tempor rhoncus felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque mi arcu, mattis sit amet massa quis, vestibulum bibendum orci. Etiam mollis non nunc eget bibendum. Vestibulum vel justo massa. Suspendisse nec semper turpis. Etiam nec nibh ullamcorper nunc vulputate cursus. Ut sagittis feugiat lacus, feugiat molestie leo laoreet eget. Nunc viverra volutpat lobortis. Pellentesque ipsum arcu, facilisis eget imperdiet vitae, tristique aliquam sem. Etiam sollicitudin, risus vel posuere dictum, ligula nibh interdum dolor, eu consequat risus ligula id diam. Nulla et accumsan eros. Donec erat leo, varius vitae nunc et, aliquet interdum arcu. Aliquam lacinia purus eget enim condimentum semper. Mauris vitae turpis in lectus imperdiet venenatis.</h5>
+			<h5 class="lorem">Integer lacinia nisl ac est feugiat, vel tristique turpis vehicula. Integer in neque purus. Integer suscipit auctor tincidunt. Mauris in tortor vel turpis fermentum interdum. Sed sed laoreet arcu. Nullam vitae libero consectetur, lobortis dui vel, dignissim nulla. Phasellus eget diam eget massa porta placerat</h5>
 		</div>
 		
 		<div id="loading" style="display:block;">
@@ -546,8 +548,10 @@
         <script src="../lib/leaflet-sidebar/src/L.Control.Sidebar.js"></script>
 		<script type="text/javascript">
 			var urlWhole = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APA_Data_50m&outputformat=json";
+			var urlWholeHTpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3AHuman_Trafficking_Pts&outputformat=json";
 			
 			var allLayersGroup = new L.LayerGroup();
+			var allLayersGroupPts = new L.LayerGroup();
 			
 			var currentLegend = L.control();
 			
@@ -583,6 +587,17 @@
 				dataType: 'json',
 				jsonpCallback: getGeoJson,
 				success: getGeoJson
+			});
+			
+			function getGeoJsonPts(data){
+				geoJsonLayerHTpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
+			}
+			
+			$.ajax({
+				url: urlWholeHTpts,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonPts,
+				success: getGeoJsonPts
 			});
 			
 			var cmAttr = "<a href='mailto:dittemoremb@state.gov'>eDiplomacy Geo|DST</a>",
@@ -1018,6 +1033,7 @@
 			
 			function changeLayer() {
 				allLayersGroup.clearLayers();
+				allLayersGroupPts.clearLayers();
 				if (currentLegend.getPosition() === 'bottomleft') {
 					map.removeControl(currentLegend);
 				}
@@ -1563,6 +1579,17 @@
 				});
 			}
 
+			var popup = L.popup();
+
+			function onEachFeaturePts(feature, layer) {
+				var popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "<br />" + feature.properties.Story + "</h5>";
+	
+				if (feature.properties && feature.properties.popupContent) {
+					popupContent += feature.properties.popupContent;
+				}
+				layer.bindPopup(popupContent);
+			}
+			
 			var info = L.control({position: "bottomleft"});
 
 			info.onAdd = function (map) {
