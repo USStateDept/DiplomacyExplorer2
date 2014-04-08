@@ -216,6 +216,11 @@
 			.dropdown-menu {
 				padding: 10px;
 			}
+			.legend {
+				padding: 6px 8px;
+				font: 14px/18px Arial, Helvetica, sans-serif;
+				font-weight: bold;
+			}
         </style>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -242,8 +247,8 @@
                         <ul class="dropdown-menu" style="padding:10px;">
                             <h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
 							<h4>Nuclear Arms Control</h4>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),map.addLayer(allLayersGroup),legendNucSign.addTo(map);">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup),legendNucDepo.addTo(map);">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Deposited</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroupPts.addLayer(geoJsonLayerNuclearpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendNucSign.addTo(map),sidebarNuc.toggle();">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucDepo),allLayersGroupPts.addLayer(geoJsonLayerNuclearpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendNucDepo.addTo(map),sidebarNuc.toggle();">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Deposited</a></li>
 							<h4>Other</h4>
 							<li><a href="#">&nbsp;&nbsp;Counter-terrorism (tk)</a></li>
 							<li><a href="#">&nbsp;&nbsp;Counter-narcotics (tk)</a></li>
@@ -301,7 +306,8 @@
 							<li><a href="#">&nbsp;&nbsp;Minority Rights (tk)</a></li>
 							<li><a href="#">&nbsp;&nbsp;Women's Rights (tk)</a></li>
 							<li><a href="#">&nbsp;&nbsp;Religious Freedom (tk)</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendHT.addTo(map);">&nbsp;&nbsp;Human Trafficking</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendHT.addTo(map),sidebarHT.toggle();">&nbsp;&nbsp;Human Trafficking</a></li>
+							
                         </ul>
                     </li>
 					<li class="dropdown">
@@ -309,8 +315,8 @@
                         <ul class="dropdown-menu">
 							<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
 							<h4>Health Issues</h4>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerPEPFAR),map.addLayer(allLayersGroup),legendPEPFAR.addTo(map);">&nbsp;&nbsp;PEPFAR</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerMHAC),map.addLayer(allLayersGroup),legendMHAC.addTo(map);">&nbsp;&nbsp;Maternal Health - Access to Care</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerPEPFAR),allLayersGroupPts.addLayer(geoJsonLayerPEPFARpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendPEPFAR.addTo(map),sidebarPEPFAR.toggle();">&nbsp;&nbsp;PEPFAR</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerMHAC),map.addLayer(allLayersGroup),legendMHAC.addTo(map),sidebarMHAC.toggle();">&nbsp;&nbsp;Maternal Health - Access to Care</a></li>
 							<li><a href="#">&nbsp;&nbsp;HIV/AIDS (tk)</a></li>
 							<li><a href="#">&nbsp;&nbsp;Avian Flu (tk)</a></li>
 							<li><a href="#">&nbsp;&nbsp;Malaria (tk)</a></li>
@@ -319,7 +325,6 @@
 							<h4>Other</h4>
 							<li><a href="#">&nbsp;&nbsp;Counter-narcotics (tk)</a></li>
 							<li><a href="#">&nbsp;&nbsp;Disaster Assistance (tk)</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),map.addLayer(allLayersGroup),legendHT.addTo(map);">&nbsp;&nbsp;Human Trafficking</a></li>
 							<li><a href="#">&nbsp;&nbsp;Refugee Assistance (tk)</a></li>
                         </ul>
                     </li>
@@ -344,11 +349,6 @@
 			<h4>Arms Control</h4>
 			<h5 class="lorem">While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h5>
 		</div>
-		<div id="sidebarNuc">
-			<h4>Nuclear Nonproliferation</h4>
-			<h5 class="lorem">A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h5>
-			<h5 class="lorem">The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world. </h5>
-		</div>
 		<div id="sidebarIIP">
 			<h4>International Intellectual Property Enforcement</h4>
 			<h5 class="lorem">From California’s Silicon Valley to Texas’s Clean Energy Incubator and the Biotech Beltway around Washington, D.C., the United States is the world leader in innovative products and services. American – and their international counterparts --companies, workers, researchers, scientists, entertainers, and entrepreneurs have a right to benefit from their inventions and creative products.  </h5>
@@ -366,17 +366,16 @@
 			<h5 class="lorem">The United States Government, through multiple agencies, advances U.S. trade policy objectives by opening new export opportunities for American businesses, farmers, ranchers and workers through global, regional and bilateral trade initiatives - including free trade agreements (FTAs) and the World Trade Organization (WTO). In partnership these agencies work to maximize the benefits of open markets for global economic development, address and resolve trade disputes, strengthen intellectual property enforcement, and improve access for U.S. goods and services abroad.</h5>
 		</div>
 		<div id="sidebarPEPFAR">
-			<h4>PEPFAR</h4>
-			<h5 class="lorem">After decades of sporadic assistance to the growing issue of HIV/AIDS around the world, the international community has come together to deal with this and other health issues that impact the stability of our shrinking world.</h5>
-			<h5 class="lorem">Besides contributing to international initiatives including the Global Fund to Fight Aids, Tuberculosis and Malaria, the United States implemented the President's Emergency Plan for AIDS Relief (PEPFAR) to partner with local governmental and non-governmental health agencies to develop programs to prevent, test, and treat the disease. PEPFAR investments also help to alleviate suffering from other diseases across the global health spectrum.</h5>
-			<h5 class="lorem">Since 2008, the number of individuals receiving lifesaving anti-retroviral therapy has more than tripled and more than one million babies have been born without HIV due to PEPFAR-supported programs.  And the moment has arrived when creating an AIDS-free generation is truly within reach.</h5>
-			<h5 class="lorem">PEPFAR has also served to transform the way that development is done.  While continuing to rapidly expand access to lifesaving HIV services, PEPFAR has moved from an emergency state to a more sustainable footing, creating a robust health care delivery capability -- often where little to none previously existed -- that is being used not only to address HIV, but also a broader range of health issues.  </h5>
-			<h5 class="lorem">Since 2011, U.S. Department of State has created Partnership Frameworks, a series of joint strategic plans with foreign governments, such as South Africa and Botswana, through which  a true and enduring partnership with host countries has evolved -- one that positions them to assume greater ownership of their national HIV response. The plans aim to promote a sustainable approach to combating HIV/AIDS in partner countries through service delivery, policy reform, and coordinated financial commitments. </h5>
+		</div>
+		<div id="sidebarMHAC">
+		</div>
+		<div id="sidebarHT">
+		</div>
+		<div id="sidebarNuc">
+			<h4>Nuclear</h4>
+			<h5>Nuclear description</h5>
 		</div>
 		<div id="sidebar">
-			<h4>Issue Header Here</h4>
-			<h5 class="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris massa turpis, ultrices eu eros a, tempor rhoncus felis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque mi arcu, mattis sit amet massa quis, vestibulum bibendum orci. Etiam mollis non nunc eget bibendum. Vestibulum vel justo massa. Suspendisse nec semper turpis. Etiam nec nibh ullamcorper nunc vulputate cursus. Ut sagittis feugiat lacus, feugiat molestie leo laoreet eget. Nunc viverra volutpat lobortis. Pellentesque ipsum arcu, facilisis eget imperdiet vitae, tristique aliquam sem. Etiam sollicitudin, risus vel posuere dictum, ligula nibh interdum dolor, eu consequat risus ligula id diam. Nulla et accumsan eros. Donec erat leo, varius vitae nunc et, aliquet interdum arcu. Aliquam lacinia purus eget enim condimentum semper. Mauris vitae turpis in lectus imperdiet venenatis.</h5>
-			<h5 class="lorem">Integer lacinia nisl ac est feugiat, vel tristique turpis vehicula. Integer in neque purus. Integer suscipit auctor tincidunt. Mauris in tortor vel turpis fermentum interdum. Sed sed laoreet arcu. Nullam vitae libero consectetur, lobortis dui vel, dignissim nulla. Phasellus eget diam eget massa porta placerat</h5>
 		</div>
 		
 		<div id="loading" style="display:block;">
@@ -554,6 +553,8 @@
 		<script type="text/javascript">
 			var urlWhole = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APA_Data_50m&outputformat=json";
 			var urlWholeHTpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3AHuman_Trafficking_Pts&outputformat=json";
+			var urlWholePEPFARpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APEPFAR_Pts&outputformat=json";
+			var urlWholeNuclearpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3ANuclear_Pts&outputformat=json";
 			
 			var allLayersGroup = new L.LayerGroup();
 			var allLayersGroupPts = new L.LayerGroup();
@@ -596,10 +597,26 @@
 			
 			function getGeoJsonPts(data){
 				geoJsonLayerHTpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
+				geoJsonLayerPEPFARpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
+				geoJsonLayerNuclearpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
 			}
 			
 			$.ajax({
 				url: urlWholeHTpts,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonPts,
+				success: getGeoJsonPts
+			});
+			
+			$.ajax({
+				url: urlWholePEPFARpts,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonPts,
+				success: getGeoJsonPts
+			});
+			
+			$.ajax({
+				url: urlWholeNuclearpts,
 				dataType: 'json',
 				jsonpCallback: getGeoJsonPts,
 				success: getGeoJsonPts
@@ -628,16 +645,18 @@
 			}
 		
 			function getColorHT(d) {
-				if (d == 'Tier 3') {
-					return	'#FC4E2A'
+				if (d == 'Special Case') {
+					return	'#499DD6'
+				} else if (d == 'Tier 3') {
+					return	'#9E252B'
 				} else if (d == 'Tier 3 Auto-Downgrade') {
 					return	'#FC4E2A'
-				} else if (d == 'Tier 2') {
-					return	'#FD8D3C'
 				} else if (d == 'Tier 2 Watch List') {
-					return	'#FD8D3C'
+					return	'#E67125'
+				} else if (d == 'Tier 2') {
+					return	'#FDBE10'
 				} else if (d == 'Tier 1') {
-					return	'#CACF9B'
+					return	'#00763F'
 				} else {
 					return	'#ddd';
 				}
@@ -982,11 +1001,6 @@
 			
 			new L.Control.Zoom({ position: 'topright' }).addTo(map);
 			
-			var sidebarNuc = L.control.sidebar("sidebarNuc", {
-				closeButton: true,
-				position: "left"
-			});
-			
 			var sidebarIIP = L.control.sidebar("sidebarIIP", {
 				closeButton: true,
 				position: "left"
@@ -1003,6 +1017,21 @@
 			});
 			
 			var sidebarPEPFAR = L.control.sidebar("sidebarPEPFAR", {
+				closeButton: true,
+				position: "left"
+			});
+			
+			var sidebarMHAC = L.control.sidebar("sidebarMHAC", {
+				closeButton: true,
+				position: "left"
+			});
+			
+			var sidebarHT = L.control.sidebar("sidebarHT", {
+				closeButton: true,
+				position: "left"
+			});
+			
+			var sidebarNuc = L.control.sidebar("sidebarNuc", {
 				closeButton: true,
 				position: "left"
 			});
@@ -1459,14 +1488,18 @@
 					);
 				}
 
-				div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarNuc.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				var keyText = "Nuclear Sign";
+				var key = labels.join('<br>');
+				sidebarNuc.setContent("<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
+				
+				//div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarNuc.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
 				return div;
 			};
 			
 			legendNucDepo.onAdd = function (map) {
 				currentLegend = legendNucDepo;
-				currentSidebar = sidebarDepo;
-				sidebarDepo.addTo(map);
+				currentSidebar = sidebarNuc;
+				sidebarNuc.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['X'],
 					// this is something like a subheader
@@ -1481,15 +1514,19 @@
 						from[i]
 					);
 				}
-
-				div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarNuc.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				
+				var keyText = "Nuclear Depo";
+				var key = labels.join('<br>');
+				sidebarNuc.setContent("<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
+				
+				//div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarNuc.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
 				return div;
 			};
 			
 			legendHT.onAdd = function (map) {
 				currentLegend = legendHT;
-				currentSidebar = sidebar;
-				sidebar.addTo(map);
+				currentSidebar = sidebarHT;
+				sidebarHT.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case'],
 					// this is something like a subheader
@@ -1505,7 +1542,13 @@
 					);
 				}
 
-				div.innerHTML = '<h4>Human Trafficking</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				var name = "Human Trafficking";
+				var description = "";
+				var keyText = "Human Trafficking TIPS";
+				var key = labels.join('<br>');
+				sidebarHT.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
+				
+				//div.innerHTML = '<h4>Human Trafficking</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
 				return div;
 			};
 			
@@ -1528,14 +1571,20 @@
 					);
 				}
 
-				div.innerHTML = '<h4>Layer Name - PEPFAR</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarPEPFAR.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
+				var name = "PEPFAR";
+				var description = "<h5 class='lorem'>After decades of sporadic assistance to the growing issue of HIV/AIDS around the world, the international community has come together to deal with this and other health issues that impact the stability of our shrinking world.</h5><h5 class='lorem'>Besides contributing to international initiatives including the Global Fund to Fight Aids, Tuberculosis and Malaria, the United States implemented the President's Emergency Plan for AIDS Relief (PEPFAR) to partner with local governmental and non-governmental health agencies to develop programs to prevent, test, and treat the disease. PEPFAR investments also help to alleviate suffering from other diseases across the global health spectrum.</h5><h5 class='lorem'>Since 2008, the number of individuals receiving lifesaving anti-retroviral therapy has more than tripled and more than one million babies have been born without HIV due to PEPFAR-supported programs.  And the moment has arrived when creating an AIDS-free generation is truly within reach.</h5><h5 class='lorem'>PEPFAR has also served to transform the way that development is done.  While continuing to rapidly expand access to lifesaving HIV services, PEPFAR has moved from an emergency state to a more sustainable footing, creating a robust health care delivery capability -- often where little to none previously existed -- that is being used not only to address HIV, but also a broader range of health issues.  </h5><h5 class='lorem'>Since 2011, U.S. Department of State has created Partnership Frameworks, a series of joint strategic plans with foreign governments, such as South Africa and Botswana, through which  a true and enduring partnership with host countries has evolved -- one that positions them to assume greater ownership of their national HIV response. The plans aim to promote a sustainable approach to combating HIV/AIDS in partner countries through service delivery, policy reform, and coordinated financial commitments. </h5>";
+				var keyText = "PEPFAR something something";
+				var key = labels.join('<br>');
+				sidebarPEPFAR.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
+				
+				//div.innerHTML = '<h4>Layer Name - PEPFAR</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarPEPFAR.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return div;	
 			};
 			
 			legendMHAC.onAdd = function (map) {
 				currentLegend = legendMHAC;
-				currentSidebar = sidebar;
-				sidebar.addTo(map);
+				currentSidebar = sidebarMHAC;
+				sidebarMHAC.addTo(map);
 				var div = L.DomUtil.create('div', 'info legend'),
 					grades = ['Excellent', 'Good', 'Fair', 'Poor', 'Unsuitable', 'No data'],
 					// this is something like a subheader
@@ -1551,7 +1600,13 @@
 					);
 				}
 
-				div.innerHTML = '<h4>Maternal Health</h4><h7>Access to Care</h7><br><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				var name = "Maternal Health - Access to Care";
+				var description = "";
+				var keyText = "Maternal Health - Access to Care";
+				var key = labels.join('<br>');
+				sidebarMHAC.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
+				
+				//div.innerHTML = '<h4>Maternal Health</h4><h7>Access to Care</h7><br><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
 				return div;
 			};
 			
