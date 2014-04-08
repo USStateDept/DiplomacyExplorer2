@@ -974,10 +974,13 @@
 			}
 			*/
 			var map = new L.Map('map', {
+				zoomControl: false,
 				center: [20, 10],
 				zoom: 3,
 				layers: [minimal]
 			});
+			
+			new L.Control.Zoom({ position: 'topright' }).addTo(map);
 			
 			var sidebarNuc = L.control.sidebar("sidebarNuc", {
 				closeButton: true,
