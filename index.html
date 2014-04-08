@@ -335,6 +335,7 @@
                     </li>
 					<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#shareModal').modal('show'); return false;">Share</a></li>
 					<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#aboutModal').modal('show'); return false;">About</a></li>
+					<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#sidebarModal').modal('show'); return false;">Sidebar</a></li>
                 </ul>
             </div><!--/.navbar-collapse -->
         </div>
@@ -471,6 +472,38 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
+		<div class="modal fade" id="sidebarModal" style="left: -62%; top: 5%;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Layer/Theme Name</h4>
+                    </div>
+                    <div class="panel-group" id="accordion">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+									Description
+									</a>
+								</h4>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse in">
+								<div class="panel-body">
+									Layer / Theme Description ! ! ! Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-body">
+						<div class="sidebarInfo">
+							Theme key
+						</div>
+					</div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+		
 		<div class="modal fade" id="shareModal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -1528,7 +1561,7 @@
 					);
 				}
 
-				div.innerHTML = '<h4>Layer Name - PEPFAR</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarPEPFAR.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				div.innerHTML = '<h4>Layer Name - PEPFAR</h4>' + labels.join('<br>');
 				return div;
 			};
 			
