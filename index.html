@@ -246,9 +246,11 @@
                         <a id="securityDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Securing Peace</a>
                         <ul class="dropdown-menu" style="padding:10px;">
                             <h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-							<h4>Nuclear Arms Control</h4>
+							<h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),legendNuc.addTo(map),sidebarNuc.toggle(),allLayersGroup.clearLayers();">Nuclear Arms Control</a></h4>
+							<!--
 							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroupPts.addLayer(geoJsonLayerNuclearpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendNucSign.addTo(map),sidebarNuc.toggle();">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed</a></li>
 							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucDepo),allLayersGroupPts.addLayer(geoJsonLayerNuclearpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendNucDepo.addTo(map),sidebarNuc.toggle();">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Deposited</a></li>
+							-->
 							<h4>Other</h4>
 							<li><a href="#">&nbsp;&nbsp;Counter-terrorism (tk)</a></li>
 							<li><a href="#">&nbsp;&nbsp;Counter-narcotics (tk)</a></li>
@@ -372,8 +374,8 @@
 		<div id="sidebarHT">
 		</div>
 		<div id="sidebarNuc">
-			<h4>Nuclear</h4>
-			<h5>Nuclear description</h5>
+			<div id="sidebarNucSignDiv">
+			</div>
 		</div>
 		<div id="sidebar">
 		</div>
@@ -1036,6 +1038,8 @@
 				position: "left"
 			});
 			
+			var sidebarNucSignDiv;
+			
 			var sidebar = L.control.sidebar("sidebar", {
 				closeButton: true,
 				position: "left"
@@ -1062,6 +1066,7 @@
 			var legendTPCBERA = L.control({position: 'bottomleft'});
 			var legendTPNAFTA = L.control({position: 'bottomleft'});
 			var legendTPWTO = L.control({position: 'bottomleft'});
+			var legendNuc = L.control({position: 'bottomleft'});
 			var legendNucSign = L.control({position: 'bottomleft'});
 			var legendNucDepo = L.control({position: 'bottomleft'});
 			var legendHT = L.control({position: 'bottomleft'});
@@ -1469,6 +1474,53 @@
 				return div;
 			};
 
+			legendNuc.onAdd = function (map) {
+				currentLegend = legendNuc;
+				currentSidebar = sidebarNuc;
+				sidebarNuc.addTo(map);
+				var divSign = L.DomUtil.create('div', 'info legend'),
+					grades = ['X'],
+					// this is something like a subheader
+					labelsSign = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Signed'];
+					
+					labelsSign.push(
+						'<i style="background:' + getColorNucSign(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var divDepo = L.DomUtil.create('div', 'info legend'),
+					grades = ['X'],
+					// this is something like a subheader
+					labelsDepo = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Deposited'];
+					
+					labelsDepo.push(
+						'<i style="background:' + getColorNucDepo(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var name = "Nuclear Arms Control";
+				var description = "Yadda yadda, blah blah";
+				keyText1 = "Non-proliferation Treaty Signed";
+				keyText2 = "Non-proliferation Treaty Deposited";
+				var keySign = labelsSign.join('<br>');
+				var keyDepo = labelsDepo.join('<br>');
+				sidebarNuc.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'>" + keySign + "</div><br/><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + '</div>');
+				
+				//div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarNuc.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return divSign;
+				return divDepo;
+			};
+			
 			legendNucSign.onAdd = function (map) {
 				currentLegend = legendNucSign;
 				currentSidebar = sidebarNuc;
