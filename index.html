@@ -1515,7 +1515,9 @@
 				var keySign = labelsSign.join('<br>');
 				var keyDepo = labelsDepo.join('<br>');
 				sidebarNuc.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'>" + keySign + "</div><br/><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + '</div>');
+				// attempt at collapsing description with button
 				
+				sidebarNuc.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'><div class='row'><div class='span collapse-group'><h6 class='collapse' id='viewdetails' style='padding-left: 20px; padding-right: 10px; color: #999; line-height:1.2; margin-bottom: 0px !important;'>" + keySign + "</h6><br><div class='btn-group' style='margin:0px 0px 0px 15px;'><button type='button' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#viewdetails'>View Details </button></div></div></div></div><br/><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + '</div>');
 				//div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarNuc.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
 				return divSign;
 				return divDepo;
