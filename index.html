@@ -273,18 +273,7 @@
                         <a id="businessDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Promoting Prosperity</a>
                         <ul class="dropdown-menu">
                             <h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-							<h4>Multi-Lateral Organizations</h4>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerICAO),map.addLayer(allLayersGroup),legendICAO.addTo(map);">&nbsp;&nbsp;ICAO Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerUNESCO),map.addLayer(allLayersGroup),legendUNESCO.addTo(map);">&nbsp;&nbsp;UNESCO Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerFAO),map.addLayer(allLayersGroup),legendFAO.addTo(map);">&nbsp;&nbsp;FAO Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerOAS),map.addLayer(allLayersGroup),legendOAS.addTo(map);">&nbsp;&nbsp;OAS Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerUNGA),map.addLayer(allLayersGroup),legendUNGA.addTo(map);">&nbsp;&nbsp;UN-GA Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerOSCE),map.addLayer(allLayersGroup),legendOSCE.addTo(map);">&nbsp;&nbsp;OSCE Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerOECD),map.addLayer(allLayersGroup),legendOECD.addTo(map);">&nbsp;&nbsp;OECD Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNATO),map.addLayer(allLayersGroup),legendNATO.addTo(map);">&nbsp;&nbsp;NATO Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerEU),map.addLayer(allLayersGroup),legendEU.addTo(map);">&nbsp;&nbsp;EU Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerAU),map.addLayer(allLayersGroup),legendAU.addTo(map);">&nbsp;&nbsp;AU Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerUNHCR),map.addLayer(allLayersGroup),legendUNHCR.addTo(map);">&nbsp;&nbsp;UNHCR Membership</a></li>
+							<h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerICAO),allLayersGroup.addLayer(geoJsonLayerUNESCO),allLayersGroup.addLayer(geoJsonLayerFAO),allLayersGroup.addLayer(geoJsonLayerOAS),allLayersGroup.addLayer(geoJsonLayerUNGA),allLayersGroup.addLayer(geoJsonLayerOSCE),allLayersGroup.addLayer(geoJsonLayerOECD),allLayersGroup.addLayer(geoJsonLayerNATO),allLayersGroup.addLayer(geoJsonLayerEU),allLayersGroup.addLayer(geoJsonLayerAU),allLayersGroup.addLayer(geoJsonLayerUNHCR),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),legendMLO.addTo(map),sidebarMLO.toggle(),allLayersGroup.clearLayers();">Multi-lateral Organizations</a></h4>
 							<h4>Trade Promotion</h4>
 							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPAPEC),map.addLayer(allLayersGroup),legendTPAPEC.addTo(map);">&nbsp;&nbsp;APEC Membership</a></li>
 							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPASEAN),map.addLayer(allLayersGroup),legendTPASEAN.addTo(map);">&nbsp;&nbsp;ASEAN Membership</a></li>
@@ -308,8 +297,7 @@
 							<li><a href="#">&nbsp;&nbsp;Minority Rights (tk)</a></li>
 							<li><a href="#">&nbsp;&nbsp;Women's Rights (tk)</a></li>
 							<li><a href="#">&nbsp;&nbsp;Religious Freedom (tk)</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendHT.addTo(map),sidebarHT.toggle();">&nbsp;&nbsp;Human Trafficking</a></li>
-							
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendHT.addTo(map),sidebarHT.toggle();">&nbsp;&nbsp;Human Trafficking</a></li>							
                         </ul>
                     </li>
 					<li class="dropdown">
@@ -376,8 +364,8 @@
 		<div id="sidebarHT">
 		</div>
 		<div id="sidebarNuc">
-			<div id="sidebarNucSignDiv">
-			</div>
+		</div>
+		<div id="sidebarMLO">
 		</div>
 		<div id="sidebar">
 		</div>
@@ -571,7 +559,8 @@
 				geoJsonLayerPEPFAR = new L.geoJson(data, {style: StylePEPFAR});
 				geoJsonLayerHT = new L.geoJson(data, {style: StyleHT});
 				geoJsonLayerMHAC = new L.geoJson(data, {style: StyleMHAC});
-				geoJsonLayerICAO = new L.geoJson(data, {style: StyleMLOMemberICAO, onEachFeature: onEachFeature});
+				//geoJsonLayerICAO = new L.geoJson(data, {style: StyleMLOMemberICAO, onEachFeature: onEachFeature});
+				geoJsonLayerICAO = new L.geoJson(data, {style: StyleMLOMemberICAO});
 				geoJsonLayerUNESCO = new L.geoJson(data, {style: StyleMLOMemberUNESCO});
 				geoJsonLayerFAO = new L.geoJson(data, {style: StyleMLOMemberFAO});
 				geoJsonLayerOAS = new L.geoJson(data, {style: StyleMLOMemberOAS});
@@ -1045,7 +1034,10 @@
 				position: "left"
 			});
 			
-			var sidebarNucSignDiv;
+			var sidebarMLO = L.control.sidebar("sidebarMLO", {
+				closeButton: true,
+				position: "left"
+			});
 			
 			var sidebar = L.control.sidebar("sidebar", {
 				closeButton: true,
@@ -1056,17 +1048,7 @@
                 $("#loading").hide();
 			});
 			
-			var legendICAO = L.control({position: 'bottomleft'});
-			var legendUNESCO = L.control({position: 'bottomleft'});
-			var legendFAO = L.control({position: 'bottomleft'});
-			var legendOAS = L.control({position: 'bottomleft'});
-			var legendUNGA = L.control({position: 'bottomleft'});
-			var legendOSCE = L.control({position: 'bottomleft'});
-			var legendOECD = L.control({position: 'bottomleft'});
-			var legendNATO = L.control({position: 'bottomleft'});
-			var legendEU = L.control({position: 'bottomleft'});
-			var legendAU = L.control({position: 'bottomleft'});
-			var legendUNHCR = L.control({position: 'bottomleft'});
+			var legendMLO = L.control({position: 'bottomleft'});
 			var legendTPAPEC = L.control({position: 'bottomleft'});
 			var legendTPASEAN = L.control({position: 'bottomleft'});
 			var legendTPCAFTA = L.control({position: 'bottomleft'});
@@ -1087,287 +1069,6 @@
 					map.removeControl(currentSidebar);
 				}
 			}
-			
-			legendICAO.onAdd = function (map) {
-				currentLegend = legendICAO;
-				currentSidebar = sidebarICAO;
-				sidebarICAO.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorHT(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				var name = "Membership in ICAO";
-				var description = "<h5 class='lorem'>Description text ...</h5>";
-				var keyText = "ICAO";
-				var key = labels.join('<br>');
-				sidebarHT.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
-				
-				//div.innerHTML = '<h4>Human Trafficking</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-			
-			/*legendICAO.onAdd = function (map) {
-				currentLegend = legendICAO;
-				currentSidebar = sidebar;
-				sidebar.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in ICAO</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};*/
-
-			legendUNESCO.onAdd = function (map) {
-				currentLegend = legendUNESCO;
-				currentSidebar = sidebar;
-				sidebar.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in UNESCO</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-
-			legendFAO.onAdd = function (map) {
-				currentLegend = legendFAO;
-				currentSidebar = sidebar;
-				sidebar.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in FAO</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-			
-			legendOAS.onAdd = function (map) {
-				currentLegend = legendOAS;
-				currentSidebar = sidebar;
-				sidebar.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in OAS</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-			
-			legendUNGA.onAdd = function (map) {
-				currentLegend = legendUNGA;
-				currentSidebar = sidebar;
-				sidebar.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in UN-GA</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-			
-			legendOSCE.onAdd = function (map) {
-				currentLegend = legendOSCE;
-				currentSidebar = sidebar;
-				sidebar.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in OSCE</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-			
-			legendOECD.onAdd = function (map) {
-				currentLegend = legendOECD;
-				currentSidebar = sidebar;
-				sidebar.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in OECD</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-			
-			legendNATO.onAdd = function (map) {
-				currentLegend = legendNATO;
-				currentSidebar = sidebar;
-				sidebar.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in NATO</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-			
-			legendEU.onAdd = function (map) {
-				currentLegend = legendEU;
-				currentSidebar = sidebar;
-				sidebar.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in EU</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-			
-			legendAU.onAdd = function (map) {
-				currentLegend = legendAU;
-				currentSidebar = sidebar;
-				sidebar.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member', 'Suspended', 'null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Suspended', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in AU</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-					
-			legendUNHCR.onAdd = function (map) {
-				currentLegend = legendUNHCR;
-				currentSidebar = sidebar;
-				sidebar.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in UNHCR</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
 			
 			legendTPAPEC.onAdd = function (map) {
 				currentLegend = legendTPAPEC;
@@ -1507,6 +1208,214 @@
 				return div;
 			};
 
+			legendMLO.onAdd = function (map) {
+				currentLegend = legendMLO;
+				currentSidebar = sidebarMLO;
+				sidebarMLO.addTo(map);
+				var divICAO = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsICAO = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsICAO.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var divUNESCO = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsUNESCO = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsUNESCO.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divFAO = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsFAO = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsFAO.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divOAS = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsOAS = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsOAS.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divUNGA = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsUNGA = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsUNGA.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divOSCE = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsOSCE = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsOSCE.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divOECD = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsOECD = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsOECD.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divNATO = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsNATO = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsNATO.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divEU = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsEU = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsEU.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divAU = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsAU = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsAU.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divUNHCR = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsUNHCR = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsUNHCR.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var name = "Multi-lateral Organizations";
+				var description = "<h5 class='lorem'>MLO description ...</h5>";
+				keyText1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerICAO),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;ICAO Membership</a>";
+				keyText2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerUNESCO),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;UNESCO Membership</a>";
+				keyText3 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerFAO),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;FAO Membership</a>";
+				keyText4 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerOAS),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;OAS Membership</a>";
+				keyText5 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerUNGA),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;UN-GA Membership</a>";
+				keyText6 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerOSCE),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;OSCE Membership</a>";
+				keyText7 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerOECD),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;OECD Membership</a>";
+				keyText8 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNATO),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;NATO Membership</a>";
+				keyText9 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerEU),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;EU Membership</a>";
+				keyText10 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerAU),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;AU Membership</a>";
+				keyText11 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerUNHCR),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;UNHCR Membership</a>";
+				var keyICAO = labelsICAO.join('<br>');
+				var keyUNESCO = labelsUNESCO.join('<br>');
+				var keyFAO = labelsFAO.join('<br>');
+				var keyOAS = labelsOAS.join('<br>');
+				var keyUNGA = labelsUNGA.join('<br>');
+				var keyOSCE = labelsOSCE.join('<br>');
+				var keyOECD = labelsOECD.join('<br>');
+				var keyNATO = labelsNATO.join('<br>');
+				var keyEU = labelsEU.join('<br>');
+				var keyAU = labelsAU.join('<br>');
+				var keyUNHCR = labelsUNHCR.join('<br>');
+				sidebarMLO.setContent("<h4>" + name + "</h4>" + description + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'>" + keyICAO + "</div><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyUNESCO + "</div><h5 style='font-weight:bold'>" + keyText3 + "</h5>" + "<div class='legend'>" + keyFAO + "</div><h5 style='font-weight:bold'>" + keyText4 + "</h5>" + "<div class='legend'>" + keyUNGA + "</div><h5 style='font-weight:bold'>" + keyText5 + "</h5>" + "<div class='legend'>" + keyOSCE + "</div><h5 style='font-weight:bold'>" + keyText6 + "</h5>" + "<div class='legend'>" + keyOECD + "</div><h5 style='font-weight:bold'>" + keyText7 + "</h5>" + "<div class='legend'>" + keyNATO + "</div><h5 style='font-weight:bold'>" + keyText8 + "</h5>" + "<div class='legend'>" + keyEU + "</div><h5 style='font-weight:bold'>" + keyText9 + "</h5>" + "<div class='legend'>" + keyEU + "</div><h5 style='font-weight:bold'>" + keyText10 + "</h5>" + "<div class='legend'>" + keyAU + "</div><h5 style='font-weight:bold'>" + keyText11 + "</h5>" + "<div class='legend'>" + keyUNHCR + "</div>");
+				
+				return divICAO;
+				return divUNESCO;
+				return divFAO;
+				return divOAS;
+				return divUNGA;
+				return divOSCE;
+				return divOECD;
+				return divNATO;
+				return divEU;
+				return divAU;
+				return divUNHCR;
+			};
+			
 			legendNuc.onAdd = function (map) {
 				currentLegend = legendNuc;
 				currentSidebar = sidebarNuc;
@@ -1526,7 +1435,7 @@
 					);
 				}
 				
-				var divDepo = L.DomUtil.create('div', 'info legend'),
+				var divDepo = L.DomUtil.create('div'),
 					grades = ['X'],
 					// this is something like a subheader
 					labelsDepo = [],
