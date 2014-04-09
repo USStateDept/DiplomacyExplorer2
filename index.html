@@ -1083,6 +1083,35 @@
 			
 			legendICAO.onAdd = function (map) {
 				currentLegend = legendICAO;
+				currentSidebar = sidebarICAO;
+				sidebarICAO.addTo(map);
+				var div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labels.push(
+						'<i style="background:' + getColorHT(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var name = "Membership in ICAO";
+				var description = "<h5 class='lorem'>Description text ...</h5>";
+				var keyText = "ICAO";
+				var key = labels.join('<br>');
+				sidebarHT.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
+				
+				//div.innerHTML = '<h4>Human Trafficking</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return div;
+			};
+			
+			/*legendICAO.onAdd = function (map) {
+				currentLegend = legendICAO;
 				currentSidebar = sidebar;
 				sidebar.addTo(map);
 				var div = L.DomUtil.create('div'),
@@ -1101,7 +1130,7 @@
 
 				div.innerHTML = '<h4>Membership in ICAO</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
 				return div;
-			};
+			};*/
 
 			legendUNESCO.onAdd = function (map) {
 				currentLegend = legendUNESCO;
