@@ -248,8 +248,8 @@
                             <h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
 							<h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),legendNuc.addTo(map),sidebarNuc.toggle(),allLayersGroup.clearLayers();">Nuclear Arms Control</a></h4>
 							<!--
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroupPts.addLayer(geoJsonLayerNuclearpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendNucSign.addTo(map),sidebarNuc.toggle();">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucDepo),allLayersGroupPts.addLayer(geoJsonLayerNuclearpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendNucDepo.addTo(map),sidebarNuc.toggle();">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Deposited</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendNucSign.addTo(map),sidebarNuc.toggle();">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucDepo),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendNucDepo.addTo(map),sidebarNuc.toggle();">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Deposited</a></li>
 							-->
 							<h4>Other</h4>
 							<li><a href="#">&nbsp;&nbsp;Counter-terrorism (tk)</a></li>
@@ -556,12 +556,12 @@
 			var urlWhole = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APA_Data_50m&outputformat=json";
 			var urlWholeHTpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3AHuman_Trafficking_Pts&outputformat=json";
 			var urlWholePEPFARpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APEPFAR_Pts&outputformat=json";
-			var urlWholeNuclearpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3ANuclear_Pts&outputformat=json";
+			var urlWholeNucpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3ANuclear_Pts&outputformat=json";
 			
 			var allLayersGroup = new L.LayerGroup();
 			var allLayersGroupPts = new L.LayerGroup();
 			
-			var currentLegend = L.control();
+			var currentLegend;
 			
 			var currentSidebar = L.control();
 			
@@ -600,7 +600,7 @@
 			function getGeoJsonPts(data){
 				geoJsonLayerHTpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
 				geoJsonLayerPEPFARpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
-				geoJsonLayerNuclearpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
+				geoJsonLayerNucpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
 			}
 			
 			$.ajax({
@@ -618,7 +618,7 @@
 			});
 			
 			$.ajax({
-				url: urlWholeNuclearpts,
+				url: urlWholeNucpts,
 				dataType: 'json',
 				jsonpCallback: getGeoJsonPts,
 				success: getGeoJsonPts
@@ -1076,9 +1076,6 @@
 			function changeLayer() {
 				allLayersGroup.clearLayers();
 				allLayersGroupPts.clearLayers();
-				if (currentLegend.getPosition() === 'bottomleft') {
-					map.removeControl(currentLegend);
-				}
 				if (currentSidebar.getPosition() === 'left') {
 					map.removeControl(currentSidebar);
 				}
@@ -1088,7 +1085,7 @@
 				currentLegend = legendICAO;
 				currentSidebar = sidebar;
 				sidebar.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					labels = [],
 					from;
@@ -1110,7 +1107,7 @@
 				currentLegend = legendUNESCO;
 				currentSidebar = sidebar;
 				sidebar.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1133,7 +1130,7 @@
 				currentLegend = legendFAO;
 				currentSidebar = sidebar;
 				sidebar.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1156,7 +1153,7 @@
 				currentLegend = legendOAS;
 				currentSidebar = sidebar;
 				sidebar.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1179,7 +1176,7 @@
 				currentLegend = legendUNGA;
 				currentSidebar = sidebar;
 				sidebar.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1202,7 +1199,7 @@
 				currentLegend = legendOSCE;
 				currentSidebar = sidebar;
 				sidebar.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1225,7 +1222,7 @@
 				currentLegend = legendOECD;
 				currentSidebar = sidebar;
 				sidebar.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1248,7 +1245,7 @@
 				currentLegend = legendNATO;
 				currentSidebar = sidebar;
 				sidebar.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1271,7 +1268,7 @@
 				currentLegend = legendEU;
 				currentSidebar = sidebar;
 				sidebar.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1294,7 +1291,7 @@
 				currentLegend = legendAU;
 				currentSidebar = sidebar;
 				sidebar.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member', 'Suspended', 'null'],
 					// this is something like a subheader
 					labels = [],
@@ -1317,7 +1314,7 @@
 				currentLegend = legendUNHCR;
 				currentSidebar = sidebar;
 				sidebar.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1340,7 +1337,7 @@
 				currentLegend = legendTPAPEC;
 				currentSidebar = sidebarTP;
 				sidebarTP.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1363,7 +1360,7 @@
 				currentLegend = legendTPASEAN;
 				currentSidebar = sidebarTP;
 				sidebarTP.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1386,7 +1383,7 @@
 				currentLegend = legendTPCAFTA;
 				currentSidebar = sidebarTP;
 				sidebarTP.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1409,7 +1406,7 @@
 				currentLegend = legendTPCBERA;
 				currentSidebar = sidebarTP;
 				sidebarTP.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1432,7 +1429,7 @@
 				currentLegend = legendTPNAFTA;
 				currentSidebar = sidebarTP;
 				sidebarTP.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1455,7 +1452,7 @@
 				currentLegend = legendTPWTO;
 				currentSidebar = sidebarTP;
 				sidebarTP.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
 					labels = [],
@@ -1478,7 +1475,7 @@
 				currentLegend = legendNuc;
 				currentSidebar = sidebarNuc;
 				sidebarNuc.addTo(map);
-				var divSign = L.DomUtil.create('div', 'info legend'),
+				var divSign = L.DomUtil.create('div'),
 					grades = ['X'],
 					// this is something like a subheader
 					labelsSign = [],
@@ -1509,15 +1506,14 @@
 				}
 
 				var name = "Nuclear Arms Control";
-				var description = "Yadda yadda, blah blah";
-				keyText1 = "Non-proliferation Treaty Signed";
-				keyText2 = "Non-proliferation Treaty Deposited";
+				var description = "<h5 class='lorem'>While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h5><h5 class='lorem'>A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h5><h5 class='lorem'>The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.</h5>";
+				keyText1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;Non-proliferation Treaty Signed</a>";
+				keyText2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNucDepo),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;Non-proliferation Treaty Deposited</a>";
 				var keySign = labelsSign.join('<br>');
 				var keyDepo = labelsDepo.join('<br>');
 				sidebarNuc.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'>" + keySign + "</div><br/><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + '</div>');
 				// attempt at collapsing description with button
-				
-				sidebarNuc.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'><div class='row'><div class='span collapse-group'><h6 class='collapse' id='viewdetails' style='padding-left: 20px; padding-right: 10px; color: #999; line-height:1.2; margin-bottom: 0px !important;'>" + keySign + "</h6><br><div class='btn-group' style='margin:0px 0px 0px 15px;'><button type='button' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#viewdetails'>View Details </button></div></div></div></div><br/><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + '</div>');
+				//sidebarNuc.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'><div class='row'><div class='span collapse-group'><h6 class='collapse' id='viewdetails' style='padding-left: 20px; padding-right: 10px; color: #999; line-height:1.2; margin-bottom: 0px !important;'>" + keySign + "</h6><br><div class='btn-group' style='margin:0px 0px 0px 15px;'><button type='button' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#viewdetails'>View Details </button></div></div></div></div><br/><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + '</div>');
 				//div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarNuc.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
 				return divSign;
 				return divDepo;
@@ -1527,7 +1523,7 @@
 				currentLegend = legendNucSign;
 				currentSidebar = sidebarNuc;
 				sidebarNuc.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['X'],
 					// this is something like a subheader
 					labels = [],
@@ -1554,7 +1550,7 @@
 				currentLegend = legendNucDepo;
 				currentSidebar = sidebarNuc;
 				sidebarNuc.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['X'],
 					// this is something like a subheader
 					labels = [],
@@ -1581,7 +1577,7 @@
 				currentLegend = legendHT;
 				currentSidebar = sidebarHT;
 				sidebarHT.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case'],
 					// this is something like a subheader
 					labels = [],
@@ -1597,8 +1593,8 @@
 				}
 
 				var name = "Human Trafficking";
-				var description = "";
-				var keyText = "Human Trafficking TIPS";
+				var description = "<h5 class='lorem'>\"Trafficking in persons\" or \"human trafficking\" are terms many international groups use to describe a range of activities from abducting laborers to forced prostitution. Human trafficking includes all the ways people are delivered into compelled service or exploited as forced workers or servants. President Bill Clinton issued an Executive Memorandum on the Trafficking of Women and Children in March 1998. Since then, the U.S. government has advocated a policy structured by the \"3P\" paradigm: prosecution, protection, and prevention.</h5><h5 class='lorem'>In 2000, the U.S. Congress passed the Trafficking Victims Protection Act. This act established the Office to Monitor and Combat Trafficking in Persons in the U.S.Department of State and mandated that this office create a yearly report, which evaluates each country on its efforts to fight trafficking. The office also provides grant funding to assist organizations involved in combatting trafficking.</h5>";
+				var keyText = "TIPS Tier Placement";
 				var key = labels.join('<br>');
 				sidebarHT.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
 				
@@ -1610,7 +1606,7 @@
 				currentLegend = legendPEPFAR;
 				currentSidebar = sidebarPEPFAR;
 				sidebarPEPFAR.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['1', '2', '3', 'No Data'],
 					// this is something like a subheader
 					labels = [],
@@ -1632,14 +1628,14 @@
 				sidebarPEPFAR.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
 				
 				//div.innerHTML = '<h4>Layer Name - PEPFAR</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarPEPFAR.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;	
+				return div;
 			};
 			
 			legendMHAC.onAdd = function (map) {
 				currentLegend = legendMHAC;
 				currentSidebar = sidebarMHAC;
 				sidebarMHAC.addTo(map);
-				var div = L.DomUtil.create('div', 'info legend'),
+				var div = L.DomUtil.create('div'),
 					grades = ['Excellent', 'Good', 'Fair', 'Poor', 'Unsuitable', 'No data'],
 					// this is something like a subheader
 					labels = [],
