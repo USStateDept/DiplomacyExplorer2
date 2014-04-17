@@ -1,0 +1,32 @@
+DROP TABLE IF EXISTS public."PA_Data_110m";
+CREATE TABLE public."PA_Data_110m" AS
+SELECT 
+	sovereignt,
+	"PA_Data"."Country",
+	"PA_Data"."PEPFAR",
+	"PA_Data"."Signed",
+	"PA_Data"."Deposited",
+	"PA_Data"."SignedDeposited",
+	"PA_Data"."Maternity_Health_Access_to_Care",
+	"PA_Data"."Human_Trafficking",
+	"PA_Data"."ICAO",
+	"PA_Data"."UNESCO",
+	"PA_Data"."FAO",
+	"PA_Data"."OAS",
+	"PA_Data"."UNGA",
+	"PA_Data"."OSCE",
+	"PA_Data"."OECD",
+	"PA_Data"."NATO",
+	"PA_Data"."EU",
+	"PA_Data"."AU",
+	"PA_Data"."UNHCR",
+	"PA_Data"."MLO_Index",
+	"PA_Data"."APEC",
+	"PA_Data"."NAFTA",
+	"PA_Data"."WTO",
+	"PA_Data"."ASEAN",
+	"PA_Data"."CBERA",
+	"PA_Data"."CAFTA",
+	"PA_Data"."TP_Index",
+	the_geom
+FROM opengeo."ne_110m_admin_0_countries_lakes" LEFT OUTER JOIN public."PA_Data" ON (ne_110m_admin_0_countries_lakes.sovereignt = "PA_Data"."Country");
