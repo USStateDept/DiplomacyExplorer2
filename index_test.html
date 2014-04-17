@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Diplomacy Explorer 2 - alpha</title>
+
+        <!-- Core CSS -->
+        <link href="img/usdos-logo-seal.png" rel="shortcut icon">
+		<link href="../lib/bootstrap-3.1.1/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="assets/typeahead.js/typeahead.js-bootstrap.css" rel="stylesheet" type="text/css"> <!--https://github.com/jharding/typeahead.js-bootstrap.css-->
+		<link rel="stylesheet" href="../lib/Leaflet-0.7.2/dist/leaflet.css" />
+		<link rel="stylesheet" href="../lib/leaflet-sidebar/src/L.Control.Sidebar.css">
+		<link rel="stylesheet" href="../lib/Leaflet.markercluster/dist/MarkerCluster.css" />
+		<link rel="stylesheet" href="../lib/Leaflet.markercluster/dist/MarkerCluster.Default.css" />
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/screen.css" />
+		<!-- Custom styles for this template -->
+        <style>
+            html, body, #map {
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+            }
+            body {
+                padding-top: 50px;
+            }
+            input[type="radio"], input[type="checkbox"] {
+                margin: 0;
+            }
+            #loading {
+                position: absolute;
+                width: 220px;
+                height: 19px;
+                top: 50%;
+                left: 50%;
+                margin: -10px 0 0 -110px;
+                z-index: 20001;
+            }
+            #keywordBox {
+                -webkit-border-top-left-radius: 4px;
+                -webkit-border-bottom-left-radius: 4px;
+                -moz-border-top-left-radius: 4px;
+                -moz-border-bottom-left-radius: 4px;
+                border-top-left-radius: 4px;
+                border-bottom-left-radius: 4px;
+            }
+            .leaflet-control-layers label {
+                font-weight: normal;
+                margin-bottom: 0px;
+            }
+            .table {
+                margin-bottom: 0px;
+            }
+
+            .navbar .navbar-brand {
+                font-weight: bold;
+                font-size: 25px;
+                color: white;
+				font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+				letter-spacing: 1px;
+            }
+            .navbar-collapse.in {
+                overflow-y: hidden;
+            }
+            .tt-dropdown-menu {
+                overflow: auto;
+            }
+            .tt-hint, .tt-query {
+                display: block;
+                width: 100%;
+                height: 34px;
+                padding: 6px 12px;
+                font-size: 14px;
+                border-radius: 4px;
+            }
+            .typeahead-header {
+                margin: 0 5px 5px 5px;
+                padding: 3px 0;
+                border-bottom: 2px solid #333;
+            }
+            .tt-suggestion + .tt-suggestion {
+                border-top: 1px solid #ccc;
+            }
+            .search-container {
+                width: 250px;
+            }
+            .leaflet-control-layers-expanded {
+                opacity: 0.9;
+            }
+            .leaflet-popup-content {
+                overflow-y:scroll;
+				height: 120px !important;
+				margin-top: 5px;
+                margin-bottom: 5px;
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+            .leaflet-popup-content-wrapper {
+                border-radius: 5px;
+            }
+            @media (max-width: 992px) {
+                .navbar .navbar-brand {
+                    font-size: 18px;
+                    float: left;
+                }
+                .search-container {
+                    width: 150px;
+                }
+            }
+            @media (max-width: 767px){
+                .search-container {
+                    width: 100%;
+                }
+                .url-break {
+                    word-break: break-all;
+                    word-break: break-word;
+                    -webkit-hyphens: auto;
+                    hyphens: auto;
+                }
+            }
+            /* Print Handling */
+            @media print {
+                .navbar {
+                    display: none !important;
+                }
+                .leaflet-control-container {
+                    display: none !important;
+                }
+            }
+			
+			.marker-cluster div {
+				color: white;
+				font-weight: bold;
+				text-shadow: 1px 1px 5px gray;
+			}
+			
+			.leaflet-popup-content {
+				margin-right: 19px;
+			}
+			
+			#viewdetails {
+				overflow-y:scroll;
+				height: 95px !important;
+			}
+			#viewComments {
+				overflow-y:scroll;
+				height: 95px !important;
+			}
+			.navbar-inverse {
+			background-color: rgb(25,95,164);
+			}
+			.navbar-collapse, .navbar-inverse .navbar-form {
+				border-color: rgb(25,95,164);
+			}
+			.marker-cluster-small {
+				background-color: rgba(217, 121, 37, 0.75);
+			}
+			.marker-cluster-medium {
+				background-color: rgba(217, 121, 37, 0.75);
+			}
+			.marker-cluster-large {
+				background-color: rgba(217, 121, 37, 0.75);
+			}
+			
+			.info {
+				padding: 6px 8px;
+				font: 14px/16px Arial, Helvetica, sans-serif;
+				background: white;
+				background: rgba(255,255,255,0.8);
+				box-shadow: 0 0 15px rgba(0,0,0,0.2);
+				border-radius: 5px;
+			}
+			.info h4 {
+				margin: 0 0 5px;
+				color: #777;
+			}
+
+			.legend {
+				text-align: left;
+				line-height: 18px;
+				color: #555;
+			}
+			.legend i {
+				width: 18px;
+				height: 18px;
+				float: left;
+				margin-right: 8px;
+				opacity: 0.7;
+			}
+			.leaflet-sidebar .close {
+				right: 20px;
+				top: 20px;
+			}
+			.dropdown-menu {
+				padding: 10px;
+			}
+			.legend {
+				padding: 6px 8px;
+				font: 14px/18px Arial, Helvetica, sans-serif;
+				font-weight: bold;
+			}
+        </style>
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+		
+	 </head>
+	 <body>
+	    <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Diplomacy Explorer</a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+					<li class="dropdown">
+                        <a id="securityDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Securing Peace</a>
+                        <ul class="dropdown-menu" style="padding:10px;">
+                            <h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
+							<h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),legendNuc.addTo(map),sidebarNuc.toggle(),allLayersGroup.clearLayers();">Nuclear Arms Control</a></h4>
+							<!--
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendNucSign.addTo(map),sidebarNuc.toggle();">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucDepo),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendNucDepo.addTo(map),sidebarNuc.toggle();">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Deposited</a></li>
+							-->
+							<h4>Other</h4>
+							<li><a href="#">&nbsp;&nbsp;Counter-terrorism (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Counter-narcotics (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Border Security (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Securing the Seas/Maritime Piracy (tk)</a></li>
+                        </ul>
+                    </li>
+					<li class="dropdown">
+                        <a id="environmentDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Protecting Resources</a>
+                        <ul class="dropdown-menu">
+                            <h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
+							<li><a href="#">&nbsp;&nbsp;Climate Change (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Environmental Conservation (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Water Security (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Energy Policy (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Endangered Species (tk)</a></li>
+                        </ul>
+                    </li>
+					<li class="dropdown">
+                        <a id="businessDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Promoting Prosperity</a>
+                        <ul class="dropdown-menu">
+                            <h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
+							<h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerICAO),allLayersGroup.addLayer(geoJsonLayerUNESCO),allLayersGroup.addLayer(geoJsonLayerFAO),allLayersGroup.addLayer(geoJsonLayerOAS),allLayersGroup.addLayer(geoJsonLayerUNGA),allLayersGroup.addLayer(geoJsonLayerOSCE),allLayersGroup.addLayer(geoJsonLayerOECD),allLayersGroup.addLayer(geoJsonLayerNATO),allLayersGroup.addLayer(geoJsonLayerEU),allLayersGroup.addLayer(geoJsonLayerAU),allLayersGroup.addLayer(geoJsonLayerUNHCR),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),legendMLO.addTo(map),sidebarMLO.toggle(),allLayersGroup.clearLayers();">Multi-lateral Organizations</a></h4>
+							<h4>Trade Promotion</h4>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPAPEC),map.addLayer(allLayersGroup),legendTPAPEC.addTo(map);">&nbsp;&nbsp;APEC Membership</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPASEAN),map.addLayer(allLayersGroup),legendTPASEAN.addTo(map);">&nbsp;&nbsp;ASEAN Membership</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPCAFTA),map.addLayer(allLayersGroup),legendTPCAFTA.addTo(map);">&nbsp;&nbsp;CAFTA Membership</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPCBERA),map.addLayer(allLayersGroup),legendTPCBERA.addTo(map);">&nbsp;&nbsp;CBERA Membership</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPNAFTA),map.addLayer(allLayersGroup),legendTPNAFTA.addTo(map);">&nbsp;&nbsp;NAFTA Membership</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPWTO),map.addLayer(allLayersGroup),legendTPWTO.addTo(map);">&nbsp;&nbsp;WTO Membership</a></li>
+							<h4>Other</h4>
+							<li><a href="#">&nbsp;&nbsp;Good Governance (trade legislation) (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Border Security (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Securing the Seas/Maritime Piracy (tk)</a></li>
+						</ul>
+                    </li>
+					<li class="dropdown">
+                        <a id="rightsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Respecting Rights</a>
+                        <ul class="dropdown-menu">
+                            <h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
+							<li><a href="#">&nbsp;&nbsp;Free and Fair Elections (tk)</a></li>
+                            <li><a href="#">&nbsp;&nbsp;Independent Media (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Independent Judiciacy (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Minority Rights (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Women's Rights (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Religious Freedom (tk)</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendHT.addTo(map),sidebarHT.toggle();">&nbsp;&nbsp;Human Trafficking</a></li>							
+                        </ul>
+                    </li>
+					<li class="dropdown">
+                        <a id="livesDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Saving Lives</a>
+                        <ul class="dropdown-menu">
+							<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
+							<h4>Health Issues</h4>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerPEPFAR),allLayersGroupPts.addLayer(geoJsonLayerPEPFARpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendPEPFAR.addTo(map),sidebarPEPFAR.toggle();">&nbsp;&nbsp;PEPFAR</a></li>
+							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerMHAC),map.addLayer(allLayersGroup),legendMHAC.addTo(map),sidebarMHAC.toggle();">&nbsp;&nbsp;Maternal Health - Access to Care</a></li>
+							<li><a href="#">&nbsp;&nbsp;HIV/AIDS (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Avian Flu (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Malaria (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Polio (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Tuberculosis (tk)</a></li>							
+							<h4>Other</h4>
+							<li><a href="#">&nbsp;&nbsp;Counter-narcotics (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Disaster Assistance (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Refugee Assistance (tk)</a></li>
+                        </ul>
+                    </li>
+					<li class="dropdown">
+                        <a id="infoDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Accessing Information</a>
+                        <ul class="dropdown-menu">
+							<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
+							<li><a href="#">&nbsp;&nbsp;Cyber Security (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Internet Freedom (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Intellectual Property Protection (tk)</a></li>
+							<li><a href="#">&nbsp;&nbsp;Science/Technology Promotion (tk)</a></li>
+                        </ul>
+                    </li>
+					<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#shareModal').modal('show'); return false;">Share</a></li>
+					<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#aboutModal').modal('show'); return false;">About</a></li>
+                </ul>
+            </div><!--/.navbar-collapse -->
+        </div>
+
+        <div id="map"></div>
+        <div id="sidebarAC">
+			<h4>Arms Control</h4>
+			<h5 class="lorem">While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h5>
+		</div>
+		<div id="sidebarIIP">
+			<h4>International Intellectual Property Enforcement</h4>
+			<h5 class="lorem">From California’s Silicon Valley to Texas’s Clean Energy Incubator and the Biotech Beltway around Washington, D.C., the United States is the world leader in innovative products and services. American – and their international counterparts --companies, workers, researchers, scientists, entertainers, and entrepreneurs have a right to benefit from their inventions and creative products.  </h5>
+			<h5 class="lorem">Equitable innovation policies around the world and robust laws and enforcement measures are needed to protect intellectual property rights for all of us—business, labor, academia, and government.  Not only do counterfeit products such as pirated CDs and DVDs, fake or unlicensed pharmaceuticals, and even fake airplane parts undercut US economic security by an estimated $5 trillion per year, they often pose a threat to the health and safety of the public.  </h5>
+			<h5 class="lorem">The Office of International Intellectual Property Enforcement promotes American and global innovation by advocating for the effective protection and enforcement of intellectual property rights (IPR) around the world.  It negotiates with international organizations, oversees the distribution of training and technical assistance funds to help developing countries build IPR law enforcement capacity, and undertakes public diplomacy programs to generate awareness of the importance of IPR protection in the global economy. </h5>
+		</div>
+		<div id="sidebarTP">
+			<h4>Trade Promotion</h4>
+			<h5 class="lorem">The United States Government, through multiple agencies, advances U.S. trade policy objectives by opening new export opportunities for American businesses, farmers, ranchers and workers through global, regional and bilateral trade initiatives - including free trade agreements (FTAs) and the World Trade Organization (WTO). In partnership these agencies work to maximize the benefits of open markets for global economic development, address and resolve trade disputes, strengthen intellectual property enforcement, and improve access for U.S. goods and services abroad.</h5>
+			<h5 class="lorem">The Office of the U.S. Trade Representative (USTR) is responsible for developing and coordinating U.S. international trade, commodity, and direct investment policy, and overseeing negotiations with other countries.</h5>
+			<h5 class="lorem">The U.S. Commercial Service is the trade promotion arm of the U.S. Department of Commerce’s International Trade Administration. U.S. Commercial Service trade professionals in over 100 U.S. cities and in more than 75 countries help U.S. companies get started in exporting or increasing sales to new global markets. The U.S. Commercial Service offers the trade counseling, market intelligence, business matchmaking, and commercial diplomacy you need to connect with lucrative business opportunities.</h5>
+			<h5 class="lorem">National Export Initiative</h5>
+			<h5 class="lorem">To strengthen America’s economy, support additional jobs here at home, and ensure long-term, sustainable growth, President Obama launched a government-wide strategy to promote exports. The National Export Initiative (NEI) is one essential component of that strategy.</h5>
+			<h5 class="lorem">The Obama Administration has made it a top priority to improve the conditions that directly affect the private sector’s ability to export, working to remove trade barriers abroad, help firms of all sizes and farmers overcome hurdles to entering new markets, and assist with financing. In addition, we have renewed and revitalized our efforts to promote American exports abroad. These efforts are paying off – and helping to change the way America does business. Now more than at any time in our history, Americans are selling more U.S. goods and services to the 95 percent of consumers who live outside of our borders.</h5>
+			<h5 class="lorem">The United States Government, through multiple agencies, advances U.S. trade policy objectives by opening new export opportunities for American businesses, farmers, ranchers and workers through global, regional and bilateral trade initiatives - including free trade agreements (FTAs) and the World Trade Organization (WTO). In partnership these agencies work to maximize the benefits of open markets for global economic development, address and resolve trade disputes, strengthen intellectual property enforcement, and improve access for U.S. goods and services abroad.</h5>
+		</div>
+		<div id="sidebarICAO">
+		</div>
+		<div id="sidebarPEPFAR">
+		</div>
+		<div id="sidebarMHAC">
+		</div>
+		<div id="sidebarHT">
+		</div>
+		<div id="sidebarNuc">
+		</div>
+		<div id="sidebarMLO">
+		</div>
+		<div id="sidebar">
+		</div>
+		
+		<div id="loading" style="display:block;">
+            <div class="loading-indicator">
+                <div class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-info" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="aboutModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Diplomacy Explorer</h4>
+                    </div>
+
+                    <div class="modal-body">
+                         <ul id="aboutTabs" class="nav nav-tabs">
+                            <li class="active">
+								<a href="#faqs" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;FAQs</a>
+							</li>
+                            <li>
+								<a href="#about" data-toggle="tab"><i class="fa fa-check-square"></i>&nbsp;About the project</a>
+							</li>
+                            <li>
+								<a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a>
+							</li>
+                            <li>
+                                <a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a>
+                            </li>
+                        </ul>
+                        <div id="aboutTabsContent" class="tab-content" style="padding-top: 10px;">
+                            <div class="tab-pane fade active in" id="faqs">
+                                <p>Below are a number of frequently asked questions (FAQs). If an answer to your specific need is not provided, please contact our support team!</p>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Questions
+                                    </div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Question 1</li>
+                                        <li class="list-group-item">Question 2</li>
+                                        <li class="list-group-item">Question 3</li>
+                                        <li class="list-group-item">Question 4</li>
+                                        <li class="list-group-item">Question 5</li>
+                                        <li class="list-group-item">Question 6</li>
+                                        <li class="list-group-item">Question 7</li>
+                                        <li class="list-group-item">Question 8</li>
+                                        <li class="list-group-item">Question 9</li>
+                                        <li class="list-group-item">Question 10</li>
+                                    </ul>
+                                </div>
+                            </div>
+							<div class="tab-pane fade" id="about">
+                                <p>This is a proof-of-concept for a revamped and updated Diplomacy Explorer web app.</p>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Features
+                                    </div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">This app is mobile ready!</li>
+                                        <li class="list-group-item">Data citations and downloads</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade text-danger" id="disclaimer">
+                                <p>This tool and the information provided herein are solely a proof-of-concept being developed by the Office of eDiplomacy's Geo|DST, on behalf of Public Affairs. If you are interested in this project, please direct your feedback to eDip and Public Affairs!</p>
+                            </div>
+                            <div class="tab-pane fade" id="contact">
+                                <form id="contact-form">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label for="name">Name:</label>
+                                            <input type="text" class="form-control" id="name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email:</label>
+                                            <input type="text" class="form-control" id="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="comment">Comment:</label>
+                                            <textarea class="form-control" rows="3" id="comment"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Submit</button>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+		<div class="modal fade" id="shareModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Share</h4>
+                    </div>
+
+                    <div class="modal-body">
+							<div class="tab-pane fade active in" id="shareMethods">
+                                <p>Please share this map with a friend!</p>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Methods
+                                    </div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Facebook</li>
+                                        <li class="list-group-item">Twitter</li>
+                                        <li class="list-group-item">Pintrest</li>
+                                        <li class="list-group-item">Email</li>
+                                        <li class="list-group-item">Social Media Stuff</li>
+                                    </ul>
+                                </div>
+                            </div>
+							
+                       
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+		<div class="modal fade" id="leadModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Lead Details</h4>
+                    </div>
+                    <div class="modal-body">
+                         <ul id="leadTabs" class="nav nav-tabs">
+                            <li class="active">
+								<a href="#leadDescrip" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;Description</a>
+							</li>
+                            <li>
+								<a href="#leadComments" data-toggle="tab"><i class="fa fa-check-square"></i>&nbsp;Post Comments</a>
+							</li>
+                        </ul>
+                        <div id="aboutTabsContent" class="tab-content" style="padding-top: 10px;">
+                            <div class="tab-pane fade active in" id="leadDescrip">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Description
+                                    </div>
+                                    <div style="padding-left: 15px">
+										<p style="padding-top: 15px">
+											<span>feature.properties.Project_Description</span><br>
+										</p>
+									</div>
+                                </div>
+                            </div>
+							<div class="tab-pane fade" id="leadComments">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        Post Comments
+                                    </div>
+                                    <div style="padding-left: 15px">
+										<p style="padding-top: 15px">
+											<span>feature.properties.Post_Comments</span><br>
+										</p>
+									</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+				
+		<script src="../lib/jquery/jquery-1.11.0.min.js"></script>
+		<script src="../lib/bootstrap-3.1.1/dist/js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/host.js"></script>
+		<script type="text/javascript" src="../lib/Leaflet-0.7.2/dist/leaflet-src.js"></script>
+        <script src="../lib/leaflet-sidebar/src/L.Control.Sidebar.js"></script>
+		<script type="text/javascript">
+			$(function () { $('#collapseOne').collapse('toggle')});
+			$(function () { $('#collapseTwo').collapse('toggle')});
+		
+			var urlWhole = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APA_Data_110m&outputformat=json";
+			var urlWholeHTpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3AHuman_Trafficking_Pts&outputformat=json";
+			var urlWholePEPFARpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APEPFAR_Pts&outputformat=json";
+			var urlWholeNucpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3ANuclear_Pts&outputformat=json";
+			
+			var allLayersGroup = new L.LayerGroup();
+			var allLayersGroupPts = new L.LayerGroup();
+			
+			var currentLegend;
+			
+			var currentSidebar = L.control();
+			
+			function getGeoJson(data) {
+				geoJsonLayerPEPFAR = new L.geoJson(data, {style: StylePEPFAR});
+				geoJsonLayerHT = new L.geoJson(data, {style: StyleHT});
+				geoJsonLayerMHAC = new L.geoJson(data, {style: StyleMHAC});
+				//geoJsonLayerICAO = new L.geoJson(data, {style: StyleMLOMemberICAO, onEachFeature: onEachFeature});
+				geoJsonLayerICAO = new L.geoJson(data, {style: StyleMLOMemberICAO});
+				geoJsonLayerUNESCO = new L.geoJson(data, {style: StyleMLOMemberUNESCO});
+				geoJsonLayerFAO = new L.geoJson(data, {style: StyleMLOMemberFAO});
+				geoJsonLayerOAS = new L.geoJson(data, {style: StyleMLOMemberOAS});
+				geoJsonLayerUNGA = new L.geoJson(data, {style: StyleMLOMemberUNGA});
+				geoJsonLayerOSCE = new L.geoJson(data, {style: StyleMLOMemberOSCE});
+				geoJsonLayerOECD = new L.geoJson(data, {style: StyleMLOMemberOECD});
+				geoJsonLayerNATO = new L.geoJson(data, {style: StyleMLOMemberNATO});
+				geoJsonLayerEU = new L.geoJson(data, {style: StyleMLOMemberEU});
+				geoJsonLayerAU = new L.geoJson(data, {style: StyleMLOMemberAU});
+				geoJsonLayerUNHCR = new L.geoJson(data, {style: StyleMLOMemberUNHCR});
+				geoJsonLayerNucSign = new L.geoJson(data, {style: StyleNucSign});
+				geoJsonLayerNucDepo = new L.geoJson(data, {style: StyleNucDepo});
+				geoJsonLayerTPAPEC = new L.geoJson(data, {style: StyleTPAPEC});
+				geoJsonLayerTPNAFTA = new L.geoJson(data, {style: StyleTPNAFTA});
+				geoJsonLayerTPWTO = new L.geoJson(data, {style: StyleTPWTO});
+				geoJsonLayerTPASEAN = new L.geoJson(data, {style: StyleTPASEAN});
+				geoJsonLayerTPCBERA = new L.geoJson(data, {style: StyleTPCBERA});
+				geoJsonLayerTPCAFTA = new L.geoJson(data, {style: StyleTPCAFTA});
+			}
+			
+			$.ajax({
+				url: urlWhole,
+				dataType: 'json',
+				jsonpCallback: getGeoJson,
+				success: getGeoJson
+			});
+			
+			function getGeoJsonPts(data){
+				geoJsonLayerHTpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
+				geoJsonLayerPEPFARpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
+				geoJsonLayerNucpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
+			}
+			
+			$.ajax({
+				url: urlWholeHTpts,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonPts,
+				success: getGeoJsonPts
+			});
+			
+			$.ajax({
+				url: urlWholePEPFARpts,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonPts,
+				success: getGeoJsonPts
+			});
+			
+			$.ajax({
+				url: urlWholeNucpts,
+				dataType: 'json',
+				jsonpCallback: getGeoJsonPts,
+				success: getGeoJsonPts
+			});
+			
+			var cmAttr = "<a href='mailto:dittemoremb@state.gov'>eDiplomacy Geo|DST</a>",
+			//cmAttr = 'Data: <a href="http://www.eia.gov/countries/data.cfm" title="U.S. Energy Information Administration">EIA</a>, <a href="http://www.openstreetmap.org/" title="&copy; OpenStreetMap contributors">OpenStreetMap</a>, <a href="http://www.cloudmade.com/" title="&copy; 2011 CloudMade">CloudMade</a>, <a href="http://www.stamen.com/" title="Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.">Stamen Design</a>',
+			cmUrl = 'http://{s}.tile.cloudmade.com/0de6cf4ab5c94f978d85a48c6413b382/{styleId}/256/{z}/{x}/{y}.png';
+		
+			var minimal   = L.tileLayer(cmUrl, {styleId: 22677, attribution: cmAttr});
+			
+			var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+				{ attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors' }
+			);
+
+			function getColorPEPFAR(d) {
+				if (d == '3') {
+					return	'#FC4E2A'
+				} else if (d == '2') {
+					return	'#FD8D3C'
+				} else if (d == '1') {
+					return	'#CACF9B'
+				} else {
+					return	'#ddd';
+				}
+			}
+		
+			function getColorHT(d) {
+				if (d == 'Special Case') {
+					return	'#499DD6'
+				} else if (d == 'Tier 3') {
+					return	'#9E252B'
+				} else if (d == 'Tier 3 Auto-Downgrade') {
+					return	'#FC4E2A'
+				} else if (d == 'Tier 2 Watch List') {
+					return	'#E67125'
+				} else if (d == 'Tier 2') {
+					return	'#FDBE10'
+				} else if (d == 'Tier 1') {
+					return	'#00763F'
+				} else {
+					return	'#ddd';
+				}
+			}
+			
+			function getColorMHAC(d) {
+				if (d == 'Excellent') {
+					return	'#00BDFF'
+				} else if (d == 'Good') {
+					return	'#009DD4'
+				} else if (d == 'Fair') {
+					return	'#007BA6'
+				} else if (d == 'Poor') {
+					return	'#004E69'
+				} else if (d == 'Unsuitable') {
+					return	'#002430'
+				} else {
+					return	'#ddd';
+				}
+			}
+			
+			function getColorMLOMember(d) {
+				if (d == 'Member') {
+					return	'#FC4E2A'
+				} else if (d == 'Suspended') {
+					return	'#FD8D3C'
+				} else {
+					return	'#ddd';
+				}
+			}
+/*
+			function getColorMLOIndex(d) {
+				if (d == '8') {
+					return	'#093B49'
+				} else if (d == '8') {
+					return	'#093B49'
+				} else if (d == '7') {
+					return	'#106F89'
+				} else if (d == '6') {
+					return	'#106F89'
+				} else if (d == '5') {
+					return	'#158DAF'
+				} else if (d == '4') {
+					return	'#158DAF'
+				} else if (d == '3') {
+					return	'#18A2C9'
+				} else if (d == '2') {
+					return	'#1AACD6'
+				} else if (d == '1') {
+					return	'#51C5E8'
+				} else {
+					return	'#ddd';
+				}
+			}
+	*/		
+			function getColorNucSign(d) {
+				if (d == 'X') {
+					return	'#FC4E2A'
+				} else {
+					return	'#ddd';
+				}
+			}
+			
+			function getColorNucDepo(d) {
+				if (d == 'X') {
+					return	'#FC4E2A'
+				} else {
+					return	'#ddd';
+				}
+			}
+			
+			function getColorTPMember(d) {
+				if (d == 'Member') {
+					return	'#FC4E2A'
+				} else if (d == 'Observer') {
+					return	'#FC4E2A'
+				} else {
+					return	'#ddd';
+				}
+			}
+/*
+			function getColorTPIndex(d) {
+				if (d == '4') {
+					return	'#093B49'
+				} else if (d == '3') {
+					return	'#106F89'
+				} else if (d == '2') {
+					return	'#158DAF'
+				} else if (d == '1') {
+					return	'#51C5E8'
+				} else {
+					return	'#ddd';
+				}
+			}
+	*/		
+			function StylePEPFAR(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorPEPFAR(feature.properties.PEPFAR)
+				};
+			}
+			
+			function StyleHT(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorHT(feature.properties.Human_Trafficking)
+				};
+			}
+			
+			function StyleMHAC(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMHAC(feature.properties.Maternity_Health_Access_to_Care)
+				};
+			}
+			
+			function StyleMLOMemberICAO(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.ICAO)
+				};
+			}
+			
+			function StyleMLOMemberUNESCO(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.UNESCO)
+				};
+			}
+			
+			function StyleMLOMemberFAO(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.FAO)
+				};
+			}
+			
+			function StyleMLOMemberOAS(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.OAS)
+				};
+			}
+			
+			function StyleMLOMemberUNGA(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.UNGA)
+				};
+			}
+			
+			function StyleMLOMemberOSCE(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.OSCE)
+				};
+			}
+			
+			function StyleMLOMemberOECD(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.OECD)
+				};
+			}
+			
+			function StyleMLOMemberNATO(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.NATO)
+				};
+			}
+			
+			function StyleMLOMemberEU(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.EU)
+				};
+			}
+			
+			function StyleMLOMemberAU(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.AU)
+				};
+			}
+			
+			function StyleMLOMemberUNHCR(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOMember(feature.properties.UNHCR)
+				};
+			}
+			/*
+			function StyleMLOIndex(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorMLOIndex(feature.properties.Index)
+				};
+			}
+			*/
+			function StyleNucSign(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorNucSign(feature.properties.Signed)
+				};
+			}
+			
+			function StyleNucDepo(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorNucDepo(feature.properties.Deposited)
+				};
+			}
+			
+			function StyleTPAPEC(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorTPMember(feature.properties.APEC)
+				};
+			}
+			
+			function StyleTPNAFTA(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorTPMember(feature.properties.NAFTA)
+				};
+			}
+			
+			function StyleTPWTO(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorTPMember(feature.properties.WTO)
+				};
+			}
+			
+			function StyleTPASEAN(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorTPMember(feature.properties.ASEAN)
+				};
+			}
+			
+			function StyleTPCBERA(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorTPMember(feature.properties.CBERA)
+				};
+			}
+			
+			function StyleTPCAFTA(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorTPMember(feature.properties.CAFTA)
+				};
+			}
+			/*
+			function StyleTPIndex(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorTPIndex(feature.properties.Index)
+				};
+			}
+			*/
+			var map = new L.Map('map', {
+				zoomControl: false,
+				center: [20, 10],
+				zoom: 3,
+				layers: [minimal]
+			});
+			
+			new L.Control.Zoom({ position: 'topright' }).addTo(map);
+			
+			var sidebarIIP = L.control.sidebar("sidebarIIP", {
+				closeButton: true,
+				position: "left"
+			});
+			
+			var sidebarAC = L.control.sidebar("sidebarAC", {
+				closeButton: true,
+				position: "left"
+			});
+			
+			var sidebarTP = L.control.sidebar("sidebarTP", {
+				closeButton: true,
+				position: "left"
+			});
+			
+			var sidebarICAO = L.control.sidebar("sidebarICAO", {
+				closeButton: true,
+				position: "left"
+			});
+			
+			var sidebarPEPFAR = L.control.sidebar("sidebarPEPFAR", {
+				closeButton: true,
+				position: "left"
+			});
+			
+			var sidebarMHAC = L.control.sidebar("sidebarMHAC", {
+				closeButton: true,
+				position: "left"
+			});
+			
+			var sidebarHT = L.control.sidebar("sidebarHT", {
+				closeButton: true,
+				position: "left"
+			});
+			
+			var sidebarNuc = L.control.sidebar("sidebarNuc", {
+				closeButton: true,
+				position: "left"
+			});
+			
+			var sidebarMLO = L.control.sidebar("sidebarMLO", {
+				closeButton: true,
+				position: "left"
+			});
+			
+			var sidebar = L.control.sidebar("sidebar", {
+				closeButton: true,
+				position: "left"
+			});
+			
+			$(document).one("ajaxStop", function() {
+                $("#loading").hide();
+			});
+			
+			var legendMLO = L.control({position: 'bottomleft'});
+			var legendTPAPEC = L.control({position: 'bottomleft'});
+			var legendTPASEAN = L.control({position: 'bottomleft'});
+			var legendTPCAFTA = L.control({position: 'bottomleft'});
+			var legendTPCBERA = L.control({position: 'bottomleft'});
+			var legendTPNAFTA = L.control({position: 'bottomleft'});
+			var legendTPWTO = L.control({position: 'bottomleft'});
+			var legendNuc = L.control({position: 'bottomleft'});
+			var legendNucSign = L.control({position: 'bottomleft'});
+			var legendNucDepo = L.control({position: 'bottomleft'});
+			var legendHT = L.control({position: 'bottomleft'});
+			var legendPEPFAR = L.control({position: 'bottomleft'});
+			var legendMHAC = L.control({position: 'bottomleft'});
+			
+			function changeLayer() {
+				allLayersGroup.clearLayers();
+				allLayersGroupPts.clearLayers();
+				if (currentSidebar.getPosition() === 'left') {
+					map.removeControl(currentSidebar);
+				}
+			}
+			
+			legendTPAPEC.onAdd = function (map) {
+				currentLegend = legendTPAPEC;
+				currentSidebar = sidebarTP;
+				sidebarTP.addTo(map);
+				var div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labels.push(
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				div.innerHTML = '<h4>Membership in APEC</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarTP.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return div;
+			};
+
+			legendTPASEAN.onAdd = function (map) {
+				currentLegend = legendTPASEAN;
+				currentSidebar = sidebarTP;
+				sidebarTP.addTo(map);
+				var div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labels.push(
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				div.innerHTML = '<h4>Membership in ASEAN</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarTP.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return div;
+			};
+
+			legendTPCAFTA.onAdd = function (map) {
+				currentLegend = legendTPCAFTA;
+				currentSidebar = sidebarTP;
+				sidebarTP.addTo(map);
+				var div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labels.push(
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				div.innerHTML = '<h4>Membership in CAFTA</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarTP.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return div;
+			};
+
+			legendTPCBERA.onAdd = function (map) {
+				currentLegend = legendTPCBERA;
+				currentSidebar = sidebarTP;
+				sidebarTP.addTo(map);
+				var div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labels.push(
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				div.innerHTML = '<h4>Membership in CBERA</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarTP.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return div;
+			};
+
+			legendTPNAFTA.onAdd = function (map) {
+				currentLegend = legendTPNAFTA;
+				currentSidebar = sidebarTP;
+				sidebarTP.addTo(map);
+				var div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labels.push(
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				div.innerHTML = '<h4>Membership in NAFTA</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarTP.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return div;
+			};
+
+			legendTPWTO.onAdd = function (map) {
+				currentLegend = legendTPWTO;
+				currentSidebar = sidebarTP;
+				sidebarTP.addTo(map);
+				var div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labels.push(
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				div.innerHTML = '<h4>Membership in WTO</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarTP.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return div;
+			};
+
+			legendMLO.onAdd = function (map) {
+				currentLegend = legendMLO;
+				currentSidebar = sidebarMLO;
+				sidebarMLO.addTo(map);
+				var divICAO = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsICAO = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsICAO.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var divUNESCO = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsUNESCO = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsUNESCO.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divFAO = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsFAO = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsFAO.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divOAS = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsOAS = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsOAS.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divUNGA = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsUNGA = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsUNGA.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divOSCE = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsOSCE = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsOSCE.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divOECD = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsOECD = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsOECD.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divNATO = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsNATO = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsNATO.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divEU = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsEU = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsEU.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divAU = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsAU = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsAU.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var divUNHCR = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					labelsUNHCR = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					labelsUNHCR.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var name = "Multi-lateral Organizations";
+				var description = "<h5 class='lorem'>MLO description ...</h5>";
+				keyText1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerICAO),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;ICAO Membership</a>";
+				keyText2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerUNESCO),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;UNESCO Membership</a>";
+				keyText3 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerFAO),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;FAO Membership</a>";
+				keyText4 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerOAS),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;OAS Membership</a>";
+				keyText5 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerUNGA),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;UN-GA Membership</a>";
+				keyText6 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerOSCE),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;OSCE Membership</a>";
+				keyText7 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerOECD),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;OECD Membership</a>";
+				keyText8 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNATO),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;NATO Membership</a>";
+				keyText9 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerEU),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;EU Membership</a>";
+				keyText10 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerAU),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;AU Membership</a>";
+				keyText11 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerUNHCR),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;UNHCR Membership</a>";
+				var keyICAO = labelsICAO.join('<br>');
+				var keyUNESCO = labelsUNESCO.join('<br>');
+				var keyFAO = labelsFAO.join('<br>');
+				var keyOAS = labelsOAS.join('<br>');
+				var keyUNGA = labelsUNGA.join('<br>');
+				var keyOSCE = labelsOSCE.join('<br>');
+				var keyOECD = labelsOECD.join('<br>');
+				var keyNATO = labelsNATO.join('<br>');
+				var keyEU = labelsEU.join('<br>');
+				var keyAU = labelsAU.join('<br>');
+				var keyUNHCR = labelsUNHCR.join('<br>');
+				sidebarMLO.setContent("<h4>" + name + "</h4>" + description + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'>" + keyICAO + "</div><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyUNESCO + "</div><h5 style='font-weight:bold'>" + keyText3 + "</h5>" + "<div class='legend'>" + keyFAO + "</div><h5 style='font-weight:bold'>" + keyText4 + "</h5>" + "<div class='legend'>" + keyUNGA + "</div><h5 style='font-weight:bold'>" + keyText5 + "</h5>" + "<div class='legend'>" + keyOSCE + "</div><h5 style='font-weight:bold'>" + keyText6 + "</h5>" + "<div class='legend'>" + keyOECD + "</div><h5 style='font-weight:bold'>" + keyText7 + "</h5>" + "<div class='legend'>" + keyNATO + "</div><h5 style='font-weight:bold'>" + keyText8 + "</h5>" + "<div class='legend'>" + keyEU + "</div><h5 style='font-weight:bold'>" + keyText9 + "</h5>" + "<div class='legend'>" + keyEU + "</div><h5 style='font-weight:bold'>" + keyText10 + "</h5>" + "<div class='legend'>" + keyAU + "</div><h5 style='font-weight:bold'>" + keyText11 + "</h5>" + "<div class='legend'>" + keyUNHCR + "</div>");
+				
+				return divICAO;
+				return divUNESCO;
+				return divFAO;
+				return divOAS;
+				return divUNGA;
+				return divOSCE;
+				return divOECD;
+				return divNATO;
+				return divEU;
+				return divAU;
+				return divUNHCR;
+			};
+			
+			legendNuc.onAdd = function (map) {
+				currentLegend = legendNuc;
+				currentSidebar = sidebarNuc;
+				sidebarNuc.addTo(map);
+				var divSign = L.DomUtil.create('div'),
+					grades = ['X'],
+					// this is something like a subheader
+					labelsSign = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Signed'];
+					
+					labelsSign.push(
+						'<i style="background:' + getColorNucSign(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var divDepo = L.DomUtil.create('div'),
+					grades = ['X'],
+					// this is something like a subheader
+					labelsDepo = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Deposited'];
+					
+					labelsDepo.push(
+						'<i style="background:' + getColorNucDepo(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				//var name = "Nuclear Arms Control";
+				var accStart = "<div class=\"panel-group\" id=\"accordion\">";
+				var name1 = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseOne\">Nuclear Arms Control1</a></h4></div>";
+				var desc1 = "<div id=\"collapseOne\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">Description test 1 test test test test 1 test 1 test 1 test 1</div></div>";
+				var name2 = "<div class=\"panel panel-success\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseTwo\">Nuclear Arms Control2</a></h4></div>";
+				var desc2 = "<div id=\"collapseTwo\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Second description test 1 test test test 2 yadda yadda test 2 test 2</div></div>";
+				var accEnd = "</div>";
+				
+				var col = "<div class='span collapse-group'><h6 class='collapse' id='viewdetails' style='padding-left: 20px; padding-right: 10px; color: #999; line-height:1.2; margin-bottom: 0px !important;'>yadda yadda yadda yadda yadda yadda yadda yadda yadda yadda yadda</h6><br><div class='btn-group' style='margin:0px 0px 0px 15px;'><button type='button' onclick='alert()' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#viewdetails'>View Details </button></div></div>";
+				
+				var description = "<h5 class='lorem'>While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h5><h5 class='lorem'>A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h5><h5 class='lorem'>The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.</h5>";
+				keyText1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;Non-proliferation Treaty Signed</a>";
+				keyText2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNucDepo),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;Non-proliferation Treaty Deposited</a>";
+				var keySign = labelsSign.join('<br>');
+				var keyDepo = labelsDepo.join('<br>');
+				sidebarNuc.setContent(accStart + name1 + desc1 + "</div>" + name2 + desc2 + "</div>" + accEnd + col + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'>" + keySign + "</div><br/><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + '</div>');
+				// attempt at collapsing description with button
+				//sidebarNuc.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'><div class='row'><div class='span collapse-group'><h6 class='collapse' id='viewdetails' style='padding-left: 20px; padding-right: 10px; color: #999; line-height:1.2; margin-bottom: 0px !important;'>" + keySign + "</h6><br><div class='btn-group' style='margin:0px 0px 0px 15px;'><button type='button' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#viewdetails'>View Details </button></div></div></div></div><br/><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + '</div>');
+				//div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarNuc.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return divSign;
+				return divDepo;
+			};
+			
+			legendNucSign.onAdd = function (map) {
+				currentLegend = legendNucSign;
+				currentSidebar = sidebarNuc;
+				sidebarNuc.addTo(map);
+				var div = L.DomUtil.create('div'),
+					grades = ['X'],
+					// this is something like a subheader
+					labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Signed'];
+					
+					labels.push(
+						'<i style="background:' + getColorNucSign(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var keyText = "Nuclear Sign";
+				var key = labels.join('<br>');
+				sidebarNuc.setContent("<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
+				
+				//div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarNuc.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return div;
+			};
+			
+			legendNucDepo.onAdd = function (map) {
+				currentLegend = legendNucDepo;
+				currentSidebar = sidebarNuc;
+				sidebarNuc.addTo(map);
+				var div = L.DomUtil.create('div'),
+					grades = ['X'],
+					// this is something like a subheader
+					labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Deposited'];
+					
+					labels.push(
+						'<i style="background:' + getColorNucDepo(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var keyText = "Nuclear Depo";
+				var key = labels.join('<br>');
+				sidebarNuc.setContent("<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
+				
+				//div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarNuc.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return div;
+			};
+			
+			legendHT.onAdd = function (map) {
+				currentLegend = legendHT;
+				currentSidebar = sidebarHT;
+				sidebarHT.addTo(map);
+				var div = L.DomUtil.create('div'),
+					grades = ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case'],
+					// this is something like a subheader
+					labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case'];
+					
+					labels.push(
+						'<i style="background:' + getColorHT(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var name = "Human Trafficking";
+				var description = "<h5 class='lorem'>\"Trafficking in persons\" or \"human trafficking\" are terms many international groups use to describe a range of activities from abducting laborers to forced prostitution. Human trafficking includes all the ways people are delivered into compelled service or exploited as forced workers or servants. President Bill Clinton issued an Executive Memorandum on the Trafficking of Women and Children in March 1998. Since then, the U.S. government has advocated a policy structured by the \"3P\" paradigm: prosecution, protection, and prevention.</h5><h5 class='lorem'>In 2000, the U.S. Congress passed the Trafficking Victims Protection Act. This act established the Office to Monitor and Combat Trafficking in Persons in the U.S.Department of State and mandated that this office create a yearly report, which evaluates each country on its efforts to fight trafficking. The office also provides grant funding to assist organizations involved in combatting trafficking.</h5>";
+				var keyText = "TIPS Tier Placement";
+				var key = labels.join('<br>');
+				sidebarHT.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
+				
+				//div.innerHTML = '<h4>Human Trafficking</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return div;
+			};
+			
+			legendPEPFAR.onAdd = function (map) {
+				currentLegend = legendPEPFAR;
+				currentSidebar = sidebarPEPFAR;
+				sidebarPEPFAR.addTo(map);
+				var div = L.DomUtil.create('div'),
+					grades = ['1', '2', '3', 'No Data'],
+					// this is something like a subheader
+					labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['1', '2', '3', 'No data'];
+					
+					labels.push(
+						'<i style="background:' + getColorPEPFAR(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var name = "PEPFAR";
+				var description = "<h5 class='lorem'>After decades of sporadic assistance to the growing issue of HIV/AIDS around the world, the international community has come together to deal with this and other health issues that impact the stability of our shrinking world.</h5><h5 class='lorem'>Besides contributing to international initiatives including the Global Fund to Fight Aids, Tuberculosis and Malaria, the United States implemented the President's Emergency Plan for AIDS Relief (PEPFAR) to partner with local governmental and non-governmental health agencies to develop programs to prevent, test, and treat the disease. PEPFAR investments also help to alleviate suffering from other diseases across the global health spectrum.</h5><h5 class='lorem'>Since 2008, the number of individuals receiving lifesaving anti-retroviral therapy has more than tripled and more than one million babies have been born without HIV due to PEPFAR-supported programs.  And the moment has arrived when creating an AIDS-free generation is truly within reach.</h5><h5 class='lorem'>PEPFAR has also served to transform the way that development is done.  While continuing to rapidly expand access to lifesaving HIV services, PEPFAR has moved from an emergency state to a more sustainable footing, creating a robust health care delivery capability -- often where little to none previously existed -- that is being used not only to address HIV, but also a broader range of health issues.  </h5><h5 class='lorem'>Since 2011, U.S. Department of State has created Partnership Frameworks, a series of joint strategic plans with foreign governments, such as South Africa and Botswana, through which  a true and enduring partnership with host countries has evolved -- one that positions them to assume greater ownership of their national HIV response. The plans aim to promote a sustainable approach to combating HIV/AIDS in partner countries through service delivery, policy reform, and coordinated financial commitments. </h5>";
+				var keyText = "PEPFAR something something";
+				var key = labels.join('<br>');
+				sidebarPEPFAR.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
+				
+				//div.innerHTML = '<h4>Layer Name - PEPFAR</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarPEPFAR.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return div;
+			};
+			
+			legendMHAC.onAdd = function (map) {
+				currentLegend = legendMHAC;
+				currentSidebar = sidebarMHAC;
+				sidebarMHAC.addTo(map);
+				var div = L.DomUtil.create('div'),
+					grades = ['Excellent', 'Good', 'Fair', 'Poor', 'Unsuitable', 'No data'],
+					// this is something like a subheader
+					labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Excellent', 'Good', 'Fair', 'Poor', 'Unsuitable', 'No data'];
+					
+					labels.push(
+						'<i style="background:' + getColorMHAC(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+
+				var name = "Maternal Health - Access to Care";
+				var description = "";
+				var keyText = "Maternal Health - Access to Care";
+				var key = labels.join('<br>');
+				sidebarMHAC.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
+				
+				//div.innerHTML = '<h4>Maternal Health</h4><h7>Access to Care</h7><br><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
+				return div;
+			};
+			
+			function highlightFeature(e) {
+				var layer = e.target;
+
+				layer.setStyle({
+					weight: 2,
+					color: '#666',
+					dashArray: '',
+					fillOpacity: 0.7
+				});
+
+				if (!L.Browser.ie && !L.Browser.opera) {
+					layer.bringToFront();
+				}
+				info.update(layer.feature.properties);
+			}
+			
+			function resetHighlight(e) {
+				geoJsonLayerICAO.resetStyle(e.target);
+				info.update();
+			}
+			
+			function zoomToFeature(e) {
+				map.fitBounds(e.target.getBounds());
+			}
+
+			function onEachFeature(feature, layer) {
+				layer.on({
+					click: highlightFeature,
+					mouseout: resetHighlight
+				});
+			}
+
+			var popup = L.popup();
+
+			function onEachFeaturePts(feature, layer) {
+				var popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "<br /><div class='row'><div class='span collapse-group'><h6 class='collapse' id='viewdetails' style='padding-left: 20px; padding-right: 10px; color: #999; line-height:1.2; margin-bottom: 0px !important;'>" + feature.properties.Story + "</h6><br><div class='btn-group' style='margin:0px 0px 0px 15px;'><button type='button' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#viewdetails'>View Details </button></div></div></div></h5>";
+				if (feature.properties && feature.properties.popupContent) {
+					popupContent += feature.properties.popupContent;
+				}
+				layer.bindPopup(popupContent);
+			}
+			
+			var info = L.control({position: "bottomleft"});
+
+			info.onAdd = function (map) {
+				this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+				this.update();
+				return this._div;
+			};
+
+			// method that we will use to update the control based on feature properties passed
+			info.update = function (props) {
+				this._div.innerHTML = '' +  (props ?
+					'' + props.sovereignt + ': ' + props.ICAO + ''
+					: '');
+			};
+
+			info.addTo(map);
+			
+        </script>
+		<script type="text/javascript">
+		</script>  
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			siteParams();
+			ga('create', gaID, host);
+			ga('send', 'pageview');
+		</script>
+    </body>
+</html>
