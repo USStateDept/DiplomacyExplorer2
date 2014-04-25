@@ -1,0 +1,358 @@
+@font-face {
+  font-family: "DroidSansRegular";
+  src: url('/css/discoverdiplomacy/fonts/droidsans-webfont.eot');
+  src: url('/css/discoverdiplomacy/fonts/droidsans-webfont.eot?iefix') format('eot'), url('/css/discoverdiplomacy/fonts/droidsans-webfont.woff') format('woff'), url('/css/discoverdiplomacy/fonts/droidsans-webfont.ttf') format('truetype'), url('/css/discoverdiplomacy/fonts/droidsans-webfont.svg#webfontfR6qHiUk') format('svg');
+}
+
+@font-face {
+  font-family: "DroidSansBold";
+  src: url('/css/discoverdiplomacy/fonts/droidsans-bold-webfont.eot');
+  src: url('/css/discoverdiplomacy/fonts/droidsans-bold-webfont.eot?iefix') format('eot'), url('/css/discoverdiplomacy/fonts/droidsans-bold-webfont.woff') format('woff'), url('/css/discoverdiplomacy/fonts/droidsans-bold-webfont.ttf') format('truetype'), url('/css/discoverdiplomacy/fonts/droidsans-bold-webfont.svg#webfontfR6qHiUk') format('svg');
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+#footer {
+  position: relative;
+  z-index: 70;
+}
+#footer #footer-top {
+  height: 33px;
+}
+#footer #footer-top #footer-left {
+  float: left;
+  height: 33px;
+  width: 50%;
+  margin-right: -512px;
+}
+#footer #footer-top #footer-left #footer-left-bg {
+  margin-top: 16px;
+  background: #424242;
+  height: 17px;
+  margin-right: 512px;
+}
+#footer #footer-top #footer-right {
+  width: 50%;
+  position: absolute;
+  right: 0;
+}
+#footer #footer-top #footer-right #footer-right-bg {
+  margin-top: 16px;
+  height: 17px;
+  background: #424242;
+  margin-left: 511px;
+}
+#footer #footer-top #footer-center {
+  position: relative;
+  height: 33px;
+  width: 1024px;
+  float: left;
+  text-align: center;
+  background: url('/images/images_discoverdiplomacy/footer_top_noprofile.png?1317230572') center;
+}
+#footer #footer-top #footer-title {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('/images/images_discoverdiplomacy/sprites.png?1317230572');
+  background-repeat: no-repeat;
+  background-position: -3px -625px;
+  width: 66px;
+  height: 26px;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  margin-left: -33px;
+}
+#footer #footer-body {
+  background: #424242;
+  height: 62px;
+  width: 100%;
+  min-width: 1024px;
+}
+#footer #footer-body #footer-menu {
+  font-family: "DroidSansRegular", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: white;
+  height: 18px;
+  line-height: 18px;
+  margin: 0 auto;
+  padding: 12px 0 0 0;
+  text-align: center;
+}
+#footer #footer-body #footer-menu a {
+  color: white;
+  text-decoration: none;
+}
+#footer #footer-body #footer-menu a:hover, #footer #footer-body #footer-menu a.here {
+  color: #ababab;
+}
+#footer #footer-body #footer-menu li {
+  display: inline;
+  padding-right: 32px;
+  margin-right: 32px;
+  border-right: 1px solid white;
+}
+#footer #footer-body #footer-menu li.last {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+#footer #footer-body #footer-smallprint {
+  font-family: "DroidSansRegular", Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #ababab;
+  height: 17px;
+  line-height: 17px;
+  margin: 0 auto;
+  padding: 10px 40px 0 40px;
+  width: 944px;
+  text-align: center;
+}
+#footer #footer-body #footer-smallprint a {
+  color: #ababab;
+  text-decoration: none;
+}
+#footer #footer-body #footer-smallprint a:hover, #footer #footer-body #footer-smallprint a.here {
+  color: white;
+}
+#footer #footer-body #footer-smallprint li {
+  height: 12px;
+  line-height: 12px;
+  display: inline-block;
+  padding-right: 8px;
+  margin-right: 6px;
+  border-right: 1px solid #ababab;
+}
+#footer #footer-body #footer-smallprint li.last {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+#footer #footer-body #footer-smallprint #footer-credit {
+  background: url('/images/images_discoverdiplomacy/sprites.png?1317230572') no-repeat -8px -600px;
+  height: 17px;
+  line-height: 17px;
+  padding-left: 21px;
+}
+
+@font-face {
+  font-family: "DroidSansRegular";
+  src: url('/css/discoverdiplomacy/fonts/droidsans-webfont.eot');
+  src: url('/css/discoverdiplomacy/fonts/droidsans-webfont.eot?iefix') format('eot'), url('/css/discoverdiplomacy/fonts/droidsans-webfont.woff') format('woff'), url('/css/discoverdiplomacy/fonts/droidsans-webfont.ttf') format('truetype'), url('/css/discoverdiplomacy/fonts/droidsans-webfont.svg#webfontfR6qHiUk') format('svg');
+}
+
+@font-face {
+  font-family: "DroidSansBold";
+  src: url('/css/discoverdiplomacy/fonts/droidsans-bold-webfont.eot');
+  src: url('/css/discoverdiplomacy/fonts/droidsans-bold-webfont.eot?iefix') format('eot'), url('/css/discoverdiplomacy/fonts/droidsans-bold-webfont.woff') format('woff'), url('/css/discoverdiplomacy/fonts/droidsans-bold-webfont.ttf') format('truetype'), url('/css/discoverdiplomacy/fonts/droidsans-bold-webfont.svg#webfontfR6qHiUk') format('svg');
+}
+
+body.bp {
+  line-height: 1.5;
+  font-family: "DroidSansRegular", Arial, Helvetica, sans-serif;
+  color: black;
+  background: none;
+  font-size: 10pt;
+}
+body.bp .container {
+  background: none;
+}
+body.bp hr {
+  background: #cccccc;
+  color: #cccccc;
+  width: 100%;
+  height: 2px;
+  margin: 2em 0;
+  padding: 0;
+  border: none;
+}
+body.bp hr.space {
+  background: white;
+  color: white;
+}
+body.bp h1, body.bp h2, body.bp h3, body.bp h4, body.bp h5, body.bp h6 {
+  font-family: "DroidSansRegular", Arial, Helvetica, sans-serif;
+}
+body.bp code {
+  font-size: 0.9em;
+  font-family: "andale mono", "lucida console", monospace;
+}
+body.bp a img {
+  border: none;
+}
+body.bp a:link, body.bp a:visited {
+  background: transparent;
+  font-weight: 700;
+  text-decoration: underline;
+}
+body.bp p img.top {
+  margin-top: 0;
+}
+body.bp blockquote {
+  margin: 1.5em;
+  padding: 1em;
+  font-style: italic;
+  font-size: 0.9em;
+}
+body.bp .small {
+  font-size: 0.9em;
+}
+body.bp .large {
+  font-size: 1.1em;
+}
+body.bp .quiet {
+  color: #999999;
+}
+body.bp .hide {
+  display: none;
+}
+
+body {
+  font-family: "DroidSansRegular", Arial, Helvetica, sans-serif;
+}
+
+.video-container, .audio-container {
+  display: none;
+}
+
+#explorer-map {
+  display: none;
+}
+
+#global-header {
+  display: none;
+}
+
+#header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#header ul li {
+  margin: 0;
+  padding: 0;
+}
+#header ul li a {
+  display: none;
+  font-size: 32px !important;
+}
+#header ul li a.here {
+  display: block;
+  text-transform: uppercase;
+}
+#header ul li#nav-discover-diplomacy a {
+  display: block;
+  font-size: 48px !important;
+  font-family: "DroidSansBold", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+#header form {
+  display: none;
+}
+
+#keys-widget {
+  display: none;
+}
+
+#subnav ul {
+  list-style-type: none;
+  margin: 0;
+  margin-top: 24px;
+  padding: 0;
+}
+#subnav ul li {
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+#subnav ul li.here {
+  display: block;
+}
+#subnav ul li.here a {
+  text-transform: uppercase;
+  font-size: 24px !important;
+  padding-right: 24px;
+}
+#subnav ul li#subnav-show-all.here {
+  display: none;
+}
+#subnav #kw-message {
+  display: none !important;
+}
+
+#root p, #root li, #root a, #root dd, #root dt {
+  font-size: 16px !important;
+}
+
+h1 {
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+#twitter-widget, #facebook-widget {
+  display: none;
+}
+
+.references-audio-icon, .references-quote-icon {
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+.slideshow .caption {
+  display: none !important;
+}
+.slideshow .caption.active {
+  display: block !important;
+}
+.slideshow img {
+  display: none !important;
+}
+.slideshow img.active {
+  display: block !important;
+}
+
+#footer #footer-body {
+  width: auto !important;
+  min-width: auto !important;
+}
+#footer #footer-smallprint {
+  width: auto !important;
+}
+
+.learn-more {
+  display: none;
+}
+
+#teaser-explorer {
+  display: none;
+}
+
+#teaser-diplomacy101 {
+  display: none;
+}
