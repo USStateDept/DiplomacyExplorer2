@@ -12,33 +12,18 @@
 
         <!-- Core CSS -->
         <link href="img/usdos-logo-seal.png" rel="shortcut icon">
-		<link href="../lib/bootstrap-3.1.1/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<link href="../lib/bootstrap-3.1.1/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="assets/typeahead.js/typeahead.js-bootstrap.css" rel="stylesheet" type="text/css"> <!--https://github.com/jharding/typeahead.js-bootstrap.css-->
+		<link rel="stylesheet" href="../lib/Leaflet-0.7.2/dist/leaflet.css" />
 		<link rel="stylesheet" href="../lib/leaflet-sidebar/src/L.Control.Sidebar.css">
-		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
 		<link rel="stylesheet" href="../lib/Leaflet.markercluster/dist/MarkerCluster.css" />
 		<link rel="stylesheet" href="../lib/Leaflet.markercluster/dist/MarkerCluster.Default.css" />
 		<link rel="stylesheet" href="css/main.css" />
 		<link rel="stylesheet" href="css/screen.css" />
-		
-		<script src="../lib/jquery/jquery-1.11.0.min.js"></script>
-		<script src="../lib/bootstrap-3.1.1/dist/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.2"></script>
-		<script type="text/javascript" src="js/host.js"></script>
-		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-			siteParams();
-			ga('create', gaID, host);
-			ga('send', 'pageview');
-		</script>
-		
-        <!-- Custom styles for this template -->
+		<!-- Custom styles for this template -->
         <style>
-            html, body, #map {
+            html, body, #mainContainer, #map {
                 height: 100%;
                 width: 100%;
                 overflow: hidden;
@@ -246,7 +231,7 @@
                         <a id="securityDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Securing Peace</a>
                         <ul class="dropdown-menu" style="padding:10px;">
                             <h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-							<h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),legendNuc.addTo(map),sidebarNuc.toggle(),allLayersGroup.clearLayers();">Nuclear Arms Control</a></h4>
+							<h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),legendNuc(),allLayersGroup.clearLayers();">Nuclear Arms Control</a></h4>
 							<!--
 							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendNucSign.addTo(map),sidebarNuc.toggle();">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed</a></li>
 							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucDepo),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendNucDepo.addTo(map),sidebarNuc.toggle();">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Deposited</a></li>
@@ -334,7 +319,29 @@
             </div><!--/.navbar-collapse -->
         </div>
 
-        <div id="map"></div>
+        <div class="container" id="mainContainer">
+			<div class="panel panel-default" style="height:100%;">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapseSide">
+							Show/Hide Toggle
+						</a>
+					</h4>
+				</div>
+				<div class="row" style="height:100%;">
+					<div class="col-lg-3 col-md-3 col-sm-3" style="height:100%;">
+						<div class="panel-body panel-collapse collapse in" id="collapseSide">
+							<div style="padding-left: 15px" id="testTabsContentDiv">
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-9 col-md-9 col-sm-9" style="height:100%;">
+						<div id="map"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+							
         <div id="sidebarAC">
 			<h4>Arms Control</h4>
 			<h5 class="lorem">While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h5>
@@ -539,11 +546,16 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-				
-		<script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js?2"></script>
+		
+		
+		
+		<script src="../lib/jquery/jquery-1.11.0.min.js"></script>
+		<script src="../lib/bootstrap-3.1.1/dist/js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/host.js"></script>
+		<script type="text/javascript" src="../lib/Leaflet-0.7.2/dist/leaflet-src.js"></script>
         <script src="../lib/leaflet-sidebar/src/L.Control.Sidebar.js"></script>
 		<script type="text/javascript">
-			var urlWhole = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APA_Data_50m&outputformat=json";
+			var urlWhole = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APA_Data_110m&outputformat=json";
 			var urlWholeHTpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3AHuman_Trafficking_Pts&outputformat=json";
 			var urlWholePEPFARpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APEPFAR_Pts&outputformat=json";
 			var urlWholeNucpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3ANuclear_Pts&outputformat=json";
@@ -1055,7 +1067,7 @@
 			var legendTPCBERA = L.control({position: 'bottomleft'});
 			var legendTPNAFTA = L.control({position: 'bottomleft'});
 			var legendTPWTO = L.control({position: 'bottomleft'});
-			var legendNuc = L.control({position: 'bottomleft'});
+			var legendNuc;
 			var legendNucSign = L.control({position: 'bottomleft'});
 			var legendNucDepo = L.control({position: 'bottomleft'});
 			var legendHT = L.control({position: 'bottomleft'});
@@ -1416,10 +1428,7 @@
 				return divUNHCR;
 			};
 			
-			legendNuc.onAdd = function (map) {
-				currentLegend = legendNuc;
-				currentSidebar = sidebarNuc;
-				sidebarNuc.addTo(map);
+			legendNuc = function () {
 				var divSign = L.DomUtil.create('div'),
 					grades = ['X'],
 					// this is something like a subheader
@@ -1450,18 +1459,44 @@
 					);
 				}
 
-				var name = "Nuclear Arms Control";
-				var description = "<h5 class='lorem'>While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h5><h5 class='lorem'>A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h5><h5 class='lorem'>The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.</h5>";
+				//var name = "Nuclear Arms Control";
 				keyText1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;Non-proliferation Treaty Signed</a>";
 				keyText2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNucDepo),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;Non-proliferation Treaty Deposited</a>";
 				var keySign = labelsSign.join('<br>');
 				var keyDepo = labelsDepo.join('<br>');
-				sidebarNuc.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'>" + keySign + "</div><br/><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + '</div>');
+				var key1 = "<h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'>" + keySign + "</div>";
+				var key2 = "<h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + "</div>";
+				var accStart = "<div class=\"panel-group\" id=\"accordion\">";
+				var description = "<h5 class='lorem'>While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h5><h5 class='lorem'>A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h5><h5 class='lorem'>The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.</h5>";
+				var name1 = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseOne\">Nuclear Arms Control1</a></h4></div>";
+				var desc1 = "<div id=\"collapseOne\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">Description test 1 test test test test 1 test 1 test 1 test 1</div>" + key1 + "</div>";
+				var name2 = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseTwo\">Nuclear Arms Control2</a></h4></div>";
+				var desc2 = "<div id=\"collapseTwo\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Second description test 1 test test test 2 yadda yadda test 2 test 2</div>" + key2 + "</div>";
+				//var name3 = "<div class=\"panel panel-success\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseThree\">Nuclear Arms Control3</a></h4></div>";
+				//var desc3 = "<div id=\"collapseThree\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Second description test 1 test test test 2 yadda yadda test 2 test 2</div></div>";
+				
+				var accEnd = "</div>";
+				
+				var col = "<div class='span collapse-group'><h6 class='collapse' id='viewdetails' style='padding-left: 20px; padding-right: 10px; color: #999; line-height:1.2; margin-bottom: 0px !important;'>yadda yadda yadda yadda yadda yadda yadda yadda yadda yadda yadda</h6><br><div class='btn-group' style='margin:0px 0px 0px 15px;'><button type='button' onclick='alert()' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#viewdetails'>View Details </button></div></div>";
+				
+				//sidebarNuc.setContent(accStart + name1 + desc1 + "</div>" + name2 + desc2 + "</div>" + accEnd + col + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'>" + keySign + "</div><br/><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + '</div>');
 				// attempt at collapsing description with button
 				//sidebarNuc.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'><div class='row'><div class='span collapse-group'><h6 class='collapse' id='viewdetails' style='padding-left: 20px; padding-right: 10px; color: #999; line-height:1.2; margin-bottom: 0px !important;'>" + keySign + "</h6><br><div class='btn-group' style='margin:0px 0px 0px 15px;'><button type='button' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#viewdetails'>View Details </button></div></div></div></div><br/><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + '</div>');
 				//div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarNuc.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return divSign;
-				return divDepo;
+				testTabsContentDiv.innerHTML = accStart + name1 + desc1 + "</div></div>" + name2 + desc2 + "</div></div>" + accEnd + "<br/>";
+				//$('#testModal').modal('show');
+				//sidebarNuc.addTo(map);
+				
+				//sidebarNuc.toggle();
+				//divSign.innerHTML = labelsSign.join('<br>');
+				//divDepo.innerHTML = labelsDepo.join('<br>');
+				//return divSign;
+				//return divDepo;
+				
+				//div.innerHTML = labels.join('<br>');
+				//return div;
+				
+				
 			};
 			
 			legendNucSign.onAdd = function (map) {
@@ -1605,7 +1640,7 @@
 				return div;
 			};
 			
-			function highlightFeature(e) {
+			/*function highlightFeature(e) {
 				var layer = e.target;
 
 				layer.setStyle({
@@ -1625,29 +1660,28 @@
 				geoJsonLayerICAO.resetStyle(e.target);
 				info.update();
 			}
-			
+			*/
 			function zoomToFeature(e) {
 				map.fitBounds(e.target.getBounds());
 			}
 
 			function onEachFeature(feature, layer) {
 				layer.on({
-					click: highlightFeature,
-					mouseout: resetHighlight
+					//click: highlightFeature,
+					//mouseout: resetHighlight
 				});
 			}
 
 			var popup = L.popup();
 
 			function onEachFeaturePts(feature, layer) {
-				var popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "<br />" + feature.properties.Story + "</h5>";
-	
+				var popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "<br /><div class='row'><div class='span collapse-group'><h6 class='collapse' id='viewdetails' style='padding-left: 20px; padding-right: 10px; color: #999; line-height:1.2; margin-bottom: 0px !important;'>" + feature.properties.Story + "</h6><br><div class='btn-group' style='margin:0px 0px 0px 15px;'><button type='button' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#viewdetails'>View Details </button></div></div></div></h5>";
 				if (feature.properties && feature.properties.popupContent) {
 					popupContent += feature.properties.popupContent;
 				}
 				layer.bindPopup(popupContent);
 			}
-			
+			/*
 			var info = L.control({position: "bottomleft"});
 
 			info.onAdd = function (map) {
@@ -1664,7 +1698,18 @@
 			};
 
 			info.addTo(map);
-			
+			*/
         </script>
+		<script type="text/javascript">
+		</script>  
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			siteParams();
+			ga('create', gaID, host);
+			ga('send', 'pageview');
+		</script>
     </body>
 </html>
