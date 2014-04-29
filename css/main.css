@@ -1,4 +1,4 @@
-html, body, #map {
+html, body, #mainContainer, #map {
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -22,63 +22,19 @@ input[type="radio"], input[type="checkbox"] {
   font-weight: normal;
   margin-bottom: 0px;
 }
-.table {
-  margin-bottom: 0px;
-}
 .navbar .navbar-brand {
   font-weight: bold;
   font-size: 25px;
   color: white;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  letter-spacing: 1px;
 }
 .navbar-collapse.in {
   overflow-y: hidden;
 }
-.typeahead {
-  background-color: #FFFFFF;
-}
-.tt-dropdown-menu {
-  background-color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 4px 4px 4px 4px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  margin-top: 4px;
-  padding: 4px 0;
-  width: 100%;
-  max-height: 300px;
-  overflow: auto;
-}
-.tt-suggestion {
-  font-size: 14px;
-  line-height: 20px;
-  padding: 3px 10px;
-}
-.tt-suggestion.tt-cursor {
-  background-color: #0097CF;
-  color: #FFFFFF;
-  cursor: pointer;
-}
-.tt-suggestion p {
-  margin: 0;
-}
-.tt-suggestion + .tt-suggestion {
-  border-top: 1px solid #ccc;
-}
-.typeahead-header {
-  margin: 0 5px 5px 5px;
-  padding: 3px 0;
-  border-bottom: 2px solid #333;
-}
-.has-feedback .form-control-feedback {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: block;
-  width: 34px;
-  height: 34px;
-  line-height: 34px;
-  text-align: center;
-}
 .leaflet-popup-content {
+  overflow-y:scroll;
+  height: 120px !important;
   margin-top: 5px;
   margin-bottom: 5px;
   margin-left: 5px;
@@ -98,6 +54,7 @@ input[type="radio"], input[type="checkbox"] {
 @media (max-width: 992px) {
   .navbar .navbar-brand {
     font-size: 18px;
+    float: left;
   }
 }
 @media (max-width: 767px){
@@ -116,4 +73,55 @@ input[type="radio"], input[type="checkbox"] {
   .leaflet-control-container {
     display: none !important;
   }
+}
+.leaflet-popup-content {
+	margin-right: 19px;
+}
+#viewdetails {
+	overflow-y:scroll;
+	height: 95px !important;
+}
+#viewComments {
+	overflow-y:scroll;
+	height: 95px !important;
+}
+.navbar-inverse {
+	background-color: rgb(25,95,164);
+}
+.navbar-collapse, .navbar-inverse .navbar-form {
+	border-color: rgb(25,95,164);
+}
+.info {
+	padding: 6px 8px;
+	font: 14px/16px Arial, Helvetica, sans-serif;
+	background: white;
+	background: rgba(255,255,255,0.8);
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	border-radius: 5px;
+	margin-bottom: 10px !important;
+	margin-left: 10px !important;
+}
+.legend {
+	text-align: left;
+	line-height: 18px;
+	color: #555;
+}
+.legend i {
+	width: 18px;
+	height: 18px;
+	float: left;
+	margin-right: 8px;
+	opacity: 0.7;
+}
+.leaflet-sidebar .close {
+	right: 20px;
+	top: 20px;
+}
+.dropdown-menu {
+	padding: 10px;
+}
+.legend {
+	padding: 6px 8px;
+	font: 14px/18px Arial, Helvetica, sans-serif;
+	font-weight: bold;
 }
