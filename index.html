@@ -176,9 +176,10 @@
 				background: rgba(255,255,255,0.8);
 				box-shadow: 0 0 15px rgba(0,0,0,0.2);
 				border-radius: 5px;
+				margin-bottom: 10px !important;
+				margin-left: 10px !important;
 			}
 			.info h4 {
-				margin: 0 0 5px;
 				color: #777;
 			}
 
@@ -321,13 +322,6 @@
 
         <div class="container" id="mainContainer">
 			<div class="panel panel-default" style="height:100%;">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapseSide">
-							Show/Hide Toggle
-						</a>
-					</h4>
-				</div>
 				<div class="row" style="height:100%;">
 					<div class="col-lg-3 col-md-3 col-sm-3" style="height:100%;">
 						<div class="panel-body panel-collapse collapse in" id="collapseSide">
@@ -564,6 +558,8 @@
 			var allLayersGroupPts = new L.LayerGroup();
 			
 			var currentLegend;
+			
+			var keyToggle = L.control({position: "bottomleft"});
 			
 			var currentSidebar = L.control();
 			
@@ -1472,8 +1468,6 @@
 				var desc1 = "<div id=\"collapseOne\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">Description test 1 test test test test 1 test 1 test 1 test 1</div>" + key1 + "</div>";
 				var name2 = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseTwo\">Nuclear Arms Control2</a></h4></div>";
 				var desc2 = "<div id=\"collapseTwo\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Second description test 1 test test test 2 yadda yadda test 2 test 2</div>" + key2 + "</div>";
-				//var name3 = "<div class=\"panel panel-success\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseThree\">Nuclear Arms Control3</a></h4></div>";
-				//var desc3 = "<div id=\"collapseThree\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Second description test 1 test test test 2 yadda yadda test 2 test 2</div></div>";
 				
 				var accEnd = "</div>";
 				
@@ -1699,6 +1693,16 @@
 
 			info.addTo(map);
 			*/
+			
+			keyToggle.onAdd = function (map) {
+				this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+				this._div.innerHTML = "<a data-toggle='collapse' data-parent='#accordion' href='#collapseSide'>Show/Hide Toggle</a>";
+				return this._div;
+			};
+
+			// method that we will use to update the control based on feature properties passed
+			
+			keyToggle.addTo(map);
         </script>
 		<script type="text/javascript">
 		</script>  
