@@ -14,22 +14,19 @@
         <link href="img/usdos-logo-seal.png" rel="shortcut icon">
 		<link href="../lib/bootstrap-3.1.1/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="assets/typeahead.js/typeahead.js-bootstrap.css" rel="stylesheet" type="text/css"> <!--https://github.com/jharding/typeahead.js-bootstrap.css-->
 		<link rel="stylesheet" href="../lib/Leaflet-0.7.2/dist/leaflet.css" />
-		<link rel="stylesheet" href="../lib/leaflet-sidebar/src/L.Control.Sidebar.css">
 		<link rel="stylesheet" href="css/main.css" />
 		<!-- Custom styles for this template -->
         <style>
-        </style>
+		</style>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-		
-	 </head>
-	 <body>
+	</head>
+	<body>
 	    <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -45,79 +42,59 @@
                         <a id="securityDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Securing Peace</a>
                         <ul class="dropdown-menu" style="padding:10px;">
                             <h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-							<h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),legendNuc(),allLayersGroup.clearLayers();">Nuclear Arms Control</a></h4>
-							<!--
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendNucSign.addTo(map),sidebarNuc.toggle();">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Signed</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucDepo),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendNucDepo.addTo(map),sidebarNuc.toggle();">&nbsp;&nbsp;Nuclear Non-Proliferation Treaty - Deposited</a></li>
-							-->
-							<h4>Other</h4>
-							<li><a href="#">&nbsp;&nbsp;Counter-terrorism (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Counter-narcotics (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Border Security (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Securing the Seas/Maritime Piracy (tk)</a></li>
+							<h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyNuc(),allLayersGroup.clearLayers();">Nuclear Arms Control</a></h4>
+							<li><h4><a style="color:#333" href="#">Counter-terrorism (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Counter-narcotics (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Border Security (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Securing the Seas/Maritime Piracy (tk)</a></h4></li>
                         </ul>
                     </li>
 					<li class="dropdown">
                         <a id="environmentDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Protecting Resources</a>
                         <ul class="dropdown-menu">
                             <h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-							<li><a href="#">&nbsp;&nbsp;Climate Change (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Environmental Conservation (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Water Security (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Energy Policy (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Endangered Species (tk)</a></li>
+							<li><h4><a style="color:#333" href="#">Climate Change (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Environmental Conservation (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Water Security (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Energy Policy (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Endangered Species (tk)</a></h4></li>
                         </ul>
                     </li>
 					<li class="dropdown">
                         <a id="businessDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Promoting Prosperity</a>
                         <ul class="dropdown-menu">
                             <h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-							<h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerICAO),allLayersGroup.addLayer(geoJsonLayerUNESCO),allLayersGroup.addLayer(geoJsonLayerFAO),allLayersGroup.addLayer(geoJsonLayerOAS),allLayersGroup.addLayer(geoJsonLayerUNGA),allLayersGroup.addLayer(geoJsonLayerOSCE),allLayersGroup.addLayer(geoJsonLayerOECD),allLayersGroup.addLayer(geoJsonLayerNATO),allLayersGroup.addLayer(geoJsonLayerEU),allLayersGroup.addLayer(geoJsonLayerAU),allLayersGroup.addLayer(geoJsonLayerUNHCR),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),legendMLO.addTo(map),sidebarMLO.toggle(),allLayersGroup.clearLayers();">Multi-lateral Organizations</a></h4>
-							<h4>Trade Promotion</h4>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPAPEC),map.addLayer(allLayersGroup),legendTPAPEC.addTo(map);">&nbsp;&nbsp;APEC Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPASEAN),map.addLayer(allLayersGroup),legendTPASEAN.addTo(map);">&nbsp;&nbsp;ASEAN Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPCAFTA),map.addLayer(allLayersGroup),legendTPCAFTA.addTo(map);">&nbsp;&nbsp;CAFTA Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPCBERA),map.addLayer(allLayersGroup),legendTPCBERA.addTo(map);">&nbsp;&nbsp;CBERA Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPNAFTA),map.addLayer(allLayersGroup),legendTPNAFTA.addTo(map);">&nbsp;&nbsp;NAFTA Membership</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPWTO),map.addLayer(allLayersGroup),legendTPWTO.addTo(map);">&nbsp;&nbsp;WTO Membership</a></li>
-							<h4>Other</h4>
-							<li><a href="#">&nbsp;&nbsp;Good Governance (trade legislation) (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Border Security (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Securing the Seas/Maritime Piracy (tk)</a></li>
+							<h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerMLOICAO),allLayersGroup.addLayer(geoJsonLayerMLOUNESCO),allLayersGroup.addLayer(geoJsonLayerMLOFAO),allLayersGroup.addLayer(geoJsonLayerMLOOAS),allLayersGroup.addLayer(geoJsonLayerMLOUNGA),allLayersGroup.addLayer(geoJsonLayerMLOOSCE),allLayersGroup.addLayer(geoJsonLayerMLOOECD),allLayersGroup.addLayer(geoJsonLayerMLONATO),allLayersGroup.addLayer(geoJsonLayerMLOEU),allLayersGroup.addLayer(geoJsonLayerMLOAU),allLayersGroup.addLayer(geoJsonLayerMLOUNHCR),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyMLO(),allLayersGroup.clearLayers();">Multi-Lateral Organizations</a></h4>
+							<h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPAPEC),allLayersGroup.addLayer(geoJsonLayerTPASEAN),allLayersGroup.addLayer(geoJsonLayerTPCAFTA),allLayersGroup.addLayer(geoJsonLayerTPCBERA),allLayersGroup.addLayer(geoJsonLayerTPNAFTA),allLayersGroup.addLayer(geoJsonLayerTPWTO),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyTP(),allLayersGroup.clearLayers();">Trade Promotion</a></h4>
+							<li><h4><a style="color:#333" href="#">Good Governance (trade legislation) (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Border Security (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Securing the Seas/Maritime Piracy (tk)</a></h4></li>
 						</ul>
                     </li>
 					<li class="dropdown">
                         <a id="rightsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Respecting Rights</a>
                         <ul class="dropdown-menu">
                             <h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-							<li><a href="#">&nbsp;&nbsp;Free and Fair Elections (tk)</a></li>
-                            <li><a href="#">&nbsp;&nbsp;Independent Media (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Independent Judiciacy (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Minority Rights (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Women's Rights (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Religious Freedom (tk)</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendHT.addTo(map),sidebarHT.toggle();">&nbsp;&nbsp;Human Trafficking</a></li>							
+							<li><h4><a style="color:#333"href="#">&nbsp;&nbsp;Free and Fair Elections (tk)</a></li>
+                            <li><h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyHT(),allLayersGroup.clearLayers();">&nbsp;&nbsp;Human Trafficking</a></li>
+							<li><h4><a style="color:#333" href="#">Independent Media (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Independent Judiciacy (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Minority Rights (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Religious Freedom (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Women's Rights (tk)</a></h4></li>
                         </ul>
                     </li>
 					<li class="dropdown">
                         <a id="livesDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Saving Lives</a>
                         <ul class="dropdown-menu">
 							<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-							<h4>Health Issues</h4>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerPEPFAR),allLayersGroupPts.addLayer(geoJsonLayerPEPFARpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),legendPEPFAR.addTo(map),sidebarPEPFAR.toggle();">&nbsp;&nbsp;PEPFAR</a></li>
-							<li><a onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerMHAC),map.addLayer(allLayersGroup),legendMHAC.addTo(map),sidebarMHAC.toggle();">&nbsp;&nbsp;Maternal Health - Access to Care</a></li>
-							<li><a href="#">&nbsp;&nbsp;HIV/AIDS (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Avian Flu (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Malaria (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Polio (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Tuberculosis (tk)</a></li>							
-							<h4>Other</h4>
-							<li><a href="#">&nbsp;&nbsp;Counter-narcotics (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Disaster Assistance (tk)</a></li>
-							<li><a href="#">&nbsp;&nbsp;Refugee Assistance (tk)</a></li>
+							<h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHIAV),allLayersGroup.addLayer(geoJsonLayerHIHIVAIDS),allLayersGroup.addLayer(geoJsonLayerHIM),allLayersGroup.addLayer(geoJsonLayerHIMHAC),allLayersGroup.addLayer(geoJsonLayerHIPEPFAR),allLayersGroup.addLayer(geoJsonLayerHIP),allLayersGroup.addLayer(geoJsonLayerHIT),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyHI(),allLayersGroup.clearLayers();">Health Issues</a></h4>
+							<li><h4><a style="color:#333" href="#">Counter-narcotics (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Disaster Assistance (tk)</a></h4></li>
+							<li><h4><a style="color:#333" href="#">Refugee Assistance (tk)</a></h4></li>
                         </ul>
                     </li>
-					<li class="dropdown">
+					<!--<li class="dropdown">
                         <a id="infoDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Accessing Information</a>
                         <ul class="dropdown-menu">
 							<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
@@ -126,7 +103,7 @@
 							<li><a href="#">&nbsp;&nbsp;Intellectual Property Protection (tk)</a></li>
 							<li><a href="#">&nbsp;&nbsp;Science/Technology Promotion (tk)</a></li>
                         </ul>
-                    </li>
+                    </li>-->
 					<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#shareModal').modal('show'); return false;">Share</a></li>
 					<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#aboutModal').modal('show'); return false;">About</a></li>
                 </ul>
@@ -138,7 +115,7 @@
 				<div class="row" style="height:100%;">
 					<div class="col-lg-3 col-md-3 col-sm-3" style="height:100%;">
 						<div class="panel-body panel-collapse collapse in" id="collapseSide">
-							<div style="padding-left: 15px" id="testTabsContentDiv">
+							<div style="padding-left: 15px" id="mapKey">
 							</div>
 						</div>
 					</div>
@@ -147,41 +124,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-							
-        <div id="sidebarAC">
-			<h4>Arms Control</h4>
-			<h5 class="lorem">While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h5>
-		</div>
-		<div id="sidebarIIP">
-			<h4>International Intellectual Property Enforcement</h4>
-			<h5 class="lorem">From California’s Silicon Valley to Texas’s Clean Energy Incubator and the Biotech Beltway around Washington, D.C., the United States is the world leader in innovative products and services. American – and their international counterparts --companies, workers, researchers, scientists, entertainers, and entrepreneurs have a right to benefit from their inventions and creative products.  </h5>
-			<h5 class="lorem">Equitable innovation policies around the world and robust laws and enforcement measures are needed to protect intellectual property rights for all of us—business, labor, academia, and government.  Not only do counterfeit products such as pirated CDs and DVDs, fake or unlicensed pharmaceuticals, and even fake airplane parts undercut US economic security by an estimated $5 trillion per year, they often pose a threat to the health and safety of the public.  </h5>
-			<h5 class="lorem">The Office of International Intellectual Property Enforcement promotes American and global innovation by advocating for the effective protection and enforcement of intellectual property rights (IPR) around the world.  It negotiates with international organizations, oversees the distribution of training and technical assistance funds to help developing countries build IPR law enforcement capacity, and undertakes public diplomacy programs to generate awareness of the importance of IPR protection in the global economy. </h5>
-		</div>
-		<div id="sidebarTP">
-			<h4>Trade Promotion</h4>
-			<h5 class="lorem">The United States Government, through multiple agencies, advances U.S. trade policy objectives by opening new export opportunities for American businesses, farmers, ranchers and workers through global, regional and bilateral trade initiatives - including free trade agreements (FTAs) and the World Trade Organization (WTO). In partnership these agencies work to maximize the benefits of open markets for global economic development, address and resolve trade disputes, strengthen intellectual property enforcement, and improve access for U.S. goods and services abroad.</h5>
-			<h5 class="lorem">The Office of the U.S. Trade Representative (USTR) is responsible for developing and coordinating U.S. international trade, commodity, and direct investment policy, and overseeing negotiations with other countries.</h5>
-			<h5 class="lorem">The U.S. Commercial Service is the trade promotion arm of the U.S. Department of Commerce’s International Trade Administration. U.S. Commercial Service trade professionals in over 100 U.S. cities and in more than 75 countries help U.S. companies get started in exporting or increasing sales to new global markets. The U.S. Commercial Service offers the trade counseling, market intelligence, business matchmaking, and commercial diplomacy you need to connect with lucrative business opportunities.</h5>
-			<h5 class="lorem">National Export Initiative</h5>
-			<h5 class="lorem">To strengthen America’s economy, support additional jobs here at home, and ensure long-term, sustainable growth, President Obama launched a government-wide strategy to promote exports. The National Export Initiative (NEI) is one essential component of that strategy.</h5>
-			<h5 class="lorem">The Obama Administration has made it a top priority to improve the conditions that directly affect the private sector’s ability to export, working to remove trade barriers abroad, help firms of all sizes and farmers overcome hurdles to entering new markets, and assist with financing. In addition, we have renewed and revitalized our efforts to promote American exports abroad. These efforts are paying off – and helping to change the way America does business. Now more than at any time in our history, Americans are selling more U.S. goods and services to the 95 percent of consumers who live outside of our borders.</h5>
-			<h5 class="lorem">The United States Government, through multiple agencies, advances U.S. trade policy objectives by opening new export opportunities for American businesses, farmers, ranchers and workers through global, regional and bilateral trade initiatives - including free trade agreements (FTAs) and the World Trade Organization (WTO). In partnership these agencies work to maximize the benefits of open markets for global economic development, address and resolve trade disputes, strengthen intellectual property enforcement, and improve access for U.S. goods and services abroad.</h5>
-		</div>
-		<div id="sidebarICAO">
-		</div>
-		<div id="sidebarPEPFAR">
-		</div>
-		<div id="sidebarMHAC">
-		</div>
-		<div id="sidebarHT">
-		</div>
-		<div id="sidebarNuc">
-		</div>
-		<div id="sidebarMLO">
-		</div>
-		<div id="sidebar">
 		</div>
 		
 		<div id="loading" style="display:block;">
@@ -360,8 +302,7 @@
 		<script src="../lib/bootstrap-3.1.1/dist/js/bootstrap.js"></script>
 		<script type="text/javascript" src="js/host.js"></script>
 		<script type="text/javascript" src="../lib/Leaflet-0.7.2/dist/leaflet-src.js"></script>
-        <script src="../lib/leaflet-sidebar/src/L.Control.Sidebar.js"></script>
-		<script type="text/javascript">
+        <script type="text/javascript">
 			var urlWhole = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APA_Data_110m&outputformat=json";
 			var urlWholeHTpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3AHuman_Trafficking_Pts&outputformat=json";
 			var urlWholePEPFARpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APEPFAR_Pts&outputformat=json";
@@ -374,24 +315,27 @@
 			
 			var keyToggle = L.control({position: "bottomleft"});
 			
-			var currentSidebar = L.control();
-			
 			function getGeoJson(data) {
-				geoJsonLayerPEPFAR = new L.geoJson(data, {style: StylePEPFAR});
 				geoJsonLayerHT = new L.geoJson(data, {style: StyleHT});
-				geoJsonLayerMHAC = new L.geoJson(data, {style: StyleMHAC});
+				geoJsonLayerHIAV = new L.geoJson(data, {style: StyleHIAV});
+				geoJsonLayerHIHIVAIDS = new L.geoJson(data, {style: StyleHIHIVAIDS});
+				geoJsonLayerHIM = new L.geoJson(data, {style: StyleHIM});
+				geoJsonLayerHIMHAC = new L.geoJson(data, {style: StyleHIMHAC});
+				geoJsonLayerHIPEPFAR = new L.geoJson(data, {style: StyleHIPEPFAR});
+				geoJsonLayerHIP = new L.geoJson(data, {style: StyleHIP});
+				geoJsonLayerHIT = new L.geoJson(data, {style: StyleHIT});
 				//geoJsonLayerICAO = new L.geoJson(data, {style: StyleMLOMemberICAO, onEachFeature: onEachFeature});
-				geoJsonLayerICAO = new L.geoJson(data, {style: StyleMLOMemberICAO});
-				geoJsonLayerUNESCO = new L.geoJson(data, {style: StyleMLOMemberUNESCO});
-				geoJsonLayerFAO = new L.geoJson(data, {style: StyleMLOMemberFAO});
-				geoJsonLayerOAS = new L.geoJson(data, {style: StyleMLOMemberOAS});
-				geoJsonLayerUNGA = new L.geoJson(data, {style: StyleMLOMemberUNGA});
-				geoJsonLayerOSCE = new L.geoJson(data, {style: StyleMLOMemberOSCE});
-				geoJsonLayerOECD = new L.geoJson(data, {style: StyleMLOMemberOECD});
-				geoJsonLayerNATO = new L.geoJson(data, {style: StyleMLOMemberNATO});
-				geoJsonLayerEU = new L.geoJson(data, {style: StyleMLOMemberEU});
-				geoJsonLayerAU = new L.geoJson(data, {style: StyleMLOMemberAU});
-				geoJsonLayerUNHCR = new L.geoJson(data, {style: StyleMLOMemberUNHCR});
+				geoJsonLayerMLOAU = new L.geoJson(data, {style: StyleMLOMemberAU});
+				geoJsonLayerMLOEU = new L.geoJson(data, {style: StyleMLOMemberEU});
+				geoJsonLayerMLOFAO = new L.geoJson(data, {style: StyleMLOMemberFAO});
+				geoJsonLayerMLOICAO = new L.geoJson(data, {style: StyleMLOMemberICAO});
+				geoJsonLayerMLONATO = new L.geoJson(data, {style: StyleMLOMemberNATO});
+				geoJsonLayerMLOOAS = new L.geoJson(data, {style: StyleMLOMemberOAS});
+				geoJsonLayerMLOOECD = new L.geoJson(data, {style: StyleMLOMemberOECD});
+				geoJsonLayerMLOOSCE = new L.geoJson(data, {style: StyleMLOMemberOSCE});
+				geoJsonLayerMLOUNESCO = new L.geoJson(data, {style: StyleMLOMemberUNESCO});
+				geoJsonLayerMLOUNHCR = new L.geoJson(data, {style: StyleMLOMemberUNHCR});
+				geoJsonLayerMLOUNGA = new L.geoJson(data, {style: StyleMLOMemberUNGA});
 				geoJsonLayerNucSign = new L.geoJson(data, {style: StyleNucSign});
 				geoJsonLayerNucDepo = new L.geoJson(data, {style: StyleNucDepo});
 				geoJsonLayerTPAPEC = new L.geoJson(data, {style: StyleTPAPEC});
@@ -411,7 +355,7 @@
 			
 			function getGeoJsonPts(data){
 				geoJsonLayerHTpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
-				geoJsonLayerPEPFARpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
+				geoJsonLayerHIPEPFARpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
 				geoJsonLayerNucpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
 			}
 			
@@ -446,18 +390,6 @@
 				{ attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors' }
 			);
 
-			function getColorPEPFAR(d) {
-				if (d == '3') {
-					return	'#FC4E2A'
-				} else if (d == '2') {
-					return	'#FD8D3C'
-				} else if (d == '1') {
-					return	'#CACF9B'
-				} else {
-					return	'#ddd';
-				}
-			}
-		
 			function getColorHT(d) {
 				if (d == 'Special Case') {
 					return	'#499DD6'
@@ -476,7 +408,19 @@
 				}
 			}
 			
-			function getColorMHAC(d) {
+			function getColorHIAV(d) {
+				if (d == '3') {
+					return	'#FC4E2A'
+				} else if (d == '2') {
+					return	'#FD8D3C'
+				} else if (d == '1') {
+					return	'#CACF9B'
+				} else {
+					return	'#ddd';
+				}
+			}
+		
+			function getColorHIHIVAIDS(d) {
 				if (d == 'Excellent') {
 					return	'#00BDFF'
 				} else if (d == 'Good') {
@@ -492,6 +436,70 @@
 				}
 			}
 			
+			function getColorHIM(d) {
+				if (d == '3') {
+					return	'#FC4E2A'
+				} else if (d == '2') {
+					return	'#FD8D3C'
+				} else if (d == '1') {
+					return	'#CACF9B'
+				} else {
+					return	'#ddd';
+				}
+			}
+		
+			function getColorHIMHAC(d) {
+				if (d == 'Excellent') {
+					return	'#00BDFF'
+				} else if (d == 'Good') {
+					return	'#009DD4'
+				} else if (d == 'Fair') {
+					return	'#007BA6'
+				} else if (d == 'Poor') {
+					return	'#004E69'
+				} else if (d == 'Unsuitable') {
+					return	'#002430'
+				} else {
+					return	'#ddd';
+				}
+			}
+			
+			function getColorHIPEPFAR(d) {
+				if (d == '3') {
+					return	'#FC4E2A'
+				} else if (d == '2') {
+					return	'#FD8D3C'
+				} else if (d == '1') {
+					return	'#CACF9B'
+				} else {
+					return	'#ddd';
+				}
+			}
+		
+			function getColorHIP(d) {
+				if (d == '3') {
+					return	'#FC4E2A'
+				} else if (d == '2') {
+					return	'#FD8D3C'
+				} else if (d == '1') {
+					return	'#CACF9B'
+				} else {
+					return	'#ddd';
+				}
+			}
+		
+			function getColorHIT(d) {
+				if (d == '3') {
+					return	'#FC4E2A'
+				} else if (d == '2') {
+					return	'#FD8D3C'
+				} else if (d == '1') {
+					return	'#CACF9B'
+				} else {
+					return	'#ddd';
+				}
+			}
+		
 			function getColorMLOMember(d) {
 				if (d == 'Member') {
 					return	'#FC4E2A'
@@ -566,16 +574,6 @@
 				}
 			}
 	*/		
-			function StylePEPFAR(feature) {
-				return {
-					weight: 1,
-					opacity: 1,
-					color: 'white',
-					fillOpacity: 0.7,
-					fillColor: getColorPEPFAR(feature.properties.PEPFAR)
-				};
-			}
-			
 			function StyleHT(feature) {
 				return {
 					weight: 1,
@@ -586,13 +584,73 @@
 				};
 			}
 			
-			function StyleMHAC(feature) {
+			function StyleHIAV(feature) {
 				return {
 					weight: 1,
 					opacity: 1,
 					color: 'white',
 					fillOpacity: 0.7,
-					fillColor: getColorMHAC(feature.properties.Maternity_Health_Access_to_Care)
+					fillColor: getColorHIAV(feature.properties.Avian_Flu)
+				};
+			}
+			
+			function StyleHIHIVAIDS(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorHIHIVAIDS(feature.properties.HIVAIDS)
+				};
+			}
+			
+			function StyleHIM(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorHIM(feature.properties.Malaria)
+				};
+			}
+			
+			function StyleHIMHAC(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorHIMHAC(feature.properties.Maternity_Health_Access_to_Care)
+				};
+			}
+			
+			function StyleHIPEPFAR(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorHIPEPFAR(feature.properties.PEPFAR)
+				};
+			}
+			
+			function StyleHIP(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorHIP(feature.properties.Polio)
+				};
+			}
+			
+			function StyleHIT(feature) {
+				return {
+					weight: 1,
+					opacity: 1,
+					color: 'white',
+					fillOpacity: 0.7,
+					fillColor: getColorHIT(feature.properties.Tuberculosis)
 				};
 			}
 			
@@ -815,636 +873,744 @@
 			
 			new L.Control.Zoom({ position: 'topright' }).addTo(map);
 			
-			var sidebarIIP = L.control.sidebar("sidebarIIP", {
-				closeButton: true,
-				position: "left"
-			});
-			
-			var sidebarAC = L.control.sidebar("sidebarAC", {
-				closeButton: true,
-				position: "left"
-			});
-			
-			var sidebarTP = L.control.sidebar("sidebarTP", {
-				closeButton: true,
-				position: "left"
-			});
-			
-			var sidebarICAO = L.control.sidebar("sidebarICAO", {
-				closeButton: true,
-				position: "left"
-			});
-			
-			var sidebarPEPFAR = L.control.sidebar("sidebarPEPFAR", {
-				closeButton: true,
-				position: "left"
-			});
-			
-			var sidebarMHAC = L.control.sidebar("sidebarMHAC", {
-				closeButton: true,
-				position: "left"
-			});
-			
-			var sidebarHT = L.control.sidebar("sidebarHT", {
-				closeButton: true,
-				position: "left"
-			});
-			
-			var sidebarNuc = L.control.sidebar("sidebarNuc", {
-				closeButton: true,
-				position: "left"
-			});
-			
-			var sidebarMLO = L.control.sidebar("sidebarMLO", {
-				closeButton: true,
-				position: "left"
-			});
-			
-			var sidebar = L.control.sidebar("sidebar", {
-				closeButton: true,
-				position: "left"
-			});
-			
 			$(document).one("ajaxStop", function() {
                 $("#loading").hide();
 			});
 			
-			var legendMLO = L.control({position: 'bottomleft'});
-			var legendTPAPEC = L.control({position: 'bottomleft'});
-			var legendTPASEAN = L.control({position: 'bottomleft'});
-			var legendTPCAFTA = L.control({position: 'bottomleft'});
-			var legendTPCBERA = L.control({position: 'bottomleft'});
-			var legendTPNAFTA = L.control({position: 'bottomleft'});
-			var legendTPWTO = L.control({position: 'bottomleft'});
-			var legendNuc;
-			var legendNucSign = L.control({position: 'bottomleft'});
-			var legendNucDepo = L.control({position: 'bottomleft'});
-			var legendHT = L.control({position: 'bottomleft'});
-			var legendPEPFAR = L.control({position: 'bottomleft'});
-			var legendMHAC = L.control({position: 'bottomleft'});
+			var keyNuc;
+			var keyMLO;
+			var keyTP;
+			var keyHI;
+			var keyHT;
 			
 			function changeLayer() {
 				allLayersGroup.clearLayers();
 				allLayersGroupPts.clearLayers();
-				if (currentSidebar.getPosition() === 'left') {
-					map.removeControl(currentSidebar);
-				}
 			}
 			
-			legendTPAPEC.onAdd = function (map) {
-				currentLegend = legendTPAPEC;
-				currentSidebar = sidebarTP;
-				sidebarTP.addTo(map);
-				var div = L.DomUtil.create('div'),
+			keyTP = function () {
+				var categoryName = "Trade Promotion";
+				var categoryDescription = "<h5 class='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a nibh ac ligula consequat sollicitudin. Curabitur placerat metus in dictum tempus. Maecenas ut lectus ac massa cursus rutrum. In euismod auctor nisl vitae aliquet. Curabitur vel bibendum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum diam, interdum quis hendrerit sit amet, malesuada nec sem. Quisque ut sem vitae lorem aliquet fermentum vitae ac mauris. Nunc justo lorem, cursus eget consequat et, ornare in ante. Etiam ornare purus nec gravida aliquam. Donec pharetra et justo sed mollis. Suspendisse a ipsum ultrices, bibendum mi a, semper risus. Nam dictum leo id lacus varius, nec pharetra tortor eleifend. Aenean nunc eros, auctor vitae faucibus et, venenatis eu nisl.</h5>";
+				
+				var key1Subject = "APEC Membership";
+				var key2Subject = "ASEAN Membership";
+				var key3Subject = "CAFTA Membership";
+				var key4Subject = "CBERA Membership";
+				var key5Subject = "NAFTA Membership";
+				var key6Subject = "WTO Membership";
+				var key1Layer = "geoJsonLayerTPAPEC";
+				var key2Layer = "geoJsonLayerTPASEAN";
+				var key3Layer = "geoJsonLayerTPCAFTA";
+				var key4Layer = "geoJsonLayerTPCBERA";
+				var key5Layer = "geoJsonLayerTPNAFTA";
+				var key6Layer = "geoJsonLayerTPWTO";
+				var key1LayerPts = "";
+				var key2LayerPts = "";
+				var key3LayerPts = "";
+				var key4LayerPts = "";
+				var key5LayerPts = "";
+				var key6LayerPts = "";
+				var key1Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.";
+				var key2Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus semper quam vel egestas. Nulla tempus hendrerit justo vel auctor. Pellentesque sollicitudin quis nulla et ornare. Nam rhoncus malesuada neque, a vulputate purus eleifend in.";
+				var key3Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in aliquam tortor, eu commodo neque. Cras pellentesque vitae turpis quis adipiscing. Donec ut nisl feugiat, aliquet ligula sit amet, lacinia tortor. Maecenas consectetur dolor vitae.";
+				var key4Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie mauris at blandit convallis. Vestibulum molestie feugiat mi eget malesuada. Vivamus at diam quis sem porta aliquam. Integer sapien nulla, viverra ac vehicula et, scelerisque.";
+				var key5Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis dui tortor, vel tristique sem condimentum a. Etiam tincidunt magna eu odio pretium, vel posuere metus adipiscing. Donec et purus turpis. Ut sodales sit amet.";
+				var key6Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In adipiscing aliquam tellus at congue. Vivamus vitae vehicula lorem. Etiam pulvinar mauris vitae euismod pellentesque. Mauris venenatis tellus in turpis hendrerit porta. Cras eu est lacinia.";
+				
+				var key1div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
-					labels = [],
+					key1Labels = [],
 					from;
 
 				for (var i = 0; i < grades.length; i++) {
 					from = ['Member', 'Not a member'];
 					
-					labels.push(
+					key1Labels.push(
 						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in APEC</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarTP.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-
-			legendTPASEAN.onAdd = function (map) {
-				currentLegend = legendTPASEAN;
-				currentSidebar = sidebarTP;
-				sidebarTP.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in ASEAN</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarTP.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-
-			legendTPCAFTA.onAdd = function (map) {
-				currentLegend = legendTPCAFTA;
-				currentSidebar = sidebarTP;
-				sidebarTP.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in CAFTA</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarTP.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-
-			legendTPCBERA.onAdd = function (map) {
-				currentLegend = legendTPCBERA;
-				currentSidebar = sidebarTP;
-				sidebarTP.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in CBERA</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarTP.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-
-			legendTPNAFTA.onAdd = function (map) {
-				currentLegend = legendTPNAFTA;
-				currentSidebar = sidebarTP;
-				sidebarTP.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in NAFTA</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarTP.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-
-			legendTPWTO.onAdd = function (map) {
-				currentLegend = legendTPWTO;
-				currentSidebar = sidebarTP;
-				sidebarTP.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labels = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labels.push(
-						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				div.innerHTML = '<h4>Membership in WTO</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarTP.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-
-			legendMLO.onAdd = function (map) {
-				currentLegend = legendMLO;
-				currentSidebar = sidebarMLO;
-				sidebarMLO.addTo(map);
-				var divICAO = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labelsICAO = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labelsICAO.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
 				
-				var divUNESCO = L.DomUtil.create('div'),
+				var key2div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
-					labelsUNESCO = [],
+					key2Labels = [],
 					from;
 
 				for (var i = 0; i < grades.length; i++) {
 					from = ['Member', 'Not a member'];
 					
-					labelsUNESCO.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+					key2Labels.push(
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
 
-				var divFAO = L.DomUtil.create('div'),
+				var key3div = L.DomUtil.create('div'),
 					grades = ['Member','null'],
 					// this is something like a subheader
-					labelsFAO = [],
+					key3Labels = [],
 					from;
 
 				for (var i = 0; i < grades.length; i++) {
 					from = ['Member', 'Not a member'];
 					
-					labelsFAO.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				var divOAS = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labelsOAS = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labelsOAS.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				var divUNGA = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labelsUNGA = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labelsUNGA.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				var divOSCE = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labelsOSCE = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labelsOSCE.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				var divOECD = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labelsOECD = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labelsOECD.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				var divNATO = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labelsNATO = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labelsNATO.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				var divEU = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labelsEU = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labelsEU.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				var divAU = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labelsAU = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labelsAU.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				var divUNHCR = L.DomUtil.create('div'),
-					grades = ['Member','null'],
-					// this is something like a subheader
-					labelsUNHCR = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Member', 'Not a member'];
-					
-					labelsUNHCR.push(
-						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-						from[i]
-					);
-				}
-
-				var name = "Multi-lateral Organizations";
-				var description = "<h5 class='lorem'>MLO description ...</h5>";
-				keyText1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerICAO),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;ICAO Membership</a>";
-				keyText2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerUNESCO),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;UNESCO Membership</a>";
-				keyText3 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerFAO),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;FAO Membership</a>";
-				keyText4 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerOAS),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;OAS Membership</a>";
-				keyText5 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerUNGA),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;UN-GA Membership</a>";
-				keyText6 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerOSCE),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;OSCE Membership</a>";
-				keyText7 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerOECD),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;OECD Membership</a>";
-				keyText8 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNATO),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;NATO Membership</a>";
-				keyText9 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerEU),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;EU Membership</a>";
-				keyText10 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerAU),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;AU Membership</a>";
-				keyText11 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerUNHCR),map.addLayer(allLayersGroup);\">&nbsp;&nbsp;UNHCR Membership</a>";
-				var keyICAO = labelsICAO.join('<br>');
-				var keyUNESCO = labelsUNESCO.join('<br>');
-				var keyFAO = labelsFAO.join('<br>');
-				var keyOAS = labelsOAS.join('<br>');
-				var keyUNGA = labelsUNGA.join('<br>');
-				var keyOSCE = labelsOSCE.join('<br>');
-				var keyOECD = labelsOECD.join('<br>');
-				var keyNATO = labelsNATO.join('<br>');
-				var keyEU = labelsEU.join('<br>');
-				var keyAU = labelsAU.join('<br>');
-				var keyUNHCR = labelsUNHCR.join('<br>');
-				sidebarMLO.setContent("<h4>" + name + "</h4>" + description + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'>" + keyICAO + "</div><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyUNESCO + "</div><h5 style='font-weight:bold'>" + keyText3 + "</h5>" + "<div class='legend'>" + keyFAO + "</div><h5 style='font-weight:bold'>" + keyText4 + "</h5>" + "<div class='legend'>" + keyUNGA + "</div><h5 style='font-weight:bold'>" + keyText5 + "</h5>" + "<div class='legend'>" + keyOSCE + "</div><h5 style='font-weight:bold'>" + keyText6 + "</h5>" + "<div class='legend'>" + keyOECD + "</div><h5 style='font-weight:bold'>" + keyText7 + "</h5>" + "<div class='legend'>" + keyNATO + "</div><h5 style='font-weight:bold'>" + keyText8 + "</h5>" + "<div class='legend'>" + keyEU + "</div><h5 style='font-weight:bold'>" + keyText9 + "</h5>" + "<div class='legend'>" + keyEU + "</div><h5 style='font-weight:bold'>" + keyText10 + "</h5>" + "<div class='legend'>" + keyAU + "</div><h5 style='font-weight:bold'>" + keyText11 + "</h5>" + "<div class='legend'>" + keyUNHCR + "</div>");
-				
-				return divICAO;
-				return divUNESCO;
-				return divFAO;
-				return divOAS;
-				return divUNGA;
-				return divOSCE;
-				return divOECD;
-				return divNATO;
-				return divEU;
-				return divAU;
-				return divUNHCR;
-			};
-			
-			legendNuc = function () {
-				var divSign = L.DomUtil.create('div'),
-					grades = ['X'],
-					// this is something like a subheader
-					labelsSign = [],
-					from;
-
-				for (var i = 0; i < grades.length; i++) {
-					from = ['Signed'];
-					
-					labelsSign.push(
-						'<i style="background:' + getColorNucSign(grades[i]) + '"></i>' +
+					key3Labels.push(
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
 				
-				var divDepo = L.DomUtil.create('div'),
-					grades = ['X'],
+				var key4div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
 					// this is something like a subheader
-					labelsDepo = [],
+					key4Labels = [],
 					from;
 
 				for (var i = 0; i < grades.length; i++) {
-					from = ['Deposited'];
+					from = ['Member', 'Not a member'];
 					
-					labelsDepo.push(
-						'<i style="background:' + getColorNucDepo(grades[i]) + '"></i>' +
+					key4Labels.push(
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
+				
+				var key5div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					key5Labels = [],
+					from;
 
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					key5Labels.push(
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var key6div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					key6Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					key6Labels.push(
+						'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
 				//var name = "Nuclear Arms Control";
-				keyText1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;Non-proliferation Treaty Signed</a>";
-				keyText2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(geoJsonLayerNucDepo),allLayersGroupPts.addLayer(geoJsonLayerNucpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;Non-proliferation Treaty Deposited</a>";
-				var keySign = labelsSign.join('<br>');
-				var keyDepo = labelsDepo.join('<br>');
-				var key1 = "<h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'>" + keySign + "</div>";
-				var key2 = "<h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + "</div>";
-				var accStart = "<div class=\"panel-group\" id=\"accordion\">";
-				var description = "<h5 class='lorem'>While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h5><h5 class='lorem'>A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h5><h5 class='lorem'>The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.</h5>";
-				var name1 = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseOne\">Nuclear Arms Control1</a></h4></div>";
-				var desc1 = "<div id=\"collapseOne\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">Description test 1 test test test test 1 test 1 test 1 test 1</div>" + key1 + "</div>";
-				var name2 = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseTwo\">Nuclear Arms Control2</a></h4></div>";
-				var desc2 = "<div id=\"collapseTwo\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Second description test 1 test test test 2 yadda yadda test 2 test 2</div>" + key2 + "</div>";
+				var keyTitle1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key1Subject + "</a>";
+				var keyTitle2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key2Subject + "</a>";
+				var keyTitle3 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key3Subject + "</a>";
+				var keyTitle4 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key4Layer + "),allLayersGroupPts.addLayer(" + key4LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key4Subject + "</a>";
+				var keyTitle5 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key5Layer + "),allLayersGroupPts.addLayer(" + key5LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key5Subject + "</a>";
+				var keyTitle6 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key6Layer + "),allLayersGroupPts.addLayer(" + key6LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key6Subject + "</a>";
 				
-				var accEnd = "</div>";
+				var key1 = key1Labels.join('<br>');
+				var key2 = key2Labels.join('<br>');
+				var key3 = key3Labels.join('<br>');
+				var key4 = key4Labels.join('<br>');
+				var key5 = key5Labels.join('<br>');
+				var key6 = key6Labels.join('<br>');
+				var key1panel = "<div class='legend'>" + key1 + "</div>";
+				var key2panel = "<div class='legend'>" + key2 + "</div>";
+				var key3panel = "<div class='legend'>" + key3 + "</div>";
+				var key4panel = "<div class='legend'>" + key4 + "</div>";
+				var key5panel = "<div class='legend'>" + key5 + "</div>";
+				var key6panel = "<div class='legend'>" + key6 + "</div>";
+				var accordionStart = "<div class=\"panel-group\" id=\"accordion\">";
+				var categoryAccordionTitle = "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + categoryName + "</a></h4></div>";
+				var catAccordionPanel = "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + categoryDescription + "</div>";
+				var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse1\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key1Subject + "</a></h4></div>";
+				var key1AccordionPanel = "<div id=\"collapse1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key1Description + "</div>" + key1panel + "</div>";
+				var key2AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse2\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key2Subject + "</a></h4></div>";
+				var key2AccordionPanel = "<div id=\"collapse2\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key2Description + "</div>" + key2panel + "</div>";
+				var key3AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse3\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key3Subject + "</a></h4></div>";
+				var key3AccordionPanel = "<div id=\"collapse3\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key3Description + "</div>" + key3panel + "</div>";
+				var key4AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse4\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key4Layer + "),allLayersGroupPts.addLayer(" + key4LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key4Subject + "</a></h4></div>";
+				var key4AccordionPanel = "<div id=\"collapse4\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key4Description + "</div>" + key4panel + "</div>";
+				var key5AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse5\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key5Layer + "),allLayersGroupPts.addLayer(" + key5LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key5Subject + "</a></h4></div>";
+				var key5AccordionPanel = "<div id=\"collapse5\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key5Description + "</div>" + key5panel + "</div>";
+				var key6AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse6\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key6Layer + "),allLayersGroupPts.addLayer(" + key6LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key6Subject + "</a></h4></div>";
+				var key6AccordionPanel = "<div id=\"collapse6\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key6Description + "</div>" + key6panel + "</div>";
 				
-				var col = "<div class='span collapse-group'><h6 class='collapse' id='viewdetails' style='padding-left: 20px; padding-right: 10px; color: #999; line-height:1.2; margin-bottom: 0px !important;'>yadda yadda yadda yadda yadda yadda yadda yadda yadda yadda yadda</h6><br><div class='btn-group' style='margin:0px 0px 0px 15px;'><button type='button' onclick='alert()' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#viewdetails'>View Details </button></div></div>";
+				var accordionEnd = "</div>";
 				
-				//sidebarNuc.setContent(accStart + name1 + desc1 + "</div>" + name2 + desc2 + "</div>" + accEnd + col + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'>" + keySign + "</div><br/><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + '</div>');
-				// attempt at collapsing description with button
-				//sidebarNuc.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText1 + "</h5>" + "<div class='legend'><div class='row'><div class='span collapse-group'><h6 class='collapse' id='viewdetails' style='padding-left: 20px; padding-right: 10px; color: #999; line-height:1.2; margin-bottom: 0px !important;'>" + keySign + "</h6><br><div class='btn-group' style='margin:0px 0px 0px 15px;'><button type='button' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#viewdetails'>View Details </button></div></div></div></div><br/><h5 style='font-weight:bold'>" + keyText2 + "</h5>" + "<div class='legend'>" + keyDepo + '</div>');
-				//div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarNuc.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				testTabsContentDiv.innerHTML = accStart + name1 + desc1 + "</div></div>" + name2 + desc2 + "</div></div>" + accEnd + "<br/>";
-				//$('#testModal').modal('show');
-				//sidebarNuc.addTo(map);
-				
-				//sidebarNuc.toggle();
-				//divSign.innerHTML = labelsSign.join('<br>');
-				//divDepo.innerHTML = labelsDepo.join('<br>');
-				//return divSign;
-				//return divDepo;
-				
-				//div.innerHTML = labels.join('<br>');
-				//return div;
-				
-				
+				mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div></div>" + key2AccordionTitle + key2AccordionPanel + "</div></div>"  + key3AccordionTitle + key3AccordionPanel + "</div></div>"  + key4AccordionTitle + key4AccordionPanel + "</div></div>"  + key5AccordionTitle + key5AccordionPanel + "</div></div>"  + key6AccordionTitle + key6AccordionPanel + "</div></div>" + accordionEnd + "<br/>";
 			};
 			
-			legendNucSign.onAdd = function (map) {
-				currentLegend = legendNucSign;
-				currentSidebar = sidebarNuc;
-				sidebarNuc.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['X'],
+			keyMLO = function () {
+				var categoryName = "Multi-Lateral Organizations";
+				var categoryDescription = "<h5 class='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a nibh ac ligula consequat sollicitudin. Curabitur placerat metus in dictum tempus. Maecenas ut lectus ac massa cursus rutrum. In euismod auctor nisl vitae aliquet. Curabitur vel bibendum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum diam, interdum quis hendrerit sit amet, malesuada nec sem. Quisque ut sem vitae lorem aliquet fermentum vitae ac mauris. Nunc justo lorem, cursus eget consequat et, ornare in ante. Etiam ornare purus nec gravida aliquam. Donec pharetra et justo sed mollis. Suspendisse a ipsum ultrices, bibendum mi a, semper risus. Nam dictum leo id lacus varius, nec pharetra tortor eleifend. Aenean nunc eros, auctor vitae faucibus et, venenatis eu nisl.</h5>";
+				
+				var key1Subject = "African Union Membership";
+				var key2Subject = "European Union Membership";
+				var key3Subject = "Food and Agriculture Organization Membership";
+				var key4Subject = "International Civil Aviation Organization Membership";
+				var key5Subject = "North American Treaty Organization Membership";
+				var key6Subject = "Organization of American States Membership";
+				var key7Subject = "OECD Membership";
+				var key8Subject = "OSCE Membership";
+				var key9Subject = "UNESCO Membership";
+				var key10Subject = "UNHCR Membership";
+				var key11Subject = "UNGA Membership";
+				var key1Layer = "geoJsonLayerMLOAU";
+				var key2Layer = "geoJsonLayerMLOEU";
+				var key3Layer = "geoJsonLayerMLOFAO";
+				var key4Layer = "geoJsonLayerMLOICAO";
+				var key5Layer = "geoJsonLayerMLONATO";
+				var key6Layer = "geoJsonLayerMLOOAS";
+				var key7Layer = "geoJsonLayerMLOOECD";
+				var key8Layer = "geoJsonLayerMLOOSCE";
+				var key9Layer = "geoJsonLayerMLOUNESCO";
+				var key10Layer = "geoJsonLayerMLOUNHCR";
+				var key11Layer = "geoJsonLayerMLOUNGA";
+				var key1LayerPts = "";
+				var key2LayerPts = "";
+				var key3LayerPts = "";
+				var key4LayerPts = "";
+				var key5LayerPts = "";
+				var key6LayerPts = "";
+				var key7LayerPts = "";
+				var key8LayerPts = "";
+				var key9LayerPts = "";
+				var key10LayerPts = "";
+				var key11LayerPts = "";
+				var key1Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.";
+				var key2Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus semper quam vel egestas. Nulla tempus hendrerit justo vel auctor. Pellentesque sollicitudin quis nulla et ornare. Nam rhoncus malesuada neque, a vulputate purus eleifend in.";
+				var key3Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in aliquam tortor, eu commodo neque. Cras pellentesque vitae turpis quis adipiscing. Donec ut nisl feugiat, aliquet ligula sit amet, lacinia tortor. Maecenas consectetur dolor vitae.";
+				var key4Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie mauris at blandit convallis. Vestibulum molestie feugiat mi eget malesuada. Vivamus at diam quis sem porta aliquam. Integer sapien nulla, viverra ac vehicula et, scelerisque.";
+				var key5Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis dui tortor, vel tristique sem condimentum a. Etiam tincidunt magna eu odio pretium, vel posuere metus adipiscing. Donec et purus turpis. Ut sodales sit amet.";
+				var key6Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In adipiscing aliquam tellus at congue. Vivamus vitae vehicula lorem. Etiam pulvinar mauris vitae euismod pellentesque. Mauris venenatis tellus in turpis hendrerit porta. Cras eu est lacinia.";
+				var key7Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.";
+				var key8Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus semper quam vel egestas. Nulla tempus hendrerit justo vel auctor. Pellentesque sollicitudin quis nulla et ornare. Nam rhoncus malesuada neque, a vulputate purus eleifend in.";
+				var key9Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in aliquam tortor, eu commodo neque. Cras pellentesque vitae turpis quis adipiscing. Donec ut nisl feugiat, aliquet ligula sit amet, lacinia tortor. Maecenas consectetur dolor vitae.";
+				var key10Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie mauris at blandit convallis. Vestibulum molestie feugiat mi eget malesuada. Vivamus at diam quis sem porta aliquam. Integer sapien nulla, viverra ac vehicula et, scelerisque.";
+				var key11Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis dui tortor, vel tristique sem condimentum a. Etiam tincidunt magna eu odio pretium, vel posuere metus adipiscing. Donec et purus turpis. Ut sodales sit amet.";
+				
+				var key1div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
 					// this is something like a subheader
-					labels = [],
+					key1Labels = [],
 					from;
 
 				for (var i = 0; i < grades.length; i++) {
-					from = ['Signed'];
+					from = ['Member', 'Not a member'];
 					
-					labels.push(
-						'<i style="background:' + getColorNucSign(grades[i]) + '"></i>' +
+					key1Labels.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var key2div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					key2Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					key2Labels.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
 
-				var keyText = "Nuclear Sign";
-				var key = labels.join('<br>');
-				sidebarNuc.setContent("<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
-				
-				//div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarNuc.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-			
-			legendNucDepo.onAdd = function (map) {
-				currentLegend = legendNucDepo;
-				currentSidebar = sidebarNuc;
-				sidebarNuc.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['X'],
+				var key3div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
 					// this is something like a subheader
-					labels = [],
+					key3Labels = [],
 					from;
 
 				for (var i = 0; i < grades.length; i++) {
-					from = ['Deposited'];
+					from = ['Member', 'Not a member'];
 					
-					labels.push(
-						'<i style="background:' + getColorNucDepo(grades[i]) + '"></i>' +
+					key3Labels.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
 				
-				var keyText = "Nuclear Depo";
-				var key = labels.join('<br>');
-				sidebarNuc.setContent("<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
-				
-				//div.innerHTML = '<h4>Nuclear Non-Proliferation Treaty</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarNuc.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-			
-			legendHT.onAdd = function (map) {
-				currentLegend = legendHT;
-				currentSidebar = sidebarHT;
-				sidebarHT.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case'],
+				var key4div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
 					// this is something like a subheader
-					labels = [],
+					key4Labels = [],
 					from;
 
 				for (var i = 0; i < grades.length; i++) {
-					from = ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case'];
+					from = ['Member', 'Not a member'];
 					
-					labels.push(
-						'<i style="background:' + getColorHT(grades[i]) + '"></i>' +
+					key4Labels.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var key5div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					key5Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					key5Labels.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var key6div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					key6Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					key6Labels.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var key7div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					key7Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					key7Labels.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var key8div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					key8Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					key8Labels.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var key9div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					key9Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					key9Labels.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var key10div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					key10Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					key10Labels.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var key11div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					key11Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					key11Labels.push(
+						'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var keyTitle1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key1Subject + "</a>";
+				var keyTitle2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key2Subject + "</a>";
+				var keyTitle3 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key3Subject + "</a>";
+				var keyTitle4 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key4Layer + "),allLayersGroupPts.addLayer(" + key4LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key4Subject + "</a>";
+				var keyTitle5 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key5Layer + "),allLayersGroupPts.addLayer(" + key5LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key5Subject + "</a>";
+				var keyTitle6 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key6Layer + "),allLayersGroupPts.addLayer(" + key6LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key6Subject + "</a>";
+				var keyTitle7 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key7Layer + "),allLayersGroupPts.addLayer(" + key7LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key7Subject + "</a>";
+				var keyTitle8 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key8Layer + "),allLayersGroupPts.addLayer(" + key8LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key8Subject + "</a>";
+				var keyTitle9 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key8Layer + "),allLayersGroupPts.addLayer(" + key9LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key9Subject + "</a>";
+				var keyTitle10 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key10Layer + "),allLayersGroupPts.addLayer(" + key10LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key10Subject + "</a>";
+				var keyTitle11 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key11Layer + "),allLayersGroupPts.addLayer(" + key11LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key11Subject + "</a>";
+				
+				var key1 = key1Labels.join('<br>');
+				var key2 = key2Labels.join('<br>');
+				var key3 = key3Labels.join('<br>');
+				var key4 = key4Labels.join('<br>');
+				var key5 = key5Labels.join('<br>');
+				var key6 = key6Labels.join('<br>');
+				var key7 = key7Labels.join('<br>');
+				var key8 = key8Labels.join('<br>');
+				var key9 = key9Labels.join('<br>');
+				var key10 = key10Labels.join('<br>');
+				var key11 = key11Labels.join('<br>');
+				
+				var key1panel = "<div class='legend'>" + key1 + "</div>";
+				var key2panel = "<div class='legend'>" + key2 + "</div>";
+				var key3panel = "<div class='legend'>" + key3 + "</div>";
+				var key4panel = "<div class='legend'>" + key4 + "</div>";
+				var key5panel = "<div class='legend'>" + key5 + "</div>";
+				var key6panel = "<div class='legend'>" + key6 + "</div>";
+				var key7panel = "<div class='legend'>" + key7 + "</div>";
+				var key8panel = "<div class='legend'>" + key8 + "</div>";
+				var key9panel = "<div class='legend'>" + key9 + "</div>";
+				var key10panel = "<div class='legend'>" + key10 + "</div>";
+				var key11panel = "<div class='legend'>" + key11 + "</div>";
+				
+				var accordionStart = "<div class=\"panel-group\" id=\"accordion\">";
+				var categoryAccordionTitle = "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + categoryName + "</a></h4></div>";
+				var catAccordionPanel = "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + categoryDescription + "</div>";
+				var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse1\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key1Subject + "</a></h4></div>";
+				var key1AccordionPanel = "<div id=\"collapse1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key1Description + "</div>" + key1panel + "</div>";
+				var key2AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse2\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key2Subject + "</a></h4></div>";
+				var key2AccordionPanel = "<div id=\"collapse2\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key2Description + "</div>" + key2panel + "</div>";
+				var key3AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse3\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key3Subject + "</a></h4></div>";
+				var key3AccordionPanel = "<div id=\"collapse3\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key3Description + "</div>" + key3panel + "</div>";
+				var key4AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse4\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key4Layer + "),allLayersGroupPts.addLayer(" + key4LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key4Subject + "</a></h4></div>";
+				var key4AccordionPanel = "<div id=\"collapse4\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key4Description + "</div>" + key4panel + "</div>";
+				var key5AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse5\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key5Layer + "),allLayersGroupPts.addLayer(" + key5LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key5Subject + "</a></h4></div>";
+				var key5AccordionPanel = "<div id=\"collapse5\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key5Description + "</div>" + key5panel + "</div>";
+				var key6AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse6\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key6Layer + "),allLayersGroupPts.addLayer(" + key6LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key6Subject + "</a></h4></div>";
+				var key6AccordionPanel = "<div id=\"collapse6\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key6Description + "</div>" + key6panel + "</div>";
+				var key7AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse7\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key7Layer + "),allLayersGroupPts.addLayer(" + key7LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key7Subject + "</a></h4></div>";
+				var key7AccordionPanel = "<div id=\"collapse7\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key7Description + "</div>" + key7panel + "</div>";
+				var key8AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse8\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key8Layer + "),allLayersGroupPts.addLayer(" + key8LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key8Subject + "</a></h4></div>";
+				var key8AccordionPanel = "<div id=\"collapse8\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key8Description + "</div>" + key8panel + "</div>";
+				var key9AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse9\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key9Layer + "),allLayersGroupPts.addLayer(" + key9LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key9Subject + "</a></h4></div>";
+				var key9AccordionPanel = "<div id=\"collapse9\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key9Description + "</div>" + key9panel + "</div>";
+				var key10AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse10\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key10Layer + "),allLayersGroupPts.addLayer(" + key10LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key10Subject + "</a></h4></div>";
+				var key10AccordionPanel = "<div id=\"collapse10\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key10Description + "</div>" + key10panel + "</div>";
+				var key11AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse11\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key11Layer + "),allLayersGroupPts.addLayer(" + key11LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key11Subject + "</a></h4></div>";
+				var key11AccordionPanel = "<div id=\"collapse11\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key11Description + "</div>" + key11panel + "</div>";
+				
+				var accordionEnd = "</div>";
+				
+				mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div></div>" + key2AccordionTitle + key2AccordionPanel + "</div></div>"  + key3AccordionTitle + key3AccordionPanel + "</div></div>"  + key4AccordionTitle + key4AccordionPanel + "</div></div>"  + key5AccordionTitle + key5AccordionPanel + "</div></div>"  + key6AccordionTitle + key6AccordionPanel + "</div></div>" + key7AccordionTitle + key7AccordionPanel + "</div></div>" + key8AccordionTitle + key8AccordionPanel + "</div></div>" + key9AccordionTitle + key9AccordionPanel + "</div></div>" + key10AccordionTitle + key10AccordionPanel + "</div></div>" + key11AccordionTitle + key11AccordionPanel + "</div></div>" + accordionEnd + "<br/>";
+			};
+			
+			keyHI = function () {
+				var categoryName = "Health Issues";
+				var categoryDescription = "<h5 class='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a nibh ac ligula consequat sollicitudin. Curabitur placerat metus in dictum tempus. Maecenas ut lectus ac massa cursus rutrum. In euismod auctor nisl vitae aliquet. Curabitur vel bibendum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum diam, interdum quis hendrerit sit amet, malesuada nec sem. Quisque ut sem vitae lorem aliquet fermentum vitae ac mauris. Nunc justo lorem, cursus eget consequat et, ornare in ante. Etiam ornare purus nec gravida aliquam. Donec pharetra et justo sed mollis. Suspendisse a ipsum ultrices, bibendum mi a, semper risus. Nam dictum leo id lacus varius, nec pharetra tortor eleifend. Aenean nunc eros, auctor vitae faucibus et, venenatis eu nisl.</h5>";
+				
+				var key1Subject = "Avian Flu (tk)";
+				var key2Subject = "HIV / AIDS (tk)";
+				var key3Subject = "Malaria (tk)";
+				var key4Subject = "Maternal Health - Access to Care";
+				var key5Subject = "PEPFAR";
+				var key6Subject = "Polio (tk)";
+				var key7Subject = "Tuberculosis (tk)";
+				var key1Layer = "geoJsonLayerHIAV";
+				var key2Layer = "geoJsonLayerHIHIVAIDS";
+				var key3Layer = "geoJsonLayerHIM";
+				var key4Layer = "geoJsonLayerHIMHAC";
+				var key5Layer = "geoJsonLayerHIPEPFAR";
+				var key6Layer = "geoJsonLayerHIP";
+				var key7Layer = "geoJsonLayerHIT";
+				var key1LayerPts = "";
+				var key2LayerPts = "";
+				var key3LayerPts = "";
+				var key4LayerPts = "";
+				var key5LayerPts = "geoJsonLayerHIPEPFARpts";
+				var key6LayerPts = "";
+				var key7LayerPts = "";
+				var key1Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.";
+				var key2Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus semper quam vel egestas. Nulla tempus hendrerit justo vel auctor. Pellentesque sollicitudin quis nulla et ornare. Nam rhoncus malesuada neque, a vulputate purus eleifend in.";
+				var key3Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in aliquam tortor, eu commodo neque. Cras pellentesque vitae turpis quis adipiscing. Donec ut nisl feugiat, aliquet ligula sit amet, lacinia tortor. Maecenas consectetur dolor vitae.";
+				var key4Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie mauris at blandit convallis. Vestibulum molestie feugiat mi eget malesuada. Vivamus at diam quis sem porta aliquam. Integer sapien nulla, viverra ac vehicula et, scelerisque.";
+				var key5Description = "After decades of sporadic assistance to the growing issue of HIV/AIDS around the world, the international community has come together to deal with this and other health issues that impact the stability of our shrinking world.  Besides contributing to international initiatives including the Global Fund to Fight Aids, Tuberculosis and Malaria, the United States implemented the President's Emergency Plan for AIDS Relief (PEPFAR) to partner with local governmental and non-governmental health agencies to develop programs to prevent, test, and treat the disease. PEPFAR investments also help to alleviate suffering from other diseases across the global health spectrum. Since 2008, the number of individuals receiving lifesaving anti-retroviral therapy has more than tripled and more than one million babies have been born without HIV due to PEPFAR-supported programs.  And the moment has arrived when creating an AIDS-free generation is truly within reach.PEPFAR has also served to transform the way that development is done.  While continuing to rapidly expand access to lifesaving HIV services, PEPFAR has moved from an emergency state to a more sustainable footing, creating a robust health care delivery capability -- often where little to none previously existed -- that is being used not only to address HIV, but also a broader range of health issues. Since 2011, U.S. Department of State has created Partnership Frameworks, a series of joint strategic plans with foreign governments, such as South Africa and Botswana, through which  a true and enduring partnership with host countries has evolved -- one that positions them to assume greater ownership of their national HIV response. The plans aim to promote a sustainable approach to combating HIV/AIDS in partner countries through service delivery, policy reform, and coordinated financial commitments. After decades of sporadic assistance to the growing issue of HIV/AIDS around the world, the international community has come together to deal with this and other health issues that impact the stability of our shrinking world.  Besides contributing to international initiatives including the Global Fund to Fight Aids, Tuberculosis and Malaria, the United States implemented the President's Emergency Plan for AIDS Relief (PEPFAR) to partner with local governmental and non-governmental health agencies to develop programs to prevent, test, and treat the disease. PEPFAR investments also help to alleviate suffering from other diseases across the global health spectrum. Since 2008, the number of individuals receiving lifesaving anti-retroviral therapy has more than tripled and more than one million babies have been born without HIV due to PEPFAR-supported programs.  And the moment has arrived when creating an AIDS-free generation is truly within reach.PEPFAR has also served to transform the way that development is done.  While continuing to rapidly expand access to lifesaving HIV services, PEPFAR has moved from an emergency state to a more sustainable footing, creating a robust health care delivery capability -- often where little to none previously existed -- that is being used not only to address HIV, but also a broader range of health issues.  Since 2011, U.S. Department of State has created Partnership Frameworks, a series of joint strategic plans with foreign governments, such as South Africa and Botswana, through which  a true and enduring partnership with host countries has evolved -- one that positions them to assume greater ownership of their national HIV response. The plans aim to promote a sustainable approach to combating HIV/AIDS in partner countries through service delivery, policy reform, and coordinated financial commitments.";
+				var key6Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In adipiscing aliquam tellus at congue. Vivamus vitae vehicula lorem. Etiam pulvinar mauris vitae euismod pellentesque. Mauris venenatis tellus in turpis hendrerit porta. Cras eu est lacinia.";
+				var key7Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.";
+				
+				var key1div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					key1Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					key1Labels.push(
+						'<i style="background:' + getColorHIAV(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var key2div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					key2Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					key2Labels.push(
+						'<i style="background:' + getColorHIHIVAIDS(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
 
-				var name = "Human Trafficking";
-				var description = "<h5 class='lorem'>\"Trafficking in persons\" or \"human trafficking\" are terms many international groups use to describe a range of activities from abducting laborers to forced prostitution. Human trafficking includes all the ways people are delivered into compelled service or exploited as forced workers or servants. President Bill Clinton issued an Executive Memorandum on the Trafficking of Women and Children in March 1998. Since then, the U.S. government has advocated a policy structured by the \"3P\" paradigm: prosecution, protection, and prevention.</h5><h5 class='lorem'>In 2000, the U.S. Congress passed the Trafficking Victims Protection Act. This act established the Office to Monitor and Combat Trafficking in Persons in the U.S.Department of State and mandated that this office create a yearly report, which evaluates each country on its efforts to fight trafficking. The office also provides grant funding to assist organizations involved in combatting trafficking.</h5>";
-				var keyText = "TIPS Tier Placement";
-				var key = labels.join('<br>');
-				sidebarHT.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
-				
-				//div.innerHTML = '<h4>Human Trafficking</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-			
-			legendPEPFAR.onAdd = function (map) {
-				currentLegend = legendPEPFAR;
-				currentSidebar = sidebarPEPFAR;
-				sidebarPEPFAR.addTo(map);
-				var div = L.DomUtil.create('div'),
-					grades = ['1', '2', '3', 'No Data'],
+				var key3div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
 					// this is something like a subheader
-					labels = [],
+					key3Labels = [],
 					from;
 
 				for (var i = 0; i < grades.length; i++) {
-					from = ['1', '2', '3', 'No data'];
+					from = ['Member', 'Not a member'];
 					
-					labels.push(
-						'<i style="background:' + getColorPEPFAR(grades[i]) + '"></i>' +
+					key3Labels.push(
+						'<i style="background:' + getColorHIM(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
-
-				var name = "PEPFAR";
-				var description = "<h5 class='lorem'>After decades of sporadic assistance to the growing issue of HIV/AIDS around the world, the international community has come together to deal with this and other health issues that impact the stability of our shrinking world.</h5><h5 class='lorem'>Besides contributing to international initiatives including the Global Fund to Fight Aids, Tuberculosis and Malaria, the United States implemented the President's Emergency Plan for AIDS Relief (PEPFAR) to partner with local governmental and non-governmental health agencies to develop programs to prevent, test, and treat the disease. PEPFAR investments also help to alleviate suffering from other diseases across the global health spectrum.</h5><h5 class='lorem'>Since 2008, the number of individuals receiving lifesaving anti-retroviral therapy has more than tripled and more than one million babies have been born without HIV due to PEPFAR-supported programs.  And the moment has arrived when creating an AIDS-free generation is truly within reach.</h5><h5 class='lorem'>PEPFAR has also served to transform the way that development is done.  While continuing to rapidly expand access to lifesaving HIV services, PEPFAR has moved from an emergency state to a more sustainable footing, creating a robust health care delivery capability -- often where little to none previously existed -- that is being used not only to address HIV, but also a broader range of health issues.  </h5><h5 class='lorem'>Since 2011, U.S. Department of State has created Partnership Frameworks, a series of joint strategic plans with foreign governments, such as South Africa and Botswana, through which  a true and enduring partnership with host countries has evolved -- one that positions them to assume greater ownership of their national HIV response. The plans aim to promote a sustainable approach to combating HIV/AIDS in partner countries through service delivery, policy reform, and coordinated financial commitments. </h5>";
-				var keyText = "PEPFAR something something";
-				var key = labels.join('<br>');
-				sidebarPEPFAR.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
 				
-				//div.innerHTML = '<h4>Layer Name - PEPFAR</h4><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebarPEPFAR.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
-			};
-			
-			legendMHAC.onAdd = function (map) {
-				currentLegend = legendMHAC;
-				currentSidebar = sidebarMHAC;
-				sidebarMHAC.addTo(map);
-				var div = L.DomUtil.create('div'),
+				var key4div = L.DomUtil.create('div'),
 					grades = ['Excellent', 'Good', 'Fair', 'Poor', 'Unsuitable', 'No data'],
 					// this is something like a subheader
-					labels = [],
+					key4Labels = [],
 					from;
 
 				for (var i = 0; i < grades.length; i++) {
 					from = ['Excellent', 'Good', 'Fair', 'Poor', 'Unsuitable', 'No data'];
 					
-					labels.push(
-						'<i style="background:' + getColorMHAC(grades[i]) + '"></i>' +
+					key4Labels.push(
+						'<i style="background:' + getColorHIMHAC(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var key5div = L.DomUtil.create('div'),
+					grades = ['1', '2', '3', 'No Data'],
+					// this is something like a subheader
+					key5Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['1', '2', '3', 'No data'];
+					
+					key5Labels.push(
+						'<i style="background:' + getColorHIPEPFAR(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+								
+				var key6div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					key6Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					key6Labels.push(
+						'<i style="background:' + getColorHIP(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var key7div = L.DomUtil.create('div'),
+					grades = ['Member','null'],
+					// this is something like a subheader
+					key7Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Member', 'Not a member'];
+					
+					key7Labels.push(
+						'<i style="background:' + getColorHIT(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var keyTitle1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key1Subject + "</a>";
+				var keyTitle2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key2Subject + "</a>";
+				var keyTitle3 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key3Subject + "</a>";
+				var keyTitle4 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key4Layer + "),allLayersGroupPts.addLayer(" + key4LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key4Subject + "</a>";
+				var keyTitle5 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key5Layer + "),allLayersGroupPts.addLayer(" + key5LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key5Subject + "</a>";
+				var keyTitle6 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key6Layer + "),allLayersGroupPts.addLayer(" + key6LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key6Subject + "</a>";
+				var keyTitle7 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key7Layer + "),allLayersGroupPts.addLayer(" + key7LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key7Subject + "</a>";
+				
+				var key1 = key1Labels.join('<br>');
+				var key2 = key2Labels.join('<br>');
+				var key3 = key3Labels.join('<br>');
+				var key4 = key4Labels.join('<br>');
+				var key5 = key5Labels.join('<br>');
+				var key6 = key6Labels.join('<br>');
+				var key7 = key7Labels.join('<br>');
+				
+				var key1panel = "<div class='legend'>" + key1 + "</div>";
+				var key2panel = "<div class='legend'>" + key2 + "</div>";
+				var key3panel = "<div class='legend'>" + key3 + "</div>";
+				var key4panel = "<div class='legend'>" + key4 + "</div>";
+				var key5panel = "<div class='legend'>" + key5 + "</div>";
+				var key6panel = "<div class='legend'>" + key6 + "</div>";
+				var key7panel = "<div class='legend'>" + key7 + "</div>";
+				
+				var accordionStart = "<div class=\"panel-group\" id=\"accordion\">";
+				var categoryAccordionTitle = "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + categoryName + "</a></h4></div>";
+				var catAccordionPanel = "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + categoryDescription + "</div>";
+				var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse1\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key1Subject + "</a></h4></div>";
+				var key1AccordionPanel = "<div id=\"collapse1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key1Description + "</div>" + key1panel + "</div>";
+				var key2AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse2\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key2Subject + "</a></h4></div>";
+				var key2AccordionPanel = "<div id=\"collapse2\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key2Description + "</div>" + key2panel + "</div>";
+				var key3AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse3\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key3Subject + "</a></h4></div>";
+				var key3AccordionPanel = "<div id=\"collapse3\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key3Description + "</div>" + key3panel + "</div>";
+				var key4AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse4\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key4Layer + "),allLayersGroupPts.addLayer(" + key4LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key4Subject + "</a></h4></div>";
+				var key4AccordionPanel = "<div id=\"collapse4\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key4Description + "</div>" + key4panel + "</div>";
+				var key5AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse5\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key5Layer + "),allLayersGroupPts.addLayer(" + key5LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key5Subject + "</a></h4></div>";
+				var key5AccordionPanel = "<div id=\"collapse5\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key5Description + "</div>" + key5panel + "</div>";
+				var key6AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse6\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key6Layer + "),allLayersGroupPts.addLayer(" + key6LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key6Subject + "</a></h4></div>";
+				var key6AccordionPanel = "<div id=\"collapse6\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key6Description + "</div>" + key6panel + "</div>";
+				var key7AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse7\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key7Layer + "),allLayersGroupPts.addLayer(" + key7LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key7Subject + "</a></h4></div>";
+				var key7AccordionPanel = "<div id=\"collapse7\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key7Description + "</div>" + key7panel + "</div>";
+				
+				var accordionEnd = "</div>";
+				
+				mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div></div>" + key2AccordionTitle + key2AccordionPanel + "</div></div>"  + key3AccordionTitle + key3AccordionPanel + "</div></div>"  + key4AccordionTitle + key4AccordionPanel + "</div></div>"  + key5AccordionTitle + key5AccordionPanel + "</div></div>"  + key6AccordionTitle + key6AccordionPanel + "</div></div>" + key7AccordionTitle + key7AccordionPanel + "</div></div>" + accordionEnd + "<br/>";
+			};
+			
+			keyNuc = function () {
+				var categoryName = "Nuclear Arms Control";
+				var categoryDescription = "<h5 class='lorem'>While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h5><h5 class='lorem'>A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h5><h5 class='lorem'>The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.</h5>";
+				
+				var key1Subject = "Nuclear Arms Control - Signed";
+				var key2Subject = "Nuclear Arms Control - Deposited";
+				var key1Layer = "geoJsonLayerNucSign";
+				var key2Layer = "geoJsonLayerNucDepo";
+				var key1LayerPts = "geoJsonLayerNucpts";
+				var key2LayerPts = "geoJsonLayerNucpts";
+				var key1Description = "The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties. Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.";
+				var key2Description = "The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties. Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.";
+				
+				
+				var key1div = L.DomUtil.create('div'),
+					grades = ['X'],
+					// this is something like a subheader
+					key1Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Signed'];
+					
+					key1Labels.push(
+						'<i style="background:' + getColorNucSign(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				var key2div = L.DomUtil.create('div'),
+					grades = ['X'],
+					// this is something like a subheader
+					key2Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Deposited'];
+					
+					key2Labels.push(
+						'<i style="background:' + getColorNucDepo(grades[i]) + '"></i>' +
 						from[i]
 					);
 				}
 
-				var name = "Maternal Health - Access to Care";
-				var description = "";
-				var keyText = "Maternal Health - Access to Care";
-				var key = labels.join('<br>');
-				sidebarMHAC.setContent('<h4>' + name + '</h4>' + description + "<br/><h5 style='font-weight:bold'>" + keyText + "</h5>" + "<div class='legend'>" + key + '</div>');
+				var keyTitle1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key1Subject + "</a>";
+				var keyTitle2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key2Subject + "</a>";
 				
-				//div.innerHTML = '<h4>Maternal Health</h4><h7>Access to Care</h7><br><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="sidebar.toggle(); return false;">Show Description</a><br>' + labels.join('<br>');
-				return div;
+				var key1 = key1Labels.join('<br>');
+				var key2 = key2Labels.join('<br>');
+				var key1panel = "<div class='legend'>" + key1 + "</div>";
+				var key2panel = "<div class='legend'>" + key2 + "</div>";
+				var accordionStart = "<div class=\"panel-group\" id=\"accordion\">";
+				var categoryAccordionTitle = "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + categoryName + "</a></h4></div>";
+				var catAccordionPanel = "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + categoryDescription + "</div>";
+				var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse1\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key1Subject + "</a></h4></div>";
+				var key1AccordionPanel = "<div id=\"collapse1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key1Description + "</div>" + key1panel + "</div>";
+				var key2AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse2\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key2Subject + "</a></h4></div>";
+				var key2AccordionPanel = "<div id=\"collapse2\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key2Description + "</div>" + key2panel + "</div>";
+				
+				var accordionEnd = "</div>";
+				
+				mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div></div>" + key2AccordionTitle + key2AccordionPanel + "</div></div>" + accordionEnd + "<br/>";
+			};
+			
+			keyHT = function () {
+				var key1Subject = "Human Trafficking";
+				var key1Layer = "geoJsonLayerHT";
+				var key1LayerPts = "geoJsonLayerHTpts";
+				var key1Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus semper quam vel egestas. Nulla tempus hendrerit justo vel auctor. Pellentesque sollicitudin quis nulla et ornare. Nam rhoncus malesuada neque, a vulputate purus eleifend in.";
+				
+				var key1div = L.DomUtil.create('div'),
+					grades = ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case'],
+					// this is something like a subheader
+					key1Labels = [],
+					from;
+
+				for (var i = 0; i < grades.length; i++) {
+					from = ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case'];
+				
+					key1Labels.push(
+						'<i style="background:' + getColorHT(grades[i]) + '"></i>' +
+						from[i]
+					);
+				}
+				
+				//var name = "Nuclear Arms Control";
+				var keyTitle1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key1Subject + "</a>";
+				
+				var key1 = key1Labels.join('<br>');
+				var key1panel = "<div class='legend'>" + key1 + "</div>";
+				var accordionStart = "<div class=\"panel-group\" id=\"accordion\">";
+				var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse1\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key1Subject + "</a></h4></div>";
+				var key1AccordionPanel = "<div id=\"collapse1\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + key1Description + "</div>" + key1panel + "</div>";
+				
+				var accordionEnd = "</div>";
+				
+				mapKey.innerHTML = accordionStart + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div></div>" + accordionEnd + "<br/>";
 			};
 			
 			/*function highlightFeature(e) {
@@ -1486,7 +1652,7 @@
 				if (feature.properties && feature.properties.popupContent) {
 					popupContent += feature.properties.popupContent;
 				}
-				layer.bindPopup(popupContent);
+				layer.bindPopup(popupContent,{maxWidth: 200, minWidth: 250, maxHeight: 160, keepInView: true, autoPan: true, closeButton: true, autoPanPadding: [5, 5]});
 			}
 			/*
 			var info = L.control({position: "bottomleft"});
