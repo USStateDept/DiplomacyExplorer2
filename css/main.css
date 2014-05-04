@@ -31,12 +31,19 @@ input[type="radio"], input[type="checkbox"] {
 .navbar-inverse {
 	background-color: rgb(25,95,164);
 }
+
+
 .navbar-collapse, .navbar-inverse .navbar-form {
 	border-color: rgb(25,95,164);
 }
 .dropdown-menu {
 	padding: 10px;
 }
+
+.btn-default{
+	background-color: rgb(25,95,164);
+}
+
 @media (max-width: 992px) {
   .navbar .navbar-brand {
     font-size: 18px;
