@@ -28,7 +28,7 @@
 	</head>
 	<body>
 	    <div class="navbar navbar-inverse navbar-fixed-top">
-		<button type="button" id="closeButton" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-remove"></span></button>
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -43,7 +43,7 @@
                         <a id="securityDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Securing Peace</a>
                         <ul class="dropdown-menu" style="padding:10px;">
                             <h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-							<h4><a style="color:#333" onClick="javascript:changeDiv(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyNuc(),allLayersGroup.clearLayers();">Nuclear Arms Control</a></h4>
+							<h4><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyNuc(),allLayersGroup.clearLayers();">Nuclear Arms Control</a></h4>
 							<li><h4><a style="color:#333" href="#">Border Security (tk)</a></h4></li>
 							<li><h4><a style="color:#333" href="#">Counter-narcotics (tk)</a></h4></li>
 							<li><h4><a style="color:#333" href="#">Counter-terrorism (tk)</a></h4></li>
@@ -108,12 +108,6 @@
         <div class="container" id="mainContainer">
 			<div class="panel panel-default" style="height:100%;">
 				<div class="row" id = "rowId" style="height:100%;">
-					<!--<div class="col-lg-3 col-md-3 col-sm-3" style="height:100%;">
-						<div class="panel-body panel-collapse collapse in" id="collapseSide">
-							<div style="padding-left: 15px" id="mapKey">
-							</div>
-						</div>
-					</div>-->
 					<div class="col-lg-12 col-md-12 col-sm-12" id="mapPane" style="height:100%;">
 						<div id="map"></div>
 					</div>
@@ -864,15 +858,18 @@
                 $("#loading").hide();
 			});
 			
-			$('#closeButton').on('click', function (e) {
-				alert('Hello!');
-				
+			function closePane(){
+		
 				var rowDiv = document.getElementById("rowId");
 				var desc = document.getElementById('descPane');
 				var mapp = document.getElementById('mapPane');
 				mapp.className = "col-lg-12 col-md-12 col-sm-12";
 				rowDiv.removeChild(desc);
-			});
+				
+				var toggleArray = document.getElementsByClassName("info leaflet-control");
+				var toggleDiv = toggleArray[0];
+				toggleDiv.innerHTML = "<a onclick=\"javascript:openPane();\">Show</a>";
+			}
 			
 			var keyNuc;
 			var keyMLO;
@@ -880,7 +877,7 @@
 			var keyHI;
 			var keyHT;
 			
-			function changeDiv(){
+			function openPane(){
 				
 				var descOpen = document.getElementById('descPane');
 				if(descOpen){
@@ -901,6 +898,10 @@
 					
 					var rowDiv = document.getElementById("rowId");
 					rowDiv.insertBefore(div,mapp);
+					
+					var toggleArray = document.getElementsByClassName("info leaflet-control");
+					var toggleDiv = toggleArray[0];
+					toggleDiv.innerHTML = "<a onclick=\"javascript:closePane();\">Hide</a>";
 				
 				}
 				
@@ -1698,7 +1699,8 @@
 			
 			keyToggle.onAdd = function (map) {
 				this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-				this._div.innerHTML = "<a data-toggle='collapse' data-parent='#accordion' href='#collapseSide'>Show/Hide Toggle</a>";
+				this._div.innerHTML = "<a onClick=\"javascript:openPane();\">Show</a>";
+				
 				return this._div;
 			};
 
