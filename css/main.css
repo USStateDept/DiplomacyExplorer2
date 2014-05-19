@@ -39,11 +39,11 @@ input[type="radio"], input[type="checkbox"] {
 .dropdown-menu {
 	padding: 10px;
 }
-
+/*
 .btn-default{
 	background-color: rgb(25,95,164);
 }
-
+*/
 @media (max-width: 992px) {
   .navbar .navbar-brand {
     font-size: 18px;
