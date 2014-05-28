@@ -295,7 +295,7 @@
 			var allLayersGroup = new L.LayerGroup();
 			var allLayersGroupPts = new L.LayerGroup();
 			
-			var currentLegend;
+			var currentKey;
 			
 			var keyToggle = L.control({position: "bottomleft"});
 			
@@ -868,7 +868,7 @@
 				
 				var toggleArray = document.getElementsByClassName("info leaflet-control");
 				var toggleDiv = toggleArray[0];
-				toggleDiv.innerHTML = "<a onclick=\"javascript:openPane();\">Show</a>";
+				toggleDiv.innerHTML = "<a onclick=\"javascript:openPane(),getCurrentKey();\">Show</a>";
 			}
 			
 			var keyNuc;
@@ -876,6 +876,13 @@
 			var keyTP;
 			var keyHI;
 			var keyHT;
+			
+			function getCurrentKey(){
+				if(currentKey=="Nuc")
+				{
+				keyNuc();
+				}
+			}
 			
 			function openPane(){
 				
@@ -1539,6 +1546,7 @@
 			};
 			
 			keyNuc = function () {
+				currentKey="Nuc";
 				var categoryName = "Nuclear Arms Control";
 				var categoryDescription = "<h5 class='lorem'>While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h5><h5 class='lorem'>A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h5><h5 class='lorem'>The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.</h5>";
 				
