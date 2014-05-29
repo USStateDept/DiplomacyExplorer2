@@ -98,6 +98,15 @@
 							<li><h4><a style="color:#333" href="#">Refugee Assistance (tk)</a></h4></li>
                         </ul>
                     </li>
+					<li class="dropdown">
+                        <a id="adminDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Admin Demo</a>
+                        <ul class="dropdown-menu">
+							<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#themeModal').modal('show'); return false;">Revise Theme Legend</a></li>
+							<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#themeDescripModal').modal('show'); return false;">Revise Theme Description</a></li>
+							<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#issueModal').modal('show'); return false;">Revise Issue Legend</a></li>
+							<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#storyModal').modal('show'); return false;">Add Issue Story</a></li>
+                        </ul>
+                    </li>
 					<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#shareModal').modal('show'); return false;">Share</a></li>
 					<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#aboutModal').modal('show'); return false;">About</a></li>
                 </ul>
@@ -129,7 +138,6 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title">Diplomacy Explorer</h4>
                     </div>
-
                     <div class="modal-body">
                          <ul id="aboutTabs" class="nav nav-tabs">
                             <li class="active">
@@ -234,52 +242,198 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
-		<div class="modal fade" id="leadModal">
-            <div class="modal-dialog">
+		<div class="modal fade" id="themeModal">
+			<div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title">Lead Details</h4>
+                        <h4 class="modal-title">Revise Theme Legend</h4>
                     </div>
                     <div class="modal-body">
-                         <ul id="leadTabs" class="nav nav-tabs">
-                            <li class="active">
-								<a href="#leadDescrip" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;Description</a>
-							</li>
-                            <li>
-								<a href="#leadComments" data-toggle="tab"><i class="fa fa-check-square"></i>&nbsp;Post Comments</a>
-							</li>
-                        </ul>
-                        <div id="aboutTabsContent" class="tab-content" style="padding-top: 10px;">
-                            <div class="tab-pane fade active in" id="leadDescrip">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        Description
-                                    </div>
-                                    <div style="padding-left: 15px">
-										<p style="padding-top: 15px">
-											<span>feature.properties.Project_Description</span><br>
-										</p>
-									</div>
-                                </div>
-                            </div>
-							<div class="tab-pane fade" id="leadComments">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        Post Comments
-                                    </div>
-                                    <div style="padding-left: 15px">
-										<p style="padding-top: 15px">
-											<span>feature.properties.Post_Comments</span><br>
-										</p>
-									</div>
-                                </div>
-                            </div>
-                        </div>
+						<form>
+							<div class="form-group">
+								<label for="inputTheme">Theme</label>
+								<select class="form-control" id="inputTheme">
+									<option>Securing Peace</option>
+									<option>Promoting Prosperity</option>
+									<option>Protecting Resources</option>
+									<option>Respecting Rights</option>
+									<option>Saving Lives</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="inputThemeLegend">Legend</label>
+								<textarea class="form-control" id="inputThemeLegend" rows="10" placeholder="Theme Legend Text"></textarea>
+							</div>									
+							<button type="submit" class="btn btn-primary btn-block">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="themeDescripModal">
+			<div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Revise Theme Description</h4>
                     </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+                    <div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="inputTheme">Theme</label>
+								<select class="form-control" id="inputTheme">
+									<option>Securing Peace</option>
+									<option>Promoting Prosperity</option>
+									<option>Protecting Resources</option>
+									<option>Respecting Rights</option>
+									<option>Saving Lives</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="inputThemeDescrip">Description</label>
+								<textarea class="form-control" id="inputThemeDescrip" rows="10" placeholder="Theme Description Text"></textarea>
+							</div>									
+							<button type="submit" class="btn btn-primary btn-block">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="issueModal">
+			<div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Revise Issue Legend</h4>
+                    </div>
+                    <div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="inputIssue">Issue</label>
+								<select class="form-control" id="inputIssue">
+									<option>Nuclear Arms</option>
+									<option>Border Security</option>
+									<option>Counter-narcotics</option>
+									<option>Counter-terrorism</option>
+									<option>Securing the Seas/Maritime Piracy</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="inputIssueLegend">Legend</label>
+								<textarea class="form-control" id="inputIssueLegend" rows="10" placeholder="Issue Legend Text"></textarea>
+							</div>									
+							<button type="submit" class="btn btn-primary btn-block">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="storyModal">
+			<div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Add Issue Story</h4>
+                    </div>
+                    <div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="inputTheme">Theme</label>
+								<select class="form-control" id="inputTheme">
+									<option>Securing Peace</option>
+									<option>Promoting Prosperity</option>
+									<option>Protecting Resources</option>
+									<option>Respecting Rights</option>
+									<option>Saving Lives</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="inputIssue">Issue</label>
+								<select class="form-control" id="inputIssue">
+									<option>Nuclear Arms</option>
+									<option>Border Security</option>
+									<option>Counter-narcotics</option>
+									<option>Counter-terrorism</option>
+									<option>Securing the Seas/Maritime Piracy</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="inputTitle">Title</label>
+								<input type="text" class="form-control" id="inputTitle" placeholder="Title">
+							</div>
+							<div class="form-group">
+								<label for="inputCountry">Country</label>
+								<select class="form-control" id="inputCountry">
+									<option>Afghanistan</option>
+									<option>Albania</option>
+									<option>Algeria</option>
+									<option>Andorra</option>
+									<option>5</option>
+									<option>6</option>
+									<option>7</option>
+									<option>8</option>
+									<option>9</option>
+									<option>10</option>
+									<option>11</option>
+									<option>12</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="inputStory">Text</label>
+								<textarea class="form-control" id="inputStory" rows="5" placeholder="Text"></textarea>
+							</div>									
+							<div class="form-group">
+								<label for="inputPhoto">Upload Photo</label>
+								<input type="file" id="inputPhoto">
+							</div>
+							<div class="form-group">
+								<label for="inputPhotoText">Photo Description</label>
+								<input type="text" class="form-control" id="inputPhotoText" placeholder="Photo Description">
+							</div>
+							<!--
+							<div class="form-group">
+								<label for="inputPhoto2">Photo 2</label>
+								<input type="url" class="form-control" id="inputPhoto2" placeholder="Photo URL">
+							</div>
+							<div class="form-group">
+								<label for="inputPhoto2Text">Photo 2 Description</label>
+								<input type="text" class="form-control" id="inputPhoto2Text" placeholder="Photo Description">
+							</div>
+							<div class="form-group">
+								<label for="inputPhoto3">Photo 3</label>
+								<input type="url" class="form-control" id="inputPhoto3" placeholder="Photo URL">
+							</div>
+							<div class="form-group">
+								<label for="inputPhoto3Text">Photo 3 Description</label>
+								<input type="text" class="form-control" id="inputPhoto3Text" placeholder="Photo Description">
+							</div>
+							<div class="form-group">
+								<label for="inputPhoto4">Photo 4</label>
+								<input type="url" class="form-control" id="inputPhoto4" placeholder="Photo URL">
+							</div>
+							<div class="form-group">
+								<label for="inputPhoto4Text">Photo 4 Description</label>
+								<input type="text" class="form-control" id="inputPhoto4Text" placeholder="Photo Description">
+							</div>
+							-->
+							<div class="form-group">
+								<label for="inputVideo">Upload Video</label>
+								<input type="file" id="inputVideo">
+							</div>
+							<div class="form-group">
+								<label for="inputVideoText">Video Description</label>
+								<input type="text" class="form-control" id="inputVideoText" placeholder="Video Description">
+							</div>
+							<button type="submit" class="btn btn-primary btn-block">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 		
 		<script src="../lib/jquery/jquery-1.11.0.min.js"></script>
 		<script src="../lib/bootstrap-3.1.1/dist/js/bootstrap.js"></script>
