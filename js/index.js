@@ -555,7 +555,7 @@ function StyleTPIndex(feature) {
 var map = new L.Map('map', {
 	zoomControl: false,
 	center: [20, 10],
-	zoom: 3
+	zoom: 2
 });
 
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
