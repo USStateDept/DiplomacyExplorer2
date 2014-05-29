@@ -1414,7 +1414,7 @@ function onEachFeaturePts(feature, layer) {
 		layer.bindPopup(popupContent);
 	// popup text only
 	} else {
-		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><h5 style='height:140px; overflow-y:scroll'>" + feature.properties.Story + "</h5>";
+		popupContent = "<h3>" + feature.properties.Title + "</h3><h4>" + feature.properties.Country + "</h4><h6 style='height:140px; overflow-y:scroll; font-size: small; font-weight: normal' >" + feature.properties.Story + "</h6>";
 		layer.bindPopup(popupContent);
 	} 
 }
