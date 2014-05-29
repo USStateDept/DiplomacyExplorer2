@@ -10725,9 +10725,9 @@
 						<li class="dropdown">
 							<a id="adminDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Admin Demo</a>
 							<ul class="dropdown-menu">
-								<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#themeModal').modal('show'); return false;">Revise Theme Legend</a></li>
 								<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#themeDescripModal').modal('show'); return false;">Revise Theme Description</a></li>
 								<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#issueModal').modal('show'); return false;">Revise Issue Legend</a></li>
+								<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#subIssueModal').modal('show'); return false;">Revise Sub-Issue Legend</a></li>
 								<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#storyModal').modal('show'); return false;">Add Issue Story</a></li>
 							</ul>
 						</li>
@@ -10868,36 +10868,6 @@
 				</div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
 
-			<div class="modal fade" id="themeModal">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title">Revise Theme Legend</h4>
-						</div>
-						<div class="modal-body">
-							<form>
-								<div class="form-group">
-									<label for="inputTheme">Theme</label>
-									<select class="form-control" id="inputTheme">
-										<option>Securing Peace</option>
-										<option>Promoting Prosperity</option>
-										<option>Protecting Resources</option>
-										<option>Respecting Rights</option>
-										<option>Saving Lives</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<label for="inputThemeLegend">Legend</label>
-									<textarea class="form-control" id="inputThemeLegend" rows="10" placeholder="Theme Legend Text"></textarea>
-								</div>									
-								<button type="submit" class="btn btn-primary btn-block">Submit</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			
 			<div class="modal fade" id="themeDescripModal">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -10938,6 +10908,16 @@
 						<div class="modal-body">
 							<form>
 								<div class="form-group">
+									<label for="inputTheme">Theme</label>
+									<select class="form-control" id="inputTheme">
+										<option>Securing Peace</option>
+										<option>Promoting Prosperity</option>
+										<option>Protecting Resources</option>
+										<option>Respecting Rights</option>
+										<option>Saving Lives</option>
+									</select>
+								</div>
+								<div class="form-group">
 									<label for="inputIssue">Issue</label>
 									<select class="form-control" id="inputIssue">
 										<option>Nuclear Arms</option>
@@ -10950,6 +10930,56 @@
 								<div class="form-group">
 									<label for="inputIssueLegend">Legend</label>
 									<textarea class="form-control" id="inputIssueLegend" rows="10" placeholder="Issue Legend Text"></textarea>
+								</div>									
+								<button type="submit" class="btn btn-primary btn-block">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="subIssueModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Revise Sub-Issue Legend</h4>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="form-group">
+									<label for="inputTheme">Theme</label>
+									<select class="form-control" id="inputTheme">
+										<option>Securing Peace</option>
+										<option>Promoting Prosperity</option>
+										<option>Protecting Resources</option>
+										<option>Respecting Rights</option>
+										<option>Saving Lives</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="inputIssue">Issue</label>
+									<select class="form-control" id="inputIssue">
+										<option>Nuclear Arms</option>
+										<option>Border Security</option>
+										<option>Counter-narcotics</option>
+										<option>Counter-terrorism</option>
+										<option>Securing the Seas/Maritime Piracy</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="inputIssue">Sub-Issue</label>
+									<select class="form-control" id="inputIssue">
+										<option>Nuclear Non-Proliferation Treaty Signed</option>
+										<option>Nuclear Non-Proliferation Treaty Depositred</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="inputSubIssueLegend">Legend</label>
+									<textarea class="form-control" id="inputSubIssueLegend" rows="10" placeholder="Sub-Issue Legend Text"></textarea>
 								</div>									
 								<button type="submit" class="btn btn-primary btn-block">Submit</button>
 							</form>
