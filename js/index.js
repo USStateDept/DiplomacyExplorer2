@@ -1401,31 +1401,23 @@ function onEachFeaturePts(feature, layer) {
 	// NEW POPUP CODE - In Progress
 	// popup for photo and video
 	if (feature.properties.PhotoURL !== undefined && feature.properties.VideoURL !== undefined){
-		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><video width='320' height='240' controls><source src='vid/sample_mpeg4.mp4' type='video/mp4'>Your browser does not support the video tag.</video><br><img src='img/usdos-logo-seal.png' alt='photo test' height='42' width='100%'><h5>" + feature.properties.Story + "</h5>";
+		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><video width='320' height='240' controls><source src='vid/sample_mpeg4.mp4' type='video/mp4'>Your browser does not support the video tag.</video><br><img src='img/usdos-logo-seal.png' alt='photo test' height='42' width='100%'><h5 style='height:140px; overflow-y:scroll'>" + feature.properties.Story + "</h5>";
 		layer.bindPopup(popupContent);
 	} 
 	// popup for photo only
 	else if (feature.properties.PhotoURL !== undefined && feature.properties.VideoURL == undefined){
-		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><img src='img/usdos-logo-seal.png' alt='photo test' height='42' width='100%'><h5>" + feature.properties.Story + "</h5>";
+		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><img src='img/usdos-logo-seal.png' alt='photo test' height='42' width='100%'>< style='height:140px; overflow-y:scroll'h5>" + feature.properties.Story + "</h5>";
 		layer.bindPopup(popupContent);
 	}
 	// popup for video only
 	else if (feature.properties.PhotoURL == undefined && feature.properties.VideoURL !== undefined){
-		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><video width='320' height='240' controls><source src='vid/sample_mpeg4.mp4' type='video/mp4'>Your browser does not support the video tag.</video><h5>" + feature.properties.Story + "</h5>";
+		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><video width='320' height='240' controls><source src='vid/sample_mpeg4.mp4' type='video/mp4'>Your browser does not support the video tag.</video><h5 style='height:140px; overflow-y:scroll'>" + feature.properties.Story + "</h5>";
 		layer.bindPopup(popupContent);
 	// popup text only
 	} else {
-		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><h5>" + feature.properties.Story + "</h5>";
+		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><h5 style='height:140px; overflow-y:scroll'>" + feature.properties.Story + "</h5>";
 		layer.bindPopup(popupContent);
 	} 
-	/*
-	// old code
-	var popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "<br /><div class='row'><div class='span collapse-group'><h6 class='collapse' id='viewdetails' style='padding-left: 20px; padding-right: 10px; color: #999; line-height:1.2; margin-bottom: 0px !important;'>" + feature.properties.Story + "</h6><br><div class='btn-group' style='margin:0px 0px 0px 15px;'><button type='button' class='btn btn-default btn-xs' data-toggle='collapse' data-target='#viewdetails'>View Details </button></div></div></div></h5>";
-	if (feature.properties && feature.properties.popupContent) {
-		popupContent += feature.properties.popupContent;
-	}
-	layer.bindPopup(popupContent,{maxWidth: 200, minWidth: 250, maxHeight: 160, keepInView: true, autoPan: true, closeButton: true, autoPanPadding: [5, 5]});
-	*/
 }
 /*
 var info = L.control({position: "bottomleft"});
