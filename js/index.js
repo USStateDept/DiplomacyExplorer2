@@ -606,8 +606,7 @@ function openPane(){
 		var div = document.createElement('div');
 		div.className = "col-lg-3 col-md-3 col-sm-3";
 		div.id="descPane";
-		div.style="height:100%;"
-		div.innerHTML = "<div class='panel-body panel-collapse collapse in' id='collapseSide'><div style='padding-left: 15px' id='mapKey'></div></div>";
+		div.innerHTML = "<div class='panel-body panel-collapse collapse in' id='collapseSide' style='padding: 0px !important;'><div id='mapKey'></div></div>";
 		
 		var desc = document.getElementById('descPane');
 		var mapp = document.getElementById('mapPane');
@@ -631,7 +630,7 @@ function changeLayer() {
 
 keyTP = function () {
 	var categoryName = "Trade Promotion";
-	var categoryDescription = "<h5 class='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a nibh ac ligula consequat sollicitudin. Curabitur placerat metus in dictum tempus. Maecenas ut lectus ac massa cursus rutrum. In euismod auctor nisl vitae aliquet. Curabitur vel bibendum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum diam, interdum quis hendrerit sit amet, malesuada nec sem. Quisque ut sem vitae lorem aliquet fermentum vitae ac mauris. Nunc justo lorem, cursus eget consequat et, ornare in ante. Etiam ornare purus nec gravida aliquam. Donec pharetra et justo sed mollis. Suspendisse a ipsum ultrices, bibendum mi a, semper risus. Nam dictum leo id lacus varius, nec pharetra tortor eleifend. Aenean nunc eros, auctor vitae faucibus et, venenatis eu nisl.</h5>";
+	var categoryDescription = "<h7 class='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a nibh ac ligula consequat sollicitudin. Curabitur placerat metus in dictum tempus. Maecenas ut lectus ac massa cursus rutrum. In euismod auctor nisl vitae aliquet. Curabitur vel bibendum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum diam, interdum quis hendrerit sit amet, malesuada nec sem. Quisque ut sem vitae lorem aliquet fermentum vitae ac mauris. Nunc justo lorem, cursus eget consequat et, ornare in ante. Etiam ornare purus nec gravida aliquam. Donec pharetra et justo sed mollis. Suspendisse a ipsum ultrices, bibendum mi a, semper risus. Nam dictum leo id lacus varius, nec pharetra tortor eleifend. Aenean nunc eros, auctor vitae faucibus et, venenatis eu nisl.</h7>";
 	
 	var key1Subject = "APEC Membership";
 	var key2Subject = "ASEAN Membership";
@@ -791,7 +790,7 @@ keyTP = function () {
 
 keyMLO = function () {
 	var categoryName = "Multi-Lateral Organizations";
-	var categoryDescription = "<h5 class='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a nibh ac ligula consequat sollicitudin. Curabitur placerat metus in dictum tempus. Maecenas ut lectus ac massa cursus rutrum. In euismod auctor nisl vitae aliquet. Curabitur vel bibendum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum diam, interdum quis hendrerit sit amet, malesuada nec sem. Quisque ut sem vitae lorem aliquet fermentum vitae ac mauris. Nunc justo lorem, cursus eget consequat et, ornare in ante. Etiam ornare purus nec gravida aliquam. Donec pharetra et justo sed mollis. Suspendisse a ipsum ultrices, bibendum mi a, semper risus. Nam dictum leo id lacus varius, nec pharetra tortor eleifend. Aenean nunc eros, auctor vitae faucibus et, venenatis eu nisl.</h5>";
+	var categoryDescription = "<h7 class='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a nibh ac ligula consequat sollicitudin. Curabitur placerat metus in dictum tempus. Maecenas ut lectus ac massa cursus rutrum. In euismod auctor nisl vitae aliquet. Curabitur vel bibendum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum diam, interdum quis hendrerit sit amet, malesuada nec sem. Quisque ut sem vitae lorem aliquet fermentum vitae ac mauris. Nunc justo lorem, cursus eget consequat et, ornare in ante. Etiam ornare purus nec gravida aliquam. Donec pharetra et justo sed mollis. Suspendisse a ipsum ultrices, bibendum mi a, semper risus. Nam dictum leo id lacus varius, nec pharetra tortor eleifend. Aenean nunc eros, auctor vitae faucibus et, venenatis eu nisl.</h7>";
 	
 	var key1Subject = "African Union Membership";
 	var key2Subject = "European Union Membership";
@@ -1072,7 +1071,7 @@ keyMLO = function () {
 
 keyHI = function () {
 	var categoryName = "Health Issues";
-	var categoryDescription = "<h5 class='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a nibh ac ligula consequat sollicitudin. Curabitur placerat metus in dictum tempus. Maecenas ut lectus ac massa cursus rutrum. In euismod auctor nisl vitae aliquet. Curabitur vel bibendum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum diam, interdum quis hendrerit sit amet, malesuada nec sem. Quisque ut sem vitae lorem aliquet fermentum vitae ac mauris. Nunc justo lorem, cursus eget consequat et, ornare in ante. Etiam ornare purus nec gravida aliquam. Donec pharetra et justo sed mollis. Suspendisse a ipsum ultrices, bibendum mi a, semper risus. Nam dictum leo id lacus varius, nec pharetra tortor eleifend. Aenean nunc eros, auctor vitae faucibus et, venenatis eu nisl.</h5>";
+	var categoryDescription = "<h7 class='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a nibh ac ligula consequat sollicitudin. Curabitur placerat metus in dictum tempus. Maecenas ut lectus ac massa cursus rutrum. In euismod auctor nisl vitae aliquet. Curabitur vel bibendum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum diam, interdum quis hendrerit sit amet, malesuada nec sem. Quisque ut sem vitae lorem aliquet fermentum vitae ac mauris. Nunc justo lorem, cursus eget consequat et, ornare in ante. Etiam ornare purus nec gravida aliquam. Donec pharetra et justo sed mollis. Suspendisse a ipsum ultrices, bibendum mi a, semper risus. Nam dictum leo id lacus varius, nec pharetra tortor eleifend. Aenean nunc eros, auctor vitae faucibus et, venenatis eu nisl.</h7>";
 	
 	var key1Subject = "Avian Flu (tk)";
 	var key2Subject = "HIV / AIDS (tk)";
@@ -1258,7 +1257,7 @@ keyHI = function () {
 keyNuc = function () {
 	currentKey="Nuc";
 	var categoryName = "Nuclear Arms Control";
-	var categoryDescription = "<h5 class='lorem'>While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h5><h5 class='lorem'>A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h5><h5 class='lorem'>The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.</h5>";
+	var categoryDescription = "<div><h7 class='lorem'>While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h7><br><br><h7 class='lorem'>A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h7><br><br><h7 class='lorem'>The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.</h7></div>";
 	
 	var key1Subject = "Nuclear Arms Control - Signed";
 	var key2Subject = "Nuclear Arms Control - Deposited";
@@ -1307,7 +1306,7 @@ keyNuc = function () {
 	var key2 = key2Labels.join('<br>');
 	var key1panel = "<div class='legend'>" + key1 + "</div>";
 	var key2panel = "<div class='legend'>" + key2 + "</div>";
-	var accordionStart = "<div class=\"panel-group\" id=\"accordion\">";
+	var accordionStart = "<div class=\"panel-group\" id=\"accordion\" style=\"height:609px;overflow-y:scroll;margin-bottom:0px;\">";
 	var categoryAccordionTitle = "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + categoryName + "</a></h4></div>";
 	var catAccordionPanel = "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + categoryDescription + "</div>";
 	var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse1\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key1Subject + "</a></h4></div>";
@@ -1317,7 +1316,7 @@ keyNuc = function () {
 	
 	var accordionEnd = "</div>";
 	
-	mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div></div>" + key2AccordionTitle + key2AccordionPanel + "</div></div>" + accordionEnd + "<br/>";
+	mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div>" + key2AccordionTitle + key2AccordionPanel + "</div></div></div>" + accordionEnd + "<br/>";
 };
 
 keyHT = function () {

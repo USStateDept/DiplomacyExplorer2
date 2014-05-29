@@ -40,6 +40,51 @@
 		<link rel="stylesheet" href="http://localhost/DiplomacyExplorer2/css/main.css" />
 		<!-- Custom styles for this template -->
         <style>
+			#descPane {
+				 padding-right: 0px !important;
+				 padding-left: 10px !important;
+				 background-color: white;
+			}
+			#mapKey {
+				margin-bottom:-20px;
+			}
+			.themeDescrip {
+				margin-bottom: 10px !important;
+			}
+			.navbar {
+				padding-top: 3px;
+				margin-bottom: 0px !important;
+				min-height:28px !important;
+			}
+			.navbar-nav > li  > a {
+				padding-top: 0px !important;
+				padding-bottom: 0px !important;
+				text-decoration: none !important;
+			}
+			.navbar-collapse {
+				padding-left: 0px !important;
+				padding-right: 0px !important;
+			}
+			.navbar-nav > li > ul > h4 {
+				margin-top: 0px !important;
+			}
+			.navbar-nav > li > ul > li > h4 > {
+				margin-top: 0px !important;
+				margin-bottom: 0px !important;
+			}
+			.navbar-nav > li > ul > h4 > a {
+				text-decoration: none !important;
+				margin-top: 0px !important;
+				margin-bottom: 0px !important;
+			}
+			.navbar-nav > li > ul > li > h4 > a {
+				text-decoration: none !important;
+				margin-top: 0px !important;
+				margin-bottom: 0px !important;
+			}
+			body h4 {
+				margin-bottom: 0px !important;
+			}
 		</style>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -50,11 +95,11 @@
 </head>
 <body xmlns="http://www.w3.org/1999/xhtml" class="javascript-enabled section-explorer sub-index explorer-map keys_widget explorer_map"><div xmlns="" id="root"><div id="gradient"></div><div id="global-header"><ul><li><a id="skip-navigation" href="#main-content">Skip navigation</a></li><li class="last"><a href="http://diplomacy.state.gov/">Visit diplomacy.state.gov</a></li><li class="first"><a href="http://www.state.gov/">Visit state.gov</a></li></ul></div><div id="header"><div id="inner-header"><ul id="navigation"><li id="nav-discover-diplomacy"><a title="Discover Diplomacy" href="http://diplomacy.state.gov/discoverdiplomacy/">Discover Diplomacy</a></li><li id="nav-diplomacy101"><a title="Diplomacy 101" href="http://diplomacy.state.gov/discoverdiplomacy/diplomacy101/">Diplomacy 101</a></li><li id="nav-explorer"><a title="Explorer" href="http://diplomacy.state.gov/discoverdiplomacy/explorer/" class="here">Explorer</a></li></ul><form class="search" id="header-search-form" name="gs" action="http://search.state.gov/search" method="get"><fieldset><label id="header-search-label" for="header-search-box">Search Site</label><input value="Search Site" id="header-search-box" name="q"><input value="state_diplomacy_en" name="site" type="hidden"><input value="state_diplomacy_en" name="client" type="hidden"><input value="xml_no_dtd" name="output" type="hidden"><input value="state_diplomacy_en" name="proxystylesheet" type="hidden"><input value="3" name="entqr" type="hidden"><input value="lang_en" name="lr" type="hidden"><input value="utf8" name="oe" type="hidden"><input value="utf8" name="ie" type="hidden"><input value="date:D:S:d1" name="sort" type="hidden"><input value="*" name="getfields" type="hidden"><input value="Go" id="header-search-btn" type="submit"></fieldset></form></div></div><div class="subnav" id="subnav"><ul><li class="here" id="subnav-show-all"><a title="Show All" href="#show-all">Show All</a><div class="subnav-hover" id="subnav-hover-show-all">
         Learn about the people, places, and issues that make up U.S. diplomatic endeavors around the world.
-      </div></li><li id="subnav-people"><a title="People" href="#people" onclick="document.getElementById('explorer-map-issues').style.display = 'none'; document.getElementById('explorer-map').style.display = 'block';">People</a><div class="subnav-hover" id="subnav-hover-people">
+      </div></li><li id="subnav-people"><a title="People" href="#people" onclick="document.getElementById('explorer-map-issues').style.visibility = 'hidden'; document.getElementById('explorer-map').style.display = 'block';">People</a><div class="subnav-hover" id="subnav-hover-people">
         Discover diplomats who represent the U.S., what they do, and how they do it.
-      </div></li><li id="subnav-places"><a title="Places" href="#places" onclick="document.getElementById('explorer-map-issues').style.display = 'none'; document.getElementById('explorer-map').style.display = 'block';">Places</a><div class="subnav-hover" id="subnav-hover-places">
+      </div></li><li id="subnav-places"><a title="Places" href="#places" onclick="document.getElementById('explorer-map-issues').style.visibility = 'hidden'; document.getElementById('explorer-map').style.display = 'block';">Places</a><div class="subnav-hover" id="subnav-hover-places">
         Find out about places around the world where the U.S. engages in diplomacy.
-      </div></li><li id="subnav-issues"><a title="Issues" href="#issues" onclick="document.getElementById('explorer-map').style.display = 'none'; document.getElementById('explorer-map-issues').style.display = 'block';">Issues</a><div class="subnav-hover" id="subnav-hover-issues">
+      </div></li><li id="subnav-issues"><a title="Issues" href="#issues" onclick="document.getElementById('explorer-map').style.display = 'none'; document.getElementById('explorer-map-issues').style.visibility = 'visible';">Issues</a><div class="subnav-hover" id="subnav-hover-issues">
         Explore how the U.S. furthers a secure, democratic and prosperous world.
       </div></li></ul><div style="left: 1103.5px; top: 12px; display: block;" id="keys-widget"><div id="kw-keys"><div style="display: block;" id="kw-left"></div><div style="display: block;" id="kw-right"></div></div><div id="kw-message">Use left/right arrow keys to navigate.</div></div></div><div class="left-arrow"></div><div id="container"><a name="main-content"></a>
 	  
@@ -10595,7 +10640,7 @@
 	<div id="around-world">Department of State Around The World: View Now</div>
 <div style="left: 243px; top: 301px;" id="stroke" class="ne"></div></div>
 <!-- ************************   START EDIP MAP *******************************-->
-<div id="explorer-map-issues" class="show-all-mods">
+		<div id="explorer-map-issues" style="visibility:hidden;;">
 			<div class="navbar navbar-inverse">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -10609,7 +10654,7 @@
 						<li class="dropdown">
 							<a id="securityDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Securing Peace</a>
 							<ul class="dropdown-menu" style="padding:10px;">
-								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
+								<h4 class="themeDescrip"><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
 								<h4><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyNuc(),allLayersGroup.clearLayers();">Nuclear Arms Control</a></h4>
 								<li><h4><a style="color:#333" href="#">Border Security (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Counter-narcotics (tk)</a></h4></li>
@@ -10646,8 +10691,8 @@
 							<a id="rightsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Respecting Rights</a>
 							<ul class="dropdown-menu">
 								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<li><h4><a style="color:#333"href="#">&nbsp;&nbsp;Free and Fair Elections (tk)</a></li>
-								<li><h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyHT(),allLayersGroup.clearLayers();">&nbsp;&nbsp;Human Trafficking</a></li>
+								<li><h4><a style="color:#333"href="#">&nbsp;&nbsp;Free and Fair Elections (tk)</a></h4></li>
+								<li><h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyHT(),allLayersGroup.clearLayers();">&nbsp;&nbsp;Human Trafficking</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Independent Judiciacy (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Independent Media (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Internet Freedom (tk)</a></h4></li>
@@ -10686,7 +10731,7 @@
 			<div class="container" id="mainContainer">
 				<div class="panel panel-default" style="height:100%;">
 					<div class="row" id = "rowId" style="height:100%;">
-						<div class="col-lg-12 col-md-12 col-sm-12" id="mapPane" style="height:609px;">
+						<div class="col-lg-12 col-md-12 col-sm-12" id="mapPane" style="height:609px; padding-right: 0px !important; padding-left: 0px !important">
 							<div id="map"></div>
 						</div>
 					</div>
@@ -11004,25 +11049,8 @@
 					</div>
 				</div>
 			</div>
-			<script src="http://localhost/lib/jquery/jquery-1.11.0.min.js"></script>
-			<script src="http://localhost/lib/bootstrap-3.1.1/dist/js/bootstrap.js"></script>
-			<script type="text/javascript" src="http://localhost/DiplomacyExplorer2/js/host.js"></script>
-			<script type="text/javascript" src="http://localhost/lib/Leaflet-0.7.2/dist/leaflet-src.js"></script>
-			<script type="text/javascript" src="http://localhost/DiplomacyExplorer2/js/index.js"></script>
-			<script>
-				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-				siteParams();
-				ga('create', gaID, host);
-				ga('send', 'pageview');
-			</script>
 		</div>
 <!-- ************************   END EDIP MAP   ******************************* -->
-<div id="explorer-map-holder" class="show-all-mods" style="height:609px !important;"></div>
-
-
 
 <div id="explorer-stories">
 
@@ -11741,7 +11769,9 @@
 	</div>
 </div>
 </div>
-</div><div class="right-arrow"></div><div id="root-footer"></div></div><div id="footer"><div id="footer-top"><div id="footer-left"><div id="footer-left-bg"></div></div><div id="footer-center"><div id="footer-title">References</div></div><div id="footer-right"><div id="footer-right-bg"></div></div></div><div id="footer-body"><ul id="footer-menu"><li><a href="http://diplomacy.state.gov/discoverdiplomacy/references/169792.htm">Diplomatic Dictionary</a></li><li><a href="http://diplomacy.state.gov/discoverdiplomacy/references/169793.htm">Educator Resources</a></li><li class="last"><a href="http://diplomacy.state.gov/discoverdiplomacy/references/169794.htm">You Are a Diplomat</a></li></ul><ul id="footer-smallprint"><li><a href="http://www.state.gov/misc/152386.htm">Disclaimer</a></li><li><a href="http://www.state.gov/misc/415.htm">Privacy Policy</a></li><li><a href="http://diplomacy.state.gov/discoverdiplomacy/about/169789.htm">About</a></li><li class="last" id="footer-credit">
+</div><div class="right-arrow"></div>
+<div id="root-footer"></div>
+</div><div id="footer"><div id="footer-top"><div id="footer-left"><div id="footer-left-bg"></div></div><div id="footer-center"><div id="footer-title">References</div></div><div id="footer-right"><div id="footer-right-bg"></div></div></div><div id="footer-body"><ul id="footer-menu"><li><a href="http://diplomacy.state.gov/discoverdiplomacy/references/169792.htm">Diplomatic Dictionary</a></li><li><a href="http://diplomacy.state.gov/discoverdiplomacy/references/169793.htm">Educator Resources</a></li><li class="last"><a href="http://diplomacy.state.gov/discoverdiplomacy/references/169794.htm">You Are a Diplomat</a></li></ul><ul id="footer-smallprint"><li><a href="http://www.state.gov/misc/152386.htm">Disclaimer</a></li><li><a href="http://www.state.gov/misc/415.htm">Privacy Policy</a></li><li><a href="http://diplomacy.state.gov/discoverdiplomacy/about/169789.htm">About</a></li><li class="last" id="footer-credit">
         Discover Diplomacy is a product of the
         <a href="http://diplomacy.state.gov/">U.S. Diplomacy Center</a> at the
         <a href="http://www.state.gov/">U.S. Department of State</a>.
@@ -11749,4 +11779,18 @@
 	var body = document.getElementsByTagName('body')[0];
 	body.className = body.className.replace(/noscript/, 'javascript-enabled');
     </script><script src="http://diplomacy.state.gov/js/discoverdiplomacy/steal/steal.production.js?discover_diplomacy" type="text/javascript"></script><script id="discover_diplomacy_production_js" type="text/javascript" compress="true" package="production.js" src="http://diplomacy.state.gov/js/discoverdiplomacy/discover_diplomacy/production.js" path="http://diplomacy.state.gov/js/discoverdiplomacy/discover_diplomacy/production.js" force="true" onload="steal.ct(1)"></script><script type="text/javascript">steal.end()</script>
-</body></html>
+<script src="http://localhost/lib/jquery/jquery-1.11.0.min.js"></script>
+			<script src="http://localhost/lib/bootstrap-3.1.1/dist/js/bootstrap.js"></script>
+			<script type="text/javascript" src="http://localhost/DiplomacyExplorer2/js/host.js"></script>
+			<script type="text/javascript" src="http://localhost/lib/Leaflet-0.7.2/dist/leaflet-src.js"></script>
+			<script type="text/javascript" src="http://localhost/DiplomacyExplorer2/js/index.js"></script>
+			<script>
+				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+					(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+				siteParams();
+				ga('create', gaID, host);
+				ga('send', 'pageview');
+			</script>
+	</body></html>
