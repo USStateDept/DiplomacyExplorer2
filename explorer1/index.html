@@ -82,6 +82,18 @@
 				margin-top: 0px !important;
 				margin-bottom: 0px !important;
 			}
+			.navbar-outer {
+				width:864px;
+			}
+			.navbar-brand {
+				float: left !important;
+				padding: 0px 5px !important;
+				font-size: 18px !important;
+				font-family: sans-serif !important;
+				text-decoration: none !important;
+				line-height: normal !important;
+				height: 20px !important;
+			}
 			body h4 {
 				margin-bottom: 0px !important;
 			}
@@ -10673,91 +10685,94 @@
 <div style="left: 243px; top: 301px;" id="stroke" class="ne"></div></div>
 <!-- ************************   START EDIP MAP *******************************-->
 		<div id="explorer-map-issues" style="visibility:hidden;;">
-			<div class="navbar navbar-inverse">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
+			<div class="navbar-outer">
+				<div class="navbar navbar-inverse">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="http://localhost/DiplomacyExplorer2/explorer1/#issues" style="font-size:large; font-family:sans-serif; text-decoration:none;">Issues</a>
+					</div>
+					<div class="navbar-collapse collapse" id="navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li class="dropdown">
+								<a id="securityDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Securing Peace</a>
+								<ul class="dropdown-menu" style="padding:10px;">
+									<h4 class="themeDescrip"><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
+									<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyNuc(),allLayersGroup.clearLayers();">Nuclear Arms Control</a></li>
+									<li><a style="color:#333" href="#">Border Security (tk)</a></li>
+									<li><a style="color:#333" href="#">Counter-narcotics (tk)</a></li>
+									<li><a style="color:#333" href="#">Counter-terrorism (tk)</a></li>
+									<li><a style="color:#333" href="#">Securing the Seas/Maritime Piracy (tk)</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a id="businessDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Promoting Prosperity</a>
+								<ul class="dropdown-menu">
+									<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
+									<li><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerMLOICAO),allLayersGroup.addLayer(geoJsonLayerMLOUNESCO),allLayersGroup.addLayer(geoJsonLayerMLOFAO),allLayersGroup.addLayer(geoJsonLayerMLOOAS),allLayersGroup.addLayer(geoJsonLayerMLOUNGA),allLayersGroup.addLayer(geoJsonLayerMLOOSCE),allLayersGroup.addLayer(geoJsonLayerMLOOECD),allLayersGroup.addLayer(geoJsonLayerMLONATO),allLayersGroup.addLayer(geoJsonLayerMLOEU),allLayersGroup.addLayer(geoJsonLayerMLOAU),allLayersGroup.addLayer(geoJsonLayerMLOUNHCR),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyMLO(),allLayersGroup.clearLayers();">Multi-Lateral Organizations</a></li>
+									<li><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPAPEC),allLayersGroup.addLayer(geoJsonLayerTPASEAN),allLayersGroup.addLayer(geoJsonLayerTPCAFTA),allLayersGroup.addLayer(geoJsonLayerTPCBERA),allLayersGroup.addLayer(geoJsonLayerTPNAFTA),allLayersGroup.addLayer(geoJsonLayerTPWTO),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyTP(),allLayersGroup.clearLayers();">Trade Promotion</a></li>
+									<li><a style="color:#333" href="#">Border Security (tk)</a></li>
+									<li><a style="color:#333" href="#">Good Governance (trade legislation) (tk)</a></li>
+									<li><a style="color:#333" href="#">Intellectual Property Rights (tk)</a></li>
+									<li><a style="color:#333" href="#">Science & Technology Promotion (tk)</a></li>
+									<li><a style="color:#333" href="#">Securing the Seas/Maritime Piracy (tk)</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a id="environmentDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Protecting Resources</a>
+								<ul class="dropdown-menu">
+									<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
+									<li><a style="color:#333" href="#">Climate Change (tk)</a></li>
+									<li><a style="color:#333" href="#">Endangered Species (tk)</a></li>
+									<li><a style="color:#333" href="#">Energy Policy (tk)</a></li>
+									<li><a style="color:#333" href="#">Environmental Conservation (tk)</a></li>
+									<li><a style="color:#333" href="#">Water Security (tk)</a></li>
+									
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a id="rightsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Respecting Rights</a>
+								<ul class="dropdown-menu">
+									<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
+									<li><a style="color:#333"href="#">Free and Fair Elections (tk)</a></h4></li>
+									<li><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyHT(),allLayersGroup.clearLayers();">Human Trafficking</a></h4></li>
+									<li><a style="color:#333" href="#">Independent Judiciacy (tk)</a></li>
+									<li><a style="color:#333" href="#">Independent Media (tk)</a></li>
+									<li><a style="color:#333" href="#">Internet Freedom (tk)</a></li>
+									<li><a style="color:#333" href="#">Minority Rights (tk)</a></li>
+									<li><a style="color:#333" href="#">Religious Freedom (tk)</a></li>
+									<li><a style="color:#333" href="#">Women's Rights (tk)</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a id="livesDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Saving Lives</a>
+								<ul class="dropdown-menu">
+									<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
+									<li><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHIAV),allLayersGroup.addLayer(geoJsonLayerHIHIVAIDS),allLayersGroup.addLayer(geoJsonLayerHIM),allLayersGroup.addLayer(geoJsonLayerHIMHAC),allLayersGroup.addLayer(geoJsonLayerHIPEPFAR),allLayersGroup.addLayer(geoJsonLayerHIP),allLayersGroup.addLayer(geoJsonLayerHIT),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyHI(),allLayersGroup.clearLayers();">Health Issues</a></li>
+									<li><a style="color:#333" href="#">Counter-narcotics (tk)</a></li>
+									<li><a style="color:#333" href="#">Disaster Assistance (tk)</a></li>
+									<li><a style="color:#333" href="#">Refugee Assistance (tk)</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a id="adminDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Admin</a>
+								<ul class="dropdown-menu">
+									<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#themeDescripModal').modal('show'); return false;">Revise Theme Description</a></li>
+									<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#issueModal').modal('show'); return false;">Revise Issue Legend</a></li>
+									<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#subIssueModal').modal('show'); return false;">Revise Sub-Issue Legend</a></li>
+									<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#storyModal').modal('show'); return false;">Add Issue Story</a></li>
+								</ul>
+							</li>
+							<!--
+							<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#shareModal').modal('show'); return false;">Share</a></li>
+							<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#aboutModal').modal('show'); return false;">About</a></li>
+							-->
+						</ul>
+					</div><!--/.navbar-collapse -->
 				</div>
-				<div class="navbar-collapse collapse" id="navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li class="dropdown">
-							<a id="securityDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Securing Peace</a>
-							<ul class="dropdown-menu" style="padding:10px;">
-								<h4 class="themeDescrip"><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyNuc(),allLayersGroup.clearLayers();">Nuclear Arms Control</a></li>
-								<li><a style="color:#333" href="#">Border Security (tk)</a></li>
-								<li><a style="color:#333" href="#">Counter-narcotics (tk)</a></li>
-								<li><a style="color:#333" href="#">Counter-terrorism (tk)</a></li>
-								<li><a style="color:#333" href="#">Securing the Seas/Maritime Piracy (tk)</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a id="businessDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Promoting Prosperity</a>
-							<ul class="dropdown-menu">
-								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<li><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerMLOICAO),allLayersGroup.addLayer(geoJsonLayerMLOUNESCO),allLayersGroup.addLayer(geoJsonLayerMLOFAO),allLayersGroup.addLayer(geoJsonLayerMLOOAS),allLayersGroup.addLayer(geoJsonLayerMLOUNGA),allLayersGroup.addLayer(geoJsonLayerMLOOSCE),allLayersGroup.addLayer(geoJsonLayerMLOOECD),allLayersGroup.addLayer(geoJsonLayerMLONATO),allLayersGroup.addLayer(geoJsonLayerMLOEU),allLayersGroup.addLayer(geoJsonLayerMLOAU),allLayersGroup.addLayer(geoJsonLayerMLOUNHCR),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyMLO(),allLayersGroup.clearLayers();">Multi-Lateral Organizations</a></li>
-								<li><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerTPAPEC),allLayersGroup.addLayer(geoJsonLayerTPASEAN),allLayersGroup.addLayer(geoJsonLayerTPCAFTA),allLayersGroup.addLayer(geoJsonLayerTPCBERA),allLayersGroup.addLayer(geoJsonLayerTPNAFTA),allLayersGroup.addLayer(geoJsonLayerTPWTO),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyTP(),allLayersGroup.clearLayers();">Trade Promotion</a></li>
-								<li><a style="color:#333" href="#">Border Security (tk)</a></li>
-								<li><a style="color:#333" href="#">Good Governance (trade legislation) (tk)</a></li>
-								<li><a style="color:#333" href="#">Intellectual Property Rights (tk)</a></li>
-								<li><a style="color:#333" href="#">Science & Technology Promotion (tk)</a></li>
-								<li><a style="color:#333" href="#">Securing the Seas/Maritime Piracy (tk)</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a id="environmentDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Protecting Resources</a>
-							<ul class="dropdown-menu">
-								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<li><a style="color:#333" href="#">Climate Change (tk)</a></li>
-								<li><a style="color:#333" href="#">Endangered Species (tk)</a></li>
-								<li><a style="color:#333" href="#">Energy Policy (tk)</a></li>
-								<li><a style="color:#333" href="#">Environmental Conservation (tk)</a></li>
-								<li><a style="color:#333" href="#">Water Security (tk)</a></li>
-								
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a id="rightsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Respecting Rights</a>
-							<ul class="dropdown-menu">
-								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<li><a style="color:#333"href="#">Free and Fair Elections (tk)</a></h4></li>
-								<li><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyHT(),allLayersGroup.clearLayers();">Human Trafficking</a></h4></li>
-								<li><a style="color:#333" href="#">Independent Judiciacy (tk)</a></li>
-								<li><a style="color:#333" href="#">Independent Media (tk)</a></li>
-								<li><a style="color:#333" href="#">Internet Freedom (tk)</a></li>
-								<li><a style="color:#333" href="#">Minority Rights (tk)</a></li>
-								<li><a style="color:#333" href="#">Religious Freedom (tk)</a></li>
-								<li><a style="color:#333" href="#">Women's Rights (tk)</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a id="livesDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Saving Lives</a>
-							<ul class="dropdown-menu">
-								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<li><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHIAV),allLayersGroup.addLayer(geoJsonLayerHIHIVAIDS),allLayersGroup.addLayer(geoJsonLayerHIM),allLayersGroup.addLayer(geoJsonLayerHIMHAC),allLayersGroup.addLayer(geoJsonLayerHIPEPFAR),allLayersGroup.addLayer(geoJsonLayerHIP),allLayersGroup.addLayer(geoJsonLayerHIT),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyHI(),allLayersGroup.clearLayers();">Health Issues</a></li>
-								<li><a style="color:#333" href="#">Counter-narcotics (tk)</a></li>
-								<li><a style="color:#333" href="#">Disaster Assistance (tk)</a></li>
-								<li><a style="color:#333" href="#">Refugee Assistance (tk)</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a id="adminDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Admin Demo</a>
-							<ul class="dropdown-menu">
-								<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#themeDescripModal').modal('show'); return false;">Revise Theme Description</a></li>
-								<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#issueModal').modal('show'); return false;">Revise Issue Legend</a></li>
-								<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#subIssueModal').modal('show'); return false;">Revise Sub-Issue Legend</a></li>
-								<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#storyModal').modal('show'); return false;">Add Issue Story</a></li>
-							</ul>
-						</li>
-						<!--
-						<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#shareModal').modal('show'); return false;">Share</a></li>
-						<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#aboutModal').modal('show'); return false;">About</a></li>
-						-->
-					</ul>
-				</div><!--/.navbar-collapse -->
 			</div>
 
 			<div class="container" id="mainContainer">

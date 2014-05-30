@@ -1,10 +1,7 @@
-html, body, #mainContainer, #map {
+#mainContainer, #map {
   height: 100%;
   width: 100%;
   overflow: hidden;
-}
-body {
-  padding-top: 50px;
 }
 input[type="radio"], input[type="checkbox"] {
   margin: 0;
@@ -25,9 +22,7 @@ input[type="radio"], input[type="checkbox"] {
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   letter-spacing: 1px;
 }
-.navbar-collapse.in {
-  overflow-y: hidden;
-}
+
 .navbar-inverse {
 	background-color: rgb(25,95,164);
 }
