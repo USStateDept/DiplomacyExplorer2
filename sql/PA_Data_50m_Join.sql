@@ -28,5 +28,8 @@ SELECT
 	"PA_Data"."CBERA",
 	"PA_Data"."CAFTA",
 	"PA_Data"."TP_Index",
+	"PA_Data"."Global_Health",
+	"PA_Data"."DHRA",
+	"PA_Data"."Wat_San",
 	the_geom
 FROM opengeo."ne_50m_admin_0_countries_lakes" LEFT OUTER JOIN public."PA_Data" ON (ne_50m_admin_0_countries_lakes.sovereignt = "PA_Data"."Country");
