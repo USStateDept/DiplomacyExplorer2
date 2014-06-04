@@ -27,9 +27,9 @@ CREATE TABLE public."PA_Data"
 	"CBERA" text,
 	"CAFTA" text,
 	"TP_Index" real,
-	"Global_Health" text,
-	"DHRA" text,
-	"Wat_San" text
+	"Global_Health" real,
+	"DHRA" real,
+	"Wat_San" real
 );
 
 set client_encoding to 'UTF-8';
