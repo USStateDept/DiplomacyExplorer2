@@ -1586,18 +1586,19 @@ function onEachFeaturePts(feature, layer) {
 	
 	// NEW POPUP CODE - In Progress
 	// popup for photo and video
-	if (feature.properties.PhotoURL !== undefined && feature.properties.VideoURL !== undefined){
-		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><video width='320' height='240' controls><source src='vid/sample_mpeg4.mp4' type='video/mp4'>Your browser does not support the video tag.</video><br><img src='img/usdos-logo-seal.png' alt='photo test' height='42' width='100%'><h5 style='height:140px; overflow-y:scroll'>" + feature.properties.Story + "</h5>";
+	if (feature.properties.PhotoURL != null && feature.properties.VideoURL != null){
+		alert(feature.properties.PhotoURL);
+		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><video style='margin-top:-50px;' width='300' height='240' controls><source src='../vid/sample_mpeg4.mp4' type='video/mp4'>Your browser does not support the video tag.</video><br><img src='../img/" + feature.properties.PhotoURL + "' alt='photo test' height='80' width='100%'><h5 style='height:140px; overflow-y:scroll'>" + feature.properties.Story + "</h5>";
 		layer.bindPopup(popupContent);
 	} 
 	// popup for photo only
-	else if (feature.properties.PhotoURL !== undefined && feature.properties.VideoURL == undefined){
-		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><img src='img/usdos-logo-seal.png' alt='photo test' height='42' width='100%'>< style='height:140px; overflow-y:scroll'h5>" + feature.properties.Story + "</h5>";
+	else if (feature.properties.PhotoURL != null && feature.properties.VideoURL == undefined){
+		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><img src='../img/" + feature.properties.PhotoURL + "' alt='photo test' height='80' width='100%'>< style='height:140px; overflow-y:scroll'h5>" + feature.properties.Story + "</h5>";
 		layer.bindPopup(popupContent);
 	}
 	// popup for video only
-	else if (feature.properties.PhotoURL == undefined && feature.properties.VideoURL !== undefined){
-		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><video width='320' height='240' controls><source src='vid/sample_mpeg4.mp4' type='video/mp4'>Your browser does not support the video tag.</video><h5 style='height:140px; overflow-y:scroll'>" + feature.properties.Story + "</h5>";
+	else if (feature.properties.PhotoURL == undefined && feature.properties.VideoURL != null){
+		popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><video style='margin-top:-50px;' width='300' height='240' controls><source src='../vid/sample_mpeg4.mp4' type='video/mp4'>Your browser does not support the video tag.</video><h5 style='height:140px; overflow-y:scroll'>" + feature.properties.Story + "</h5>";
 		layer.bindPopup(popupContent);
 	// popup text only
 	} else {
