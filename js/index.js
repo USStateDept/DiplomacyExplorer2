@@ -40,6 +40,8 @@ function getGeoJson(data) {
 	geoJsonLayerTPASEAN = new L.geoJson(data, {style: StyleTPASEAN});
 	geoJsonLayerTPCBERA = new L.geoJson(data, {style: StyleTPCBERA});
 	geoJsonLayerTPCAFTA = new L.geoJson(data, {style: StyleTPCAFTA});
+	geoJsonLayerWatSan = new L.geoJson(data, {style: StyleWatSan});
+	geoJsonLayerDHRA = new L.geoJson(data, {style: StyleDHRA});
 }
 
 $.ajax({
@@ -271,6 +273,23 @@ function getColorTPIndex(d) {
 	}
 }
 */		
+
+function getColorWatSan(d) {
+	if (d == '1') {
+		return	'#FC4E2A'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorDHRA(d) {
+	if (d == '1') {
+		return	'#FC4E2A'
+	} else {
+		return	'#ddd';
+	}
+}
+
 function StyleHT(feature) {
 	return {
 		weight: 1,
@@ -571,6 +590,26 @@ function StyleTPIndex(feature) {
 	};
 }
 */
+
+function StyleWatSan(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorWatSan(feature.properties.Wat_San)
+	};
+}
+
+function StyleDHRA(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorDHRA(feature.properties.DHRA)
+	};
+}
 var map = new L.Map('map', {
 	zoomControl: false,
 	center: [20, 10],
@@ -606,21 +645,37 @@ var keyMLO;
 var keyTP;
 var keyHI;
 var keyHT;
+var keyWatSan;
+var keyDHRA;
 
 function getCurrentKey(){
-	if(currentKey=="Nuc")
+	if (currentKey=="Nuc")
 	{
 	keyNuc();
 	} else if (currentKey=="HI")
 	{
 	keyHI();
+	} else if (currentKey=="WatSan")
+	{
+	keyWatSan();
+	} else if (currentKey=="DHRA")
+	{
+	keyDHRA();
+	} else if (currentKey=="HT")
+	{
+	keyHT();
+	} else if (currentKey=="MLO")
+	{
+	keyMLO();
+	} else if (currentKey=="TP")
+	{
+	keyTP();
 	}
 }
 
 function openPane(){
 	var descOpen = document.getElementById('descPane');
 	if(descOpen){
-	
 	}
 	else
 	{
@@ -648,8 +703,9 @@ function changeLayer() {
 }
 
 keyTP = function () {
+	currentKey="TP";
 	var categoryName = "Trade Promotion";
-	var categoryDescription = "<h7 class='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a nibh ac ligula consequat sollicitudin. Curabitur placerat metus in dictum tempus. Maecenas ut lectus ac massa cursus rutrum. In euismod auctor nisl vitae aliquet. Curabitur vel bibendum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum diam, interdum quis hendrerit sit amet, malesuada nec sem. Quisque ut sem vitae lorem aliquet fermentum vitae ac mauris. Nunc justo lorem, cursus eget consequat et, ornare in ante. Etiam ornare purus nec gravida aliquam. Donec pharetra et justo sed mollis. Suspendisse a ipsum ultrices, bibendum mi a, semper risus. Nam dictum leo id lacus varius, nec pharetra tortor eleifend. Aenean nunc eros, auctor vitae faucibus et, venenatis eu nisl.</h7>";
+	var categoryDescription = "<div><h7 class='lorem'>While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h7><br><br><h7 class='lorem'>A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h7><br><br><h7 class='lorem'>The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.</h7></div>";
 	
 	var key1Subject = "APEC Membership";
 	var key2Subject = "ASEAN Membership";
@@ -766,7 +822,7 @@ keyTP = function () {
 		);
 	}
 	
-	//var name = "Nuclear Arms Control";
+	
 	var keyTitle1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key1Subject + "</a>";
 	var keyTitle2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key2Subject + "</a>";
 	var keyTitle3 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key3Subject + "</a>";
@@ -776,17 +832,17 @@ keyTP = function () {
 	
 	var key1 = key1Labels.join('<br>');
 	var key2 = key2Labels.join('<br>');
-	var key3 = key3Labels.join('<br>');
-	var key4 = key4Labels.join('<br>');
-	var key5 = key5Labels.join('<br>');
-	var key6 = key6Labels.join('<br>');
+	var key3 = key2Labels.join('<br>');
+	var key4 = key2Labels.join('<br>');
+	var key5 = key2Labels.join('<br>');
+	var key6 = key2Labels.join('<br>');
 	var key1panel = "<div class='legend'>" + key1 + "</div>";
 	var key2panel = "<div class='legend'>" + key2 + "</div>";
 	var key3panel = "<div class='legend'>" + key3 + "</div>";
 	var key4panel = "<div class='legend'>" + key4 + "</div>";
 	var key5panel = "<div class='legend'>" + key5 + "</div>";
 	var key6panel = "<div class='legend'>" + key6 + "</div>";
-	var accordionStart = "<div class=\"panel-group\" id=\"accordion\">";
+	var accordionStart = "<div class=\"panel-group\" id=\"accordion\" style=\"height:609px;overflow-y:scroll;margin-bottom:0px;\">";
 	var categoryAccordionTitle = "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + categoryName + "</a></h4></div>";
 	var catAccordionPanel = "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + categoryDescription + "</div>";
 	var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse1\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key1Subject + "</a></h4></div>";
@@ -804,12 +860,13 @@ keyTP = function () {
 	
 	var accordionEnd = "</div>";
 	
-	mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div></div>" + key2AccordionTitle + key2AccordionPanel + "</div></div>"  + key3AccordionTitle + key3AccordionPanel + "</div></div>"  + key4AccordionTitle + key4AccordionPanel + "</div></div>"  + key5AccordionTitle + key5AccordionPanel + "</div></div>"  + key6AccordionTitle + key6AccordionPanel + "</div></div>" + accordionEnd + "<br/>";
+	mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div>" + key2AccordionTitle + key2AccordionPanel + "</div>" + key3AccordionTitle + key3AccordionPanel + "</div>" + key4AccordionTitle + key4AccordionPanel + "</div>" + key5AccordionTitle + key5AccordionPanel + "</div>" + key6AccordionTitle + key6AccordionPanel + "</div></div></div>" + accordionEnd + "<br/>";
 };
 
 keyMLO = function () {
+	currentKey="MLO";
 	var categoryName = "Multi-Lateral Organizations";
-	var categoryDescription = "<h7 class='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a nibh ac ligula consequat sollicitudin. Curabitur placerat metus in dictum tempus. Maecenas ut lectus ac massa cursus rutrum. In euismod auctor nisl vitae aliquet. Curabitur vel bibendum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum diam, interdum quis hendrerit sit amet, malesuada nec sem. Quisque ut sem vitae lorem aliquet fermentum vitae ac mauris. Nunc justo lorem, cursus eget consequat et, ornare in ante. Etiam ornare purus nec gravida aliquam. Donec pharetra et justo sed mollis. Suspendisse a ipsum ultrices, bibendum mi a, semper risus. Nam dictum leo id lacus varius, nec pharetra tortor eleifend. Aenean nunc eros, auctor vitae faucibus et, venenatis eu nisl.</h7>";
+	var categoryDescription = "<div><h7 class='lorem'>While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h7><br><br><h7 class='lorem'>A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h7><br><br><h7 class='lorem'>The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.</h7></div>";
 	
 	var key1Subject = "African Union Membership";
 	var key2Subject = "European Union Membership";
@@ -857,13 +914,13 @@ keyMLO = function () {
 	var key11Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis dui tortor, vel tristique sem condimentum a. Etiam tincidunt magna eu odio pretium, vel posuere metus adipiscing. Donec et purus turpis. Ut sodales sit amet.";
 	
 	var key1div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
+		grades = ['Member', 'Suspended', 'null'],
 		// this is something like a subheader
 		key1Labels = [],
 		from;
 
 	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
+		from = ['Member', 'Suspended', 'Not a member'];
 		
 		key1Labels.push(
 			'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
@@ -1029,22 +1086,21 @@ keyMLO = function () {
 	var keyTitle6 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key6Layer + "),allLayersGroupPts.addLayer(" + key6LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key6Subject + "</a>";
 	var keyTitle7 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key7Layer + "),allLayersGroupPts.addLayer(" + key7LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key7Subject + "</a>";
 	var keyTitle8 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key8Layer + "),allLayersGroupPts.addLayer(" + key8LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key8Subject + "</a>";
-	var keyTitle9 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key8Layer + "),allLayersGroupPts.addLayer(" + key9LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key9Subject + "</a>";
+	var keyTitle9 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key9Layer + "),allLayersGroupPts.addLayer(" + key9LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key9Subject + "</a>";
 	var keyTitle10 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key10Layer + "),allLayersGroupPts.addLayer(" + key10LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key10Subject + "</a>";
 	var keyTitle11 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key11Layer + "),allLayersGroupPts.addLayer(" + key11LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key11Subject + "</a>";
 	
 	var key1 = key1Labels.join('<br>');
 	var key2 = key2Labels.join('<br>');
-	var key3 = key3Labels.join('<br>');
-	var key4 = key4Labels.join('<br>');
-	var key5 = key5Labels.join('<br>');
-	var key6 = key6Labels.join('<br>');
-	var key7 = key7Labels.join('<br>');
-	var key8 = key8Labels.join('<br>');
-	var key9 = key9Labels.join('<br>');
-	var key10 = key10Labels.join('<br>');
-	var key11 = key11Labels.join('<br>');
-	
+	var key3 = key2Labels.join('<br>');
+	var key4 = key2Labels.join('<br>');
+	var key5 = key2Labels.join('<br>');
+	var key6 = key2Labels.join('<br>');
+	var key7 = key2Labels.join('<br>');
+	var key8 = key2Labels.join('<br>');
+	var key9 = key2Labels.join('<br>');
+	var key10 = key2Labels.join('<br>');
+	var key11 = key2Labels.join('<br>');
 	var key1panel = "<div class='legend'>" + key1 + "</div>";
 	var key2panel = "<div class='legend'>" + key2 + "</div>";
 	var key3panel = "<div class='legend'>" + key3 + "</div>";
@@ -1056,8 +1112,7 @@ keyMLO = function () {
 	var key9panel = "<div class='legend'>" + key9 + "</div>";
 	var key10panel = "<div class='legend'>" + key10 + "</div>";
 	var key11panel = "<div class='legend'>" + key11 + "</div>";
-	
-	var accordionStart = "<div class=\"panel-group\" id=\"accordion\">";
+	var accordionStart = "<div class=\"panel-group\" id=\"accordion\" style=\"height:609px;overflow-y:scroll;margin-bottom:0px;\">";
 	var categoryAccordionTitle = "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + categoryName + "</a></h4></div>";
 	var catAccordionPanel = "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + categoryDescription + "</div>";
 	var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse1\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key1Subject + "</a></h4></div>";
@@ -1085,7 +1140,7 @@ keyMLO = function () {
 	
 	var accordionEnd = "</div>";
 	
-	mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div></div>" + key2AccordionTitle + key2AccordionPanel + "</div></div>"  + key3AccordionTitle + key3AccordionPanel + "</div></div>"  + key4AccordionTitle + key4AccordionPanel + "</div></div>"  + key5AccordionTitle + key5AccordionPanel + "</div></div>"  + key6AccordionTitle + key6AccordionPanel + "</div></div>" + key7AccordionTitle + key7AccordionPanel + "</div></div>" + key8AccordionTitle + key8AccordionPanel + "</div></div>" + key9AccordionTitle + key9AccordionPanel + "</div></div>" + key10AccordionTitle + key10AccordionPanel + "</div></div>" + key11AccordionTitle + key11AccordionPanel + "</div></div>" + accordionEnd + "<br/>";
+	mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div>" + key2AccordionTitle + key2AccordionPanel + "</div>" + key3AccordionTitle + key3AccordionPanel + "</div>" + key4AccordionTitle + key4AccordionPanel + "</div>" + key5AccordionTitle + key5AccordionPanel + "</div>" + key6AccordionTitle + key6AccordionPanel + "</div>" + key7AccordionTitle + key7AccordionPanel + "</div>" + key8AccordionTitle + key8AccordionPanel + "</div>" + key9AccordionTitle + key9AccordionPanel + "</div>" + key10AccordionTitle + key10AccordionPanel + "</div>" + key11AccordionTitle + key11AccordionPanel + "</div></div></div>" + accordionEnd + "<br/>";
 };
 
 keyHI = function () {
@@ -1125,8 +1180,6 @@ keyHI = function () {
 	var key6Description = "After decades of sporadic assistance to the growing issue of HIV/AIDS around the world, the international community has come together to deal with this and other health issues that impact the stability of our shrinking world.  Besides contributing to international initiatives including the Global Fund to Fight Aids, Tuberculosis and Malaria, the United States implemented the President's Emergency Plan for AIDS Relief (PEPFAR) to partner with local governmental and non-governmental health agencies to develop programs to prevent, test, and treat the disease. PEPFAR investments also help to alleviate suffering from other diseases across the global health spectrum. Since 2008, the number of individuals receiving lifesaving anti-retroviral therapy has more than tripled and more than one million babies have been born without HIV due to PEPFAR-supported programs.  And the moment has arrived when creating an AIDS-free generation is truly within reach.PEPFAR has also served to transform the way that development is done.  While continuing to rapidly expand access to lifesaving HIV services, PEPFAR has moved from an emergency state to a more sustainable footing, creating a robust health care delivery capability -- often where little to none previously existed -- that is being used not only to address HIV, but also a broader range of health issues. Since 2011, U.S. Department of State has created Partnership Frameworks, a series of joint strategic plans with foreign governments, such as South Africa and Botswana, through which  a true and enduring partnership with host countries has evolved -- one that positions them to assume greater ownership of their national HIV response. The plans aim to promote a sustainable approach to combating HIV/AIDS in partner countries through service delivery, policy reform, and coordinated financial commitments. After decades of sporadic assistance to the growing issue of HIV/AIDS around the world, the international community has come together to deal with this and other health issues that impact the stability of our shrinking world.  Besides contributing to international initiatives including the Global Fund to Fight Aids, Tuberculosis and Malaria, the United States implemented the President's Emergency Plan for AIDS Relief (PEPFAR) to partner with local governmental and non-governmental health agencies to develop programs to prevent, test, and treat the disease. PEPFAR investments also help to alleviate suffering from other diseases across the global health spectrum. Since 2008, the number of individuals receiving lifesaving anti-retroviral therapy has more than tripled and more than one million babies have been born without HIV due to PEPFAR-supported programs.  And the moment has arrived when creating an AIDS-free generation is truly within reach.PEPFAR has also served to transform the way that development is done.  While continuing to rapidly expand access to lifesaving HIV services, PEPFAR has moved from an emergency state to a more sustainable footing, creating a robust health care delivery capability -- often where little to none previously existed -- that is being used not only to address HIV, but also a broader range of health issues.  Since 2011, U.S. Department of State has created Partnership Frameworks, a series of joint strategic plans with foreign governments, such as South Africa and Botswana, through which  a true and enduring partnership with host countries has evolved -- one that positions them to assume greater ownership of their national HIV response. The plans aim to promote a sustainable approach to combating HIV/AIDS in partner countries through service delivery, policy reform, and coordinated financial commitments.";
 	var key7Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In adipiscing aliquam tellus at congue. Vivamus vitae vehicula lorem. Etiam pulvinar mauris vitae euismod pellentesque. Mauris venenatis tellus in turpis hendrerit porta. Cras eu est lacinia.";
 	var key8Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.";
-	
-	
 	
 	var key1div = L.DomUtil.create('div'),
 		grades = ['1'],
@@ -1250,6 +1303,12 @@ keyHI = function () {
 	
 	var keyTitle1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key1Subject + "</a>";
 	var keyTitle2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key2Subject + "</a>";
+	var keyTitle3 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key3Subject + "</a>";
+	var keyTitle4 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key4Layer + "),allLayersGroupPts.addLayer(" + key4LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key4Subject + "</a>";
+	var keyTitle5 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key5Layer + "),allLayersGroupPts.addLayer(" + key5LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key5Subject + "</a>";
+	var keyTitle6 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key6Layer + "),allLayersGroupPts.addLayer(" + key6LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key6Subject + "</a>";
+	var keyTitle7 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key7Layer + "),allLayersGroupPts.addLayer(" + key7LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key7Subject + "</a>";
+	var keyTitle8 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key8Layer + "),allLayersGroupPts.addLayer(" + key8LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key8Subject + "</a>";
 	
 	var key1 = key1Labels.join('<br>');
 	var key2 = key2Labels.join('<br>');
@@ -1292,223 +1351,6 @@ keyHI = function () {
 	mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div>" + key2AccordionTitle + key2AccordionPanel + "</div>" + key3AccordionTitle + key3AccordionPanel + "</div>" + key4AccordionTitle + key4AccordionPanel + "</div>" + key5AccordionTitle + key5AccordionPanel + "</div>" + key6AccordionTitle + key6AccordionPanel + "</div>" + key7AccordionTitle + key7AccordionPanel + "</div>" + key8AccordionTitle + key8AccordionPanel + "</div></div></div>" + accordionEnd + "<br/>";
 };
 
-
-
-
-
-/*
-
-keyHI = function () {
-	var categoryName = "Health Issues";
-	var categoryDescription = "<h7 class='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a nibh ac ligula consequat sollicitudin. Curabitur placerat metus in dictum tempus. Maecenas ut lectus ac massa cursus rutrum. In euismod auctor nisl vitae aliquet. Curabitur vel bibendum est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum diam, interdum quis hendrerit sit amet, malesuada nec sem. Quisque ut sem vitae lorem aliquet fermentum vitae ac mauris. Nunc justo lorem, cursus eget consequat et, ornare in ante. Etiam ornare purus nec gravida aliquam. Donec pharetra et justo sed mollis. Suspendisse a ipsum ultrices, bibendum mi a, semper risus. Nam dictum leo id lacus varius, nec pharetra tortor eleifend. Aenean nunc eros, auctor vitae faucibus et, venenatis eu nisl.</h7>";
-	
-	var key1Subject = "Global Health";
-	var key2Subject = "Avian Flu (tk)";
-	var key3Subject = "HIV / AIDS (tk)";
-	var key4Subject = "Malaria (tk)";
-	var key5Subject = "Maternal Health - Access to Care";
-	var key6Subject = "PEPFAR";
-	var key7Subject = "Polio (tk)";
-	var key8Subject = "Tuberculosis (tk)";
-	var key1Layer = "geoJsonLayerHIGH";
-	var key2Layer = "geoJsonLayerHIAV";
-	var key3Layer = "geoJsonLayerHIHIVAIDS";
-	var key4Layer = "geoJsonLayerHIM";
-	var key5Layer = "geoJsonLayerHIMHAC";
-	var key6Layer = "geoJsonLayerHIPEPFAR";
-	var key7Layer = "geoJsonLayerHIP";
-	var key8Layer = "geoJsonLayerHIT";
-	var key1LayerPts = "";
-	var key2LayerPts = "";
-	var key3LayerPts = "";
-	var key4LayerPts = "";
-	var key5LayerPts = "";
-	var key6LayerPts = "geoJsonLayerHIPEPFARpts";
-	var key7LayerPts = "";
-	var key8LayerPts = "";
-	var key1Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.";
-	var key2Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.";
-	var key3Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus semper quam vel egestas. Nulla tempus hendrerit justo vel auctor. Pellentesque sollicitudin quis nulla et ornare. Nam rhoncus malesuada neque, a vulputate purus eleifend in.";
-	var key4Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in aliquam tortor, eu commodo neque. Cras pellentesque vitae turpis quis adipiscing. Donec ut nisl feugiat, aliquet ligula sit amet, lacinia tortor. Maecenas consectetur dolor vitae.";
-	var key5Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie mauris at blandit convallis. Vestibulum molestie feugiat mi eget malesuada. Vivamus at diam quis sem porta aliquam. Integer sapien nulla, viverra ac vehicula et, scelerisque.";
-	var key6Description = "After decades of sporadic assistance to the growing issue of HIV/AIDS around the world, the international community has come together to deal with this and other health issues that impact the stability of our shrinking world.  Besides contributing to international initiatives including the Global Fund to Fight Aids, Tuberculosis and Malaria, the United States implemented the President's Emergency Plan for AIDS Relief (PEPFAR) to partner with local governmental and non-governmental health agencies to develop programs to prevent, test, and treat the disease. PEPFAR investments also help to alleviate suffering from other diseases across the global health spectrum. Since 2008, the number of individuals receiving lifesaving anti-retroviral therapy has more than tripled and more than one million babies have been born without HIV due to PEPFAR-supported programs.  And the moment has arrived when creating an AIDS-free generation is truly within reach.PEPFAR has also served to transform the way that development is done.  While continuing to rapidly expand access to lifesaving HIV services, PEPFAR has moved from an emergency state to a more sustainable footing, creating a robust health care delivery capability -- often where little to none previously existed -- that is being used not only to address HIV, but also a broader range of health issues. Since 2011, U.S. Department of State has created Partnership Frameworks, a series of joint strategic plans with foreign governments, such as South Africa and Botswana, through which  a true and enduring partnership with host countries has evolved -- one that positions them to assume greater ownership of their national HIV response. The plans aim to promote a sustainable approach to combating HIV/AIDS in partner countries through service delivery, policy reform, and coordinated financial commitments. After decades of sporadic assistance to the growing issue of HIV/AIDS around the world, the international community has come together to deal with this and other health issues that impact the stability of our shrinking world.  Besides contributing to international initiatives including the Global Fund to Fight Aids, Tuberculosis and Malaria, the United States implemented the President's Emergency Plan for AIDS Relief (PEPFAR) to partner with local governmental and non-governmental health agencies to develop programs to prevent, test, and treat the disease. PEPFAR investments also help to alleviate suffering from other diseases across the global health spectrum. Since 2008, the number of individuals receiving lifesaving anti-retroviral therapy has more than tripled and more than one million babies have been born without HIV due to PEPFAR-supported programs.  And the moment has arrived when creating an AIDS-free generation is truly within reach.PEPFAR has also served to transform the way that development is done.  While continuing to rapidly expand access to lifesaving HIV services, PEPFAR has moved from an emergency state to a more sustainable footing, creating a robust health care delivery capability -- often where little to none previously existed -- that is being used not only to address HIV, but also a broader range of health issues.  Since 2011, U.S. Department of State has created Partnership Frameworks, a series of joint strategic plans with foreign governments, such as South Africa and Botswana, through which  a true and enduring partnership with host countries has evolved -- one that positions them to assume greater ownership of their national HIV response. The plans aim to promote a sustainable approach to combating HIV/AIDS in partner countries through service delivery, policy reform, and coordinated financial commitments.";
-	var key7Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In adipiscing aliquam tellus at congue. Vivamus vitae vehicula lorem. Etiam pulvinar mauris vitae euismod pellentesque. Mauris venenatis tellus in turpis hendrerit porta. Cras eu est lacinia.";
-	var key8Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.";
-	
-	var key1div = L.DomUtil.create('div'),
-		grades = ['Programs','null'],
-		// this is something like a subheader
-		key1Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Programs', 'No Programs'];
-		
-		key1Labels.push(
-			'<i style="background:' + getColorHIGH(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key2div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key2Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key2Labels.push(
-			'<i style="background:' + getColorHIAV(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key3div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key3Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key3Labels.push(
-			'<i style="background:' + getColorHIHIVAIDS(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-
-	var key4div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key4Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key4Labels.push(
-			'<i style="background:' + getColorHIM(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key5div = L.DomUtil.create('div'),
-		grades = ['Excellent', 'Good', 'Fair', 'Poor', 'Unsuitable', 'No data'],
-		// this is something like a subheader
-		key5Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Excellent', 'Good', 'Fair', 'Poor', 'Unsuitable', 'No data'];
-		
-		key5Labels.push(
-			'<i style="background:' + getColorHIMHAC(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key6div = L.DomUtil.create('div'),
-		grades = ['1', '2', '3', 'No Data'],
-		// this is something like a subheader
-		key6Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['1', '2', '3', 'No data'];
-		
-		key6Labels.push(
-			'<i style="background:' + getColorHIPEPFAR(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-					
-	var key7div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key7Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key7Labels.push(
-			'<i style="background:' + getColorHIP(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key8div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key8Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key8Labels.push(
-			'<i style="background:' + getColorHIT(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var keyTitle1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key1Subject + "</a>";
-	var keyTitle2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key2Subject + "</a>";
-	var keyTitle3 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key3Subject + "</a>";
-	var keyTitle4 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key4Layer + "),allLayersGroupPts.addLayer(" + key4LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key4Subject + "</a>";
-	var keyTitle5 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key5Layer + "),allLayersGroupPts.addLayer(" + key5LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key5Subject + "</a>";
-	var keyTitle6 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key6Layer + "),allLayersGroupPts.addLayer(" + key6LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key6Subject + "</a>";
-	var keyTitle7 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key7Layer + "),allLayersGroupPts.addLayer(" + key7LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key7Subject + "</a>";
-	var keyTitle8 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key8Layer + "),allLayersGroupPts.addLayer(" + key8LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key8Subject + "</a>";
-	
-	var key1 = key1Labels.join('<br>');
-	var key2 = key2Labels.join('<br>');
-	var key3 = key3Labels.join('<br>');
-	var key4 = key4Labels.join('<br>');
-	var key5 = key5Labels.join('<br>');
-	var key6 = key6Labels.join('<br>');
-	var key7 = key7Labels.join('<br>');
-	var key8 = key8Labels.join('<br>');
-	
-	var key1panel = "<div class='legend'>" + key1 + "</div>";
-	var key2panel = "<div class='legend'>" + key2 + "</div>";
-	var key3panel = "<div class='legend'>" + key3 + "</div>";
-	var key4panel = "<div class='legend'>" + key4 + "</div>";
-	var key5panel = "<div class='legend'>" + key5 + "</div>";
-	var key6panel = "<div class='legend'>" + key6 + "</div>";
-	var key7panel = "<div class='legend'>" + key7 + "</div>";
-	var key8panel = "<div class='legend'>" + key8 + "</div>";
-	
-	var accordionStart = "<div class=\"panel-group\" id=\"accordion\">";
-	var categoryAccordionTitle = "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + categoryName + "</a></h4></div>";
-	var catAccordionPanel = "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + categoryDescription + "</div>";
-	var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse1\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key1Subject + "</a></h4></div>";
-	var key1AccordionPanel = "<div id=\"collapse1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key1Description + "</div>" + key1panel + "</div>";
-	var key2AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse2\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key2Subject + "</a></h4></div>";
-	var key2AccordionPanel = "<div id=\"collapse2\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key2Description + "</div>" + key2panel + "</div>";
-	var key3AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse3\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key3Subject + "</a></h4></div>";
-	var key3AccordionPanel = "<div id=\"collapse3\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key3Description + "</div>" + key3panel + "</div>";
-	var key4AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse4\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key4Layer + "),allLayersGroupPts.addLayer(" + key4LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key4Subject + "</a></h4></div>";
-	var key4AccordionPanel = "<div id=\"collapse4\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key4Description + "</div>" + key4panel + "</div>";
-	var key5AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse5\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key5Layer + "),allLayersGroupPts.addLayer(" + key5LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key5Subject + "</a></h4></div>";
-	var key5AccordionPanel = "<div id=\"collapse5\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key5Description + "</div>" + key5panel + "</div>";
-	var key6AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse6\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key6Layer + "),allLayersGroupPts.addLayer(" + key6LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key6Subject + "</a></h4></div>";
-	var key6AccordionPanel = "<div id=\"collapse6\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key6Description + "</div>" + key6panel + "</div>";
-	var key7AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse7\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key7Layer + "),allLayersGroupPts.addLayer(" + key7LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key7Subject + "</a></h4></div>";
-	var key7AccordionPanel = "<div id=\"collapse7\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key7Description + "</div>" + key7panel + "</div>";
-	var key8AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse8\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key8Layer + "),allLayersGroupPts.addLayer(" + key8LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key8Subject + "</a></h4></div>";
-	var key8AccordionPanel = "<div id=\"collapse8\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key8Description + "</div>" + key8panel + "</div>";
-	
-	var accordionEnd = "</div>";
-	
-	mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div></div>" + key2AccordionTitle + key2AccordionPanel + "</div></div>"  + key3AccordionTitle + key3AccordionPanel + "</div></div>"  + key4AccordionTitle + key4AccordionPanel + "</div></div>"  + key5AccordionTitle + key5AccordionPanel + "</div></div>"  + key6AccordionTitle + key6AccordionPanel + "</div></div>" + key7AccordionTitle + key7AccordionPanel + "</div></div>" + + key8AccordionTitle + key8AccordionPanel + "</div></div>" + accordionEnd + "<br/>";
-};
-
-
-*/
 keyNuc = function () {
 	currentKey="Nuc";
 	var categoryName = "Nuclear Arms Control";
@@ -1607,6 +1449,90 @@ keyHT = function () {
 	var accordionEnd = "</div>";
 	
 	mapKey.innerHTML = accordionStart + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div></div>" + accordionEnd + "<br/>";
+};
+
+keyWatSan = function () {
+	currentKey="WatSan";
+	//var categoryName = "Water & Sanitation";
+	//var categoryDescription = "<div><h7 class='lorem'>While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h7><br><br><h7 class='lorem'>A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h7><br><br><h7 class='lorem'>The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.</h7></div>";
+	
+	var key1Subject = "Water & Sanitation";
+	var key1Layer = "geoJsonLayerWatSan";
+	var key1LayerPts = "";
+	var key1Description = "The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties. Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.";
+	
+	
+	var key1div = L.DomUtil.create('div'),
+		grades = ['1'],
+		// this is something like a subheader
+		key1Labels = [],
+		from;
+
+	for (var i = 0; i < grades.length; i++) {
+		from = ['Programs'];
+		
+		key1Labels.push(
+			'<i style="background:' + getColorWatSan(grades[i]) + '"></i>' +
+			from[i]
+		);
+	}
+
+	var keyTitle1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key1Subject + "</a>";
+	
+	var key1 = key1Labels.join('<br>');
+	var key1panel = "<div class='legend'>" + key1 + "</div>";
+	//var accordionStart = "<div class=\"panel-group\" id=\"accordion\" style=\"height:609px;overflow-y:scroll;margin-bottom:0px;\">";
+	//var categoryAccordionTitle = "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + categoryName + "</a></h4></div>";
+	//var catAccordionPanel = "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + categoryDescription + "</div>";
+	var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\">" + key1Subject + "</h4></div>";
+	var key1AccordionPanel = "<div class=\"panel-body\">" + key1Description + "</div>" + key1panel;
+	
+	//var accordionEnd = "</div>";
+	
+	//mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div></div></div>" + accordionEnd + "<br/>";
+	mapKey.innerHTML = key1AccordionTitle + key1AccordionPanel + "</div></div></div><br/>";
+};
+
+keyDHRA = function () {
+	currentKey="DHRA";
+	//var categoryName = "Water & Sanitation";
+	//var categoryDescription = "<div><h7 class='lorem'>While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h7><br><br><h7 class='lorem'>A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h7><br><br><h7 class='lorem'>The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.</h7></div>";
+	
+	var key1Subject = "Democracy & Human Rights";
+	var key1Layer = "geoJsonLayerDHRA";
+	var key1LayerPts = "";
+	var key1Description = "The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties. Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.";
+	
+	
+	var key1div = L.DomUtil.create('div'),
+		grades = ['1'],
+		// this is something like a subheader
+		key1Labels = [],
+		from;
+
+	for (var i = 0; i < grades.length; i++) {
+		from = ['Programs'];
+		
+		key1Labels.push(
+			'<i style="background:' + getColorWatSan(grades[i]) + '"></i>' +
+			from[i]
+		);
+	}
+
+	var keyTitle1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key1Subject + "</a>";
+	
+	var key1 = key1Labels.join('<br>');
+	var key1panel = "<div class='legend'>" + key1 + "</div>";
+	//var accordionStart = "<div class=\"panel-group\" id=\"accordion\" style=\"height:609px;overflow-y:scroll;margin-bottom:0px;\">";
+	//var categoryAccordionTitle = "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + categoryName + "</a></h4></div>";
+	//var catAccordionPanel = "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + categoryDescription + "</div>";
+	var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\">" + key1Subject + "</h4></div>";
+	var key1AccordionPanel = "<div class=\"panel-body\">" + key1Description + "</div>" + key1panel;
+	
+	//var accordionEnd = "</div>";
+	
+	//mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div></div></div>" + accordionEnd + "<br/>";
+	mapKey.innerHTML = key1AccordionTitle + key1AccordionPanel + "</div></div></div><br/>";
 };
 
 /*function highlightFeature(e) {
