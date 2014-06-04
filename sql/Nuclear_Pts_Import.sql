@@ -8,7 +8,9 @@ CREATE TABLE public."Nuclear_Pts"
 	"Title" text,
 	"Story" text,
 	"Lat" character varying(15),
-	"Long" character varying(15)
+	"Long" character varying(15),
+	"PhotoURL" text,
+	"VideoURL" text
 );
 
 set client_encoding to 'UTF-8';
