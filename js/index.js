@@ -699,6 +699,7 @@ function openPane(){
 
 function changeLayer() {
 	allLayersGroup.clearLayers();
+	// allLayersGroupPts layer is not being cleared.
 	allLayersGroupPts.clearLayers();
 }
 
