@@ -291,10 +291,11 @@
 							<h4 class="modal-title">Revise Theme Description</h4>
 						</div>
 						<div class="modal-body">
-							<form>
+							<form name="input" action="http://localhost/DiplomacyExplorer2/Updater" method="post">
+							<input type="hidden" name="type" value="0">
 								<div class="form-group">
 									<label for="inputTheme">Theme</label>
-									<select class="form-control" id="inputTheme">
+									<select class="form-control" name="inputTheme" id="inputTheme">
 										<option>Securing Peace</option>
 										<option>Promoting Prosperity</option>
 										<option>Protecting Resources</option>
@@ -304,7 +305,7 @@
 								</div>
 								<div class="form-group">
 									<label for="inputThemeDescrip">Description</label>
-									<textarea class="form-control" id="inputThemeDescrip" rows="10" placeholder="Theme Description Text"></textarea>
+									<textarea name="inputThemeDescrip" class="form-control"  id="inputThemeDescrip" rows="10" placeholder="Theme Description Text"></textarea>
 								</div>									
 								<button type="submit" class="btn btn-primary btn-block">Submit</button>
 							</form>
@@ -321,11 +322,13 @@
 							<h4 class="modal-title">Revise Issue Legend</h4>
 						</div>
 						<div class="modal-body">
+						<form name="input" action="http://localhost/DiplomacyExplorer2/Updater" method="post">
+						<input type="hidden" name="type" value="1">
 							<form>
 								<div class="form-group">
 									<label for="inputIssue">Issue</label>
-									<select class="form-control" id="inputIssue">
-										<option>Nuclear Arms</option>
+									<select class="form-control" name="inputIssue" id="inputIssue">
+										<option>Nuclear Arms Control</option>
 										<option>Border Security</option>
 										<option>Counter-narcotics</option>
 										<option>Counter-terrorism</option>
@@ -334,7 +337,7 @@
 								</div>
 								<div class="form-group">
 									<label for="inputIssueLegend">Legend</label>
-									<textarea class="form-control" id="inputIssueLegend" rows="10" placeholder="Issue Legend Text"></textarea>
+									<textarea name="inputIssueLegend" class="form-control" id="inputIssueLegend" rows="10" placeholder="Issue Legend Text"></textarea>
 								</div>									
 								<button type="submit" class="btn btn-primary btn-block">Submit</button>
 							</form>
