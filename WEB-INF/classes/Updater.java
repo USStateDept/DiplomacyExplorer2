@@ -34,7 +34,9 @@ public class Updater extends HttpServlet {
 				updateTheme(request, response);
 			} else if (type.equals("1")) {
 				updateIssue(request, response);
-
+			}
+			else if (type.equals("2")) {
+				updateSubissue(request, response);
 			}
 		} catch (SQLException e) {
 
@@ -82,6 +84,22 @@ public class Updater extends HttpServlet {
 		
 		String[] params = { inputIssueLegend, inputIssue };
 		String sql = "UPDATE public.\"ISSUE\" SET \"Legend\" = ? WHERE \"Name\" LIKE ?";
+
+		da.update(params, sql);
+		
+	}
+	
+	protected void updateSubissue(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException,
+			SQLException, ClassNotFoundException {
+
+		String inputIssue = request.getParameter("inputSubissue");
+		String inputIssueLegend = request.getParameter("inputSubissueDescrip");
+
+		DataAccessor da = new DataAccessor();
+		
+		String[] params = { inputIssueLegend, inputIssue };
+		String sql = "UPDATE public.\"SUBISSUE\" SET \"Text\" = ? WHERE \"Name\" LIKE ?";
 
 		da.update(params, sql);
 		
