@@ -9,4 +9,12 @@
     <servlet-name>Updater</servlet-name>
     <url-pattern>/Updater</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>Combo</servlet-name>
+    <servlet-class>Combo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Combo</servlet-name>
+    <url-pattern>/Combo</url-pattern>
+  </servlet-mapping>
 </web-app>

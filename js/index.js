@@ -627,6 +627,27 @@ $(document).one("ajaxStop", function() {
 	$("#loading").hide();
 });
 
+/*$('#country').on('show.bs.dropdown', function () {
+    // do something…
+});*/
+
+$('#issueModal').on('show.bs.modal', function (e) {
+
+	var globalData;
+	$.ajax(
+		{
+			url: "Combo",
+			async: false,
+			success: function(data)
+			{
+				globalData = data;
+			}
+		});
+		
+	var issue = document.getElementById("inputIssue");
+	issue.innerHTML=globalData;
+})
+
 function closePane(){
 
 	var rowDiv = document.getElementById("rowId");
