@@ -31,5 +31,9 @@ SELECT
 	"PA_Data"."Global_Health",
 	"PA_Data"."DHRA",
 	"PA_Data"."Wat_San",
+	"PA_Data"."Crisis_Conflict",
+	"PA_Data"."Gender_Women",
+	"PA_Data"."Env_Climate",
+	"PA_Data"."Science",
 	the_geom
 FROM opengeo."ne_110m_admin_0_countries_lakes" LEFT OUTER JOIN public."PA_Data" ON (ne_110m_admin_0_countries_lakes.sovereignt = "PA_Data"."Country");
