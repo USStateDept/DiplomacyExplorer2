@@ -653,7 +653,7 @@ function StyleSTI(feature) {
 		opacity: 1,
 		color: 'white',
 		fillOpacity: 0.7,
-		fillColor: getColorSTI(feature.properties.STI)
+		fillColor: getColorSTI(feature.properties.Science)
 	};
 }
 
@@ -663,7 +663,7 @@ function StyleECC(feature) {
 		opacity: 1,
 		color: 'white',
 		fillOpacity: 0.7,
-		fillColor: getColorECC(feature.properties.ECC)
+		fillColor: getColorECC(feature.properties.Env_Climate)
 	};
 }
 
@@ -673,7 +673,7 @@ function StyleGEWE(feature) {
 		opacity: 1,
 		color: 'white',
 		fillOpacity: 0.7,
-		fillColor: getColorGEWE(feature.properties.GEWE)
+		fillColor: getColorGEWE(feature.properties.Gender_Women)
 	};
 }
 
@@ -683,7 +683,7 @@ function StyleWCC(feature) {
 		opacity: 1,
 		color: 'white',
 		fillOpacity: 0.7,
-		fillColor: getColorGEWE(feature.properties.WCC)
+		fillColor: getColorGEWE(feature.properties.Crisis_Conflict)
 	};
 }
 
