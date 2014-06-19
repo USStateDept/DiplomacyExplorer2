@@ -69,7 +69,7 @@
 								<li><h4><a style="color:#333" href="#">Border Security (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Good Governance (trade legislation) (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Intellectual Property Rights (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Science & Technology Promotion (tk)</a></h4></li>
+								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerSTI),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keySTI(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Science & Technology Promotion</a></li>
 								<li><h4><a style="color:#333" href="#">Securing the Seas/Maritime Piracy (tk)</a></h4></li>
 							</ul>
 						</li>
@@ -77,12 +77,11 @@
 							<a id="environmentDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Protecting Resources</a>
 							<ul class="dropdown-menu">
 								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<li><h4><a style="color:#333" href="#">Climate Change (tk)</a></h4></li>
+								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerECC),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyECC(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Environment and Climate Change</a></li>
 								<li><h4><a style="color:#333" href="#">Endangered Species (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Energy Policy (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Environmental Conservation (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Water Security (tk)</a></h4></li>
-								
+								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerWatSan),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyWatSan(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Water & Sanitation</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
@@ -90,21 +89,22 @@
 							<ul class="dropdown-menu">
 								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
 								<li><h4><a style="color:#333"href="#">&nbsp;&nbsp;Free and Fair Elections (tk)</a></li>
-								<li><h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyHT(),allLayersGroup.clearLayers();">&nbsp;&nbsp;Human Trafficking</a></li>
-								<li><h4><a style="color:#333" href="#">Independent Judiciacy (tk)</a></h4></li>
+								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerDHRA),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyDHRA(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Human Rights & Governance</a></li>
+									<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts), map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyHT(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Human Trafficking</a></li><li><h4><a style="color:#333" href="#">Independent Judiciary (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Independent Media (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Internet Freedom (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Minority Rights (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Religious Freedom (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Women's Rights (tk)</a></h4></li>
+								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerGEWE),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyGEWE(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Gender Equality and Women Empowerment</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
 							<a id="livesDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Saving Lives</a>
 							<ul class="dropdown-menu">
 								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<h4><a style="color:#333" onClick="javascript:changeLayer(),allLayersGroup.addLayer(geoJsonLayerHIAV),allLayersGroup.addLayer(geoJsonLayerHIHIVAIDS),allLayersGroup.addLayer(geoJsonLayerHIM),allLayersGroup.addLayer(geoJsonLayerHIMHAC),allLayersGroup.addLayer(geoJsonLayerHIPEPFAR),allLayersGroup.addLayer(geoJsonLayerHIP),allLayersGroup.addLayer(geoJsonLayerHIT),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyHI(),allLayersGroup.clearLayers();">Health Issues</a></h4>
+								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerHIGH),allLayersGroup.addLayer(geoJsonLayerHIAV),allLayersGroup.addLayer(geoJsonLayerHIHIVAIDS),allLayersGroup.addLayer(geoJsonLayerHIM),allLayersGroup.addLayer(geoJsonLayerHIMHAC),allLayersGroup.addLayer(geoJsonLayerHIPEPFAR),allLayersGroup.addLayer(geoJsonLayerHIP),allLayersGroup.addLayer(geoJsonLayerHIT),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyHI(),allLayersGroup.clearLayers();">Health Issues</a></li>
 								<li><h4><a style="color:#333" href="#">Counter-narcotics (tk)</a></h4></li>
+								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerWCC),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyWCC(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Working in Crisis and Conflict</a></li>
 								<li><h4><a style="color:#333" href="#">Disaster Assistance (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Refugee Assistance (tk)</a></h4></li>
 							</ul>
