@@ -42,6 +42,7 @@ function getGeoJson(data) {
 	geoJsonLayerTPCAFTA = new L.geoJson(data, {style: StyleTPCAFTA});
 	geoJsonLayerWatSan = new L.geoJson(data, {style: StyleWatSan});
 	geoJsonLayerDHRA = new L.geoJson(data, {style: StyleDHRA});
+	geoJsonLayerSTI = new L.geoJson(data, {style: StyleSTI});
 }
 
 $.ajax({
@@ -283,6 +284,14 @@ function getColorWatSan(d) {
 }
 
 function getColorDHRA(d) {
+	if (d == '1') {
+		return	'#FC4E2A'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorSTI(d) {
 	if (d == '1') {
 		return	'#FC4E2A'
 	} else {
@@ -610,6 +619,17 @@ function StyleDHRA(feature) {
 		fillColor: getColorDHRA(feature.properties.DHRA)
 	};
 }
+
+function StyleSTI(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorSTI(feature.properties.STI)
+	};
+}
+
 var map = new L.Map('map', {
 	zoomControl: false,
 	center: [20, 10],
@@ -668,6 +688,7 @@ var keyHI;
 var keyHT;
 var keyWatSan;
 var keyDHRA;
+var keySTI;
 
 function getCurrentKey(){
 	if (currentKey=="Nuc")
@@ -691,6 +712,9 @@ function getCurrentKey(){
 	} else if (currentKey=="TP")
 	{
 	keyTP();
+	} else if (currentKey=="STI")
+	{
+	keySTI();
 	}
 }
 
@@ -1563,6 +1587,47 @@ keyDHRA = function () {
 	mapKey.innerHTML = key1AccordionTitle + key1AccordionPanel + "</div></div></div><br/>";
 };
 
+keySTI = function () {
+	currentKey="STI";
+	//var categoryName = "Water & Sanitation";
+	//var categoryDescription = "<div><h7 class='lorem'>While the Cold War threat of nuclear conflict has receded, concerns about controlling nuclear, biological, chemical and conventional weapons and even conventional weapons remain high.  The United States, in seeking ways to make the world safer, has engaged with other countries to extend and enforce the terms of non-proliferation treaties, reduce and secure current arsenals and weapons grade materials, and to contain countries which are developing nuclear capabilities.  A secondary concern is to ensure that nuclear weapons do not reach terrorist organizations.</h7><br><br><h7 class='lorem'>A key element in the effort to control arms around the world has been the Treaty on the Non-Proliferation of Nuclear Weapons (NPT) which opened for signature in 1968 and entered into force in 1970. In Prague on April 5, 2009 President Obama said that the basic bargain at the core of the Treaty is sound: “countries with nuclear weapons will move towards disarmament; countries without nuclear weapons will not acquire them; and all countries can access peaceful nuclear energy.”  Although only nine countries are acknowledged to possess nuclear weapons, not all of them are among the nearly190 nations are party to the treaty.  The Treaty is regarded as the legal and political cornerstone of the nuclear nonproliferation regime, enunciating the three main “pillars” – nuclear nonproliferation, disarmament, and the peaceful use of nuclear energy.</h7><br><br><h7 class='lorem'>The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties.  Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.</h7></div>";
+	
+	var key1Subject = "Science, Technology, and Innovation";
+	var key1Layer = "geoJsonLayerSTI";
+	var key1LayerPts = "";
+	var key1Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.";
+	
+	
+	var key1div = L.DomUtil.create('div'),
+		grades = ['1'],
+		// this is something like a subheader
+		key1Labels = [],
+		from;
+
+	for (var i = 0; i < grades.length; i++) {
+		from = ['Programs'];
+		
+		key1Labels.push(
+			'<i style="background:' + getColorSTI(grades[i]) + '"></i>' +
+			from[i]
+		);
+	}
+
+	var keyTitle1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key1Subject + "</a>";
+	
+	var key1 = key1Labels.join('<br>');
+	var key1panel = "<div class='legend'>" + key1 + "</div>";
+	//var accordionStart = "<div class=\"panel-group\" id=\"accordion\" style=\"height:609px;overflow-y:scroll;margin-bottom:0px;\">";
+	//var categoryAccordionTitle = "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + categoryName + "</a></h4></div>";
+	//var catAccordionPanel = "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + categoryDescription + "</div>";
+	var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\">" + key1Subject + "</h4></div>";
+	var key1AccordionPanel = "<div class=\"panel-body\">" + key1Description + "</div>" + key1panel;
+	
+	//var accordionEnd = "</div>";
+	
+	//mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div></div></div>" + accordionEnd + "<br/>";
+	mapKey.innerHTML = key1AccordionTitle + key1AccordionPanel + "</div></div></div><br/>";
+};
 /*function highlightFeature(e) {
 	var layer = e.target;
 
