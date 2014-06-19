@@ -29,7 +29,11 @@ CREATE TABLE public."PA_Data"
 	"TP_Index" real,
 	"Global_Health" real,
 	"DHRA" real,
-	"Wat_San" real
+	"Wat_San" real,
+	"Crisis_Conflict" real,
+	"Gender_Women" real,
+	"Env_Climate" real,
+	"Science" real
 );
 
 set client_encoding to 'UTF-8';
