@@ -710,20 +710,53 @@ $(document).one("ajaxStop", function() {
 
 $('#issueModal').on('show.bs.modal', function (e) {
 
-	var globalData;
+	var comboData;
+	//var textData;
 	$.ajax(
-		{
-			url: "Combo",
+	{
+		type: "POST",
+		url: "Combo",
+			//url: "Combo",
 			async: false,
+			data: { 
+				'type': 'issueCombo'  
+			},
 			success: function(data)
 			{
-				globalData = data;
+				comboData = data;
 			}
 		});
-		
+
 	var issue = document.getElementById("inputIssue");
-	issue.innerHTML=globalData;
+	issue.innerHTML=comboData;
+
 })
+
+$('#inputIssue').on('change', function(){
+	
+	var name = $(this).val();
+	name = name.trim();
+	
+	var comboData;
+
+	$.ajax(
+	{
+   	//url: urll,
+   	url: "Combo",
+   	type: "POST",
+   	async: false,
+   	data: { 
+   		'type': 'issueText',
+   		'name':name  
+   	},
+   	success: function(data)
+   	{
+   		comboData = data;
+   	}
+   });
+	
+	$('#inputIssueLegend').text(comboData);//=comboData;
+});
 
 function closePane(){
 
