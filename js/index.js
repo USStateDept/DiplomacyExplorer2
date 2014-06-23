@@ -21,7 +21,7 @@ function getGeoJson(data) {
 	geoJsonLayerHIP = new L.geoJson(data, {style: StyleHIP});
 	geoJsonLayerHIT = new L.geoJson(data, {style: StyleHIT});
 	//geoJsonLayerICAO = new L.geoJson(data, {style: StyleMLOMemberICAO, onEachFeature: onEachFeature});
-	geoJsonLayerMLOAU = new L.geoJson(data, {style: StyleMLOMemberAU});
+	geoJsonLayerMLOAU = new L.geoJson(data, {style: StyleMLOMemberAU,attribution:"testlayer"});
 	geoJsonLayerMLOEU = new L.geoJson(data, {style: StyleMLOMemberEU});
 	geoJsonLayerMLOFAO = new L.geoJson(data, {style: StyleMLOMemberFAO});
 	geoJsonLayerMLOICAO = new L.geoJson(data, {style: StyleMLOMemberICAO});
@@ -693,6 +693,9 @@ var map = new L.Map('map', {
 	zoom: 2
 });
 
+var hash = L.hash(map);
+
+
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 	maxZoom: 18,
 	id: 'examples.map-20v6611k'
@@ -1011,6 +1014,16 @@ keyTP = function () {
 	mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div>" + key2AccordionTitle + key2AccordionPanel + "</div>" + key3AccordionTitle + key3AccordionPanel + "</div>" + key4AccordionTitle + key4AccordionPanel + "</div>" + key5AccordionTitle + key5AccordionPanel + "</div>" + key6AccordionTitle + key6AccordionPanel + "</div></div></div>" + accordionEnd + "<br/>";
 };
 
+var layerCreator = function(keylayer, keylayerPts){
+	console.log("used this successfully");
+	allLayersGroup.clearLayers();
+	allLayersGroupPts.clearLayers();
+	allLayersGroup.addLayer(keylayer);
+	allLayersGroupPts.addLayer(keylayerPts);
+	map.addLayer(allLayersGroup);
+	map.addLayer(allLayersGroupPts);
+};
+
 keyMLO = function () {
 	currentKey="MLO";
 	var categoryName = "Multi-Lateral Organizations";
@@ -1038,7 +1051,7 @@ keyMLO = function () {
 	var key9Layer = "geoJsonLayerMLOUNESCO";
 	var key10Layer = "geoJsonLayerMLOUNHCR";
 	var key11Layer = "geoJsonLayerMLOUNGA";
-	var key1LayerPts = "";
+	var key1LayerPts = "null";
 	var key2LayerPts = "";
 	var key3LayerPts = "";
 	var key4LayerPts = "";
@@ -1226,7 +1239,7 @@ keyMLO = function () {
 		);
 	}
 	
-	var keyTitle1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key1Subject + "</a>";
+	var keyTitle1 = "<a onClick=\"javascript:layerCreator(" + key1Layer + "," + key1LayerPts + "\">&nbsp;&nbsp;" + key1Subject + "</a>";
 	var keyTitle2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key2Subject + "</a>";
 	var keyTitle3 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key3Subject + "</a>";
 	var keyTitle4 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key4Layer + "),allLayersGroupPts.addLayer(" + key4LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key4Subject + "</a>";
@@ -1263,7 +1276,7 @@ keyMLO = function () {
 	var accordionStart = "<div class=\"panel-group\" id=\"accordion\" style=\"height:609px;overflow-y:scroll;margin-bottom:0px;\">";
 	var categoryAccordionTitle = "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + categoryName + "</a></h4></div>";
 	var catAccordionPanel = "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + categoryDescription + "</div>";
-	var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse1\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key1Subject + "</a></h4></div>";
+	var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse1\" onClick=\"javascript:layerCreator(" + key1Layer + "," + key1LayerPts + ")\">" + key1Subject + "</a></h4></div>";
 	var key1AccordionPanel = "<div id=\"collapse1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key1Description + "</div>" + key1panel + "</div>";
 	var key2AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse2\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key2Subject + "</a></h4></div>";
 	var key2AccordionPanel = "<div id=\"collapse2\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key2Description + "</div>" + key2panel + "</div>";
