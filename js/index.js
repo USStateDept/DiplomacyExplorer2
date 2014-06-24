@@ -172,59 +172,6 @@ new L.Control.Zoom({ position: 'topright' }).addTo(map);
 
 
 
-var keyNuc;
-var keyMLO;
-var keyTP;
-var keyHI;
-var keyHT;
-var keyWatSan;
-var keyDHRA;
-var keySTI;
-var keyECC;
-var keyGEWE;
-var keyWCC;
-
-function getCurrentKey(){
-	if (currentKey=="Nuc")
-	{
-	keyNuc();
-	} else if (currentKey=="HI")
-	{
-	keyHI();
-	} else if (currentKey=="WatSan")
-	{
-	keyWatSan();
-	} else if (currentKey=="DHRA")
-	{
-	keyDHRA();
-	} else if (currentKey=="HT")
-	{
-	keyHT();
-	} else if (currentKey=="MLO")
-	{
-	keyMLO();
-	} else if (currentKey=="TP")
-	{
-	keyTP();
-	} else if (currentKey=="STI")
-	{
-	keySTI();
-	} else if (currentKey=="ECC")
-	{
-	keyECC();
-	} else if (currentKey=="GEWE")
-	{
-	keyGEWE();
-	} else if (currentKey=="WCC")
-	{
-	keyWCC();
-	}
-}
-
-
-
-
-
 
 
 
@@ -240,13 +187,37 @@ $(".mainKey").click(function(){
 		console.log("loading the layers");
 		allLayersGroup.addLayer(valueset['jsonLayer']);
 	});
-	console.log("rendering the sidebar");
+
 	var returnhtml = renderSidePanel(keyname);
-	console.log(returnhtml);
+
+	//unbind previous bindings so we don't conflict
+	$(".sideBarLayerToggle").unbind("click");
+
 	$("#mapKey").html(returnhtml);
-	//not sure what this does?
-	//allLayersGroup.clearLayers();	
+
+	//bind event to layers to turn them on
+	$(".sideBarLayerToggle").click(function(){
+		var layername = $(this).attr('name');
+		var templayerobj = keysets[currentKey]['layers'][layername];
+
+		//might need tocheck if this is actually a valid part of the keys until then we just assume
+		//var tempkeyarray = $.map(obj, function(element,index) {return index});
+		//$.inArray(layername, tempkeyarray)
+
+
+		allLayersGroup.clearLayers();
+		allLayersGroupPts.clearLayers();
+
+		allLayersGroup.addLayer(templayerobj['jsonLayer']);
+		if (templayerobj['ptsLayer'] != ""){
+			allLayersGroupPts.addLayer(templayerobj['ptsLayer']);
+		}
+		map.addLayer(allLayersGroup);
+		map.addLayer(allLayersGroupPts);
+	})
+
 });
+
 
 
 
@@ -280,7 +251,7 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 	var keyAccordionTitle = "<div class='panel panel-default'> \
 								<div class='panel-heading'> \
 									<h4 class='panel-title'> \
-										<a data-toggle='collapse' data-parent='#accordion' href='#collapse" + counter + "' class='sideBarLayerToggle' name='" + index + "'> \
+										<a data-toggle='collapse' data-parent='#accordion' href='#collapse" + counter + "' class='sideBarLayerToggle' name='" + index + "'>"+ layerobj['subject'] + " \
 										</a> \
 									</h4> \
 								</div>";
@@ -312,8 +283,6 @@ var renderSidePanel = function(sidekey){
 	$.each(currentSideKey['layers'], function(index, value){
 		var tempreturn = renderSidePanelPiece(index,value, counter) + "</div>";
 		returnhtml += tempreturn
-		console.log("*******");
-		console.log(tempreturn);
 		counter += 1;
 	});
 
@@ -330,20 +299,15 @@ var renderSidePanel = function(sidekey){
 }
 
 
+/************************
+
+These keys need to be added to the data structure above
 
 
 
+*************/
 
 
-var layerCreator = function(keylayer, keylayerPts){
-
-	allLayersGroup.clearLayers();
-	allLayersGroupPts.clearLayers();
-	allLayersGroup.addLayer(keylayer);
-	allLayersGroupPts.addLayer(keylayerPts);
-	map.addLayer(allLayersGroup);
-	map.addLayer(allLayersGroupPts);
-};
 
 keyMLO = function () {
 	currentKey="MLO";
