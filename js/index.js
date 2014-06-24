@@ -73,6 +73,9 @@ var ignite = function(data){
 }
 
 
+
+
+
 $.ajax({
 	url: baseURL.replace("*******", generalBaseLayer),
 	dataType: 'json',
@@ -223,23 +226,103 @@ function getCurrentKey(){
 
 
 
-var renderSidePanel = function(){
 
-}
 
 $(".mainKey").click(function(){
 	//clear all layers on this
 	currentKey="TP";
 	clearLayers();
 	var keyname = $(this).attr("name");
+	currentKey = keyname;
 	map.addLayer(allLayersGroup, {insertAtTheBottom: true});
 	//add all layers as part of this key
 	$.each(keysets[keyname]['layers'], function(index, valueset){
+		console.log("loading the layers");
 		allLayersGroup.addLayer(valueset['jsonLayer']);
 	});
+	console.log("rendering the sidebar");
+	var returnhtml = renderSidePanel(keyname);
+	console.log(returnhtml);
+	$("#mapKey").html(returnhtml);
 	//not sure what this does?
 	//allLayersGroup.clearLayers();	
 });
+
+
+
+
+var renderSidePanelPiece = function(index, layerobj, counter){
+
+	//if ($.inArray("grades", layerobj)){
+		//do stuff that may be outside the below code
+
+	//}
+	//else{
+	var key1div = L.DomUtil.create('div'),
+		grades = ['Member','null'],
+		// this is something like a subheader
+		keyLabels = [],
+		from;
+
+	for (var i = 0; i < grades.length; i++) {
+		from = ['Member', 'Not a member'];
+		
+		keyLabels.push(
+			'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
+			from[i]
+		);
+	}	
+	//}
+
+	var keypanel = "<div class='legend'>" + keyLabels.join('<br>') + "</div>";
+	
+
+	var keyAccordionTitle = "<div class='panel panel-default'> \
+								<div class='panel-heading'> \
+									<h4 class='panel-title'> \
+										<a data-toggle='collapse' data-parent='#accordion' href='#collapse" + counter + "' class='sideBarLayerToggle' name='" + index + "'> \
+										</a> \
+									</h4> \
+								</div>";
+
+
+	var keyAccordionPanel = "<div id=\"collapse" + counter + "\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + layerobj['description'] + "</div>" + keypanel + "</div>";
+
+	return keyAccordionTitle + keyAccordionPanel;
+
+
+}
+
+//this was for the sidebutton //onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\"
+
+
+var renderSidePanel = function(sidekey){
+	currentSideKey = keysets[sidekey];
+	var returnhtml = "";
+	returnhtml += "<div class=\"panel-group\" id=\"accordion\" style=\"height:609px;overflow-y:scroll;margin-bottom:0px;\">";
+	returnhtml += "<div class=\"panel panel-primary\"> \
+						<div class=\"panel-heading\"> \
+							<h4 class=\"panel-title\"> \
+								<a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + currentSideKey['categoryName'] + "</a> \
+							</h4> \
+						</div>";
+	returnhtml += "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + currentSideKey['categoryDescription'] + "</div>";
+	returnhtml += "</div></div>"
+	var counter = 1;
+	$.each(currentSideKey['layers'], function(index, value){
+		var tempreturn = renderSidePanelPiece(index,value, counter) + "</div>";
+		returnhtml += tempreturn
+		console.log("*******");
+		console.log(tempreturn);
+		counter += 1;
+	});
+
+	returnhtml += "</div></div><br/>";
+
+	return returnhtml;
+
+}
+
 
  function clearLayers() {
 	allLayersGroup.clearLayers();
@@ -250,143 +333,7 @@ $(".mainKey").click(function(){
 
 
 
-keyTP = function () {
-	//set key for memeory
-	
 
-	
-
-
-	var key1div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key1Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key1Labels.push(
-			'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key2div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key2Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key2Labels.push(
-			'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-
-	var key3div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key3Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key3Labels.push(
-			'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key4div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key4Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key4Labels.push(
-			'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key5div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key5Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key5Labels.push(
-			'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key6div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key6Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key6Labels.push(
-			'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	
-	var keyTitle1 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key1Subject + "</a>";
-	var keyTitle2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key2Subject + "</a>";
-	var keyTitle3 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key3Subject + "</a>";
-	var keyTitle4 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key4Layer + "),allLayersGroupPts.addLayer(" + key4LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key4Subject + "</a>";
-	var keyTitle5 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key5Layer + "),allLayersGroupPts.addLayer(" + key5LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key5Subject + "</a>";
-	var keyTitle6 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key6Layer + "),allLayersGroupPts.addLayer(" + key6LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key6Subject + "</a>";
-	
-	var key1 = key1Labels.join('<br>');
-	var key2 = key2Labels.join('<br>');
-	var key3 = key2Labels.join('<br>');
-	var key4 = key2Labels.join('<br>');
-	var key5 = key2Labels.join('<br>');
-	var key6 = key2Labels.join('<br>');
-	var key1panel = "<div class='legend'>" + key1 + "</div>";
-	var key2panel = "<div class='legend'>" + key2 + "</div>";
-	var key3panel = "<div class='legend'>" + key3 + "</div>";
-	var key4panel = "<div class='legend'>" + key4 + "</div>";
-	var key5panel = "<div class='legend'>" + key5 + "</div>";
-	var key6panel = "<div class='legend'>" + key6 + "</div>";
-	var accordionStart = "<div class=\"panel-group\" id=\"accordion\" style=\"height:609px;overflow-y:scroll;margin-bottom:0px;\">";
-	var categoryAccordionTitle = "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + categoryName + "</a></h4></div>";
-	var catAccordionPanel = "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + categoryDescription + "</div>";
-	var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse1\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key1Layer + "),allLayersGroupPts.addLayer(" + key1LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key1Subject + "</a></h4></div>";
-	var key1AccordionPanel = "<div id=\"collapse1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key1Description + "</div>" + key1panel + "</div>";
-	var key2AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse2\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key2Subject + "</a></h4></div>";
-	var key2AccordionPanel = "<div id=\"collapse2\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key2Description + "</div>" + key2panel + "</div>";
-	var key3AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse3\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key3Subject + "</a></h4></div>";
-	var key3AccordionPanel = "<div id=\"collapse3\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key3Description + "</div>" + key3panel + "</div>";
-	var key4AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse4\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key4Layer + "),allLayersGroupPts.addLayer(" + key4LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key4Subject + "</a></h4></div>";
-	var key4AccordionPanel = "<div id=\"collapse4\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key4Description + "</div>" + key4panel + "</div>";
-	var key5AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse5\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key5Layer + "),allLayersGroupPts.addLayer(" + key5LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key5Subject + "</a></h4></div>";
-	var key5AccordionPanel = "<div id=\"collapse5\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key5Description + "</div>" + key5panel + "</div>";
-	var key6AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse6\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key6Layer + "),allLayersGroupPts.addLayer(" + key6LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key6Subject + "</a></h4></div>";
-	var key6AccordionPanel = "<div id=\"collapse6\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key6Description + "</div>" + key6panel + "</div>";
-	
-	var accordionEnd = "</div>";
-	
-	mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div>" + key2AccordionTitle + key2AccordionPanel + "</div>" + key3AccordionTitle + key3AccordionPanel + "</div>" + key4AccordionTitle + key4AccordionPanel + "</div>" + key5AccordionTitle + key5AccordionPanel + "</div>" + key6AccordionTitle + key6AccordionPanel + "</div></div></div>" + accordionEnd + "<br/>";
-};
 
 var layerCreator = function(keylayer, keylayerPts){
 
