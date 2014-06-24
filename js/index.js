@@ -225,14 +225,14 @@ var ignite = function(data){
 					'geoJsonLayerNucSign':{
 						'subject': "Nuclear Arms Control - Signed",
 						'jsonLayer': new L.geoJson(data, {style: StyleNucSign}),
-						'ptsLayer': "", //"geoJsonLayerNucpts"
+						'ptsLayer': "Nuclear_Pts", //"geoJsonLayerNucpts",
 						'description': "The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties. Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.",
 						'labels': {'grades': ['X'], 'from': ['Signed']}
 					},
 					'geoJsonLayerNucDepo':{
 						'subject': "Nuclear Arms Control - Deposited",
 						'jsonLayer': new L.geoJson(data, {style: StyleNucDepo}),
-						'ptsLayer': "", //"geoJsonLayerNucpts"
+						'ptsLayer': "Nuclear_Pts", //"geoJsonLayerNucpts",
 						'description': "The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties. Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.",
 						'labels': {'grades': ['X'], 'from': ['Deposited']}
 					}
@@ -289,7 +289,6 @@ var ignite = function(data){
 
 
 
-
 $.ajax({
 	url: baseURL.replace("*******", generalBaseLayer),
 	dataType: 'json',
@@ -298,15 +297,12 @@ $.ajax({
 		//load layer to be styled later
 		
 		//geoJsonLayerICAO = new L.geoJson(data, {style: StyleMLOMemberICAO, onEachFeature: onEachFeature});
-
-
 		geoJsonLayerTPAPEC = new L.geoJson(data, {style: StyleTPAPEC});
 		geoJsonLayerTPNAFTA = new L.geoJson(data, {style: StyleTPNAFTA});
 		geoJsonLayerTPWTO = new L.geoJson(data, {style: StyleTPWTO});
 		geoJsonLayerTPASEAN = new L.geoJson(data, {style: StyleTPASEAN});
 		geoJsonLayerTPCBERA = new L.geoJson(data, {style: StyleTPCBERA});
 		geoJsonLayerTPCAFTA = new L.geoJson(data, {style: StyleTPCAFTA});
-		geoJsonLayerDHRA = ;
 		geoJsonLayerSTI = new L.geoJson(data, {style: StyleSTI});
 		geoJsonLayerECC = new L.geoJson(data, {style: StyleECC});
 		geoJsonLayerGEWE = new L.geoJson(data, {style: StyleGEWE});
@@ -320,21 +316,8 @@ $.ajax({
 
 
 
-//NEED TO MAP THESE TO THE OVERALL DATA STRUCTURE
-//load the pts
-var ptsLayerSet = {};
-// there will need to be more
-var ptsLayers = ["Human_Trafficking_Pts", "PEPFAR_Pts", "Nuclear_Pts"];
 
-$.each(ptsLayers, function(index,value){
-		$.ajax({
-			url: baseURL.replace("*******", value),
-			dataType: 'json',
-			success: function(data){
-				ptsLayerSet[value] = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
-			}
-		});
-	});
+
 
 
 
@@ -402,13 +385,26 @@ $(".mainKey").click(function(){
 
 		allLayersGroup.addLayer(templayerobj['jsonLayer']);
 		if (templayerobj['ptsLayer'] != ""){
-			allLayersGroupPts.addLayer(templayerobj['ptsLayer']);
+			loadPointLayer(templayerobj, currentKey)
 		}
 		map.addLayer(allLayersGroup);
 		map.addLayer(allLayersGroupPts);
 	})
 
 });
+
+var loadPointLayer = function(layerobj, theparent){
+	//already checked if the point layer is valid
+	$.ajax({
+		url: baseURL.replace("*******", layerobj['ptsLayer']),
+		dataType: 'json',
+		success: function(data){
+			allLayersGroupPts.addLayer(new L.geoJson(data, {onEachFeature: onEachFeaturePts}));
+			map.addLayer(allLayersGroupPts)
+		}
+	});
+
+}
 
 
 
