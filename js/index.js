@@ -1,691 +1,152 @@
-var urlWhole = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APA_Data_110m&outputformat=json";
-var urlWholeHTpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3AHuman_Trafficking_Pts&outputformat=json";
-var urlWholePEPFARpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3APEPFAR_Pts&outputformat=json";
-var urlWholeNucpts = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3ANuclear_Pts&outputformat=json";
+/*Initialization of the program.
+ *
+ *
+ */
+var baseURL = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3A*******&outputformat=json";
+var generalBaseLayer = "PA_Data_110m"
+
+
 
 var allLayersGroup = new L.LayerGroup();
 var allLayersGroupPts = new L.LayerGroup();
 
 var currentKey;
 
-var keyToggle = L.control({position: "bottomleft"});
 
-function getGeoJson(data) {
-	geoJsonLayerHT = new L.geoJson(data, {style: StyleHT});
-	geoJsonLayerHIGH = new L.geoJson(data, {style: StyleHIGH});
-	geoJsonLayerHIAV = new L.geoJson(data, {style: StyleHIAV});
-	geoJsonLayerHIHIVAIDS = new L.geoJson(data, {style: StyleHIHIVAIDS});
-	geoJsonLayerHIM = new L.geoJson(data, {style: StyleHIM});
-	geoJsonLayerHIMHAC = new L.geoJson(data, {style: StyleHIMHAC});
-	geoJsonLayerHIPEPFAR = new L.geoJson(data, {style: StyleHIPEPFAR});
-	geoJsonLayerHIP = new L.geoJson(data, {style: StyleHIP});
-	geoJsonLayerHIT = new L.geoJson(data, {style: StyleHIT});
-	//geoJsonLayerICAO = new L.geoJson(data, {style: StyleMLOMemberICAO, onEachFeature: onEachFeature});
-	geoJsonLayerMLOAU = new L.geoJson(data, {style: StyleMLOMemberAU,attribution:"testlayer"});
-	geoJsonLayerMLOEU = new L.geoJson(data, {style: StyleMLOMemberEU});
-	geoJsonLayerMLOFAO = new L.geoJson(data, {style: StyleMLOMemberFAO});
-	geoJsonLayerMLOICAO = new L.geoJson(data, {style: StyleMLOMemberICAO});
-	geoJsonLayerMLONATO = new L.geoJson(data, {style: StyleMLOMemberNATO});
-	geoJsonLayerMLOOAS = new L.geoJson(data, {style: StyleMLOMemberOAS});
-	geoJsonLayerMLOOECD = new L.geoJson(data, {style: StyleMLOMemberOECD});
-	geoJsonLayerMLOOSCE = new L.geoJson(data, {style: StyleMLOMemberOSCE});
-	geoJsonLayerMLOUNESCO = new L.geoJson(data, {style: StyleMLOMemberUNESCO});
-	geoJsonLayerMLOUNHCR = new L.geoJson(data, {style: StyleMLOMemberUNHCR});
-	geoJsonLayerMLOUNGA = new L.geoJson(data, {style: StyleMLOMemberUNGA});
-	geoJsonLayerNucSign = new L.geoJson(data, {style: StyleNucSign});
-	geoJsonLayerNucDepo = new L.geoJson(data, {style: StyleNucDepo});
-	geoJsonLayerTPAPEC = new L.geoJson(data, {style: StyleTPAPEC});
-	geoJsonLayerTPNAFTA = new L.geoJson(data, {style: StyleTPNAFTA});
-	geoJsonLayerTPWTO = new L.geoJson(data, {style: StyleTPWTO});
-	geoJsonLayerTPASEAN = new L.geoJson(data, {style: StyleTPASEAN});
-	geoJsonLayerTPCBERA = new L.geoJson(data, {style: StyleTPCBERA});
-	geoJsonLayerTPCAFTA = new L.geoJson(data, {style: StyleTPCAFTA});
-	geoJsonLayerWatSan = new L.geoJson(data, {style: StyleWatSan});
-	geoJsonLayerDHRA = new L.geoJson(data, {style: StyleDHRA});
-	geoJsonLayerSTI = new L.geoJson(data, {style: StyleSTI});
-	geoJsonLayerECC = new L.geoJson(data, {style: StyleECC});
-	geoJsonLayerGEWE = new L.geoJson(data, {style: StyleGEWE});
-	geoJsonLayerWCC = new L.geoJson(data, {style: StyleWCC});
+
+var geoJsonList = {}
+var geoJsonLayer;
+var keysets;
+//load the base geoJson layer
+
+
+var ignite = function(data){
+		keysets = {
+			"keyTP":{
+				'categoryName': "Trade Promotion",
+				'categoryDescription': "<div><h7 class='lorem'>The Department of State’s Bureau of Economic, Energy and Business Affairs is devoted to providing technical expertise in regional and bilateral trade negotiations including labor, environment, services, government procurement, trade remedies, and trade capacity building. This bureau helps to oversee programs such as AGOA.</h7></div>",
+				'layers':{
+					'geoJsonLayerTPAPEC': {
+						'subject': "APEC Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleTPAPEC}),
+						'ptsLayer': "",
+						'description':"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique."
+					},
+					'geoJsonLayerTPASEAN':{
+						'subject': "ASEAN Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleTPASEAN}),
+						'ptsLayer': "",
+						'description': "ASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuff"
+					},
+					'geoJsonLayerTPCAFTA':{
+						'subject': "CAFTA Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleTPCAFTA}),
+						'ptsLayer': "",
+						'description': "CAFTA MembershipCAFTA MembershipCAFTA MembershipCAFTA Membership"
+					},
+					'geoJsonLayerTPCBERA':{
+						'subject': "CBERA Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleTPCBERA}),
+						'ptsLayer': "",
+						'description': "CBERA MembershipCBERA MembershipCBERA MembershipCBERA MembershipCBERA Membership"
+					},
+					'geoJsonLayerTPNAFTA':{
+						'subject': "NAFTA Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleTPNAFTA}),
+						'ptsLayer': "",
+						'description': "NAFTA MembershipNAFTA MembershipNAFTA MembershipNAFTA MembershipNAFTA Membership"
+					},
+					'geoJsonLayerTPWTO':{
+						'subject': "WTO Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleTPWTO}),
+						'ptsLayer': "",
+						'description': "WTO MembershipWTO MembershipWTO MembershipWTO MembershipWTO MembershipWTO MembershipWTO Membership"
+					}
+
+				}
+			}
+		}
+
+	$(document).one("ajaxStop", function() {
+		$("#loading").hide();
+	});
 }
 
-$.ajax({
-	url: urlWhole,
-	dataType: 'json',
-	jsonpCallback: getGeoJson,
-	success: getGeoJson
-});
-
-function getGeoJsonPts(data){
-	geoJsonLayerHTpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
-	geoJsonLayerHIPEPFARpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
-	geoJsonLayerNucpts = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
-}
 
 $.ajax({
-	url: urlWholeHTpts,
+	url: baseURL.replace("*******", generalBaseLayer),
 	dataType: 'json',
-	jsonpCallback: getGeoJsonPts,
-	success: getGeoJsonPts
+	success: function(data){ignite(data);} 
+	/*function(data) {
+		//load layer to be styled later
+
+
+
+		geoJsonLayerHT = new L.geoJson(data, {style: StyleHT});
+		geoJsonLayerHIGH = new L.geoJson(data, {style: StyleHIGH});
+		geoJsonLayerHIAV = new L.geoJson(data, {style: StyleHIAV});
+		geoJsonLayerHIHIVAIDS = new L.geoJson(data, {style: StyleHIHIVAIDS});
+		geoJsonLayerHIM = new L.geoJson(data, {style: StyleHIM});
+		geoJsonLayerHIMHAC = new L.geoJson(data, {style: StyleHIMHAC});
+		geoJsonLayerHIPEPFAR = new L.geoJson(data, {style: StyleHIPEPFAR});
+		geoJsonLayerHIP = new L.geoJson(data, {style: StyleHIP});
+		geoJsonLayerHIT = new L.geoJson(data, {style: StyleHIT});
+		//geoJsonLayerICAO = new L.geoJson(data, {style: StyleMLOMemberICAO, onEachFeature: onEachFeature});
+		geoJsonLayerMLOAU = new L.geoJson(data, {style: StyleMLOMemberAU});
+		geoJsonLayerMLOEU = new L.geoJson(data, {style: StyleMLOMemberEU});
+		geoJsonLayerMLOFAO = new L.geoJson(data, {style: StyleMLOMemberFAO});
+		geoJsonLayerMLOICAO = new L.geoJson(data, {style: StyleMLOMemberICAO});
+		geoJsonLayerMLONATO = new L.geoJson(data, {style: StyleMLOMemberNATO});
+		geoJsonLayerMLOOAS = new L.geoJson(data, {style: StyleMLOMemberOAS});
+		geoJsonLayerMLOOECD = new L.geoJson(data, {style: StyleMLOMemberOECD});
+		geoJsonLayerMLOOSCE = new L.geoJson(data, {style: StyleMLOMemberOSCE});
+		geoJsonLayerMLOUNESCO = new L.geoJson(data, {style: StyleMLOMemberUNESCO});
+		geoJsonLayerMLOUNHCR = new L.geoJson(data, {style: StyleMLOMemberUNHCR});
+		geoJsonLayerMLOUNGA = new L.geoJson(data, {style: StyleMLOMemberUNGA});
+		geoJsonLayerNucSign = new L.geoJson(data, {style: StyleNucSign});
+		geoJsonLayerNucDepo = new L.geoJson(data, {style: StyleNucDepo});
+		geoJsonLayerTPAPEC = new L.geoJson(data, {style: StyleTPAPEC});
+		geoJsonLayerTPNAFTA = new L.geoJson(data, {style: StyleTPNAFTA});
+		geoJsonLayerTPWTO = new L.geoJson(data, {style: StyleTPWTO});
+		geoJsonLayerTPASEAN = new L.geoJson(data, {style: StyleTPASEAN});
+		geoJsonLayerTPCBERA = new L.geoJson(data, {style: StyleTPCBERA});
+		geoJsonLayerTPCAFTA = new L.geoJson(data, {style: StyleTPCAFTA});
+		geoJsonLayerWatSan = new L.geoJson(data, {style: StyleWatSan});
+		geoJsonLayerDHRA = new L.geoJson(data, {style: StyleDHRA});
+		geoJsonLayerSTI = new L.geoJson(data, {style: StyleSTI});
+		geoJsonLayerECC = new L.geoJson(data, {style: StyleECC});
+		geoJsonLayerGEWE = new L.geoJson(data, {style: StyleGEWE});
+		geoJsonLayerWCC = new L.geoJson(data, {style: StyleWCC});
+
+	}*/
 });
 
-$.ajax({
-	url: urlWholePEPFARpts,
-	dataType: 'json',
-	jsonpCallback: getGeoJsonPts,
-	success: getGeoJsonPts
-});
 
-$.ajax({
-	url: urlWholeNucpts,
-	dataType: 'json',
-	jsonpCallback: getGeoJsonPts,
-	success: getGeoJsonPts
-});
+
+
+
+
+//NEED TO MAP THESE TO THE OVERALL DATA STRUCTURE
+//load the pts
+var ptsLayerSet = {};
+// there will need to be more
+var ptsLayers = ["Human_Trafficking_Pts", "PEPFAR_Pts", "Nuclear_Pts"];
+
+$.each(ptsLayers, function(index,value){
+		$.ajax({
+			url: baseURL.replace("*******", value),
+			dataType: 'json',
+			success: function(data){
+				ptsLayerSet[value] = new L.geoJson(data, {onEachFeature: onEachFeaturePts});
+			}
+		});
+	});
+
+
 
 var cmAttr = "<a href='mailto:dittemoremb@state.gov'>eDiplomacy Geo|DST</a>"
 //cmAttr = 'Data: <a href="http://www.eia.gov/countries/data.cfm" title="U.S. Energy Information Administration">EIA</a>, <a href="http://www.openstreetmap.org/" title="&copy; OpenStreetMap contributors">OpenStreetMap</a>, <a href="http://www.cloudmade.com/" title="&copy; 2011 CloudMade">CloudMade</a>, <a href="http://www.stamen.com/" title="Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.">Stamen Design</a>',
 
-function getColorHT(d) {
-	if (d == 'Special Case') {
-		return	'#499DD6'
-	} else if (d == 'Tier 3') {
-		return	'#9E252B'
-	} else if (d == 'Tier 3 Auto-Downgrade') {
-		return	'#FC4E2A'
-	} else if (d == 'Tier 2 Watch List') {
-		return	'#E67125'
-	} else if (d == 'Tier 2') {
-		return	'#FDBE10'
-	} else if (d == 'Tier 1') {
-		return	'#00763F'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorHIGH(d) {
-	if (d == '1') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorHIAV(d) {
-	if (d == '3') {
-		return	'#FC4E2A'
-	} else if (d == '2') {
-		return	'#FD8D3C'
-	} else if (d == '1') {
-		return	'#CACF9B'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorHIHIVAIDS(d) {
-	if (d == 'Excellent') {
-		return	'#00BDFF'
-	} else if (d == 'Good') {
-		return	'#009DD4'
-	} else if (d == 'Fair') {
-		return	'#007BA6'
-	} else if (d == 'Poor') {
-		return	'#004E69'
-	} else if (d == 'Unsuitable') {
-		return	'#002430'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorHIM(d) {
-	if (d == '3') {
-		return	'#FC4E2A'
-	} else if (d == '2') {
-		return	'#FD8D3C'
-	} else if (d == '1') {
-		return	'#CACF9B'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorHIMHAC(d) {
-	if (d == 'Excellent') {
-		return	'#00BDFF'
-	} else if (d == 'Good') {
-		return	'#009DD4'
-	} else if (d == 'Fair') {
-		return	'#007BA6'
-	} else if (d == 'Poor') {
-		return	'#004E69'
-	} else if (d == 'Unsuitable') {
-		return	'#002430'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorHIPEPFAR(d) {
-	if (d == '3') {
-		return	'#FC4E2A'
-	} else if (d == '2') {
-		return	'#FD8D3C'
-	} else if (d == '1') {
-		return	'#CACF9B'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorHIP(d) {
-	if (d == '3') {
-		return	'#FC4E2A'
-	} else if (d == '2') {
-		return	'#FD8D3C'
-	} else if (d == '1') {
-		return	'#CACF9B'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorHIT(d) {
-	if (d == '3') {
-		return	'#FC4E2A'
-	} else if (d == '2') {
-		return	'#FD8D3C'
-	} else if (d == '1') {
-		return	'#CACF9B'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorMLOMember(d) {
-	if (d == 'Member') {
-		return	'#FC4E2A'
-	} else if (d == 'Suspended') {
-		return	'#FD8D3C'
-	} else {
-		return	'#ddd';
-	}
-}
-/*
-function getColorMLOIndex(d) {
-	if (d == '8') {
-		return	'#093B49'
-	} else if (d == '8') {
-		return	'#093B49'
-	} else if (d == '7') {
-		return	'#106F89'
-	} else if (d == '6') {
-		return	'#106F89'
-	} else if (d == '5') {
-		return	'#158DAF'
-	} else if (d == '4') {
-		return	'#158DAF'
-	} else if (d == '3') {
-		return	'#18A2C9'
-	} else if (d == '2') {
-		return	'#1AACD6'
-	} else if (d == '1') {
-		return	'#51C5E8'
-	} else {
-		return	'#ddd';
-	}
-}
-*/		
-function getColorNucSign(d) {
-	if (d == 'X') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorNucDepo(d) {
-	if (d == 'X') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorTPMember(d) {
-	if (d == 'Member') {
-		return	'#FC4E2A'
-	} else if (d == 'Observer') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-/*
-function getColorTPIndex(d) {
-	if (d == '4') {
-		return	'#093B49'
-	} else if (d == '3') {
-		return	'#106F89'
-	} else if (d == '2') {
-		return	'#158DAF'
-	} else if (d == '1') {
-		return	'#51C5E8'
-	} else {
-		return	'#ddd';
-	}
-}
-*/		
-
-function getColorWatSan(d) {
-	if (d == '1') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorDHRA(d) {
-	if (d == '1') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorSTI(d) {
-	if (d == '1') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorECC(d) {
-	if (d == '1') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorGEWE(d) {
-	if (d == '1') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorWCC(d) {
-	if (d == '1') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function StyleHT(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHT(feature.properties.Human_Trafficking)
-	};
-}
-
-function StyleHIGH(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIGH(feature.properties.Global_Health)
-	};
-}
-
-function StyleHIAV(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIAV(feature.properties.Avian_Flu)
-	};
-}
-
-function StyleHIHIVAIDS(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIHIVAIDS(feature.properties.HIVAIDS)
-	};
-}
-
-function StyleHIM(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIM(feature.properties.Malaria)
-	};
-}
-
-function StyleHIMHAC(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIMHAC(feature.properties.Maternity_Health_Access_to_Care)
-	};
-}
-
-function StyleHIPEPFAR(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIPEPFAR(feature.properties.PEPFAR)
-	};
-}
-
-function StyleHIP(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIP(feature.properties.Polio)
-	};
-}
-
-function StyleHIT(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIT(feature.properties.Tuberculosis)
-	};
-}
-
-function StyleMLOMemberICAO(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.ICAO)
-	};
-}
-
-function StyleMLOMemberUNESCO(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.UNESCO)
-	};
-}
-
-function StyleMLOMemberFAO(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.FAO)
-	};
-}
-
-function StyleMLOMemberOAS(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.OAS)
-	};
-}
-
-function StyleMLOMemberUNGA(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.UNGA)
-	};
-}
-
-function StyleMLOMemberOSCE(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.OSCE)
-	};
-}
-
-function StyleMLOMemberOECD(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.OECD)
-	};
-}
-
-function StyleMLOMemberNATO(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.NATO)
-	};
-}
-
-function StyleMLOMemberEU(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.EU)
-	};
-}
-
-function StyleMLOMemberAU(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.AU)
-	};
-}
-
-function StyleMLOMemberUNHCR(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.UNHCR)
-	};
-}
-/*
-function StyleMLOIndex(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOIndex(feature.properties.Index)
-	};
-}
-*/
-function StyleNucSign(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorNucSign(feature.properties.Signed)
-	};
-}
-
-function StyleNucDepo(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorNucDepo(feature.properties.Deposited)
-	};
-}
-
-function StyleTPAPEC(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorTPMember(feature.properties.APEC)
-	};
-}
-
-function StyleTPNAFTA(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorTPMember(feature.properties.NAFTA)
-	};
-}
-
-function StyleTPWTO(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorTPMember(feature.properties.WTO)
-	};
-}
-
-function StyleTPASEAN(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorTPMember(feature.properties.ASEAN)
-	};
-}
-
-function StyleTPCBERA(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorTPMember(feature.properties.CBERA)
-	};
-}
-
-function StyleTPCAFTA(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorTPMember(feature.properties.CAFTA)
-	};
-}
-/*
-function StyleTPIndex(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorTPIndex(feature.properties.Index)
-	};
-}
-*/
-
-function StyleWatSan(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorWatSan(feature.properties.Wat_San)
-	};
-}
-
-function StyleDHRA(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorDHRA(feature.properties.DHRA)
-	};
-}
-
-function StyleSTI(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorSTI(feature.properties.Science)
-	};
-}
-
-function StyleECC(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorECC(feature.properties.Env_Climate)
-	};
-}
-
-function StyleGEWE(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorGEWE(feature.properties.Gender_Women)
-	};
-}
-
-function StyleWCC(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorGEWE(feature.properties.Crisis_Conflict)
-	};
-}
 
 var map = new L.Map('map', {
 	zoomControl: false,
@@ -703,76 +164,10 @@ L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 
 new L.Control.Zoom({ position: 'topright' }).addTo(map);
 
-$(document).one("ajaxStop", function() {
-	$("#loading").hide();
-});
 
-/*$('#country').on('show.bs.dropdown', function () {
-    // do something…
-});*/
 
-$('#issueModal').on('show.bs.modal', function (e) {
 
-	var comboData;
-	//var textData;
-	$.ajax(
-	{
-		type: "POST",
-		url: "Combo",
-			//url: "Combo",
-			async: false,
-			data: { 
-				'type': 'issueCombo'  
-			},
-			success: function(data)
-			{
-				comboData = data;
-			}
-		});
 
-	var issue = document.getElementById("inputIssue");
-	issue.innerHTML=comboData;
-
-})
-
-$('#inputIssue').on('change', function(){
-	
-	var name = $(this).val();
-	name = name.trim();
-	
-	var comboData;
-
-	$.ajax(
-	{
-   	//url: urll,
-   	url: "Combo",
-   	type: "POST",
-   	async: false,
-   	data: { 
-   		'type': 'issueText',
-   		'name':name  
-   	},
-   	success: function(data)
-   	{
-   		comboData = data;
-   	}
-   });
-	
-	$('#inputIssueLegend').text(comboData);//=comboData;
-});
-
-function closePane(){
-
-	var rowDiv = document.getElementById("rowId");
-	var desc = document.getElementById('descPane');
-	var mapp = document.getElementById('mapPane');
-	mapp.className = "col-lg-12 col-md-12 col-sm-12";
-	rowDiv.removeChild(desc);
-	
-	var toggleArray = document.getElementsByClassName("info leaflet-control");
-	var toggleDiv = toggleArray[0];
-	toggleDiv.innerHTML = "<a onclick=\"javascript:openPane(),getCurrentKey();\">Show</a>";
-}
 
 var keyNuc;
 var keyMLO;
@@ -823,66 +218,45 @@ function getCurrentKey(){
 	}
 }
 
-function openPane(){
-	var descOpen = document.getElementById('descPane');
-	if(descOpen){
-	}
-	else
-	{
-		var div = document.createElement('div');
-		div.className = "col-lg-3 col-md-3 col-sm-3";
-		div.id="descPane";
-		div.innerHTML = "<div class='panel-body panel-collapse collapse in' id='collapseSide' style='padding: 0px !important;'><div id='mapKey'></div></div>";
-		
-		var desc = document.getElementById('descPane');
-		var mapp = document.getElementById('mapPane');
-		mapp.className = "col-lg-9 col-md-9 col-sm-9";
-		
-		var rowDiv = document.getElementById("rowId");
-		rowDiv.insertBefore(div,mapp);
-		
-		var toggleArray = document.getElementsByClassName("info leaflet-control");
-		var toggleDiv = toggleArray[0];
-		toggleDiv.innerHTML = "<a onclick=\"javascript:closePane();\">Hide</a>";
-	}
+
+
+
+
+
+var renderSidePanel = function(){
+
 }
 
-function changeLayer() {
+$(".mainKey").click(function(){
+	//clear all layers on this
+	currentKey="TP";
+	clearLayers();
+	var keyname = $(this).attr("name");
+	map.addLayer(allLayersGroup, {insertAtTheBottom: true});
+	//add all layers as part of this key
+	$.each(keysets[keyname]['layers'], function(index, valueset){
+		allLayersGroup.addLayer(valueset['jsonLayer']);
+	});
+	//not sure what this does?
+	//allLayersGroup.clearLayers();	
+});
+
+ function clearLayers() {
 	allLayersGroup.clearLayers();
-	// allLayersGroupPts layer is not being cleared.
 	allLayersGroupPts.clearLayers();
 }
 
+
+
+
+
 keyTP = function () {
-	currentKey="TP";
-	var categoryName = "Trade Promotion";
-	var categoryDescription = "<div><h7 class='lorem'>The Department of State’s Bureau of Economic, Energy and Business Affairs is devoted to providing technical expertise in regional and bilateral trade negotiations including labor, environment, services, government procurement, trade remedies, and trade capacity building. This bureau helps to oversee programs such as AGOA.</h7></div>";
+	//set key for memeory
 	
-	var key1Subject = "APEC Membership";
-	var key2Subject = "ASEAN Membership";
-	var key3Subject = "CAFTA Membership";
-	var key4Subject = "CBERA Membership";
-	var key5Subject = "NAFTA Membership";
-	var key6Subject = "WTO Membership";
-	var key1Layer = "geoJsonLayerTPAPEC";
-	var key2Layer = "geoJsonLayerTPASEAN";
-	var key3Layer = "geoJsonLayerTPCAFTA";
-	var key4Layer = "geoJsonLayerTPCBERA";
-	var key5Layer = "geoJsonLayerTPNAFTA";
-	var key6Layer = "geoJsonLayerTPWTO";
-	var key1LayerPts = "";
-	var key2LayerPts = "";
-	var key3LayerPts = "";
-	var key4LayerPts = "";
-	var key5LayerPts = "";
-	var key6LayerPts = "";
-	var key1Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.";
-	var key2Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus semper quam vel egestas. Nulla tempus hendrerit justo vel auctor. Pellentesque sollicitudin quis nulla et ornare. Nam rhoncus malesuada neque, a vulputate purus eleifend in.";
-	var key3Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in aliquam tortor, eu commodo neque. Cras pellentesque vitae turpis quis adipiscing. Donec ut nisl feugiat, aliquet ligula sit amet, lacinia tortor. Maecenas consectetur dolor vitae.";
-	var key4Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie mauris at blandit convallis. Vestibulum molestie feugiat mi eget malesuada. Vivamus at diam quis sem porta aliquam. Integer sapien nulla, viverra ac vehicula et, scelerisque.";
-	var key5Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis dui tortor, vel tristique sem condimentum a. Etiam tincidunt magna eu odio pretium, vel posuere metus adipiscing. Donec et purus turpis. Ut sodales sit amet.";
-	var key6Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In adipiscing aliquam tellus at congue. Vivamus vitae vehicula lorem. Etiam pulvinar mauris vitae euismod pellentesque. Mauris venenatis tellus in turpis hendrerit porta. Cras eu est lacinia.";
+
 	
+
+
 	var key1div = L.DomUtil.create('div'),
 		grades = ['Member','null'],
 		// this is something like a subheader
@@ -1015,7 +389,7 @@ keyTP = function () {
 };
 
 var layerCreator = function(keylayer, keylayerPts){
-	console.log("used this successfully");
+
 	allLayersGroup.clearLayers();
 	allLayersGroupPts.clearLayers();
 	allLayersGroup.addLayer(keylayer);
@@ -1891,6 +1265,64 @@ function resetHighlight(e) {
 	info.update();
 }
 */
+var popup = L.popup();
+/*
+var info = L.control({position: "bottomleft"});
+
+info.onAdd = function (map) {
+	this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+	this.update();
+	return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+	this._div.innerHTML = '' +  (props ?
+		'' + props.sovereignt + ': ' + props.ICAO + ''
+		: '');
+};
+
+info.addTo(map);
+*/
+
+var keyToggle = L.control({position: "bottomleft"});
+
+keyToggle.onAdd = function (map) {
+	this._div = L.DomUtil.create('div', 'toggleSidePane info'); // create a div with a class "info"
+	
+
+	return this._div;
+};
+
+// method that we will use to update the control based on feature properties passed
+
+keyToggle.addTo(map);
+
+//create the side panel
+var div = document.createElement('div');
+div.className = "col-lg-3 col-md-3 col-sm-3";
+div.id="descPane";
+div.innerHTML = "<div class='panel-body panel-collapse collapse in' id='collapseSide' style='padding: 0px !important;'><div id='mapKey'></div></div>";
+
+var desc = document.getElementById('descPane');
+var mapp = document.getElementById('mapPane');
+mapp.className = "col-lg-9 col-md-9 col-sm-9";
+
+var rowDiv = document.getElementById("rowId");
+rowDiv.insertBefore(div,mapp);
+
+
+
+
+
+/*Map Controls.  Functions to turn layers on and off
+ *
+ *
+ */
+
+
+
+
 function zoomToFeature(e) {
 	map.fitBounds(e.target.getBounds());
 }
@@ -1902,7 +1334,7 @@ function onEachFeature(feature, layer) {
 	});
 }
 
-var popup = L.popup();
+
 
 function onEachFeaturePts(feature, layer) {
 	layer.on({
@@ -1934,32 +1366,704 @@ function onEachFeaturePts(feature, layer) {
 		layer.bindPopup(popupContent);
 	} 
 }
+
+
+/*Map Styles
+ *
+ *
+ *
+ */
+
+
+function getColorHT(d) {
+	if (d == 'Special Case') {
+		return	'#499DD6'
+	} else if (d == 'Tier 3') {
+		return	'#9E252B'
+	} else if (d == 'Tier 3 Auto-Downgrade') {
+		return	'#FC4E2A'
+	} else if (d == 'Tier 2 Watch List') {
+		return	'#E67125'
+	} else if (d == 'Tier 2') {
+		return	'#FDBE10'
+	} else if (d == 'Tier 1') {
+		return	'#00763F'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorHIGH(d) {
+	if (d == '1') {
+		return	'#FC4E2A'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorHIAV(d) {
+	if (d == '3') {
+		return	'#FC4E2A'
+	} else if (d == '2') {
+		return	'#FD8D3C'
+	} else if (d == '1') {
+		return	'#CACF9B'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorHIHIVAIDS(d) {
+	if (d == 'Excellent') {
+		return	'#00BDFF'
+	} else if (d == 'Good') {
+		return	'#009DD4'
+	} else if (d == 'Fair') {
+		return	'#007BA6'
+	} else if (d == 'Poor') {
+		return	'#004E69'
+	} else if (d == 'Unsuitable') {
+		return	'#002430'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorHIM(d) {
+	if (d == '3') {
+		return	'#FC4E2A'
+	} else if (d == '2') {
+		return	'#FD8D3C'
+	} else if (d == '1') {
+		return	'#CACF9B'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorHIMHAC(d) {
+	if (d == 'Excellent') {
+		return	'#00BDFF'
+	} else if (d == 'Good') {
+		return	'#009DD4'
+	} else if (d == 'Fair') {
+		return	'#007BA6'
+	} else if (d == 'Poor') {
+		return	'#004E69'
+	} else if (d == 'Unsuitable') {
+		return	'#002430'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorHIPEPFAR(d) {
+	if (d == '3') {
+		return	'#FC4E2A'
+	} else if (d == '2') {
+		return	'#FD8D3C'
+	} else if (d == '1') {
+		return	'#CACF9B'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorHIP(d) {
+	if (d == '3') {
+		return	'#FC4E2A'
+	} else if (d == '2') {
+		return	'#FD8D3C'
+	} else if (d == '1') {
+		return	'#CACF9B'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorHIT(d) {
+	if (d == '3') {
+		return	'#FC4E2A'
+	} else if (d == '2') {
+		return	'#FD8D3C'
+	} else if (d == '1') {
+		return	'#CACF9B'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorMLOMember(d) {
+	if (d == 'Member') {
+		return	'#FC4E2A'
+	} else if (d == 'Suspended') {
+		return	'#FD8D3C'
+	} else {
+		return	'#ddd';
+	}
+}
 /*
-var info = L.control({position: "bottomleft"});
+function getColorMLOIndex(d) {
+	if (d == '8') {
+		return	'#093B49'
+	} else if (d == '8') {
+		return	'#093B49'
+	} else if (d == '7') {
+		return	'#106F89'
+	} else if (d == '6') {
+		return	'#106F89'
+	} else if (d == '5') {
+		return	'#158DAF'
+	} else if (d == '4') {
+		return	'#158DAF'
+	} else if (d == '3') {
+		return	'#18A2C9'
+	} else if (d == '2') {
+		return	'#1AACD6'
+	} else if (d == '1') {
+		return	'#51C5E8'
+	} else {
+		return	'#ddd';
+	}
+}
+*/		
+function getColorNucSign(d) {
+	if (d == 'X') {
+		return	'#FC4E2A'
+	} else {
+		return	'#ddd';
+	}
+}
 
-info.onAdd = function (map) {
-	this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-	this.update();
-	return this._div;
-};
+function getColorNucDepo(d) {
+	if (d == 'X') {
+		return	'#FC4E2A'
+	} else {
+		return	'#ddd';
+	}
+}
 
-// method that we will use to update the control based on feature properties passed
-info.update = function (props) {
-	this._div.innerHTML = '' +  (props ?
-		'' + props.sovereignt + ': ' + props.ICAO + ''
-		: '');
-};
+function getColorTPMember(d) {
+	if (d == 'Member') {
+		return	'#FC4E2A'
+	} else if (d == 'Observer') {
+		return	'#FC4E2A'
+	} else {
+		return	'#ddd';
+	}
+}
+/*
+function getColorTPIndex(d) {
+	if (d == '4') {
+		return	'#093B49'
+	} else if (d == '3') {
+		return	'#106F89'
+	} else if (d == '2') {
+		return	'#158DAF'
+	} else if (d == '1') {
+		return	'#51C5E8'
+	} else {
+		return	'#ddd';
+	}
+}
+*/		
 
-info.addTo(map);
+function getColorWatSan(d) {
+	if (d == '1') {
+		return	'#FC4E2A'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorDHRA(d) {
+	if (d == '1') {
+		return	'#FC4E2A'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorSTI(d) {
+	if (d == '1') {
+		return	'#FC4E2A'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorECC(d) {
+	if (d == '1') {
+		return	'#FC4E2A'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorGEWE(d) {
+	if (d == '1') {
+		return	'#FC4E2A'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function getColorWCC(d) {
+	if (d == '1') {
+		return	'#FC4E2A'
+	} else {
+		return	'#ddd';
+	}
+}
+
+function StyleJson(feature) {
+	switch (feature.properties.party) {
+            case 'Republican': return {color: "#ff0000"};
+            case 'Democrat':   return {color: "#0000ff"};
+        }
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorHT(feature.properties.Human_Trafficking)
+	};
+}
+
+function StyleHT(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorHT(feature.properties.Human_Trafficking)
+	};
+}
+
+function StyleHIGH(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorHIGH(feature.properties.Global_Health)
+	};
+}
+
+function StyleHIAV(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorHIAV(feature.properties.Avian_Flu)
+	};
+}
+
+function StyleHIHIVAIDS(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorHIHIVAIDS(feature.properties.HIVAIDS)
+	};
+}
+
+function StyleHIM(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorHIM(feature.properties.Malaria)
+	};
+}
+
+function StyleHIMHAC(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorHIMHAC(feature.properties.Maternity_Health_Access_to_Care)
+	};
+}
+
+function StyleHIPEPFAR(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorHIPEPFAR(feature.properties.PEPFAR)
+	};
+}
+
+function StyleHIP(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorHIP(feature.properties.Polio)
+	};
+}
+
+function StyleHIT(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorHIT(feature.properties.Tuberculosis)
+	};
+}
+
+function StyleMLOMemberICAO(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorMLOMember(feature.properties.ICAO)
+	};
+}
+
+function StyleMLOMemberUNESCO(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorMLOMember(feature.properties.UNESCO)
+	};
+}
+
+function StyleMLOMemberFAO(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorMLOMember(feature.properties.FAO)
+	};
+}
+
+function StyleMLOMemberOAS(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorMLOMember(feature.properties.OAS)
+	};
+}
+
+function StyleMLOMemberUNGA(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorMLOMember(feature.properties.UNGA)
+	};
+}
+
+function StyleMLOMemberOSCE(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorMLOMember(feature.properties.OSCE)
+	};
+}
+
+function StyleMLOMemberOECD(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorMLOMember(feature.properties.OECD)
+	};
+}
+
+function StyleMLOMemberNATO(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorMLOMember(feature.properties.NATO)
+	};
+}
+
+function StyleMLOMemberEU(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorMLOMember(feature.properties.EU)
+	};
+}
+
+function StyleMLOMemberAU(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorMLOMember(feature.properties.AU)
+	};
+}
+
+function StyleMLOMemberUNHCR(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorMLOMember(feature.properties.UNHCR)
+	};
+}
+/*
+function StyleMLOIndex(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorMLOIndex(feature.properties.Index)
+	};
+}
+*/
+function StyleNucSign(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorNucSign(feature.properties.Signed)
+	};
+}
+
+function StyleNucDepo(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorNucDepo(feature.properties.Deposited)
+	};
+}
+
+function StyleTPAPEC(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorTPMember(feature.properties.APEC)
+	};
+}
+
+function StyleTPNAFTA(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorTPMember(feature.properties.NAFTA)
+	};
+}
+
+function StyleTPWTO(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorTPMember(feature.properties.WTO)
+	};
+}
+
+function StyleTPASEAN(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorTPMember(feature.properties.ASEAN)
+	};
+}
+
+function StyleTPCBERA(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorTPMember(feature.properties.CBERA)
+	};
+}
+
+function StyleTPCAFTA(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorTPMember(feature.properties.CAFTA)
+	};
+}
+/*
+function StyleTPIndex(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorTPIndex(feature.properties.Index)
+	};
+}
 */
 
-keyToggle.onAdd = function (map) {
-	this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-	this._div.innerHTML = "<a onClick=\"javascript:openPane();\">Show</a>";
+function StyleWatSan(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorWatSan(feature.properties.Wat_San)
+	};
+}
+
+function StyleDHRA(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorDHRA(feature.properties.DHRA)
+	};
+}
+
+function StyleSTI(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorSTI(feature.properties.Science)
+	};
+}
+
+function StyleECC(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorECC(feature.properties.Env_Climate)
+	};
+}
+
+function StyleGEWE(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorGEWE(feature.properties.Gender_Women)
+	};
+}
+
+function StyleWCC(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		fillOpacity: 0.7,
+		fillColor: getColorGEWE(feature.properties.Crisis_Conflict)
+	};
+}
+
+
+
+/* UI Controls of the site.  This will bind all listeners
+ *
+ *
+ /
+
+ /*$('#country').on('show.bs.dropdown', function () {
+    // do something…
+});*/
+
+//control the form
+$('#issueModal').on('show.bs.modal', function (e) {
+
+	var comboData;
+	//var textData;
+	$.ajax(
+	{
+		type: "POST",
+		url: "Combo",
+			//url: "Combo",
+			async: false,
+			data: { 
+				'type': 'issueCombo'  
+			},
+			success: function(data)
+			{
+				comboData = data;
+			}
+		});
+
+	var issue = document.getElementById("inputIssue");
+	issue.innerHTML=comboData;
+
+})
+
+$('#inputIssue').on('change', function(){
 	
-	return this._div;
-};
+	var name = $(this).val();
+	name = name.trim();
+	
+	var comboData;
 
-// method that we will use to update the control based on feature properties passed
+	$.ajax(
+	{
+   	//url: urll,
+   	url: "Combo",
+   	type: "POST",
+   	async: false,
+   	data: { 
+   		'type': 'issueText',
+   		'name':name  
+   	},
+   	success: function(data)
+   	{
+   		comboData = data;
+   	}
+   });
+	
+	$('#inputIssueLegend').text(comboData);//=comboData;
+});
 
-keyToggle.addTo(map);
+
+
+//side bar control.  Need pass after the it is added to the map and map is rendered
+$(".toggleSidePane").html("Show").click(function(){
+	if ($(this).hasClass("closed")){
+		//populate the info
+		$(this).removeClass("closed").HTML("Hide");
+		//make it opena nd change inner html
+	}
+	else {
+		$("#descPane").addClass("closed").HTML("Show");
+		//just close it
+	}
+});
