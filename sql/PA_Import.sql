@@ -33,7 +33,24 @@ CREATE TABLE public."PA_Data"
 	"Crisis_Conflict" real,
 	"Gender_Women" real,
 	"Env_Climate" real,
-	"Science" real
+	"Science" real,
+	"NIV_1997" real,
+	"NIV_1998" real,
+	"NIV_1999" real,
+	"NIV_2000" real,
+	"NIV_2001" real,
+	"NIV_2002" real,
+	"NIV_2003" real,
+	"NIV_2004" real,
+	"NIV_2005" real,
+	"NIV_2006" real,
+	"NIV_2007" real,
+	"NIV_2008" real,
+	"NIV_2009" real,
+	"NIV_2010" real,
+	"NIV_2011" real,
+	"NIV_2012" real,
+	"NIV_2013" real
 );
 
 set client_encoding to 'UTF-8';
