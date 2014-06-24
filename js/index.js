@@ -30,42 +30,135 @@ var ignite = function(data){
 						'subject': "APEC Membership",
 						'jsonLayer': new L.geoJson(data, {style: StyleTPAPEC}),
 						'ptsLayer': "",
-						'description':"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique."
+						'description':"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerTPASEAN':{
 						'subject': "ASEAN Membership",
 						'jsonLayer': new L.geoJson(data, {style: StyleTPASEAN}),
 						'ptsLayer': "",
-						'description': "ASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuff"
+						'description': "ASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuff",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerTPCAFTA':{
 						'subject': "CAFTA Membership",
 						'jsonLayer': new L.geoJson(data, {style: StyleTPCAFTA}),
 						'ptsLayer': "",
-						'description': "CAFTA MembershipCAFTA MembershipCAFTA MembershipCAFTA Membership"
+						'description': "CAFTA MembershipCAFTA MembershipCAFTA MembershipCAFTA Membership",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerTPCBERA':{
 						'subject': "CBERA Membership",
 						'jsonLayer': new L.geoJson(data, {style: StyleTPCBERA}),
 						'ptsLayer': "",
-						'description': "CBERA MembershipCBERA MembershipCBERA MembershipCBERA MembershipCBERA Membership"
+						'description': "CBERA MembershipCBERA MembershipCBERA MembershipCBERA MembershipCBERA Membership",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerTPNAFTA':{
 						'subject': "NAFTA Membership",
 						'jsonLayer': new L.geoJson(data, {style: StyleTPNAFTA}),
 						'ptsLayer': "",
-						'description': "NAFTA MembershipNAFTA MembershipNAFTA MembershipNAFTA MembershipNAFTA Membership"
+						'description': "NAFTA MembershipNAFTA MembershipNAFTA MembershipNAFTA MembershipNAFTA Membership",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerTPWTO':{
 						'subject': "WTO Membership",
 						'jsonLayer': new L.geoJson(data, {style: StyleTPWTO}),
 						'ptsLayer': "",
-						'description': "WTO MembershipWTO MembershipWTO MembershipWTO MembershipWTO MembershipWTO MembershipWTO Membership"
+						'description': "WTO MembershipWTO MembershipWTO MembershipWTO MembershipWTO MembershipWTO MembershipWTO Membership",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					}
 
 				}
+			},
+			"keyMLO":{
+				'categoryName': "Multi-Lateral Organizations",
+				'categoryDescription': "<div><h7 class='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.</h7></div>",
+				'layers':{
+					'geoJsonLayerMLOAU':{
+						'subject': "African Union Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberAU}),
+						'ptsLayer': "",
+						'description': "African Union MembershipAfrican Union MembershipAfrican Union MembershipAfrican Union Membership",
+						'labels': {'grades': ['Member', 'Suspended', 'null'], 'from': ['Member', 'Suspended', 'Not a member']}
+					},
+					'geoJsonLayerMLOEU':{
+						'subject': "European Union Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberEU}),
+						'ptsLayer': "",
+						'description': "European Union MembershipEuropean Union MembershipEuropean Union MembershipEuropean Union MembershipEuropean Union MembershipEuropean Union MembershipEuropean Union Membership",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
+					},
+					'geoJsonLayerMLOFAO':{
+						'subject': "Food and Agriculture Organization Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberFAO}),
+						'ptsLayer': "",
+						'description': "Food and Agriculture Organization MembershipFood and Agriculture Organization MembershipFood and Agriculture Organization MembershipFood and Agriculture Organization MembershipFood and Agriculture Organization MembershipFood and Agriculture Organization Membership",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
+					},
+					'geoJsonLayerMLOICAO':{
+						'subject': "International Civil Aviation Organization Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberICAO}),
+						'ptsLayer': "",
+						'description': "International Civil Aviation Organization MembershipInternational Civil Aviation Organization MembershipInternational Civil Aviation Organization MembershipInternational Civil Aviation Organization MembershipInternational Civil Aviation Organization Membership",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
+					},
+					'geoJsonLayerMLONATO':{
+						'subject': "North American Treaty Organization Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberNATO}),
+						'ptsLayer': "",
+						'description': "North American Treaty Organization MembershipNorth American Treaty Organization MembershipNorth American Treaty Organization Membership",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
+					},
+					'geoJsonLayerMLOOAS':{
+						'subject': "Organization of American States Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberOAS}),
+						'ptsLayer': "",
+						'description': "North American Treaty Organization MembershipNorth American Treaty Organization MembershipNorth American Treaty Organization Membership",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
+					},
+					'geoJsonLayerMLOOECD':{
+						'subject': "OECD Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberOECD}),
+						'ptsLayer': "",
+						'description': "OECD MembershipOECD MembershipOECD MembershipOECD MembershipOECD MembershipOECD MembershipOECD MembershipOECD Membership",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
+					},
+					'geoJsonLayerMLOOSCE':{
+						'subject': "OSCE Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberOSCE}),
+						'ptsLayer': "",
+						'description': "OSCE MembershipOSCE MembershipOSCE MembershipOSCE MembershipOSCE MembershipOSCE Membership",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
+					},
+					'geoJsonLayerMLOUNESCO':{
+						'subject': "UNESCO Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberUNESCO}),
+						'ptsLayer': "",
+						'description': "UNESCO MembershipUNESCO MembershipUNESCO MembershipUNESCO MembershipUNESCO Membership",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
+					},
+					'geoJsonLayerMLOUNHCR':{
+						'subject': "UNHCR Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberUNHCR}),
+						'ptsLayer': "",
+						'description': "UNHCR MembershipUNHCR MembershipUNHCR MembershipUNHCR MembershipUNHCR MembershipUNHCR Membershipp",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
+					},
+					'geoJsonLayerMLOUNGA':{
+						'subject': "UNGA Membership",
+						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberUNGA}),
+						'ptsLayer': "",
+						'description': "UNGA MembershipUNGA MembershipUNGA MembershipUNGA MembershipUNGA MembershipUNGA MembershipUNGA Membership",
+						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
+					}
+				}
 			}
 		}
+
+
+
+
 
 	$(document).one("ajaxStop", function() {
 		$("#loading").hide();
@@ -95,17 +188,7 @@ $.ajax({
 		geoJsonLayerHIP = new L.geoJson(data, {style: StyleHIP});
 		geoJsonLayerHIT = new L.geoJson(data, {style: StyleHIT});
 		//geoJsonLayerICAO = new L.geoJson(data, {style: StyleMLOMemberICAO, onEachFeature: onEachFeature});
-		geoJsonLayerMLOAU = new L.geoJson(data, {style: StyleMLOMemberAU});
-		geoJsonLayerMLOEU = new L.geoJson(data, {style: StyleMLOMemberEU});
-		geoJsonLayerMLOFAO = new L.geoJson(data, {style: StyleMLOMemberFAO});
-		geoJsonLayerMLOICAO = new L.geoJson(data, {style: StyleMLOMemberICAO});
-		geoJsonLayerMLONATO = new L.geoJson(data, {style: StyleMLOMemberNATO});
-		geoJsonLayerMLOOAS = new L.geoJson(data, {style: StyleMLOMemberOAS});
-		geoJsonLayerMLOOECD = new L.geoJson(data, {style: StyleMLOMemberOECD});
-		geoJsonLayerMLOOSCE = new L.geoJson(data, {style: StyleMLOMemberOSCE});
-		geoJsonLayerMLOUNESCO = new L.geoJson(data, {style: StyleMLOMemberUNESCO});
-		geoJsonLayerMLOUNHCR = new L.geoJson(data, {style: StyleMLOMemberUNHCR});
-		geoJsonLayerMLOUNGA = new L.geoJson(data, {style: StyleMLOMemberUNGA});
+
 		geoJsonLayerNucSign = new L.geoJson(data, {style: StyleNucSign});
 		geoJsonLayerNucDepo = new L.geoJson(data, {style: StyleNucDepo});
 		geoJsonLayerTPAPEC = new L.geoJson(data, {style: StyleTPAPEC});
@@ -309,285 +392,6 @@ These keys need to be added to the data structure above
 
 
 
-keyMLO = function () {
-	currentKey="MLO";
-	var categoryName = "Multi-Lateral Organizations";
-	var categoryDescription = "<div><h7 class='lorem'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.</h7></div>";
-	
-	var key1Subject = "African Union Membership";
-	var key2Subject = "European Union Membership";
-	var key3Subject = "Food and Agriculture Organization Membership";
-	var key4Subject = "International Civil Aviation Organization Membership";
-	var key5Subject = "North American Treaty Organization Membership";
-	var key6Subject = "Organization of American States Membership";
-	var key7Subject = "OECD Membership";
-	var key8Subject = "OSCE Membership";
-	var key9Subject = "UNESCO Membership";
-	var key10Subject = "UNHCR Membership";
-	var key11Subject = "UNGA Membership";
-	var key1Layer = "geoJsonLayerMLOAU";
-	var key2Layer = "geoJsonLayerMLOEU";
-	var key3Layer = "geoJsonLayerMLOFAO";
-	var key4Layer = "geoJsonLayerMLOICAO";
-	var key5Layer = "geoJsonLayerMLONATO";
-	var key6Layer = "geoJsonLayerMLOOAS";
-	var key7Layer = "geoJsonLayerMLOOECD";
-	var key8Layer = "geoJsonLayerMLOOSCE";
-	var key9Layer = "geoJsonLayerMLOUNESCO";
-	var key10Layer = "geoJsonLayerMLOUNHCR";
-	var key11Layer = "geoJsonLayerMLOUNGA";
-	var key1LayerPts = "null";
-	var key2LayerPts = "";
-	var key3LayerPts = "";
-	var key4LayerPts = "";
-	var key5LayerPts = "";
-	var key6LayerPts = "";
-	var key7LayerPts = "";
-	var key8LayerPts = "";
-	var key9LayerPts = "";
-	var key10LayerPts = "";
-	var key11LayerPts = "";
-	var key1Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.";
-	var key2Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus semper quam vel egestas. Nulla tempus hendrerit justo vel auctor. Pellentesque sollicitudin quis nulla et ornare. Nam rhoncus malesuada neque, a vulputate purus eleifend in.";
-	var key3Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in aliquam tortor, eu commodo neque. Cras pellentesque vitae turpis quis adipiscing. Donec ut nisl feugiat, aliquet ligula sit amet, lacinia tortor. Maecenas consectetur dolor vitae.";
-	var key4Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie mauris at blandit convallis. Vestibulum molestie feugiat mi eget malesuada. Vivamus at diam quis sem porta aliquam. Integer sapien nulla, viverra ac vehicula et, scelerisque.";
-	var key5Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis dui tortor, vel tristique sem condimentum a. Etiam tincidunt magna eu odio pretium, vel posuere metus adipiscing. Donec et purus turpis. Ut sodales sit amet.";
-	var key6Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In adipiscing aliquam tellus at congue. Vivamus vitae vehicula lorem. Etiam pulvinar mauris vitae euismod pellentesque. Mauris venenatis tellus in turpis hendrerit porta. Cras eu est lacinia.";
-	var key7Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.";
-	var key8Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus semper quam vel egestas. Nulla tempus hendrerit justo vel auctor. Pellentesque sollicitudin quis nulla et ornare. Nam rhoncus malesuada neque, a vulputate purus eleifend in.";
-	var key9Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in aliquam tortor, eu commodo neque. Cras pellentesque vitae turpis quis adipiscing. Donec ut nisl feugiat, aliquet ligula sit amet, lacinia tortor. Maecenas consectetur dolor vitae.";
-	var key10Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam molestie mauris at blandit convallis. Vestibulum molestie feugiat mi eget malesuada. Vivamus at diam quis sem porta aliquam. Integer sapien nulla, viverra ac vehicula et, scelerisque.";
-	var key11Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras facilisis dui tortor, vel tristique sem condimentum a. Etiam tincidunt magna eu odio pretium, vel posuere metus adipiscing. Donec et purus turpis. Ut sodales sit amet.";
-	
-	var key1div = L.DomUtil.create('div'),
-		grades = ['Member', 'Suspended', 'null'],
-		// this is something like a subheader
-		key1Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Suspended', 'Not a member'];
-		
-		key1Labels.push(
-			'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key2div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key2Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key2Labels.push(
-			'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-
-	var key3div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key3Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key3Labels.push(
-			'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key4div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key4Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key4Labels.push(
-			'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key5div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key5Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key5Labels.push(
-			'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key6div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key6Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key6Labels.push(
-			'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key7div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key7Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key7Labels.push(
-			'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key8div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key8Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key8Labels.push(
-			'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key9div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key9Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key9Labels.push(
-			'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key10div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key10Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key10Labels.push(
-			'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var key11div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
-		// this is something like a subheader
-		key11Labels = [],
-		from;
-
-	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
-		
-		key11Labels.push(
-			'<i style="background:' + getColorMLOMember(grades[i]) + '"></i>' +
-			from[i]
-		);
-	}
-	
-	var keyTitle1 = "<a onClick=\"javascript:layerCreator(" + key1Layer + "," + key1LayerPts + "\">&nbsp;&nbsp;" + key1Subject + "</a>";
-	var keyTitle2 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key2Subject + "</a>";
-	var keyTitle3 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key3Subject + "</a>";
-	var keyTitle4 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key4Layer + "),allLayersGroupPts.addLayer(" + key4LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key4Subject + "</a>";
-	var keyTitle5 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key5Layer + "),allLayersGroupPts.addLayer(" + key5LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key5Subject + "</a>";
-	var keyTitle6 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key6Layer + "),allLayersGroupPts.addLayer(" + key6LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key6Subject + "</a>";
-	var keyTitle7 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key7Layer + "),allLayersGroupPts.addLayer(" + key7LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key7Subject + "</a>";
-	var keyTitle8 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key8Layer + "),allLayersGroupPts.addLayer(" + key8LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key8Subject + "</a>";
-	var keyTitle9 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key9Layer + "),allLayersGroupPts.addLayer(" + key9LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key9Subject + "</a>";
-	var keyTitle10 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key10Layer + "),allLayersGroupPts.addLayer(" + key10LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key10Subject + "</a>";
-	var keyTitle11 = "<a onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key11Layer + "),allLayersGroupPts.addLayer(" + key11LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">&nbsp;&nbsp;" + key11Subject + "</a>";
-	
-	var key1 = key1Labels.join('<br>');
-	var key2 = key2Labels.join('<br>');
-	var key3 = key2Labels.join('<br>');
-	var key4 = key2Labels.join('<br>');
-	var key5 = key2Labels.join('<br>');
-	var key6 = key2Labels.join('<br>');
-	var key7 = key2Labels.join('<br>');
-	var key8 = key2Labels.join('<br>');
-	var key9 = key2Labels.join('<br>');
-	var key10 = key2Labels.join('<br>');
-	var key11 = key2Labels.join('<br>');
-	var key1panel = "<div class='legend'>" + key1 + "</div>";
-	var key2panel = "<div class='legend'>" + key2 + "</div>";
-	var key3panel = "<div class='legend'>" + key3 + "</div>";
-	var key4panel = "<div class='legend'>" + key4 + "</div>";
-	var key5panel = "<div class='legend'>" + key5 + "</div>";
-	var key6panel = "<div class='legend'>" + key6 + "</div>";
-	var key7panel = "<div class='legend'>" + key7 + "</div>";
-	var key8panel = "<div class='legend'>" + key8 + "</div>";
-	var key9panel = "<div class='legend'>" + key9 + "</div>";
-	var key10panel = "<div class='legend'>" + key10 + "</div>";
-	var key11panel = "<div class='legend'>" + key11 + "</div>";
-	var accordionStart = "<div class=\"panel-group\" id=\"accordion\" style=\"height:609px;overflow-y:scroll;margin-bottom:0px;\">";
-	var categoryAccordionTitle = "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + categoryName + "</a></h4></div>";
-	var catAccordionPanel = "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + categoryDescription + "</div>";
-	var key1AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse1\" onClick=\"javascript:layerCreator(" + key1Layer + "," + key1LayerPts + ")\">" + key1Subject + "</a></h4></div>";
-	var key1AccordionPanel = "<div id=\"collapse1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key1Description + "</div>" + key1panel + "</div>";
-	var key2AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse2\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key2Layer + "),allLayersGroupPts.addLayer(" + key2LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key2Subject + "</a></h4></div>";
-	var key2AccordionPanel = "<div id=\"collapse2\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key2Description + "</div>" + key2panel + "</div>";
-	var key3AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse3\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key3Layer + "),allLayersGroupPts.addLayer(" + key3LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key3Subject + "</a></h4></div>";
-	var key3AccordionPanel = "<div id=\"collapse3\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key3Description + "</div>" + key3panel + "</div>";
-	var key4AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse4\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key4Layer + "),allLayersGroupPts.addLayer(" + key4LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key4Subject + "</a></h4></div>";
-	var key4AccordionPanel = "<div id=\"collapse4\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key4Description + "</div>" + key4panel + "</div>";
-	var key5AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse5\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key5Layer + "),allLayersGroupPts.addLayer(" + key5LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key5Subject + "</a></h4></div>";
-	var key5AccordionPanel = "<div id=\"collapse5\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key5Description + "</div>" + key5panel + "</div>";
-	var key6AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse6\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key6Layer + "),allLayersGroupPts.addLayer(" + key6LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key6Subject + "</a></h4></div>";
-	var key6AccordionPanel = "<div id=\"collapse6\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key6Description + "</div>" + key6panel + "</div>";
-	var key7AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse7\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key7Layer + "),allLayersGroupPts.addLayer(" + key7LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key7Subject + "</a></h4></div>";
-	var key7AccordionPanel = "<div id=\"collapse7\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key7Description + "</div>" + key7panel + "</div>";
-	var key8AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse8\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key8Layer + "),allLayersGroupPts.addLayer(" + key8LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key8Subject + "</a></h4></div>";
-	var key8AccordionPanel = "<div id=\"collapse8\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key8Description + "</div>" + key8panel + "</div>";
-	var key9AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse9\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key9Layer + "),allLayersGroupPts.addLayer(" + key9LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key9Subject + "</a></h4></div>";
-	var key9AccordionPanel = "<div id=\"collapse9\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key9Description + "</div>" + key9panel + "</div>";
-	var key10AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse10\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key10Layer + "),allLayersGroupPts.addLayer(" + key10LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key10Subject + "</a></h4></div>";
-	var key10AccordionPanel = "<div id=\"collapse10\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key10Description + "</div>" + key10panel + "</div>";
-	var key11AccordionTitle = "<div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 class=\"panel-title\"><a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse11\" onClick=\"javascript:allLayersGroup.clearLayers(),allLayersGroupPts.clearLayers(),allLayersGroup.addLayer(" + key11Layer + "),allLayersGroupPts.addLayer(" + key11LayerPts + "),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);\">" + key11Subject + "</a></h4></div>";
-	var key11AccordionPanel = "<div id=\"collapse11\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + key11Description + "</div>" + key11panel + "</div>";
-	
-	var accordionEnd = "</div>";
-	
-	mapKey.innerHTML = accordionStart + categoryAccordionTitle + catAccordionPanel + "</div></div>" + key1AccordionTitle + key1AccordionPanel + "</div>" + key2AccordionTitle + key2AccordionPanel + "</div>" + key3AccordionTitle + key3AccordionPanel + "</div>" + key4AccordionTitle + key4AccordionPanel + "</div>" + key5AccordionTitle + key5AccordionPanel + "</div>" + key6AccordionTitle + key6AccordionPanel + "</div>" + key7AccordionTitle + key7AccordionPanel + "</div>" + key8AccordionTitle + key8AccordionPanel + "</div>" + key9AccordionTitle + key9AccordionPanel + "</div>" + key10AccordionTitle + key10AccordionPanel + "</div>" + key11AccordionTitle + key11AccordionPanel + "</div></div></div>" + accordionEnd + "<br/>";
-};
 
 keyHI = function () {
 	currentKey="HI";
