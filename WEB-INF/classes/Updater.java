@@ -60,7 +60,7 @@ public class Updater extends HttpServlet {
 		DataAccessor da = new DataAccessor();
 		
 		String[] params = { inputThemeDescrip, inputTheme };
-		String sql = "UPDATE public.\"THEME\" SET \"Description\" = ? WHERE \"Name\" LIKE ?";
+		String sql = "UPDATE public.\"Theme\" SET \"Description\" = ? WHERE \"Name\" LIKE ?";
 
 		da.update(params, sql);
 		
@@ -77,14 +77,18 @@ public class Updater extends HttpServlet {
 
 		String inputIssue = request.getParameter("inputIssue");
 		String inputIssueLegend = request.getParameter("inputIssueLegend");
+		String inputLinkText = request.getParameter("inputLinkText");
+		String inputLinkURL = request.getParameter("inputLinkURL");
+		String inputLinkText2 = request.getParameter("inputLinkText2");
+		String inputLinkURL2 = request.getParameter("inputLinkURL2");
+		String inputLinkText3 = request.getParameter("inputLinkText3");
+		String inputLinkURL3 = request.getParameter("inputLinkURL3");
 
 		DataAccessor da = new DataAccessor();
 		
+		String[] params = { inputIssueLegend, inputLinkText, inputLinkURL,inputLinkText2, inputLinkURL2,inputLinkText3, inputLinkURL3,inputIssue };
 
-		
-		String[] params = { inputIssueLegend, inputIssue };
-		String sql = "UPDATE public.\"ISSUE\" SET \"Legend\" = ? WHERE \"Name\" LIKE ?";
-
+		String sql = "UPDATE public.\"Issue\" SET \"Legend\" = ?, \"Link_Text\"=?, \"Link_URL\"=?, \"Link_Text2\"=?, \"Link_URL2\"=?,\"Link_Text3\"=?, \"Link_URL3\"=? WHERE \"Name\" LIKE ?";
 		da.update(params, sql);
 		
 	}
@@ -99,7 +103,7 @@ public class Updater extends HttpServlet {
 		DataAccessor da = new DataAccessor();
 		
 		String[] params = { inputIssueLegend, inputIssue };
-		String sql = "UPDATE public.\"SUBISSUE\" SET \"Text\" = ? WHERE \"Name\" LIKE ?";
+		String sql = "UPDATE public.\"Subissue\" SET \"Text\" = ? WHERE \"Name\" LIKE ?";
 
 		da.update(params, sql);
 		
