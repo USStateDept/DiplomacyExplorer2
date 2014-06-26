@@ -1,5 +1,5 @@
 
-$('#issueModal').on('show.bs.modal', function (e) {
+/*$('#issueModal').on('show.bs.modal', function (e) {
 
 	var comboData;
 	
@@ -20,8 +20,8 @@ $('#issueModal').on('show.bs.modal', function (e) {
 	var issue = document.getElementById("inputIssue");
 	issue.innerHTML=comboData;
 
-})
-
+});
+*/
 $('#inputIssue').on('change', function(){
 	
 	var name = $(this).val();
