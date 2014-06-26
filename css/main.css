@@ -1,8 +1,11 @@
 #mainContainer, #map {
   height: 100%;
-  width: 100%;
+  width:100%;
   overflow: hidden;
+  padding-right:0px;
+  padding-left:0px;
 }
+
 input[type="radio"], input[type="checkbox"] {
   margin: 0;
 }
@@ -78,7 +81,7 @@ input[type="radio"], input[type="checkbox"] {
 	box-shadow: 0 0 15px rgba(0,0,0,0.2);
 	border-radius: 5px;
 	margin-bottom: 10px !important;
-	margin-left: 10px !important;
+	margin-left: 50px !important;
 }
 .legend {
 	text-align: left;

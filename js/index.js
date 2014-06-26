@@ -554,18 +554,7 @@ keyToggle.onAdd = function (map) {
 
 keyToggle.addTo(map);
 
-//create the side panel
-var div = document.createElement('div');
-div.className = "col-lg-3 col-md-3 col-sm-3";
-div.id="descPane";
-div.innerHTML = "<div class='panel-body panel-collapse collapse in' id='collapseSide' style='padding: 0px !important;'><div id='mapKey'></div></div>";
 
-var desc = document.getElementById('descPane');
-var mapp = document.getElementById('mapPane');
-mapp.className = "col-lg-9 col-md-9 col-sm-9";
-
-var rowDiv = document.getElementById("rowId");
-rowDiv.insertBefore(div,mapp);
 
 
 
@@ -1310,16 +1299,18 @@ $('#inputIssue').on('change', function(){
 });
 
 
-
+$(".toggleSidePane").unbind("click");
 //side bar control.  Need pass after the it is added to the map and map is rendered
 $(".toggleSidePane").html("Show").click(function(){
-	if ($(this).hasClass("closed")){
-		//populate the info
-		$(this).removeClass("closed").HTML("Hide");
+	if ($("#descPane").hasClass("closed")){
+		//populate the info.
+		console.log("now opening")
+		$("#descPane").removeClass("closed").html("Hide");
 		//make it opena nd change inner html
 	}
 	else {
-		$("#descPane").addClass("closed").HTML("Show");
+		console.log("now closing");
+		$("#descPane").addClass("closed").html("Show");
 		//just close it
 	}
 });
