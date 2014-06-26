@@ -408,8 +408,6 @@ var loadPointLayer = function(layerobj, theparent){
 
 
 
-
-
 var renderSidePanelPiece = function(index, layerobj, counter){
 
 	//if ($.inArray("grades", layerobj)){
@@ -417,14 +415,14 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 
 	//}
 	//else{
-	var key1div = L.DomUtil.create('div'),
-		grades = ['Member','null'],
+
+	var key1div = L.DomUtil.create('div');
+	var grades = layerobj['labels']['grades'];
 		// this is something like a subheader
-		keyLabels = [],
-		from;
+	var keyLabels = [];
+	var from = layerobj['labels']['from'];
 
 	for (var i = 0; i < grades.length; i++) {
-		from = ['Member', 'Not a member'];
 		
 		keyLabels.push(
 			'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
