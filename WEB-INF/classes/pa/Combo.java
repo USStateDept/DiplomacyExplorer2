@@ -1,4 +1,6 @@
 
+package pa;
+
 import java.sql.*;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -31,9 +33,9 @@ public class Combo extends HttpServlet {
 
 		
 		try {
-			if(type.equals("issueCombo"))
-				loadCombo(request, response);
-			else if(type.equals("issueText"))
+			//if(type.equals("issueCombo"))
+			//	loadCombo(request, response);
+			if(type.equals("issueText"))
 				loadText(request, response);
 		} catch (SQLException e) {
 
@@ -45,7 +47,7 @@ public class Combo extends HttpServlet {
 
 	}
 
-	protected void loadCombo(HttpServletRequest request,
+	/*protected void loadCombo(HttpServletRequest request,
 		HttpServletResponse response) throws ServletException, IOException,
 	SQLException, ClassNotFoundException {
 
@@ -58,7 +60,7 @@ public class Combo extends HttpServlet {
 		ArrayList<String> rows = new ArrayList<String>();
 
 		if(type.equals("issueCombo"))
-			sql = "select \"Name\" from public.\"ISSUE\"";
+			sql = "select \"Name\" from public.\"Issue\"";
 
 		rows = da.select(params, sql, "Name");
 		String html="";
@@ -71,7 +73,7 @@ public class Combo extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		out.println(html);
-	}
+	}*/
 
 	protected void loadText(HttpServletRequest request,
 		HttpServletResponse response) throws ServletException, IOException,
@@ -85,19 +87,19 @@ public class Combo extends HttpServlet {
 
 		String[] params = { };
 		String sql="";
-		ArrayList<String> rows = new ArrayList<String>();
 
 		if(type.equals("issueText"))
-			sql = "select \"Legend\" from public.\"ISSUE\" where \"Name\" like '%" + name + "%'";
+			sql = "select \"Legend\" from public.\"Issue\" where \"Name\" like '%" + name + "%'";
 
-		rows = da.select(params, sql, "Legend");
-		//String html="";
+		ResultSet rs = da.select(params, sql);
+		String legend="";
 
-		String html = rows.get(0);
-		
+		while(rs.next()){
+		legend = rs.getString("Legend");
+		}
 
 		PrintWriter out = response.getWriter();
-		out.println(html);
+		out.println(legend);
 	}
 
 }
