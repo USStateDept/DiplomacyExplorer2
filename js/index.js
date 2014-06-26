@@ -1256,61 +1256,6 @@ function StyleWCC(feature) {
  *
  /
 
- /*$('#country').on('show.bs.dropdown', function () {
-    // do something…
-});*/
-
-//control the form
-$('#issueModal').on('show.bs.modal', function (e) {
-
-	var comboData;
-	//var textData;
-	$.ajax(
-	{
-		type: "POST",
-		url: "Combo",
-			//url: "Combo",
-			async: false,
-			data: { 
-				'type': 'issueCombo'  
-			},
-			success: function(data)
-			{
-				comboData = data;
-			}
-		});
-
-	var issue = document.getElementById("inputIssue");
-	issue.innerHTML=comboData;
-
-})
-
-$('#inputIssue').on('change', function(){
-	
-	var name = $(this).val();
-	name = name.trim();
-	
-	var comboData;
-
-	$.ajax(
-	{
-   	//url: urll,
-   	url: "Combo",
-   	type: "POST",
-   	async: false,
-   	data: { 
-   		'type': 'issueText',
-   		'name':name  
-   	},
-   	success: function(data)
-   	{
-   		comboData = data;
-   	}
-   });
-	
-	$('#inputIssueLegend').text(comboData);//=comboData;
-});
-
 
 
 //side bar control.  Need pass after the it is added to the map and map is rendered
