@@ -3,7 +3,7 @@
   <display-name>PA</display-name>
   <servlet>
     <servlet-name>Updater</servlet-name>
-    <servlet-class>Updater</servlet-class>
+    <servlet-class>pa.Updater</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Updater</servlet-name>
@@ -11,7 +11,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>Combo</servlet-name>
-    <servlet-class>Combo</servlet-class>
+    <servlet-class>pa.Combo</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Combo</servlet-name>
