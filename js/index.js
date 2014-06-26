@@ -1241,7 +1241,7 @@ function StyleWCC(feature) {
 /* UI Controls of the site.  This will bind all listeners
  *
  *
- /
+*/
 
 
 $(".toggleSidePane").unbind("click");
@@ -1259,3 +1259,4 @@ $(".toggleSidePane").html("Show").click(function(){
 		//just close it
 	}
 });
+
