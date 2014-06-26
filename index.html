@@ -53,7 +53,7 @@
 							<a id="securityDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Securing Peace</a>
 							<ul class="dropdown-menu" style="padding:10px;">
 								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<h4><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerNucSign),allLayersGroup.addLayer(geoJsonLayerNucDepo),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyNuc(),allLayersGroup.clearLayers();">Nuclear Arms Control</a></h4>
+								<h4><a style="color:#333" class="mainKey" name="keyNuc">Nuclear Arms Control</a></h4>
 								<li><h4><a style="color:#333" href="#">Border Security (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Counter-narcotics (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Counter-terrorism (tk)</a></h4></li>
@@ -81,7 +81,7 @@
 								<li><h4><a style="color:#333" href="#">Endangered Species (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Energy Policy (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Environmental Conservation (tk)</a></h4></li>
-								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerWatSan),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyWatSan(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Water & Sanitation</a></li>
+								<li><a style="color:#333" class="mainKey" name="keyWatSan">Water & Sanitation</a></li>
 							</ul>
 						</li>
 						<li class="dropdown">
@@ -89,8 +89,9 @@
 							<ul class="dropdown-menu">
 								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
 								<li><h4><a style="color:#333"href="#">&nbsp;&nbsp;Free and Fair Elections (tk)</a></li>
-								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerDHRA),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyDHRA(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Human Rights & Governance</a></li>
-									<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerHT),allLayersGroupPts.addLayer(geoJsonLayerHTpts), map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyHT(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Human Trafficking</a></li><li><h4><a style="color:#333" href="#">Independent Judiciary (tk)</a></h4></li>
+								<li><a style="color:#333" class="mainKey" name="keyDHRA">Human Rights & Governance</a></li>
+									<li><a style="color:#333" class="mainKey" name="keyHT">Human Trafficking</a></li>
+									<li><h4><a style="color:#333" href="#">Independent Judiciary (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Independent Media (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Internet Freedom (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Minority Rights (tk)</a></h4></li>
@@ -102,7 +103,7 @@
 							<a id="livesDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Saving Lives</a>
 							<ul class="dropdown-menu">
 								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerHIGH),allLayersGroup.addLayer(geoJsonLayerHIAV),allLayersGroup.addLayer(geoJsonLayerHIHIVAIDS),allLayersGroup.addLayer(geoJsonLayerHIM),allLayersGroup.addLayer(geoJsonLayerHIMHAC),allLayersGroup.addLayer(geoJsonLayerHIPEPFAR),allLayersGroup.addLayer(geoJsonLayerHIP),allLayersGroup.addLayer(geoJsonLayerHIT),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyHI(),allLayersGroup.clearLayers();">Health Issues</a></li>
+								<li><a style="color:#333" class="mainKey" name="keyHI" >Health Issues</a></li>
 								<li><h4><a style="color:#333" href="#">Counter-narcotics (tk)</a></h4></li>
 								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerWCC),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyWCC(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Working in Crisis and Conflict</a></li>
 								<li><h4><a style="color:#333" href="#">Disaster Assistance (tk)</a></h4></li>
