@@ -10,6 +10,7 @@ var generalBaseLayer = "PA_Data_110m"
 var allLayersGroup = new L.LayerGroup();
 var allLayersGroupPts = new L.LayerGroup();
 
+var mainKey;
 var currentKey;
 
 
@@ -18,6 +19,7 @@ var currentKey;
 var geoJsonList = {}
 var geoJsonLayer;
 var keysets;
+var hash;
 //load the base geoJson layer
 
 
@@ -279,8 +281,8 @@ var ignite = function(data){
 			}
 		}
 
-
-
+	//thjis needs to be ehre to enesure that JSON syncs after AJAx
+	hash = L.hash(map);
 	$(document).one("ajaxStop", function() {
 		$("#loading").hide();
 	});
@@ -331,7 +333,7 @@ var map = new L.Map('map', {
 	zoom: 2
 });
 
-var hash = L.hash(map);
+
 
 
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
@@ -350,16 +352,15 @@ new L.Control.Zoom({ position: 'topright' }).addTo(map);
 
 
 
-$(".mainKey").click(function(){
+$(".mainKey").click(function(ev, mainClickCallbacker){
 	//clear all layers on this
-	currentKey="TP";
 	clearLayers();
 	var keyname = $(this).attr("name");
-	currentKey = keyname;
+	mainkey = keyname;
+	currentKey = keyname
 	map.addLayer(allLayersGroup, {insertAtTheBottom: true});
 	//add all layers as part of this key
 	$.each(keysets[keyname]['layers'], function(index, valueset){
-		console.log("loading the layers");
 		allLayersGroup.addLayer(valueset['jsonLayer']);
 	});
 
@@ -377,7 +378,8 @@ $(".mainKey").click(function(){
 	//bind event to layers to turn them on
 	$(".sideBarLayerToggle").click(function(){
 		var layername = $(this).attr('name');
-		var templayerobj = keysets[currentKey]['layers'][layername];
+		currentKey = mainkey + "+" + layername
+		var templayerobj = keysets[mainkey]['layers'][layername];
 
 		//might need tocheck if this is actually a valid part of the keys until then we just assume
 		//var tempkeyarray = $.map(obj, function(element,index) {return index});
@@ -394,9 +396,18 @@ $(".mainKey").click(function(){
 		}
 		map.addLayer(allLayersGroup);
 		map.addLayer(allLayersGroupPts);
-	})
+		hash.trigger("move");
+	});
+	if (mainClickCallbacker){
+		mainClickCallbacker();
+	}
+	hash.trigger("move");
+	//trigger the hash update
 
 });
+
+
+
 
 var loadPointLayer = function(layerobj, theparent){
 	//already checked if the point layer is valid
