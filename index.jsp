@@ -17,6 +17,7 @@
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="../lib/Leaflet-0.7.2/dist/leaflet.css" />
 		<link rel="stylesheet" href="css/main.css" />
+
 		<!-- Custom styles for this template -->
         <style>
 			html, body, #mainContainer, #map {
@@ -524,12 +525,27 @@
 					</div>
 				</div>
 			</div>
-			
+
+
 			<script src="../lib/jquery/jquery-1.11.0.min.js"></script>
 			<script src="../lib/bootstrap-3.1.1/dist/js/bootstrap.js"></script>
 			<script type="text/javascript" src="js/host.js"></script>
 			<script type="text/javascript" src="../lib/Leaflet-0.7.2/dist/leaflet-src.js"></script>
 			<script type="text/javascript" src="../lib/leaflet-hash/leaflet-hash.js"></script>
+			<script type="text/javascript">
+			var ignite = function(data){
+				keysets = <%
+					pa.LayerInfo li = new pa.LayerInfo();
+					out.print(li.getLayerInfo());
+
+				%>;
+				//thjis needs to be ehre to enesure that JSON syncs after AJAx
+				hash = L.hash(map);
+				$(document).one("ajaxStop", function() {
+					$("#loading").hide();
+				});
+			}
+			</script>
 			<script type="text/javascript" src="js/index.js"></script>
 			<script>
 				(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
