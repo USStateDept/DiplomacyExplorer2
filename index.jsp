@@ -70,7 +70,7 @@
 								<li><h4><a style="color:#333" href="#">Border Security (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Good Governance (trade legislation) (tk)</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Intellectual Property Rights (tk)</a></h4></li>
-								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerSTI),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keySTI(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Science & Technology Promotion</a></li>
+								<li><h4><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerSTI),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keySTI(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Science & Technology Promotion</a></h4></li>
 								<li><h4><a style="color:#333" href="#">Securing the Seas/Maritime Piracy (tk)</a></h4></li>
 							</ul>
 						</li>

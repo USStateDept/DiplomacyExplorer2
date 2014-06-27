@@ -31,42 +31,84 @@ var ignite = function(data){
 				'layers':{
 					'geoJsonLayerTPAPEC': {
 						'subject': "APEC Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleTPAPEC}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+										weight: 1,
+										opacity: 1,
+										color: 'white',
+										fillOpacity: 0.7,
+										fillColor: getColorTPMember(feature.properties.APEC)
+									}
+									}}),
 						'ptsLayer': "",
 						'description':"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet fermentum ipsum, id commodo orci dignissim non. Mauris vulputate ultricies leo, et porta orci pretium in. Duis pulvinar iaculis augue, sit amet mollis quam tristique.",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerTPASEAN':{
 						'subject': "ASEAN Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleTPASEAN}),
+						'jsonLayer': new L.geoJson(data, {style:  function(feature){ return {
+										weight: 1,
+										opacity: 1,
+										color: 'white',
+										fillOpacity: 0.7,
+										fillColor: getColorTPMember(feature.properties.ASEAN)
+									}
+									}}),
 						'ptsLayer': "",
 						'description': "ASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuffASEAN Membership stuff",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerTPCAFTA':{
 						'subject': "CAFTA Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleTPCAFTA}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorTPMember(feature.properties.CAFTA)
+										}
+										}}),
 						'ptsLayer': "",
 						'description': "CAFTA MembershipCAFTA MembershipCAFTA MembershipCAFTA Membership",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerTPCBERA':{
 						'subject': "CBERA Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleTPCBERA}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorTPMember(feature.properties.CBERA)
+										}
+										}}),
 						'ptsLayer': "",
 						'description': "CBERA MembershipCBERA MembershipCBERA MembershipCBERA MembershipCBERA Membership",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerTPNAFTA':{
 						'subject': "NAFTA Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleTPNAFTA}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorTPMember(feature.properties.NAFTA)
+										}
+										}}),
 						'ptsLayer': "",
 						'description': "NAFTA MembershipNAFTA MembershipNAFTA MembershipNAFTA MembershipNAFTA Membership",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerTPWTO':{
 						'subject': "WTO Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleTPWTO}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+										weight: 1,
+										opacity: 1,
+										color: 'white',
+										fillOpacity: 0.7,
+										fillColor: getColorTPMember(feature.properties.WTO)
+									}
+									}}),
 						'ptsLayer': "",
 						'description': "WTO MembershipWTO MembershipWTO MembershipWTO MembershipWTO MembershipWTO MembershipWTO Membership",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
@@ -80,77 +122,154 @@ var ignite = function(data){
 				'layers':{
 					'geoJsonLayerMLOAU':{
 						'subject': "African Union Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberAU}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorMLOMember(feature.properties.AU)
+										}
+										}}),
 						'ptsLayer': "",
 						'description': "African Union MembershipAfrican Union MembershipAfrican Union MembershipAfrican Union Membership",
 						'labels': {'grades': ['Member', 'Suspended', 'null'], 'from': ['Member', 'Suspended', 'Not a member']}
 					},
 					'geoJsonLayerMLOEU':{
 						'subject': "European Union Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberEU}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorMLOMember(feature.properties.FAO)
+										}
+										}}),
 						'ptsLayer': "",
 						'description': "European Union MembershipEuropean Union MembershipEuropean Union MembershipEuropean Union MembershipEuropean Union MembershipEuropean Union MembershipEuropean Union Membership",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerMLOFAO':{
 						'subject': "Food and Agriculture Organization Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberFAO}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+												weight: 1,
+												opacity: 1,
+												color: 'white',
+												fillOpacity: 0.7,
+												fillColor: getColorMLOMember(feature.properties.FAO)
+											}
+											}}),
 						'ptsLayer': "",
 						'description': "Food and Agriculture Organization MembershipFood and Agriculture Organization MembershipFood and Agriculture Organization MembershipFood and Agriculture Organization MembershipFood and Agriculture Organization MembershipFood and Agriculture Organization Membership",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerMLOICAO':{
 						'subject': "International Civil Aviation Organization Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberICAO}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+												weight: 1,
+												opacity: 1,
+												color: 'white',
+												fillOpacity: 0.7,
+												fillColor: getColorMLOMember(feature.properties.ICAO)
+											}
+											}}),
 						'ptsLayer': "",
 						'description': "International Civil Aviation Organization MembershipInternational Civil Aviation Organization MembershipInternational Civil Aviation Organization MembershipInternational Civil Aviation Organization MembershipInternational Civil Aviation Organization Membership",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerMLONATO':{
 						'subject': "North American Treaty Organization Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberNATO}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+													weight: 1,
+													opacity: 1,
+													color: 'white',
+													fillOpacity: 0.7,
+													fillColor: getColorMLOMember(feature.properties.NATO)
+												}
+												}}),
 						'ptsLayer': "",
 						'description': "North American Treaty Organization MembershipNorth American Treaty Organization MembershipNorth American Treaty Organization Membership",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerMLOOAS':{
 						'subject': "Organization of American States Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberOAS}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+												weight: 1,
+												opacity: 1,
+												color: 'white',
+												fillOpacity: 0.7,
+												fillColor: getColorMLOMember(feature.properties.OAS)
+											}
+											}}),
 						'ptsLayer': "",
 						'description': "North American Treaty Organization MembershipNorth American Treaty Organization MembershipNorth American Treaty Organization Membership",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerMLOOECD':{
 						'subject': "OECD Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberOECD}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorMLOMember(feature.properties.OECD)
+										}
+										}}),
 						'ptsLayer': "",
 						'description': "OECD MembershipOECD MembershipOECD MembershipOECD MembershipOECD MembershipOECD MembershipOECD MembershipOECD Membership",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerMLOOSCE':{
 						'subject': "OSCE Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberOSCE}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorMLOMember(feature.properties.OSCE)
+										}
+										}}),
 						'ptsLayer': "",
 						'description': "OSCE MembershipOSCE MembershipOSCE MembershipOSCE MembershipOSCE MembershipOSCE Membership",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerMLOUNESCO':{
 						'subject': "UNESCO Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberUNESCO}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorMLOMember(feature.properties.UNESCO)
+										}
+										}}),
 						'ptsLayer': "",
 						'description': "UNESCO MembershipUNESCO MembershipUNESCO MembershipUNESCO MembershipUNESCO Membership",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerMLOUNHCR':{
 						'subject': "UNHCR Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberUNHCR}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorMLOMember(feature.properties.UNHCR)
+										}
+										}}),
 						'ptsLayer': "",
 						'description': "UNHCR MembershipUNHCR MembershipUNHCR MembershipUNHCR MembershipUNHCR MembershipUNHCR Membershipp",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerMLOUNGA':{
 						'subject': "UNGA Membership",
-						'jsonLayer': new L.geoJson(data, {style: StyleMLOMemberUNGA}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+										weight: 1,
+										opacity: 1,
+										color: 'white',
+										fillOpacity: 0.7,
+										fillColor: getColorMLOMember(feature.properties.UNGA)
+									}
+									}}),
 						'ptsLayer': "",
 						'description': "UNGA MembershipUNGA MembershipUNGA MembershipUNGA MembershipUNGA MembershipUNGA MembershipUNGA Membership",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
@@ -163,56 +282,112 @@ var ignite = function(data){
 				'layers':{
 					'geoJsonLayerHIGH':{
 						'subject': "Global Health",
-						'jsonLayer': new L.geoJson(data, {style: StyleHIGH}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorHIGH(feature.properties.Global_Health)
+										}
+										}}),
 						'ptsLayer': "",
 						'description': "Global HealthGlobal HealthGlobal HealthGlobal HealthGlobal HealthGlobal HealthGlobal Health",
 						'labels': {'grades': ['1'], 'from': ['Programs']}
 					},
 					'geoJsonLayerHIAV':{
 						'subject': "Avian Flu (tk)",
-						'jsonLayer': new L.geoJson(data, {style: StyleHIAV}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorHIAV(feature.properties.Avian_Flu)
+										}
+										}}),
 						'ptsLayer': "",
 						'description': "Avian Flu (tk)Avian Flu (tk)Avian Flu (tk)Avian Flu (tk)Avian Flu (tk)Avian Flu (tk)",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerHIHIVAIDS':{
 						'subject': "HIV / AIDS (tk)",
-						'jsonLayer': new L.geoJson(data, {style: StyleHIHIVAIDS}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorHIHIVAIDS(feature.properties.HIVAIDS)
+										}
+										}}),
 						'ptsLayer': "",
 						'description': "HIV / AIDS (tk)HIV / AIDS (tk)HIV / AIDS (tk)HIV / AIDS (tk)HIV / AIDS (tk)HIV / AIDS (tk)",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerHIM':{
 						'subject': "Malaria (tk)",
-						'jsonLayer': new L.geoJson(data, {style: StyleHIM}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+															weight: 1,
+															opacity: 1,
+															color: 'white',
+															fillOpacity: 0.7,
+															fillColor: getColorHIM(feature.properties.Malaria)
+														}
+														}}),
 						'ptsLayer': "",
 						'description': "Malaria (tk)Malaria (tk)Malaria (tk)Malaria (tk)Malaria (tk)Malaria (tk)Malaria (tk)Malaria (tk)",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerHIMHAC':{
 						'subject': "Maternal Health - Access to Care",
-						'jsonLayer': new L.geoJson(data, {style: StyleHIMHAC}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+													weight: 1,
+													opacity: 1,
+													color: 'white',
+													fillOpacity: 0.7,
+													fillColor: getColorHIMHAC(feature.properties.Maternity_Health_Access_to_Care)
+												}
+												}}),
 						'ptsLayer': "",
 						'description': "Maternal Health - Access to CareMaternal Health - Access to CareMaternal Health - Access to CareMaternal Health - Access to CareMaternal Health - Access to Care",
 						'labels': {'grades': ['Excellent', 'Good', 'Fair', 'Poor', 'Unsuitable', 'No data'], 'from': ['Excellent', 'Good', 'Fair', 'Poor', 'Unsuitable', 'No data']}
 					},
 					'geoJsonLayerHIPEPFAR':{
 						'subject': "PEPFAR",
-						'jsonLayer': new L.geoJson(data, {style: StyleHIPEPFAR}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+										weight: 1,
+										opacity: 1,
+										color: 'white',
+										fillOpacity: 0.7,
+										fillColor: getColorHIPEPFAR(feature.properties.PEPFAR)
+									}
+									}}),
 						'ptsLayer': "",//"geoJsonLayerHIPEPFARpts", // probably just add layer
 						'description': "PEPFARPEPFARPEPFARPEPFARPEPFARPEPFARPEPFARPEPFARPEPFARPEPFARPEPFAR",
 						'labels': {'grades': ['1', '2', '3', 'No Data'], 'from': ['1', '2', '3', 'No data']}
 					},
 					'geoJsonLayerHIP':{
 						'subject': "Polio (tk)",
-						'jsonLayer': new L.geoJson(data, {style: StyleHIP}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+										weight: 1,
+										opacity: 1,
+										color: 'white',
+										fillOpacity: 0.7,
+										fillColor: getColorHIP(feature.properties.Polio)
+									}
+									}}),
 						'ptsLayer': "", 
 						'description': "Polio (tk)Polio (tk)Polio (tk)Polio (tk)Polio (tk)Polio (tk)",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerHIT':{
 						'subject': "Tuberculosis (tk)",
-						'jsonLayer': new L.geoJson(data, {style: StyleHIT}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+										weight: 1,
+										opacity: 1,
+										color: 'white',
+										fillOpacity: 0.7,
+										fillColor: getColorHIT(feature.properties.Tuberculosis)
+									}
+									}}),
 						'ptsLayer': "", 
 						'description': "Tuberculosis (tk)Tuberculosis (tk)Tuberculosis (tk)Tuberculosis (tk)Tuberculosis (tk)",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
@@ -226,14 +401,28 @@ var ignite = function(data){
 				'layers':{
 					'geoJsonLayerNucSign':{
 						'subject': "Nuclear Arms Control - Signed",
-						'jsonLayer': new L.geoJson(data, {style: StyleNucSign}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorNucSign(feature.properties.Signed)
+										}
+										}}),
 						'ptsLayer': "Nuclear_Pts", //"geoJsonLayerNucpts",
 						'description': "The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties. Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.",
 						'labels': {'grades': ['X'], 'from': ['Signed']}
 					},
 					'geoJsonLayerNucDepo':{
 						'subject': "Nuclear Arms Control - Deposited",
-						'jsonLayer': new L.geoJson(data, {style: StyleNucDepo}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+										weight: 1,
+										opacity: 1,
+										color: 'white',
+										fillOpacity: 0.7,
+										fillColor: getColorNucDepo(feature.properties.Deposited)
+									}
+									}}),
 						'ptsLayer': "Nuclear_Pts", //"geoJsonLayerNucpts",
 						'description': "The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties. Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.",
 						'labels': {'grades': ['X'], 'from': ['Deposited']}
@@ -246,7 +435,14 @@ var ignite = function(data){
 				'layers':{
 					'geoJsonLayerHT':{
 						'subject': "Human Trafficking",
-						'jsonLayer': new L.geoJson(data, {style: StyleHT}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorHT(feature.properties.Human_Trafficking)
+										}
+										}}),
 						'ptsLayer': "", //"geoJsonLayerHTpts"
 						'description': "Human TraffickingHuman TraffickingHuman TraffickingHuman TraffickingHuman TraffickingHuman Trafficking",
 						'labels': {'grades': ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case'], 'from': ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case']}
@@ -259,7 +455,14 @@ var ignite = function(data){
 				'layers':{
 					'geoJsonLayerWatSan':{
 						'subject': "Water & Sanitation",
-						'jsonLayer': new L.geoJson(data, {style: StyleWatSan}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+										weight: 1,
+										opacity: 1,
+										color: 'white',
+										fillOpacity: 0.7,
+										fillColor: getColorWatSan(feature.properties.Wat_San)
+									}
+									}}),
 						'ptsLayer': "", //""
 						'description': "Water & SanitationWater & SanitationWater & SanitationWater & SanitationWater & SanitationWater & Sanitation",
 						'labels': {'grades': ['1'], 'from': ['Programs']}
@@ -272,7 +475,14 @@ var ignite = function(data){
 				'layers':{
 					'geoJsonLayerDHRA':{
 						'subject': "Democracy & Human Rights",
-						'jsonLayer': new L.geoJson(data, {style: StyleDHRA}),
+						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
+										weight: 1,
+										opacity: 1,
+										color: 'white',
+										fillOpacity: 0.7,
+										fillColor: getColorDHRA(feature.properties.DHRA)
+									}
+									}}),
 						'ptsLayer': "", //""
 						'description': "Democracy & Human RightsDemocracy & Human RightsDemocracy & Human RightsDemocracy & Human RightsDemocracy & Human Rights",
 						'labels': {'grades': ['1'], 'from': ['Programs']}
@@ -298,17 +508,41 @@ $.ajax({
 	/*function(data) {
 		//load layer to be styled later
 		
-		//geoJsonLayerICAO = new L.geoJson(data, {style: StyleMLOMemberICAO, onEachFeature: onEachFeature});
+
 		geoJsonLayerTPAPEC = new L.geoJson(data, {style: StyleTPAPEC});
 		geoJsonLayerTPNAFTA = new L.geoJson(data, {style: StyleTPNAFTA});
 		geoJsonLayerTPWTO = new L.geoJson(data, {style: StyleTPWTO});
 		geoJsonLayerTPASEAN = new L.geoJson(data, {style: StyleTPASEAN});
 		geoJsonLayerTPCBERA = new L.geoJson(data, {style: StyleTPCBERA});
 		geoJsonLayerTPCAFTA = new L.geoJson(data, {style: StyleTPCAFTA});
-		geoJsonLayerSTI = new L.geoJson(data, {style: StyleSTI});
-		geoJsonLayerECC = new L.geoJson(data, {style: StyleECC});
-		geoJsonLayerGEWE = new L.geoJson(data, {style: StyleGEWE});
-		geoJsonLayerWCC = new L.geoJson(data, {style: StyleWCC});
+		geoJsonLayerSTI = new L.geoJson(data, {style: {
+													weight: 1,
+													opacity: 1,
+													color: 'white',
+													fillOpacity: 0.7,
+													fillColor: getColorSTI(feature.properties.Science)
+												}});
+		geoJsonLayerECC = new L.geoJson(data, {style: {
+											weight: 1,
+											opacity: 1,
+											color: 'white',
+											fillOpacity: 0.7,
+											fillColor: getColorECC(feature.properties.Env_Climate)
+										}});
+		geoJsonLayerGEWE = new L.geoJson(data, {style: {
+												weight: 1,
+												opacity: 1,
+												color: 'white',
+												fillOpacity: 0.7,
+												fillColor: getColorGEWE(feature.properties.Gender_Women)
+											}});
+		geoJsonLayerWCC = new L.geoJson(data, {style: {
+												weight: 1,
+												opacity: 1,
+												color: 'white',
+												fillOpacity: 0.7,
+												fillColor: getColorGEWE(feature.properties.Crisis_Conflict)
+											}});
 
 	}*/
 });
@@ -877,380 +1111,8 @@ function getColorWCC(d) {
 	}
 }
 
-function StyleJson(feature) {
-	switch (feature.properties.party) {
-            case 'Republican': return {color: "#ff0000"};
-            case 'Democrat':   return {color: "#0000ff"};
-        }
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHT(feature.properties.Human_Trafficking)
-	};
-}
 
-function StyleHT(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHT(feature.properties.Human_Trafficking)
-	};
-}
 
-function StyleHIGH(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIGH(feature.properties.Global_Health)
-	};
-}
-
-function StyleHIAV(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIAV(feature.properties.Avian_Flu)
-	};
-}
-
-function StyleHIHIVAIDS(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIHIVAIDS(feature.properties.HIVAIDS)
-	};
-}
-
-function StyleHIM(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIM(feature.properties.Malaria)
-	};
-}
-
-function StyleHIMHAC(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIMHAC(feature.properties.Maternity_Health_Access_to_Care)
-	};
-}
-
-function StyleHIPEPFAR(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIPEPFAR(feature.properties.PEPFAR)
-	};
-}
-
-function StyleHIP(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIP(feature.properties.Polio)
-	};
-}
-
-function StyleHIT(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorHIT(feature.properties.Tuberculosis)
-	};
-}
-
-function StyleMLOMemberICAO(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.ICAO)
-	};
-}
-
-function StyleMLOMemberUNESCO(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.UNESCO)
-	};
-}
-
-function StyleMLOMemberFAO(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.FAO)
-	};
-}
-
-function StyleMLOMemberOAS(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.OAS)
-	};
-}
-
-function StyleMLOMemberUNGA(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.UNGA)
-	};
-}
-
-function StyleMLOMemberOSCE(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.OSCE)
-	};
-}
-
-function StyleMLOMemberOECD(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.OECD)
-	};
-}
-
-function StyleMLOMemberNATO(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.NATO)
-	};
-}
-
-function StyleMLOMemberEU(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.EU)
-	};
-}
-
-function StyleMLOMemberAU(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.AU)
-	};
-}
-
-function StyleMLOMemberUNHCR(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOMember(feature.properties.UNHCR)
-	};
-}
-/*
-function StyleMLOIndex(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorMLOIndex(feature.properties.Index)
-	};
-}
-*/
-function StyleNucSign(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorNucSign(feature.properties.Signed)
-	};
-}
-
-function StyleNucDepo(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorNucDepo(feature.properties.Deposited)
-	};
-}
-
-function StyleTPAPEC(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorTPMember(feature.properties.APEC)
-	};
-}
-
-function StyleTPNAFTA(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorTPMember(feature.properties.NAFTA)
-	};
-}
-
-function StyleTPWTO(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorTPMember(feature.properties.WTO)
-	};
-}
-
-function StyleTPASEAN(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorTPMember(feature.properties.ASEAN)
-	};
-}
-
-function StyleTPCBERA(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorTPMember(feature.properties.CBERA)
-	};
-}
-
-function StyleTPCAFTA(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorTPMember(feature.properties.CAFTA)
-	};
-}
-/*
-function StyleTPIndex(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorTPIndex(feature.properties.Index)
-	};
-}
-*/
-
-function StyleWatSan(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorWatSan(feature.properties.Wat_San)
-	};
-}
-
-function StyleDHRA(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorDHRA(feature.properties.DHRA)
-	};
-}
-
-function StyleSTI(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorSTI(feature.properties.Science)
-	};
-}
-
-function StyleECC(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorECC(feature.properties.Env_Climate)
-	};
-}
-
-function StyleGEWE(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorGEWE(feature.properties.Gender_Women)
-	};
-}
-
-function StyleWCC(feature) {
-	return {
-		weight: 1,
-		opacity: 1,
-		color: 'white',
-		fillOpacity: 0.7,
-		fillColor: getColorGEWE(feature.properties.Crisis_Conflict)
-	};
-}
 
 
 
