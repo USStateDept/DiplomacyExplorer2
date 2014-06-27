@@ -364,6 +364,10 @@ $(".mainKey").click(function(){
 	});
 
 	var returnhtml = renderSidePanel(keyname);
+	//if the description panel is closed then open it
+	if ($("#descPane").hasClass("closed")){
+		$(".toggleSidePane").trigger("click");
+	}
 
 	//unbind previous bindings so we don't conflict
 	$(".sideBarLayerToggle").unbind("click");
@@ -384,6 +388,7 @@ $(".mainKey").click(function(){
 		allLayersGroupPts.clearLayers();
 
 		allLayersGroup.addLayer(templayerobj['jsonLayer']);
+
 		if (templayerobj['ptsLayer'] != ""){
 			loadPointLayer(templayerobj, currentKey)
 		}
@@ -456,7 +461,7 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 var renderSidePanel = function(sidekey){
 	currentSideKey = keysets[sidekey];
 	var returnhtml = "";
-	returnhtml += "<div class=\"panel-group\" id=\"accordion\" style=\"height:609px;overflow-y:scroll;margin-bottom:0px;\">";
+	returnhtml += "<div class=\"panel-group\" id=\"accordion\">";
 	returnhtml += "<div class=\"panel panel-primary\"> \
 						<div class=\"panel-heading\"> \
 							<h4 class=\"panel-title\"> \
