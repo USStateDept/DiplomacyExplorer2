@@ -1249,13 +1249,15 @@ $(".toggleSidePane").unbind("click");
 $(".toggleSidePane").html("Show").click(function(){
 	if ($("#descPane").hasClass("closed")){
 		//populate the info.
-		console.log("now opening")
-		$("#descPane").removeClass("closed").html("Hide");
+		$(this).html("Hide");
+		$("#descPane").removeClass("closed");
+		$("#mapPane").addClass("expanded");
 		//make it opena nd change inner html
 	}
 	else {
-		console.log("now closing");
-		$("#descPane").addClass("closed").html("Show");
+		$(this).html("Show");
+		$("#descPane").addClass("closed");
+		$("#mapPane").removeClass("expanded");
 		//just close it
 	}
 });
