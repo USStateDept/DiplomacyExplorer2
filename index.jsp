@@ -539,6 +539,16 @@
 					out.print(li.getLayerInfo());
 
 				%>;
+
+				$.each(keysets, function(mainkey, mainobj){
+					$.each(mainobj['layers'], function(subkey, subobj){
+						//Create the function
+						if (subobj['jsonStyle']){
+							subobj['jsonLayer'] = createLayer(data, subobj['jsonStyle'])
+						}
+					});
+				});
+				
 				//thjis needs to be ehre to enesure that JSON syncs after AJAx
 				hash = L.hash(map);
 				$(document).one("ajaxStop", function() {
