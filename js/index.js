@@ -91,7 +91,10 @@ var cmAttr = "<a href='mailto:dittemoremb@state.gov'>eDiplomacy Geo|DST</a>"
 var map = new L.Map('map', {
 	zoomControl: false,
 	center: [20, 10],
-	zoom: 2
+	zoom: 2,
+	maxZoom: 6,
+	minZoom: 2,
+	worldCopyJump: true
 });
 
 
