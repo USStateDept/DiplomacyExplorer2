@@ -5,7 +5,7 @@
 				'layers':{
 					'geoJsonLayerTPAPEC': {
 						'subject': "APEC Membership",
-						'jsonLayer': null,
+						'jsonLayer': '',
 							'jsonStyle': {		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -33,7 +33,7 @@
 					},
 					'geoJsonLayerTPCAFTA':{
 						'subject': "CAFTA Membership",
-						'jsonLayer': null,
+						'jsonLayer': '',
 						'jsonStyle': {		'weight': 1,
 											'opacity': 1,
 											'color': 'white',
@@ -47,8 +47,8 @@
 					},
 					'geoJsonLayerTPCBERA':{
 						'subject': "CBERA Membership",
-						'jsonLayer': null,
-						'jsonStyle': {		
+						'jsonLayer': '',
+						'jsonStyle': {
 								'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -62,8 +62,8 @@
 					},
 					'geoJsonLayerTPNAFTA':{
 						'subject': "NAFTA Membership",
-						'jsonLayer': null,
-						'jsonStyle': {		
+						'jsonLayer': '',
+						'jsonStyle': {
 								'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -77,7 +77,7 @@
 					},
 					'geoJsonLayerTPWTO':{
 						'subject': "WTO Membership",
-						'jsonLayer': null,
+						'jsonLayer': '',
 							'jsonStyle': {		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -98,8 +98,8 @@
 				'layers':{
 					'geoJsonLayerMLOAU':{
 						'subject': "African Union Membership",
-						'jsonLayer': null,
-						'jsonStyle': {		
+						'jsonLayer': '',
+						'jsonStyle': {
 								'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -113,8 +113,8 @@
 					},
 					'geoJsonLayerMLOEU':{
 						'subject': "European Union Membership",
-						'jsonLayer': null,
-						'jsonStyle': {		
+						'jsonLayer': '',
+						'jsonStyle': {
 								'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -128,8 +128,8 @@
 					},
 					'geoJsonLayerMLOFAO':{
 						'subject': "Food and Agriculture Organization Membership",
-						'jsonLayer': null,
-						'jsonStyle': 
+						'jsonLayer': '',
+						'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -144,7 +144,7 @@
 					'geoJsonLayerMLOICAO':{
 						'subject': "International Civil Aviation Organization Membership",
 						'jsonLayer': '',
-						'jsonStyle': 
+						'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -159,7 +159,7 @@
 					'geoJsonLayerMLONATO':{
 						'subject': "North American Treaty Organization Membership",
 						'jsonLayer': '',
-						'jsonStyle': 
+						'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -174,7 +174,7 @@
 					'geoJsonLayerMLOOAS':{
 						'subject': "Organization of American States Membership",
 						'jsonLayer': '',
-						'jsonStyle': 
+						'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -189,7 +189,7 @@
 					'geoJsonLayerMLOOECD':{
 						'subject': "OECD Membership",
 						'jsonLayer': '',
-						'jsonStyle': 
+						'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -204,7 +204,7 @@
 					'geoJsonLayerMLOOSCE':{
 						'subject': "OSCE Membership",
 						'jsonLayer': '',
-						'jsonStyle': 
+						'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -219,7 +219,7 @@
 					'geoJsonLayerMLOUNESCO':{
 						'subject': "UNESCO Membership",
 						'jsonLayer': '',
-						'jsonStyle': 
+						'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -234,7 +234,7 @@
 					'geoJsonLayerMLOUNHCR':{
 						'subject': "UNHCR Membership",
 						'jsonLayer': '',
-						'jsonStyle': 
+						'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -249,7 +249,7 @@
 					'geoJsonLayerMLOUNGA':{
 						'subject': "UNGA Membership",
 						'jsonLayer': '',
-						'jsonStyle': 
+						'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -270,7 +270,7 @@
 					'geoJsonLayerHIGH':{
 						'subject': "Global Health",
 						'jsonLayer': '',
-						'jsonStyle': 
+						'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -285,7 +285,7 @@
 					'geoJsonLayerHIAV':{
 						'subject': "Avian Flu (tk)",
 						'jsonLayer': '',
-						'jsonStyle': 
+						'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -300,7 +300,7 @@
 					'geoJsonLayerHIHIVAIDS':{
 						'subject': "HIV / AIDS (tk)",
 						'jsonLayer': '',
-						'jsonStyle': 
+						'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -315,7 +315,7 @@
 					'geoJsonLayerHIM':{
 						'subject': "Malaria (tk)",
 						'jsonLayer': '',
-						'jsonStyle': 
+						'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -330,7 +330,7 @@
 					'geoJsonLayerHIMHAC':{
 						'subject': "Maternal Health - Access to Care",
 						'jsonLayer': '',
-						'jsonStyle': 
+						'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
@@ -344,21 +344,14 @@
 					},
 					'geoJsonLayerHIPEPFAR':{
 						'subject': "PEPFAR",
-						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
-										weight: 1,
-										opacity: 1,
-										color: 'white',
-										fillOpacity: 0.7,
-										fillColor: getColorHIPEPFAR(feature.properties.PEPFAR)
-									}
-									}}),
-							'jsonStyle': 
+						'jsonLayer': '',
+							'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
 								'fillOpacity': 0.7,
-								'fillColorMainKey': "HIMHAC",
-								'fillColorSubKey': "Maternity_Health_Access_to_Care"
+								'fillColorMainKey': "HIPEPFAR",
+								'fillColorSubKey': "PEPFAR"
 						},
 						'ptsLayer': "geoJsonLayerHIPEPFARpts",
 						'description': "PEPFARPEPFARPEPFARPEPFARPEPFARPEPFARPEPFARPEPFARPEPFARPEPFARPEPFAR",
@@ -366,45 +359,31 @@
 					},
 					'geoJsonLayerHIP':{
 						'subject': "Polio (tk)",
-						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
-										weight: 1,
-										opacity: 1,
-										color: 'white',
-										fillOpacity: 0.7,
-										fillColor: getColorHIP(feature.properties.Polio)
-									}
-									}}),
-							'jsonStyle': 
+						'jsonLayer': '',
+							'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
 								'fillOpacity': 0.7,
-								'fillColorMainKey': "HIMHAC",
-								'fillColorSubKey': "Maternity_Health_Access_to_Care"
+								'fillColorMainKey': "HIP",
+								'fillColorSubKey': "Polio"
 						},
-						'ptsLayer': "", 
+						'ptsLayer': "",
 						'description': "Polio (tk)Polio (tk)Polio (tk)Polio (tk)Polio (tk)Polio (tk)",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					},
 					'geoJsonLayerHIT':{
 						'subject': "Tuberculosis (tk)",
-						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
-										weight: 1,
-										opacity: 1,
-										color: 'white',
-										fillOpacity: 0.7,
-										fillColor: getColorHIT(feature.properties.Tuberculosis)
-									}
-									}}),
-							'jsonStyle': 
+						'jsonLayer': '',
+							'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
 								'fillOpacity': 0.7,
-								'fillColorMainKey': "HIMHAC",
-								'fillColorSubKey': "Maternity_Health_Access_to_Care"
+								'fillColorMainKey': "HIT",
+								'fillColorSubKey': "Tuberculosis"
 						},
-						'ptsLayer': "", 
+						'ptsLayer': "",
 						'description': "Tuberculosis (tk)Tuberculosis (tk)Tuberculosis (tk)Tuberculosis (tk)Tuberculosis (tk)",
 						'labels': {'grades': ['Member','null'], 'from': ['Member', 'Not a member']}
 					}
@@ -417,43 +396,29 @@
 				'layers':{
 					'geoJsonLayerNucSign':{
 						'subject': "Nuclear Arms Control - Signed",
-						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
-											weight: 1,
-											opacity: 1,
-											color: 'white',
-											fillOpacity: 0.7,
-											fillColor: getColorNucSign(feature.properties.Signed)
-										}
-										}}),
-							'jsonStyle': 
+						'jsonLayer': '',
+							'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
 								'fillOpacity': 0.7,
-								'fillColorMainKey': "HIMHAC",
-								'fillColorSubKey': "Maternity_Health_Access_to_Care"
-						},	
+								'fillColorMainKey': "NucSign",
+								'fillColorSubKey': "Signed"
+						},
 						'ptsLayer': "Nuclear_Pts",
 						'description': "The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties. Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.",
 						'labels': {'grades': ['X'], 'from': ['Signed']}
 					},
 					'geoJsonLayerNucDepo':{
 						'subject': "Nuclear Arms Control - Deposited",
-						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
-										weight: 1,
-										opacity: 1,
-										color: 'white',
-										fillOpacity: 0.7,
-										fillColor: getColorNucDepo(feature.properties.Deposited)
-									}
-									}}),
-							'jsonStyle': 
+						'jsonLayer': '',
+							'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
 								'fillOpacity': 0.7,
-								'fillColorMainKey': "HIMHAC",
-								'fillColorSubKey': "Maternity_Health_Access_to_Care"
+								'fillColorMainKey': "NucDepo",
+								'fillColorSubKey': "Deposited"
 						},
 						'ptsLayer': "Nuclear_Pts",
 						'description': "The Bureau of Arms Control, Verification and Compliance, coordinating with other national security institutions, develops strategies for the negotiation of arms control and disarmament treaties and creates strong relationships with other nations to cooperate in the implementation of the treaties. Ultimately, the work of the bureau serves to improve the security of the United States and all the nations of the world.",
@@ -467,23 +432,16 @@
 				'layers':{
 					'geoJsonLayerHT':{
 						'subject': "Human Trafficking",
-						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
-											weight: 1,
-											opacity: 1,
-											color: 'white',
-											fillOpacity: 0.7,
-											fillColor: getColorHT(feature.properties.Human_Trafficking)
-										}
-										}}),
-							'jsonStyle': 
+						'jsonLayer': '',
+							'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
 								'fillOpacity': 0.7,
-								'fillColorMainKey': "HIMHAC",
-								'fillColorSubKey': "Maternity_Health_Access_to_Care"
-						},	
-						'ptsLayer': "geoJsonLayerHTpts", 
+								'fillColorMainKey': "HT",
+								'fillColorSubKey': "Human_Trafficking"
+						},
+						'ptsLayer': "geoJsonLayerHTpts",
 						'description': "Human TraffickingHuman TraffickingHuman TraffickingHuman TraffickingHuman TraffickingHuman Trafficking",
 						'labels': {'grades': ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case'], 'from': ['Tier 1', 'Tier 2', 'Tier 2 Watch List', 'Tier 3 Auto-Downgrade', 'Tier 3', 'Special Case']}
 					}
@@ -495,23 +453,16 @@
 				'layers':{
 					'geoJsonLayerWatSan':{
 						'subject': "Water & Sanitation",
-						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
-										weight: 1,
-										opacity: 1,
-										color: 'white',
-										fillOpacity: 0.7,
-										fillColor: getColorWatSan(feature.properties.Wat_San)
-									}
-									}}),
-							'jsonStyle': 
+						'jsonLayer': '',
+							'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
 								'fillOpacity': 0.7,
-								'fillColorMainKey': "HIMHAC",
-								'fillColorSubKey': "Maternity_Health_Access_to_Care"
+								'fillColorMainKey': "WatSan",
+								'fillColorSubKey': "Wat_San"
 						},
-						'ptsLayer': "", 
+						'ptsLayer': "",
 						'description': "Water & SanitationWater & SanitationWater & SanitationWater & SanitationWater & SanitationWater & Sanitation",
 						'labels': {'grades': ['1'], 'from': ['Programs']}
 					}
@@ -523,23 +474,16 @@
 				'layers':{
 					'geoJsonLayerDHRA':{
 						'subject': "Democracy & Human Rights",
-						'jsonLayer': new L.geoJson(data, {style: function(feature){ return {
-										weight: 1,
-										opacity: 1,
-										color: 'white',
-										fillOpacity: 0.7,
-										fillColor: getColorDHRA(feature.properties.DHRA)
-									}
-									}}),
-							'jsonStyle': 
+						'jsonLayer': '',
+							'jsonStyle':
 									{		'weight': 1,
 								'opacity': 1,
 								'color': 'white',
 								'fillOpacity': 0.7,
-								'fillColorMainKey': "HIMHAC",
-								'fillColorSubKey': "Maternity_Health_Access_to_Care"
+								'fillColorMainKey': "DHRA",
+								'fillColorSubKey': "DHRA"
 						},
-						'ptsLayer': "", 
+						'ptsLayer': "",
 						'description': "Democracy & Human RightsDemocracy & Human RightsDemocracy & Human RightsDemocracy & Human RightsDemocracy & Human Rights",
 						'labels': {'grades': ['1'], 'from': ['Programs']}
 					}
