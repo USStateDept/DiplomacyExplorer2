@@ -27,7 +27,7 @@ var hash;
 
 var createLayer = function(data, styleObj){
 
-	new L.geoJson(data, {style: function(feature){ 
+	return new L.geoJson(data, {style: function(feature){ 
 										styleObj['fillColor'] = getColor(styleObj['mainStyleKey'], styleObj['fillColorSubKey']);
 										return styleObj;
 										}});
@@ -41,7 +41,7 @@ $.ajax({
 	url: baseURL.replace("*******", generalBaseLayer),
 	dataType: 'json',
 	//ignite(data) is found on the main index.jsp page
-	success: function(data){ignite(data);} 
+	success: function(data){console.log(data);ignite(data);} 
 	/*function(data) {
 		//load layer to be styled later
 		
@@ -215,7 +215,7 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 	for (var i = 0; i < grades.length; i++) {
 		
 		keyLabels.push(
-			'<i style="background:' + getColorTPMember(grades[i]) + '"></i>' +
+			'<i style="background:' + getColor("TPMember",grades[i]) + '"></i>' +
 			from[i]
 		);
 	}	
@@ -410,6 +410,7 @@ function onEachFeaturePts(feature, layer) {
  */
 
  function getColor(mainKey, prop) {
+ 	var d = prop;
 	switch(mainKey) {
 	    case "TPMember":
         	if (d == 'Member') {
@@ -472,200 +473,90 @@ function onEachFeaturePts(feature, layer) {
 				return	'#ddd';
 			}
 			break;
+		case "HIM":
+			if (d == '3') {
+				return	'#FC4E2A'
+			} else if (d == '2') {
+				return	'#FD8D3C'
+			} else if (d == '1') {
+				return	'#CACF9B'
+			} else {
+				return	'#ddd';
+			}
+			break;
+		case "HIMHAC":
+			if (d == 'Excellent') {
+				return	'#00BDFF'
+			} else if (d == 'Good') {
+				return	'#009DD4'
+			} else if (d == 'Fair') {
+				return	'#007BA6'
+			} else if (d == 'Poor') {
+				return	'#004E69'
+			} else if (d == 'Unsuitable') {
+				return	'#002430'
+			} else {
+				return	'#ddd';
+			}
+			break;
+		case "HIPEPFAR":
+			if (d == '3') {
+				return	'#FC4E2A'
+			} else if (d == '2') {
+				return	'#FD8D3C'
+			} else if (d == '1') {
+				return	'#CACF9B'
+			} else {
+				return	'#ddd';
+			}
+			break;
+		case "HIT":
+			if (d == '3') {
+				return	'#FC4E2A'
+			} else if (d == '2') {
+				return	'#FD8D3C'
+			} else if (d == '1') {
+				return	'#CACF9B'
+			} else {
+				return	'#ddd';
+			}
+			break;
+		case "MLOMember":
+			if (d == 'Member') {
+				return	'#FC4E2A'
+			} else if (d == 'Suspended') {
+				return	'#FD8D3C'
+			} else {
+				return	'#ddd';
+			}
+			break;
+		case "NucSign":
+		case "NucDepo":
+		case "WatSan":
+		case "DHRA":
+		case "STI":
+		case "ECC":
+		case "GEWE":
+		case "WCC":
+			if (d == 'X') {
+			return	'#FC4E2A'
+			} else {
+				return	'#ddd';
+			}
+			break;
+		case "TPMember":
+			if (d == 'Member') {
+				return	'#FC4E2A'
+			} else if (d == 'Observer') {
+				return	'#FC4E2A'
+			} else {
+				return	'#ddd';
+			}
 	    default:
 	        return '#FC4E2A';
 	}
 }
 
-
-
-
-function getColorHIM(d) {
-	if (d == '3') {
-		return	'#FC4E2A'
-	} else if (d == '2') {
-		return	'#FD8D3C'
-	} else if (d == '1') {
-		return	'#CACF9B'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorHIMHAC(d) {
-	if (d == 'Excellent') {
-		return	'#00BDFF'
-	} else if (d == 'Good') {
-		return	'#009DD4'
-	} else if (d == 'Fair') {
-		return	'#007BA6'
-	} else if (d == 'Poor') {
-		return	'#004E69'
-	} else if (d == 'Unsuitable') {
-		return	'#002430'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorHIPEPFAR(d) {
-	if (d == '3') {
-		return	'#FC4E2A'
-	} else if (d == '2') {
-		return	'#FD8D3C'
-	} else if (d == '1') {
-		return	'#CACF9B'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorHIP(d) {
-	if (d == '3') {
-		return	'#FC4E2A'
-	} else if (d == '2') {
-		return	'#FD8D3C'
-	} else if (d == '1') {
-		return	'#CACF9B'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorHIT(d) {
-	if (d == '3') {
-		return	'#FC4E2A'
-	} else if (d == '2') {
-		return	'#FD8D3C'
-	} else if (d == '1') {
-		return	'#CACF9B'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorMLOMember(d) {
-	if (d == 'Member') {
-		return	'#FC4E2A'
-	} else if (d == 'Suspended') {
-		return	'#FD8D3C'
-	} else {
-		return	'#ddd';
-	}
-}
-/*
-function getColorMLOIndex(d) {
-	if (d == '8') {
-		return	'#093B49'
-	} else if (d == '8') {
-		return	'#093B49'
-	} else if (d == '7') {
-		return	'#106F89'
-	} else if (d == '6') {
-		return	'#106F89'
-	} else if (d == '5') {
-		return	'#158DAF'
-	} else if (d == '4') {
-		return	'#158DAF'
-	} else if (d == '3') {
-		return	'#18A2C9'
-	} else if (d == '2') {
-		return	'#1AACD6'
-	} else if (d == '1') {
-		return	'#51C5E8'
-	} else {
-		return	'#ddd';
-	}
-}
-*/		
-function getColorNucSign(d) {
-	if (d == 'X') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorNucDepo(d) {
-	if (d == 'X') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorTPMember(d) {
-	if (d == 'Member') {
-		return	'#FC4E2A'
-	} else if (d == 'Observer') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-/*
-function getColorTPIndex(d) {
-	if (d == '4') {
-		return	'#093B49'
-	} else if (d == '3') {
-		return	'#106F89'
-	} else if (d == '2') {
-		return	'#158DAF'
-	} else if (d == '1') {
-		return	'#51C5E8'
-	} else {
-		return	'#ddd';
-	}
-}
-*/		
-
-function getColorWatSan(d) {
-	if (d == '1') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorDHRA(d) {
-	if (d == '1') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorSTI(d) {
-	if (d == '1') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorECC(d) {
-	if (d == '1') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorGEWE(d) {
-	if (d == '1') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
-
-function getColorWCC(d) {
-	if (d == '1') {
-		return	'#FC4E2A'
-	} else {
-		return	'#ddd';
-	}
-}
 
 
 

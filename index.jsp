@@ -544,7 +544,8 @@
 					$.each(mainobj['layers'], function(subkey, subobj){
 						//Create the function
 						if (subobj['jsonStyle']){
-							subobj['jsonLayer'] = createLayer(data, subobj['jsonStyle'])
+							subobj['jsonLayer'] = createLayer(data, subobj['jsonStyle']);
+							delete subobj['jsonStyle'];
 						}
 					});
 				});
