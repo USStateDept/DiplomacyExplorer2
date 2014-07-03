@@ -36,7 +36,7 @@ var hash;
 var createLayer = function(data, styleObj){
 
 	return new L.geoJson(data, {style: function(feature){ 
-										styleObj['fillColor'] = getColor(styleObj['mainStyleKey'], styleObj['fillColorSubKey']);
+										styleObj['fillColor'] = getColor(styleObj['fillColorMainKey'], feature.properties[styleObj['fillColorSubKey']]);
 										return styleObj;
 										}});
 }
