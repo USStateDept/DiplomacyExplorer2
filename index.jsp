@@ -553,9 +553,6 @@
 				
 				//thjis needs to be ehre to enesure that JSON syncs after AJAx
 				hash = L.hash(map);
-				$(document).one("ajaxStop", function() {
-					$("#loading").hide();
-				});
 			}
 			</script>
 			<script type="text/javascript" src="js/index.js"></script>

@@ -2,8 +2,16 @@
  *
  *
  */
+
+
 var baseURL = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3A*******&outputformat=json";
+//http%3A%2F%2F10.10.28.146%3A8080%2Fgeoserver%2Fopengeo%2Fows%3Fservice%3DWFS%26version%3D1.0.0%26request%3DGetFeature%26typeName%3Dopengeo%3APA_Data_110m%26outputformat%3Djson
+if (null != proxy){
+	baseURL = proxy + encodeURIComponent(baseURL);
+}
+
 var generalBaseLayer = "PA_Data_110m"
+console.log(baseURL);
 
 
 
@@ -41,7 +49,7 @@ $.ajax({
 	url: baseURL.replace("*******", generalBaseLayer),
 	dataType: 'json',
 	//ignite(data) is found on the main index.jsp page
-	success: function(data){console.log(data);ignite(data);} 
+	success: function(data){ignite(data);$("#loading").hide();} 
 	/*function(data) {
 		//load layer to be styled later
 		
