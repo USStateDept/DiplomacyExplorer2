@@ -1,0 +1,3 @@
+[submodule "dipex/layerinfo/static/lib/leaflet-hash"]
+	path = dipex/layerinfo/static/lib/leaflet-hash
+	url = git@github.com:nathanhilbert/leaflet-hash.git
