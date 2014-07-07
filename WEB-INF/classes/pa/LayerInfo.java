@@ -149,6 +149,20 @@ Depending on the edit form, maybe we can split each layer into a file, then only
 
  	}
 
+ 	public JSONObject getIssuesObj(String issuekey) throws IOException {
+ 		String fileissue = ".\\webapps\\DiplomacyExplorer2\\jsonFile\\themefolder\\" + issuekey + ".json";
+ 		JSONParser parser = new JSONParser();
+ 		try{
+ 			JSONObject tempObj = (JSONObject) parser.parse(new FileReader(fileissue));
+ 			return tempObj;
+
+ 		}
+ 		catch (ParseException e){
+ 			return new JSONObject();
+ 		} 
+
+ 	}
+
 	public String getLayerInfo() {
 		
 		String folderloc = ".\\webapps\\DiplomacyExplorer2\\jsonFile\\";

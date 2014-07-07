@@ -11,7 +11,6 @@ if (null != proxy){
 }
 
 var generalBaseLayer = "PA_Data_110m"
-console.log(baseURL);
 
 
 

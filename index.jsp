@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%@ page language="java" import="java.sql.*,java.util.*,java.io.*"%>
+<%@ page language="java" import="java.sql.*,java.util.*,java.io.*,org.json.simple.JSONObject"%>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -52,17 +52,43 @@
 				</div>
 				<div class="navbar-collapse collapse" id="navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li class="dropdown">
-							<a id="securityDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Securing Peace</a>
-							<ul class="dropdown-menu" style="padding:10px;">
-								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<h4><a style="color:#333" class="mainKey" name="keyNuc">Nuclear Arms Control</a></h4>
-								<li><h4><a style="color:#333" href="#">Border Security (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Counter-narcotics (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Counter-terrorism (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Securing the Seas/Maritime Piracy (tk)</a></h4></li>
-							</ul>
-						</li>
+
+						<% 
+						String[] issueKeys = { "businessDrop", "securityDrop", "environmentDrop", "livesDrop", "rightsDrop" };
+						pa.LayerInfo liparser = new pa.LayerInfo();
+						for (String issueKey: issueKeys){
+							JSONObject tempobj = liparser.getIssuesObj(issueKey);
+							/*
+							if (tempobj.length() < 1){
+								continue;
+							}
+							*/
+
+							out.println("<li class=\'dropdown\'>");
+								out.println("<a id=\"' + issueKey + '\" href=\"#\" role=\"button\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">" + tempobj.get("title") + "</a>");
+								out.println("<ul class=\"dropdown-menu\" style=\"padding:10px;\">");
+									out.println("<h4><small>" + tempobj.get("description") + "</small></h4>");
+									Object tempissueList = tempobj.get("issues");
+								   Iterator<String> tempitemkeys = tempissueList.keys();
+								    while(tempitemkeys.hasNext()){
+								        String tempitemkey = tempitemkeys.next();
+								        try{
+								             String itemvalue = tempissueList[tempitemkey];
+								             out.println("<h4><a style=\"color:#333\" class=\"mainKey\" name=\"" + tempitemkey + "\">" + itemvalue + "</a></h4>");
+								        }catch(Exception e){
+								            continue;
+								        }
+								        
+
+								    }
+								out.println("</ul>");
+							out.println("</li>");
+
+					      //Do your stuff here
+					    }
+					    %>
+
+
 						<li class="dropdown">
 							<a id="businessDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Promoting Prosperity</a>
 							<ul class="dropdown-menu">
@@ -113,6 +139,13 @@
 								<li><h4><a style="color:#333" href="#">Refugee Assistance (tk)</a></h4></li>
 							</ul>
 						</li>
+
+
+
+
+
+
+
 						<li class="dropdown">
 							<a id="adminDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Admin Demo</a>
 							<ul class="dropdown-menu">
