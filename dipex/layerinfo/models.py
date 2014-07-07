@@ -34,4 +34,3 @@ class Layer(models.Model):
     def __unicode__(self):
         return u'%s' % (self.subject)
 
-

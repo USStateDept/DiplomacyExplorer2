@@ -1,22 +1,23 @@
 from django.contrib import admin
 from django import forms
+import reversion
 
 # Register your models here.
 from layerinfo.models import Issue, Theme, Layer
 
 
-class IssueAdmin(admin.ModelAdmin):
+class IssueAdmin(reversion.VersionAdmin):
     list_display = ('categoryName','theme',)
     #fieldsets =[(None,{'fields': ['categoryName']}),]
 
 
 
-class ThemeAdmin(admin.ModelAdmin):
+class ThemeAdmin(reversion.VersionAdmin):
     list_display = ('title',)
     #fieldsets =[(None,{'fields': ['theme']}),]
 
 
-class LayerAdmin(admin.ModelAdmin):
+class LayerAdmin(reversion.VersionAdmin):
     list_display = ('subject', 'issue',)
     #fieldsets =[(None,{'fields': ['subject']}),]
 
@@ -37,5 +38,3 @@ admin.site.register(Layer, LayerAdmin)
 # # Custom ModelAdmin
 # class ClientAdmin(admin.ModelAdmin):
 #     list_display = ('title', 'show_client_projects')
-
-
