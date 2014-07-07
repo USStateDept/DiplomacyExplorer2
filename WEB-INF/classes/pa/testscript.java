@@ -1,4 +1,4 @@
-package pa;
+//package pa;
 
 //import java.sql.*;
 import java.io.IOException;
@@ -14,56 +14,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class LayerInfo {
+class LayerInfoTester {
 
 /*
 Depending on the edit form, maybe we can split each layer into a file, then only one file at a time will be edited, which solve the issue of two people editing
 
     */
 
-	public Hashtable LoadIssues() {
 
-		String folderloc = "C:\\OpenGeo\\webapps\\DiplomacyExplorer2\\jsonFile\\";
-		Hashtable<String, String> values = new Hashtable<String,String>();
-		File folder = new File(folderloc);
-		File[] listOfFiles = folder.listFiles();
-
-		JSONParser parser = new JSONParser();
-
-		try {
-			
-			for (int i = 0; i < listOfFiles.length; i++) {
-
-				if (listOfFiles[i].isFile()) {
-					String filename=listOfFiles[i].getName();
-					String tempFilename = listOfFiles[i].getName()
-							.replaceFirst("[.][^.]+$", "");
-					String[] tempparts = tempFilename.split("_");
-
-					if (tempparts.length == 1) {
-						JSONObject jsonObject = (JSONObject) parser
-								.parse(new FileReader(listOfFiles[i].getPath()));
-
-						
-						String name = (String) jsonObject
-								.get("categoryName");
-
-						
-						values.put(name, filename);
-					}
-				}
-			}
-		} catch (ParseException e){ 
-			
-			e.printStackTrace();
-		}
-		catch( IOException e) {
-			
-		}
-		
-		return values;
-	}
-	
  	private HashMap parseStringFile(String fileloc){
  		BufferedReader reader = null;
  		HashMap list = new HashMap();
@@ -130,54 +88,40 @@ Depending on the edit form, maybe we can split each layer into a file, then only
 
 		JSONObject mainObj = new JSONObject();
 		JSONParser parser = new JSONParser();
+		JSONArray a = new JSONArray();
 
 	    for (int i = 0; i < listOfFiles.length; i++) {
 	      if (listOfFiles[i].isFile()) {
 	      	try{
-	      		JSONObject tempObj = (JSONObject) parser.parse(new FileReader(listOfFiles[i].getPath()));
-	      		String tempFilename = listOfFiles[i].getName().replaceFirst("[.][^.]+$", "");
-	      		String[] tempparts = tempFilename.split("_");
-	      		if (mainObj.get(tempparts[0]) != null){
-	      			//then the main key is part of the mainObj, so append
-		      		if (tempparts.length > 1){
-		      			//this is a sub category
-		      			JSONObject subkeytemp1 = (JSONObject) mainObj.get(tempparts[0]);
-		      			JSONObject subkeytemp2 = (JSONObject) subkeytemp1.get("layers");
-		      			subkeytemp2.put(tempparts[1], tempObj);
-		      		}
-		      		else {
-		      			//this is a main category
-			      		JSONObject mainkeytempobj = (JSONObject) mainObj.get(tempparts[0]);
-			      		mainkeytempobj.put("categoryDescription", (String) tempObj.get("categoryDescription"));
-		 
-		      		}
-	      		}
-	      		//they mainkey obj is already part of of the mainobj so create new
-	      		else {
-	      			
-		      		if (tempparts.length > 1){
-		      			//this is a sub category
-		      			JSONObject subtemp1 = new JSONObject();
-		      			subtemp1.put(tempparts[1], tempObj);
-		      			JSONObject subtemp2 = new JSONObject();
-		      			subtemp2.put("layers", subtemp1);
-		      			mainObj.put(tempparts[0], tempObj);
-		      		}
-		      		else {
-		      			//this is a main category
-		      			tempObj.put("layers", new JSONObject());
-		      			mainObj.put(tempparts[0], tempObj);
-		      		}
-	      		}
-
+	      		a = (JSONArray) parser.parse(new FileReader(listOfFiles[i].getPath()));
 	      	}
 	      	catch (ParseException e){
-	      		//do something;
+	      		a = null;
 	      	}
+	        //successfactor = successfactor + "File " + listOfFiles[i].getName();
 	      } 
 	    }
 
-	    return mainObj.toString();
+
+
+/*
+ Object obj=JSONValue.parse(s);
+  JSONArray array=(JSONArray)obj;
+  System.out.println("======the 2nd element of array======");
+  System.out.println(array.get(1));
+  System.out.println();
+                
+  JSONObject obj2=(JSONObject)array.get(1);
+  System.out.println("======field \"1\"==========");
+  System.out.println(obj2.get("1")); 
+
+*/
+
+
+
+
+
+	    return a.toString();
  	}
 
  	protected String parseHashMap (HashMap newJSON) throws IOException {
@@ -188,33 +132,20 @@ Depending on the edit form, maybe we can split each layer into a file, then only
 		//writer.close();
 		return "success writing the files";
 		
+	}
 
- 	}
+	public static void main(String[] args) {
 
- 	public JSONObject getIssuesObj(String issuekey) throws IOException {
- 		String fileissue = ".\\webapps\\DiplomacyExplorer2\\jsonFile\\themefolder\\" + issuekey + ".json";
- 		JSONParser parser = new JSONParser();
- 		try{
- 			JSONObject tempObj = (JSONObject) parser.parse(new FileReader(fileissue));
- 			return tempObj;
-
- 		}
- 		catch (ParseException e){
- 			return new JSONObject();
- 		} 
-
- 	}
-
-	public String getLayerInfo() {
+	//public String getLayerInfo() {
 		
 		String folderloc = ".\\webapps\\DiplomacyExplorer2\\jsonFile\\";
-		String returnvalue = "{}";
+		String returnvalue = "nothing to return";
 
 		try{
 			returnvalue = readAllLayerFiles(folderloc);
 		}
 		catch (IOException e){
-			//do something here
+			returnvalue = "error in reading";
 		}
 
 		//HashMap tester = new HashMap();
@@ -225,7 +156,7 @@ Depending on the edit form, maybe we can split each layer into a file, then only
 
 
 
-		return returnvalue;
+		System.out.print(returnvalue);
 
 	}
 }

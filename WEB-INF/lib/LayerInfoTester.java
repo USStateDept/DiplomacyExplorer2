@@ -1,4 +1,4 @@
-package pa;
+//package pa;
 
 //import java.sql.*;
 import java.io.IOException;
@@ -14,56 +14,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class LayerInfo {
+class LayerInfoTester {
 
 /*
 Depending on the edit form, maybe we can split each layer into a file, then only one file at a time will be edited, which solve the issue of two people editing
 
     */
 
-	public Hashtable LoadIssues() {
 
-		String folderloc = "C:\\OpenGeo\\webapps\\DiplomacyExplorer2\\jsonFile\\";
-		Hashtable<String, String> values = new Hashtable<String,String>();
-		File folder = new File(folderloc);
-		File[] listOfFiles = folder.listFiles();
-
-		JSONParser parser = new JSONParser();
-
-		try {
-			
-			for (int i = 0; i < listOfFiles.length; i++) {
-
-				if (listOfFiles[i].isFile()) {
-					String filename=listOfFiles[i].getName();
-					String tempFilename = listOfFiles[i].getName()
-							.replaceFirst("[.][^.]+$", "");
-					String[] tempparts = tempFilename.split("_");
-
-					if (tempparts.length == 1) {
-						JSONObject jsonObject = (JSONObject) parser
-								.parse(new FileReader(listOfFiles[i].getPath()));
-
-						
-						String name = (String) jsonObject
-								.get("categoryName");
-
-						
-						values.put(name, filename);
-					}
-				}
-			}
-		} catch (ParseException e){ 
-			
-			e.printStackTrace();
-		}
-		catch( IOException e) {
-			
-		}
-		
-		return values;
-	}
-	
  	private HashMap parseStringFile(String fileloc){
  		BufferedReader reader = null;
  		HashMap list = new HashMap();
@@ -172,13 +130,15 @@ Depending on the edit form, maybe we can split each layer into a file, then only
 
 	      	}
 	      	catch (ParseException e){
-	      		//do something;
+	      		continue;
 	      	}
 	      } 
 	    }
 
 	    return mainObj.toString();
  	}
+
+
 
  	protected String parseHashMap (HashMap newJSON) throws IOException {
  		// use this in the future to write the file
@@ -188,33 +148,20 @@ Depending on the edit form, maybe we can split each layer into a file, then only
 		//writer.close();
 		return "success writing the files";
 		
+	}
 
- 	}
+	public static void main(String[] args) {
 
- 	public JSONObject getIssuesObj(String issuekey) throws IOException {
- 		String fileissue = ".\\webapps\\DiplomacyExplorer2\\jsonFile\\themefolder\\" + issuekey + ".json";
- 		JSONParser parser = new JSONParser();
- 		try{
- 			JSONObject tempObj = (JSONObject) parser.parse(new FileReader(fileissue));
- 			return tempObj;
-
- 		}
- 		catch (ParseException e){
- 			return new JSONObject();
- 		} 
-
- 	}
-
-	public String getLayerInfo() {
+	//public String getLayerInfo() {
 		
 		String folderloc = ".\\webapps\\DiplomacyExplorer2\\jsonFile\\";
-		String returnvalue = "{}";
+		String returnvalue = "nothing to return";
 
 		try{
 			returnvalue = readAllLayerFiles(folderloc);
 		}
 		catch (IOException e){
-			//do something here
+			returnvalue = "error in reading";
 		}
 
 		//HashMap tester = new HashMap();
@@ -225,7 +172,7 @@ Depending on the edit form, maybe we can split each layer into a file, then only
 
 
 
-		return returnvalue;
+		System.out.print(returnvalue);
 
 	}
 }

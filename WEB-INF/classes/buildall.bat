@@ -1,0 +1,4 @@
+javac -cp "C:\opengeo\webapps\DiplomacyExplorer2\WEB-INF\lib\postgresql-9.2-1002.jdbc4.jar" "C:\opengeo\webapps\DiplomacyExplorer2\WEB-INF\classes\pa\DataAccessor.java"
+javac -cp "C:\opengeo\sdk\lib\servlet-api-2.5.jar;C:\OpenGeo\webapps\DiplomacyExplorer2\WEB-INF\classes" "C:\opengeo\webapps\DiplomacyExplorer2\WEB-INF\classes\pa\Combo.java"
+javac -cp "C:\opengeo\sdk\lib\servlet-api-2.5.jar;C:\OpenGeo\webapps\DiplomacyExplorer2\WEB-INF\classes" "C:\opengeo\webapps\DiplomacyExplorer2\WEB-INF\classes\pa\Updater.java"
+javac -cp "C:\opengeo\webapps\DiplomacyExplorer2\WEB-INF\lib\json-simple-1.1.1.jar" "C:\opengeo\webapps\DiplomacyExplorer2\WEB-INF\classes\pa\LayerInfo.java"

@@ -1,7 +1,11 @@
 
 package pa;
 
-import java.sql.*;
+import java.io.File;
+import java.io.FileReader;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.json.simple.JSONObject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,7 +17,6 @@ import java.util.*;
 
 public class Combo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Connection con;
 
 	public Combo() {
 		super();
@@ -29,77 +32,41 @@ public class Combo extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		String type = request.getParameter("type");
-
-
 		
 		try {
-			//if(type.equals("issueCombo"))
-			//	loadCombo(request, response);
+			
 			if(type.equals("issueText"))
 				loadText(request, response);
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+		}  catch (ClassNotFoundException e) {
 
 			e.printStackTrace();
 		}
 
 	}
 
-	/*protected void loadCombo(HttpServletRequest request,
-		HttpServletResponse response) throws ServletException, IOException,
-	SQLException, ClassNotFoundException {
-
-		String type = request.getParameter("type");
-
-		DataAccessor da = new DataAccessor();
-
-		String[] params = { };
-		String sql="";
-		ArrayList<String> rows = new ArrayList<String>();
-
-		if(type.equals("issueCombo"))
-			sql = "select \"Name\" from public.\"Issue\"";
-
-		rows = da.select(params, sql, "Name");
-		String html="";
-
-
-		for(int i =0;i<rows.size();i++){
-			String row = rows.get(i);
-			html+="<option>"+row+"</option>";
-		}
-
-		PrintWriter out = response.getWriter();
-		out.println(html);
-	}*/
-
 	protected void loadText(HttpServletRequest request,
-		HttpServletResponse response) throws ServletException, IOException,
-	SQLException, ClassNotFoundException {
+		HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException {
 
-		String type = request.getParameter("type");
 		String name = request.getParameter("name");
-		//name=name.replace("+"," ");
-
-		DataAccessor da = new DataAccessor();
-
-		String[] params = { };
-		String sql="";
-
-		if(type.equals("issueText"))
-			sql = "select \"Legend\" from public.\"Issue\" where \"Name\" like '%" + name + "%'";
-
-		ResultSet rs = da.select(params, sql);
-		String legend="";
-
-		while(rs.next()){
-		legend = rs.getString("Legend");
-		}
+		
+		try{
+		JSONParser parser = new JSONParser();
+		String fileloc="C:\\OpenGeo\\webapps\\DiplomacyExplorer2\\jsonFile\\";
+		String fullLoc = fileloc+name;
+		JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(fullLoc));
+		String legend = (String) jsonObject.get("categoryDescription");
+		
+		
 
 		PrintWriter out = response.getWriter();
 		out.println(legend);
+		} catch (ParseException e){ 
+			
+			e.printStackTrace();
+		}
+		catch( IOException e) {
+			
+		}
 	}
 
 }
