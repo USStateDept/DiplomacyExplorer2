@@ -1,0 +1,152 @@
+#mainContainer, #map {
+  height: 100%;
+  width:100%;
+  overflow: hidden;
+  padding-right:0px;
+  padding-left:0px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  margin: 0;
+}
+
+#loading {
+  position: absolute;
+  width: 220px;
+  height: 19px;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -110px;
+  z-index: 20001;
+}
+
+.navbar .navbar-brand {
+  font-weight: bold;
+  font-size: 25px;
+  color: white;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  letter-spacing: 1px;
+}
+
+.navbar-inverse {
+	background-color: rgb(25,95,164);
+}
+
+.expanded{
+  margin-left:25%;
+}
+
+#descPane{
+  width:25%;
+  height:100%;
+  padding-right:0px;
+  padding-left:0px;
+  overflow-y: auto;
+}
+
+.row{
+  margin-left:0px;
+  margin-right:0px;
+}
+
+
+.navbar-collapse, .navbar-inverse .navbar-form {
+	border-color: rgb(25,95,164);
+}
+.dropdown-menu {
+	padding: 10px;
+}
+/*
+.btn-default{
+	background-color: rgb(25,95,164);
+}
+*/
+@media (max-width:1220px){
+      #mainContainer{
+        margin-top:50px;
+      }
+}
+@media (max-width: 992px) {
+  .navbar .navbar-brand {
+    font-size: 18px;
+    float: left;
+  }
+}
+@media (max-width: 767px){
+  .url-break {
+    word-break: break-all;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  #descPane{
+    width:100%;
+    height:200px;
+    overflow-y:scroll;
+    padding-right:0px;
+    padding-left:0px;
+  }
+  #mapPane{
+    margin-left:0;
+  }
+  #mainContainer{
+        margin-top:0px;
+  }
+}
+
+}
+/* Print Handling */
+@media print {
+  .navbar {
+    display: none !important;
+  }
+  .leaflet-control-container {
+    display: none !important;
+  }
+}
+#viewdetails {
+	overflow-y:scroll;
+	height: 95px !important;
+}
+#viewComments {
+	overflow-y:scroll;
+	height: 95px !important;
+}
+.info {
+	padding: 6px 8px;
+	font: 14px/16px Arial, Helvetica, sans-serif;
+	background: white;
+	background: rgba(255,255,255,0.8);
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	border-radius: 5px;
+	margin-bottom: 10px !important;
+	margin-left: 50px !important;
+  cursor:pointer;
+}
+
+.info:hover{
+  background: rgba(140,140,140,.8);
+
+}
+
+.legend {
+	text-align: left;
+	line-height: 18px;
+	color: #555;
+	padding: 8px 8px;
+	font: 14px/18px Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.legend i {
+	width: 18px;
+	height: 18px;
+	float: left;
+	margin-right: 8px;
+	opacity: 0.7;
+}
+
+
+
+.closed {
+  display:none;
+}
