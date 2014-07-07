@@ -339,23 +339,19 @@
 									<label for="inputIssue">Issue</label>
 									<select class="form-control" name="inputIssue" id="inputIssue">
 										<%
-
-        									pa.DataAccessor da = new pa.DataAccessor();
-        									String[] params = { };
-
-        									ArrayList<String> rows = new ArrayList<String>();
-
-        									String sql = "select \"Name\" from public.\"Issue\"";
-
-        									ResultSet rs = da.select(params, sql);
-
-        									String issue="";
-
-        									while(rs.next())
-        									{
-        									issue=rs.getString("Name");
-        									out.print("<option>"+issue+"</option>" );
-        									}
+											pa.LayerInfo li2 = new pa.LayerInfo();
+											Hashtable<String,String> values = new Hashtable<String,String>();
+											
+        									values=li2.LoadIssues();
+											
+											Enumeration e = values.keys();
+   
+											while(e.hasMoreElements()){
+											String key = (String)e.nextElement();
+											String value = (String)values.get(key);
+											  out.println("<option value=\""+value+"\">"+key+"</option>");
+											 
+										  }
 
         								%>
 									</select>
@@ -556,6 +552,7 @@
 			}
 			</script>
 			<script type="text/javascript" src="js/index.js"></script>
+			<script type="text/javascript" src="js/admin.js"></script>
 			<script type="text/javascript" src="../lib/bootstrap-tour/build/js/bootstrap-tour.js" ></script>
 			<script type="text/javascript" src="js/webtour.js" ></script>
 			<script>

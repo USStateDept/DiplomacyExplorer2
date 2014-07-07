@@ -21,7 +21,49 @@ Depending on the edit form, maybe we can split each layer into a file, then only
 
     */
 
+	public Hashtable LoadIssues() {
 
+		String folderloc = "C:\\OpenGeo\\webapps\\DiplomacyExplorer2\\jsonFile\\";
+		Hashtable<String, String> values = new Hashtable<String,String>();
+		File folder = new File(folderloc);
+		File[] listOfFiles = folder.listFiles();
+
+		JSONParser parser = new JSONParser();
+
+		try {
+			
+			for (int i = 0; i < listOfFiles.length; i++) {
+
+				if (listOfFiles[i].isFile()) {
+					String filename=listOfFiles[i].getName();
+					String tempFilename = listOfFiles[i].getName()
+							.replaceFirst("[.][^.]+$", "");
+					String[] tempparts = tempFilename.split("_");
+
+					if (tempparts.length == 1) {
+						JSONObject jsonObject = (JSONObject) parser
+								.parse(new FileReader(listOfFiles[i].getPath()));
+
+						
+						String name = (String) jsonObject
+								.get("categoryName");
+
+						
+						values.put(name, filename);
+					}
+				}
+			}
+		} catch (ParseException e){ 
+			
+			e.printStackTrace();
+		}
+		catch( IOException e) {
+			
+		}
+		
+		return values;
+	}
+	
  	private HashMap parseStringFile(String fileloc){
  		BufferedReader reader = null;
  		HashMap list = new HashMap();
