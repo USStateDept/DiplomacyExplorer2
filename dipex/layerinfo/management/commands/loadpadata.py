@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from layerinfo.models import Theme,Issue,Layer
+from layerinfo.models import Theme,Issue,Layer, PointLayer
 
 import json
 from os import listdir
@@ -71,7 +71,13 @@ class Command(BaseCommand):
                         if not theissueobj:
                             print "could not find the issue obj", issuekey
                             continue
-                        newlayerobj = Layer(subject=templayerobj['subject'], description=templayerobj['description'], keyid=layerkey, ptsLayer=templayerobj['ptsLayer'], labels=templayerobj['labels'], jsonStyle=templayerobj['jsonStyle'],issue=theissueobj)
+                        #need to check if we have a ptslayer
+                        ptslayer = None
+                        try:
+                            ptslayer = PointLayer.objects.get(layername__exact=templayerobj['ptsLayer'])
+                        except:
+                            pass
+                        newlayerobj = Layer(subject=templayerobj['subject'], description=templayerobj['description'], keyid=layerkey, ptsLayer=ptslayer, labels=templayerobj['labels'], jsonStyle=templayerobj['jsonStyle'],issue=theissueobj)
                         newlayerobj.save()
 
         #now let's test
