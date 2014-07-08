@@ -249,10 +249,13 @@
 									</div>
 									<ul class="list-group">
 										<li class="list-group-item"><fb:share-button id="fb" href="https://developers.facebook.com/docs/plugins/" width="100" type="button"></fb:share-button></li>
-										<li class="list-group-item">Twitter</li>
-										<li class="list-group-item">Pintrest</li>
-										<li class="list-group-item">Email</li>
-										<li class="list-group-item">Social Media Stuff</li>
+										<li class="list-group-item">
+											<a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a>
+										</li>
+										<li class="list-group-item"><a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-color="red" data-pin-height="28"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_28.png" /></a></li>
+										<li class="list-group-item">
+											<button type="button" class="copyinfo" aria-hidden="true">Copy</button> <div id='copytext' style="width=300px;overflow-x:hidden;display:inline-block;"></div>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -507,6 +510,12 @@
 			  fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));</script>
 
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<!-- Please call pinit.js only once per page -->
+<script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
+
 			<script src="/static/lib/jquery/jquery-1.11.0.min.js"></script>
 			<script src="/static/lib/bootstrap-3.1.1/dist/js/bootstrap.js"></script>
 			<script type="text/javascript" src="static/js/host.js"></script>
@@ -528,7 +537,7 @@
 				
 				//thjis needs to be ehre to enesure that JSON syncs after AJAx
 				hash = L.hash(map);
-				hash.on("update", function(hasharg){});
+				hash.on("update", function(hasharg){$('#copytext').html($(location).attr('href'))});
 			}
 			</script>
 			<script type="text/javascript" src="/static/js/index.js"></script>
