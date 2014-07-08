@@ -3,7 +3,7 @@ from django import forms
 import reversion
 
 # Register your models here.
-from layerinfo.models import Issue, Theme, Layer
+from layerinfo.models import Issue, Theme, Layer, PointLayer, Points
 
 
 class IssueAdmin(reversion.VersionAdmin):
@@ -21,11 +21,19 @@ class LayerAdmin(reversion.VersionAdmin):
     list_display = ('subject', 'issue',)
     #fieldsets =[(None,{'fields': ['subject']}),]
 
+class PointLayerAdmin(reversion.VersionAdmin):
+    list_display = ('layername',)
+
+class PointsAdmin(reversion.VersionAdmin):
+    list_display = ('Title', 'pointlayer',)
+
 
 
 admin.site.register(Issue, IssueAdmin)
 admin.site.register(Theme, ThemeAdmin)
 admin.site.register(Layer, LayerAdmin)
+admin.site.register(PointLayer, PointLayerAdmin)
+admin.site.register(Points, PointsAdmin)
 
 
 
