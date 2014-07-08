@@ -49,7 +49,13 @@ class PointLayer(models.Model):
         points = self.points_set.all()
         for point in points:
             pointObj = model_to_dict(point)
-            jsonobj['features'].append(pointObj)
+            temppointobj = {"geometry": pointObj['geometry'], "properties":{}, "type":"Feature"}
+            excludes = ["geometry", "pointlayer"]
+            for pointpropkey in pointObj.keys():
+                if pointpropkey not in excludes:
+                    temppointobj['properties'][pointpropkey] = pointObj[pointpropkey]
+            jsonobj['features'].append(temppointobj)
+        return jsonobj
 
 
 

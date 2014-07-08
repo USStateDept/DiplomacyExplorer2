@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from django.forms import model_to_dict
 
-from layerinfo.models import Theme, Issue, Layer
+from layerinfo.models import Theme, Issue, Layer, Points, PointLayer
 
 import urllib2
 
@@ -69,7 +69,6 @@ def proxy(request):
     url = request.GET.get('url')
     type = request.GET.get('type', "application/json")
     #we may need to decode
-    print url
     req = urllib2.Request(url)
     response = urllib2.urlopen(req)
     return HttpResponse(response.read(), mimetype=type)
@@ -97,3 +96,16 @@ def ajaxPost(request):
         form = RegisterForm()
 
     return render(request, 'register.html', {'form': form})
+
+
+def geoJson(request):
+    ptslayername = request.GET.get('layername', None)
+    if not ptslayername:
+        return json.dumps({})
+    ptslayer = PointLayer.objects.get(layername__exact=ptslayername)
+    if not ptslayer:
+        return json.dumps({})
+    return HttpResponse(json.dumps(ptslayer.buildJSON()), mimetype="application/json")
+
+
+
