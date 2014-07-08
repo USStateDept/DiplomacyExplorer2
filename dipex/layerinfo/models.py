@@ -6,17 +6,17 @@ from jsonfield import JSONField
 #this should be cached because it's giong ot called alot
 
 class Theme(models.Model):
-    title = models.CharField(max_length=200, unique=True)
+    title = models.CharField(max_length=200, unique=True, db_index=True)
     description = models.TextField()
-    keyid = models.CharField(max_length=200, unique=True)
+    keyid = models.CharField(max_length=200, unique=True, db_index=True)
     order = models.IntegerField(default=0)
     def __unicode__(self):
         return u'%s' % (self.title)
 
 class Issue(models.Model):
-    categoryName = models.CharField(max_length=200)
+    categoryName = models.CharField(max_length=200, db_index=True)
     categoryDescription = models.TextField()
-    keyid = models.CharField(max_length=200, unique=True)
+    keyid = models.CharField(max_length=200, unique=True, db_index=True)
     theme = models.ForeignKey(Theme)
 
     def __unicode__(self):
@@ -24,9 +24,9 @@ class Issue(models.Model):
 
 
 class Layer(models.Model):
-    subject = models.CharField(max_length=200)
+    subject = models.CharField(max_length=200, db_index=True)
     description = models.TextField(null=True)
-    keyid = models.CharField(max_length=200, unique=True)
+    keyid = models.CharField(max_length=200, unique=True, db_index=True)
     issue = models.ForeignKey(Issue)
     ptsLayer = models.CharField(max_length=200, null=True)
     labels = JSONField()
@@ -38,7 +38,7 @@ class Layer(models.Model):
 
 
 class PointLayer(models.Model):
-    layername = models.CharField(max_length=200)
+    layername = models.CharField(max_length=200, db_index=True)
     source = models.CharField(max_length=350)
 
     def __unicode__(self):
@@ -66,7 +66,7 @@ class Points(models.Model):
     Topic = models.ForeignKey(Layer, null=True)
     Map = models.CharField(max_length=200, null=True)
     Country = models.CharField(max_length=200, null=True)
-    Title = models.CharField(max_length=200)
+    Title = models.CharField(max_length=200, db_index=True)
     Story = models.TextField(null=True)
     pointlayer = models.ForeignKey(PointLayer)
 
