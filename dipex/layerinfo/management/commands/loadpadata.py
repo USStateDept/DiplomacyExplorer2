@@ -77,7 +77,9 @@ class Command(BaseCommand):
                             ptslayer = PointLayer.objects.get(layername__exact=templayerobj['ptsLayer'])
                         except:
                             pass
-                        newlayerobj = Layer(subject=templayerobj['subject'], description=templayerobj['description'], keyid=layerkey, ptsLayer=ptslayer, labels=templayerobj['labels'], jsonStyle=templayerobj['jsonStyle'],issue=theissueobj)
+                        newlayerobj = Layer(subject=templayerobj['subject'], description=templayerobj['description'], keyid=layerkey, ptsLayer=ptslayer, labels=templayerobj['labels'], jsonStyle=templayerobj['jsonStyle'],\
+                                            issue=theissueobj, \
+                                            )
                         newlayerobj.save()
 
         #now let's test

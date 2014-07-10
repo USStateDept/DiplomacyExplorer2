@@ -7,7 +7,7 @@ from jsonfield import JSONField
 
 class PointLayer(models.Model):
     layername = models.CharField(max_length=200, db_index=True)
-    source = models.CharField(max_length=350)
+    source = models.CharField(max_length=350, null=True, blank=True)
 
     def __unicode__(self):
         return u'%s' % (self.layername)
@@ -49,25 +49,28 @@ class Issue(models.Model):
 
 class Layer(models.Model):
     subject = models.CharField(max_length=200, db_index=True)
-    description = models.TextField(null=True)
+    description = models.TextField(null=True, blank=True)
     keyid = models.CharField(max_length=200, unique=True, db_index=True)
     issue = models.ForeignKey(Issue)
     labels = JSONField()
     jsonStyle = JSONField()
-    ptsLayer = models.ForeignKey(PointLayer, null=True)
-    attribution = models.CharField(max_length=250, null=True)
+    ptsLayer = models.ForeignKey(PointLayer, null=True, blank=True)
+    attribution = models.CharField(max_length=250, null=True, blank=True)
+    isTimeSupported = models.BooleanField(default=False)
+    timeSeriesInfo = JSONField(null=True)
+
 
     def __unicode__(self):
         return u'%s' % (self.subject)
 
 class Points(models.Model):
-    Header = models.CharField(max_length=200, null=True)
+    Header = models.CharField(max_length=200, null=True, blank=True)
     geometry = JSONField()
-    Topic = models.ForeignKey(Layer, null=True)
-    Map = models.CharField(max_length=200, null=True)
-    Country = models.CharField(max_length=200, null=True)
+    Topic = models.ForeignKey(Layer, null=True, blank=True)
+    Map = models.CharField(max_length=200, null=True, blank=True)
+    Country = models.CharField(max_length=200, null=True, blank=True)
     Title = models.CharField(max_length=200, db_index=True)
-    Story = models.TextField(null=True)
+    Story = models.TextField(null=True, blank=True)
     pointlayer = models.ForeignKey(PointLayer)
 
     def __unicode__(self):

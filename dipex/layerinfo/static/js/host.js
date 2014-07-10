@@ -1,5 +1,5 @@
 //var host = "10.10.30.52";
-var host = "10.10.30.52";
+var host = "dittemore";
 var proxy = "http://localhost:8000/proxy?url=";
 //if not on 10.10.30.52 launch chrome --disable-web-security for cross domain restriction lift.  (Don't use this browser for other activity)
 var loc = window.location.pathname;

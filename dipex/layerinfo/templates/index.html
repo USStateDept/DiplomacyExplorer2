@@ -11,6 +11,7 @@
         <title>Diplomacy Explorer 2 - alpha</title>
 
         <!-- Core CSS -->
+        <link href="/static/lib/jquery-ui-1.11.0.slider/jquery-ui.min.css" rel="stylesheet" type="text/css">
         <link href="/static/img/usdos-logo-seal.png" rel="shortcut icon">
 		<link href="/static/lib/bootstrap-3.1.1/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -54,60 +55,6 @@
 						{{ top_menu|safe }}
 
 
-						<li class="dropdown">
-							<a id="businessDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Promoting Prosperity</a>
-							<ul class="dropdown-menu">
-								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<h4><a style="color:#333" class="mainKey" name="keyMLO">Multi-Lateral Organizations</a></h4>
-								<h4><a style="color:#333" class="mainKey" name="keyTP">Trade Promotion</a></h4>
-								<li><h4><a style="color:#333" href="#">Border Security (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Good Governance (trade legislation) (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Intellectual Property Rights (tk)</a></h4></li>
-								<li><h4><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerSTI),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keySTI(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Science & Technology Promotion</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Securing the Seas/Maritime Piracy (tk)</a></h4></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a id="environmentDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Protecting Resources</a>
-							<ul class="dropdown-menu">
-								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerECC),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyECC(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Environment and Climate Change</a></li>
-								<li><h4><a style="color:#333" href="#">Endangered Species (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Energy Policy (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Environmental Conservation (tk)</a></h4></li>
-								<li><a style="color:#333" class="mainKey" name="keyWatSan">Water & Sanitation</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a id="rightsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Respecting Rights</a>
-							<ul class="dropdown-menu">
-								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<li><h4><a style="color:#333"href="#">&nbsp;&nbsp;Free and Fair Elections (tk)</a></li>
-								<li><a style="color:#333" class="mainKey" name="keyDHRA">Human Rights & Governance</a></li>
-									<li><a style="color:#333" class="mainKey" name="keyHT">Human Trafficking</a></li>
-									<li><h4><a style="color:#333" href="#">Independent Judiciary (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Independent Media (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Internet Freedom (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Minority Rights (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Religious Freedom (tk)</a></h4></li>
-								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerGEWE),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyGEWE(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Gender Equality and Women Empowerment</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a id="livesDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Saving Lives</a>
-							<ul class="dropdown-menu">
-								<h4><small>Theme description lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempor augue a dolor sollicitudin semper. Morbi ultrices, sem eu posuere lobortis, dui sem auctor enim.</small></h4>
-								<li><a style="color:#333" class="mainKey" name="keyHI" >Health Issues</a></li>
-								<li><h4><a style="color:#333" href="#">Counter-narcotics (tk)</a></h4></li>
-								<li><a style="color:#333" onClick="javascript:openPane(),changeLayer(),allLayersGroup.addLayer(geoJsonLayerWCC),map.addLayer(allLayersGroup, {insertAtTheBottom: true}),keyWCC(),map.addLayer(allLayersGroup),map.addLayer(allLayersGroupPts);">Working in Crisis and Conflict</a></li>
-								<li><h4><a style="color:#333" href="#">Disaster Assistance (tk)</a></h4></li>
-								<li><h4><a style="color:#333" href="#">Refugee Assistance (tk)</a></h4></li>
-							</ul>
-						</li>
-
-
-
-
 
 
 
@@ -137,9 +84,18 @@
 						</div>
 						<div class="" id="mapPane" style="height:100%;">
 							<div id="map"></div>
+
 						</div>
 					</div>
 				</div>
+			</div>
+
+			<div class='timeSlider closed'>
+				<p>
+				  <label for="slidervalue">Donation amount ($50 increments):</label>
+				  <input type="text" id="slidervalue" readonly style="border:0; color:#f6931f; font-weight:bold;">
+				  <div id='slider'></div>
+				</p>
 			</div>
 			
 			<div id="loading" style="display:block;">
@@ -517,6 +473,7 @@
 <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
 
 			<script src="/static/lib/jquery/jquery-1.11.0.min.js"></script>
+			<script src="/static/lib/jquery-ui-1.11.0.slider/jquery-ui.min.js"></script>
 			<script src="/static/lib/bootstrap-3.1.1/dist/js/bootstrap.js"></script>
 			<script type="text/javascript" src="static/js/host.js"></script>
 			<script type="text/javascript" src="/static/lib/Leaflet-0.7.2/dist/leaflet-src.js"></script>
@@ -530,7 +487,6 @@
 						//Create the function
 						if (subobj['jsonStyle']){
 							subobj['jsonLayer'] = createLayer(data, subobj['jsonStyle']);
-							delete subobj['jsonStyle'];
 						}
 					});
 				});

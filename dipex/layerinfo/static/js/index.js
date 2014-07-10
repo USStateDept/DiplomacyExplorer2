@@ -35,6 +35,10 @@ var hash;
 var createLayer = function(data, styleObj){
 
 	return new L.geoJson(data, {style: function(feature){ 
+										if ($("#slidervalue").val() != "None"){
+											styleObj['fillColorSubKey'] = $("#slidervalue").val();
+										}
+										//pass attribute value to the getColor
 										styleObj['fillColor'] = getColor(styleObj['fillColorMainKey'], feature.properties[styleObj['fillColorSubKey']]);
 										return styleObj;
 										}});
@@ -124,8 +128,58 @@ L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 
 new L.Control.Zoom({ position: 'topright' }).addTo(map);
 
+var currentSliderObj;
+var sliderkey;
+var setupTimeSlider = function(timeJsonObj){
+	currentSliderObj = timeJsonObj;
+	// get my keys
+	sliderkey = $.map(timeJsonObj, function(element,index) {return index});
+	$("#slidervalue").val(sliderkey[0]);
 
 
+    $( "#slider" ).slider({
+      min: 0,
+      max: sliderkey.length -1,
+      step: 1,
+      change: function( event, ui ) {
+      	$("#slidervalue").val(sliderkey[ui.value]);
+      	//use currentkey
+
+	    var tempcurrentlayer = allLayersGroup.getLayers()[0];
+	    var tempcurrentkey = currentKey.split("+");
+	    var tempStyleObj = keysets[tempcurrentkey[0]]['layers'][tempcurrentkey[1]]['jsonStyle'];
+	    tempcurrentlayer.setStyle(function(feature){ 
+											if ($("#slidervalue").val() != "None"){
+												tempStyleObj['fillColorSubKey'] = currentSliderObj[$("#slidervalue").val()];
+											}
+											//pass attribute value to the getColor
+											tempStyleObj['fillColor'] = getColor(tempStyleObj['fillColorMainKey'], feature.properties[tempStyleObj['fillColorSubKey']]);
+											return tempStyleObj;
+										});
+      }
+    });
+    var tempcurrentlayer = allLayersGroup.getLayers()[0];
+    var tempcurrentkey = currentKey.split("+");
+    var tempStyleObj = keysets[tempcurrentkey[0]]['layers'][tempcurrentkey[1]]['jsonStyle'];
+    tempcurrentlayer.setStyle(function(feature){ 
+										if ($("#slidervalue").val() != "None"){
+											tempStyleObj['fillColorSubKey'] = currentSliderObj[$("#slidervalue").val()];
+										}
+										//pass attribute value to the getColor
+										tempStyleObj['fillColor'] = getColor(tempStyleObj['fillColorMainKey'], feature.properties[tempStyleObj['fillColorSubKey']]);
+										return tempStyleObj;
+									});
+
+
+	$( ".timeSlider" ).fadeIn( "slow", function() {});
+}
+
+
+var destoryTimeSlider = function(){
+	currentSlider = null;
+	$("#slidervalue").val("None");
+	$( "#slider" ).slider( "destroy" );
+}
 
 
 
@@ -138,7 +192,7 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 	clearLayers();
 	var keyname = $(this).attr("name");
 	mainkey = keyname;
-	currentKey = keyname
+	currentKey = keyname;
 	map.addLayer(allLayersGroup, {insertAtTheBottom: true});
 	//add all layers as part of this key
 	$.each(keysets[keyname]['layers'], function(index, valueset){
@@ -166,7 +220,6 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 		//var tempkeyarray = $.map(obj, function(element,index) {return index});
 		//$.inArray(layername, tempkeyarray)
 
-
 		allLayersGroup.clearLayers();
 		allLayersGroupPts.clearLayers();
 
@@ -177,6 +230,13 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 		}
 		map.addLayer(allLayersGroup);
 		map.addLayer(allLayersGroupPts);
+
+
+		if (templayerobj['isTimeSupported']){
+			setupTimeSlider(templayerobj['timeSeriesInfo']);
+		}
+
+
 		hash.trigger("move");
 	});
 	if (mainClickCallbacker){
@@ -419,6 +479,18 @@ function onEachFeaturePts(feature, layer) {
  function getColor(mainKey, prop) {
  	var d = prop;
 	switch(mainKey) {
+		case "keyNIV":
+			if (d < 2000){
+				return '#FC4E2A';
+			}
+			else if (d > 2000 && d < 2100){
+				return	'#ddd'
+			}
+			else {
+				if (d > 2100){
+					return '#00763F';
+				}
+			}
 	    case "TPMember":
         	if (d == 'Member') {
 					return	'#FC4E2A'

@@ -150,3 +150,10 @@ input[type="radio"], input[type="checkbox"] {
 .closed {
   display:none;
 }
+
+.timeSlider{
+  position: absolute;
+right: 10px;
+bottom: 40px;
+}
+

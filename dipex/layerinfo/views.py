@@ -15,6 +15,7 @@ import json
 def buildTopMenu():
     output = ""
     topthemes = Theme.objects.order_by('order').all()
+    print len(topthemes)
 
     for temptheme in topthemes:
 
@@ -51,6 +52,7 @@ def getJSONObj():
         layers = issue.layer_set.all()
         for layer in layers:
             layerkey = layer.keyid
+            
             mainObj[issuekey]['layers'][layerkey] = model_to_dict(layer)
 
     return json.dumps(mainObj)
