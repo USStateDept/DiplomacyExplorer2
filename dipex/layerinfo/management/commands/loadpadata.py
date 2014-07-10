@@ -6,6 +6,7 @@ from os import listdir
 from os.path import isfile, join
 import csv
 import sys
+from optparse import make_option
 #from polls.models import Poll
 
 class Command(BaseCommand):
@@ -33,7 +34,7 @@ class Command(BaseCommand):
 
         with open(BASE_DIR + layerscsvfile, 'rb') as f:
             headers = []
-            tempreader = csv.reader(f)
+            tempreader = csv.reader(f, delimiter=';')
             for row in tempreader:
                 if len(headers) == 0:
                     headers = row
@@ -42,7 +43,7 @@ class Command(BaseCommand):
 
         with open(BASE_DIR + themescsvfile, 'rb') as f:
             headers = []
-            tempreader = csv.reader(f)
+            tempreader = csv.reader(f, delimiter=',')
             for row in tempreader:
                 if len(headers) == 0:
                     headers = row
@@ -51,7 +52,7 @@ class Command(BaseCommand):
 
         with open(BASE_DIR + issuescsvfile, 'rb') as f:
             headers = []
-            tempreader = csv.reader(f)
+            tempreader = csv.reader(f, delimiter=';')
             for row in tempreader:
                 if len(headers) == 0:
                     headers = row
@@ -63,44 +64,54 @@ class Command(BaseCommand):
         #get the temes
 
         #get the themes
-
+        counter = 1
         for themerow in themesobj:
-            print "working on theme ", themerow['keyid']
-
-            currenttheme = Theme.objects.get_or_create(keyid__exact=themerow['keyid'])
-            currenttheme.title = themerow['title']
-            currenttheme.description = themerow['description']
-            currenttheme.keyid = themerow['keyid']
-            currenttheme.order = int(tempthemeobj['order'])
+            print "working on theme ", themerow['ThemeID']
+            #Name,Description,KeyID,ThemeID,ThemeDrop
+            currenttheme, created = Theme.objects.get_or_create(keyid=themerow['ThemeID'])
+            print currenttheme, created
+            currenttheme.title = themerow['Name']
+            currenttheme.description = themerow['Description']
+            currenttheme.keyid = themerow['ThemeID']
+            currenttheme.order = counter
+            counter +=1
+            currenttheme.save()
 
         for issuerow in issuesobj:
+            #Name,Description,KeyID,ThemeID,ID
             try:
+                print issuerow
                 themeobj = Theme.objects.get(keyid__exact=issuerow['ThemeID'])
             except:
-                print "could not find themeobj for ", issuerow['keyid']
+                print "could not find themeobj for ", issuerow['KeyID']
             else:
-                currentissue = Issue.objects.get_or_create(keyid__exact=issuerow['keyid'])
-                currentissue.categoryName = issuerow['title']
-                currentissue.categoryDescription = issuerow['description']
-                currentissue.keyid = issuerow['keyid']
-                currentissue.theme = themeobj
+
+                currentissue, created = Issue.objects.get_or_create(keyid=issuerow['KeyID'], theme=themeobj)
+                print currentissue, created
+                currentissue.categoryName = issuerow['Name']
+                currentissue.categoryDescription = issuerow['Description']
+                currentissue.keyid = issuerow['KeyID']
+                currentissue.save()
 
         for layerrow in layersobj:
+            #Name,Description,KeyID,Labels,IssueID,jsonStyle,PtsLayer,Attribution
             try:
-                issueobj = Issue.objects.get(keyid__exact=layerrow['issueID'])
+                issueobj = Issue.objects.get(keyid__exact=layerrow['IssueID'])
             except:
-                print "could not find themeobj for ", layerrow['keyid']
+                print "could not find themeobj for ", layerrow['KeyID']
             else:
-                currentlayer = Layer.objects.get_or_create(keyid__exact=layerrow['keyid'])
-                currentlayer.subject = layerrow['title']
-                currentlayer.description = layerrow['description']
-                currentlayer.keyid = layerrow['keyid']
-                currentlayer.labels = layerrow['']
-                currentlayer.jsonStyle = layerrow['title']
-                currentlayer.issue = issueobj
-                currentlayer.attribution = layerrow['keyid']
-                currentlayer.isTimeSupported = layerrow['layerrow']
-                currentlayer.timeSeriesInfo = layerrow['layerrow']
+
+                currentlayer,created = Layer.objects.get_or_create(keyid=layerrow['KeyID'], issue=issueobj)
+                print currentlayer, created
+                currentlayer.subject = layerrow['Name']
+                currentlayer.description = layerrow['Description']
+                currentlayer.keyid = layerrow['KeyID']
+                currentlayer.labels = layerrow['Labels']
+                currentlayer.jsonStyle = layerrow['jsonStyle']
+                #currentlayer.ptsLayer = layerrow['PtsLayer']
+                currentlayer.attribution = layerrow['Attribution']
+                currentlayer.isTimeSupported = False
+                #currentlayer.timeSeriesInfo = layerrow['layerrow']
                 currentlayer.save()
 
 

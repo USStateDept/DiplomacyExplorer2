@@ -10,7 +10,7 @@ if (null != proxy){
 	baseURL = proxy + encodeURIComponent(baseURL);
 }
 
-var generalBaseLayer = "PA_Data_110m"
+var generalBaseLayer = "DiscoverDiplomacy-Data_110m"
 
 
 
