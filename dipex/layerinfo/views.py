@@ -52,7 +52,7 @@ def getJSONObj():
         layers = issue.layer_set.all()
         for layer in layers:
             layerkey = layer.keyid
-            
+
             mainObj[issuekey]['layers'][layerkey] = model_to_dict(layer)
 
     return json.dumps(mainObj)

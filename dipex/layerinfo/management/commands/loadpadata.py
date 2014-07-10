@@ -4,83 +4,106 @@ from layerinfo.models import Theme,Issue,Layer, PointLayer
 import json
 from os import listdir
 from os.path import isfile, join
+import csv
+import sys
 #from polls.models import Poll
 
 class Command(BaseCommand):
     help = 'Closes the specified poll for voting'
+    option_list = BaseCommand.option_list + (make_option('--path',
+            action='store', dest='basepath', default=None,
+            help='The Path to the sql dir'),)
 
-    def add_arguments(self, parser):
-#        parser.add_argument('poll_id', nargs='+', type=int)
-        return
 
     def handle(self, *args, **options):
-        BASE_DIR = "C:\\opengeo\\webapps\\DiplomacyExplorer2\\jsonFile\\"
-        THEME_DIR = BASE_DIR + "themefolder\\"
+        BASE_DIR = options.get("basepath", None)
+        if not BASE_DIR:
+            print "Please provide the path to your SQL dir\nSuch as --path C:\\opengeo\\webapps\\DiplomacyExplorer2\\sql\\"
+            sys.exit(1)
 
+        layerscsvfile = "Layers.csv"
+        themescsvfile = "Themes.csv"
+        issuescsvfile = "Issues.csv"
+
+        layersobj = []
+        themesobj = []
+        issuesobj = []
+
+        #need to do this order themes, issues and layers
+
+        with open(BASE_DIR + layerscsvfile, 'rb') as f:
+            headers = []
+            tempreader = csv.reader(f)
+            for row in tempreader:
+                if len(headers) == 0:
+                    headers = row
+                else:
+                    layersobj.append(dict(zip(headers, row)))
+
+        with open(BASE_DIR + themescsvfile, 'rb') as f:
+            headers = []
+            tempreader = csv.reader(f)
+            for row in tempreader:
+                if len(headers) == 0:
+                    headers = row
+                else:
+                    themesobj.append(dict(zip(headers, row)))
+
+        with open(BASE_DIR + issuescsvfile, 'rb') as f:
+            headers = []
+            tempreader = csv.reader(f)
+            for row in tempreader:
+                if len(headers) == 0:
+                    headers = row
+                else:
+                    issuesobj.append(dict(zip(headers, row)))
+
+
+
+        #get the temes
 
         #get the themes
 
-        for themefile in listdir(THEME_DIR):
-            if isfile(join(THEME_DIR, themefile)):
-                #add to the object
-                with open(join(THEME_DIR, themefile), 'r') as f1:
-                    keyid = themefile.replace(".json", "")
-                    print "working on ", keyid
-                    tempthemeobj = json.load(f1)
-                    try:
-                        currentthemes = Theme.objects.get(keyid__exact=keyid)
-                        print currentthemes
-                    except:
-                        currentthemes = None
-                    if not currentthemes:
-                        print tempthemeobj
-                        newthemeobj = Theme(title=tempthemeobj['title'], description=tempthemeobj['description'], keyid=keyid, order=int(tempthemeobj['order']))
-                        print tempthemeobj['issues']
-                        newthemeobj.save()
-                    else:
-                        newthemeobj = currentthemes
+        for themerow in themesobj:
+            print "working on theme ", themerow['keyid']
 
-                    for issuekey in tempthemeobj['issues'].keys():
-                        #try:
-                        try:
-                            with open(BASE_DIR + issuekey + ".json", 'r') as subf:
-                                print "got ", BASE_DIR + issuekey + ".json"
-                                tempissueobj = json.load(subf)
-                                newissueobj = Issue(categoryName=tempissueobj['categoryName'], categoryDescription=tempissueobj['categoryDescription'], keyid=issuekey, theme=newthemeobj)
-                                newissueobj.save()
-                        except Exception, e:
+            currenttheme = Theme.objects.get_or_create(keyid__exact=themerow['keyid'])
+            currenttheme.title = themerow['title']
+            currenttheme.description = themerow['description']
+            currenttheme.keyid = themerow['keyid']
+            currenttheme.order = int(tempthemeobj['order'])
 
-                            print "failed to load", issuekey, e
+        for issuerow in issuesobj:
+            try:
+                themeobj = Theme.objects.get(keyid__exact=issuerow['ThemeID'])
+            except:
+                print "could not find themeobj for ", issuerow['keyid']
+            else:
+                currentissue = Issue.objects.get_or_create(keyid__exact=issuerow['keyid'])
+                currentissue.categoryName = issuerow['title']
+                currentissue.categoryDescription = issuerow['description']
+                currentissue.keyid = issuerow['keyid']
+                currentissue.theme = themeobj
 
-        #getting everything with over 2 keys
-        for otherfile in listdir(BASE_DIR):
-            if isfile(join(BASE_DIR, otherfile)):
-                splitfile = otherfile.replace(".json", "").split("_")
-                if len(splitfile) > 1:
-                    issuekey = splitfile[0]
-                    layerkey = splitfile[1]
-                    print "working on layer", issuekey, layerkey
+        for layerrow in layersobj:
+            try:
+                issueobj = Issue.objects.get(keyid__exact=layerrow['issueID'])
+            except:
+                print "could not find themeobj for ", layerrow['keyid']
+            else:
+                currentlayer = Layer.objects.get_or_create(keyid__exact=layerrow['keyid'])
+                currentlayer.subject = layerrow['title']
+                currentlayer.description = layerrow['description']
+                currentlayer.keyid = layerrow['keyid']
+                currentlayer.labels = layerrow['']
+                currentlayer.jsonStyle = layerrow['title']
+                currentlayer.issue = issueobj
+                currentlayer.attribution = layerrow['keyid']
+                currentlayer.isTimeSupported = layerrow['layerrow']
+                currentlayer.timeSeriesInfo = layerrow['layerrow']
+                currentlayer.save()
 
 
-                    with open(join(BASE_DIR, otherfile), 'r') as f2:
-                        templayerobj = json.load(f2)
-                        try:
-                            theissueobj = Issue.objects.get(keyid__exact=issuekey)
-                        except:
-                            theissueobj = None
-                        if not theissueobj:
-                            print "could not find the issue obj", issuekey
-                            continue
-                        #need to check if we have a ptslayer
-                        ptslayer = None
-                        try:
-                            ptslayer = PointLayer.objects.get(layername__exact=templayerobj['ptsLayer'])
-                        except:
-                            pass
-                        newlayerobj = Layer(subject=templayerobj['subject'], description=templayerobj['description'], keyid=layerkey, ptsLayer=ptslayer, labels=templayerobj['labels'], jsonStyle=templayerobj['jsonStyle'],\
-                                            issue=theissueobj, \
-                                            )
-                        newlayerobj.save()
 
         #now let's test
 
