@@ -1,5 +1,6 @@
 from django.db import models
 from django.forms.models import model_to_dict
+from layerinfo.widgets import LocationField
 
 from jsonfield import JSONField
 
@@ -58,6 +59,7 @@ class Layer(models.Model):
     attribution = models.CharField(max_length=250, null=True, blank=True)
     isTimeSupported = models.BooleanField(default=False)
     timeSeriesInfo = JSONField(null=True)
+
     #this is {label:attribute name}
 
 
@@ -66,13 +68,14 @@ class Layer(models.Model):
 
 class Points(models.Model):
     Header = models.CharField(max_length=200, null=True, blank=True)
-    geometry = JSONField()
     Topic = models.ForeignKey(Layer, null=True, blank=True)
     Map = models.CharField(max_length=200, null=True, blank=True)
     Country = models.CharField(max_length=200, null=True, blank=True)
     Title = models.CharField(max_length=200, db_index=True)
     Story = models.TextField(null=True, blank=True)
     pointlayer = models.ForeignKey(PointLayer)
+    #[125.6, 10.1] for geometry format --- potential for geoJSON object as well
+    geometry = LocationField(blank=True)
 
     def __unicode__(self):
         return u'%s' % (self.Title)
