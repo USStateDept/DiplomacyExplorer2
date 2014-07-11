@@ -10,14 +10,23 @@ input[type="radio"], input[type="checkbox"] {
   margin: 0;
 }
 
-#loading {
+#loading{
+  width:100%;
+  height:100%;
+  z-index: 20001;
+  top:0px;
+  left:0px;
+  position:absolute;
+}
+
+#loading #loader {
   position: absolute;
   width: 220px;
   height: 19px;
   top: 50%;
   left: 50%;
   margin: -10px 0 0 -110px;
-  z-index: 20001;
+  z-index: 20002;
 }
 
 .navbar .navbar-brand {
