@@ -54,20 +54,6 @@
 					<ul class="nav navbar-nav">
 						{{ top_menu|safe }}
 
-
-
-
-
-						<li class="dropdown">
-							<a id="adminDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Admin Demo</a>
-							<ul class="dropdown-menu">
-								<!--<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#themeModal').modal('show'); return false;">Revise Theme Legend</a></li>-->
-								<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#themeDescripModal').modal('show'); return false;">Revise Theme Description</a></li>
-								<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#issueModal').modal('show'); return false;">Revise Issue Legend</a></li>
-								<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#SubissueModal').modal('show'); return false;">Revise Subissue Description</a></li>
-								<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#storyModal').modal('show'); return false;">Add Issue Story</a></li>
-							</ul>
-						</li>
 						<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#shareModal').modal('show'); return false;">Share</a></li>
 						<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#aboutModal').modal('show'); return false;">About</a></li>
 					</ul>
@@ -189,6 +175,27 @@
 				</div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
 
+
+			<div class="modal fade" id="splashScreen">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Diplomacy Explorer</h4>
+						</div>
+						<div class="modal-body">
+							Welcome to our fabulous Diplmacy Explorer Application.  We see this is your first time.  We are currently testing so the splash screen will show up every time, but you can <span id="addSplashCookie" style='color:red;cursor:pointer;'>click me</span> in order to not see this screen in the future, and test the future functionality.
+							<br/>
+							<br/>
+							<span id="viewTour" style='color:red;cursor:pointer;'>View the tour</span>
+							<br/>
+							<br/>
+							<span id="noTour" style='color:red;cursor:pointer;'>Nah, I don't need a tour</span>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+
 			<div class="modal fade" id="shareModal">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -216,6 +223,9 @@
 								</div>
 							</div>
 						</div>
+						<!-- DELETE this -->
+						<span id="removeSplashCookie" style="color:red;cursor:pointer;">See Splash Screen again - secret</span><br/>
+						<span id="viewTour" style='color:red;cursor:pointer;'>View the tour - secret</span>
 					</div><!-- /.modal-content -->
 				</div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
@@ -475,6 +485,7 @@
 			<script src="/static/lib/jquery/jquery-1.11.0.min.js"></script>
 			<script src="/static/lib/jquery-ui-1.11.0.slider/jquery-ui.min.js"></script>
 			<script src="/static/lib/bootstrap-3.1.1/dist/js/bootstrap.js"></script>
+			<script src="/static/lib/jquery-cookie-master/jquery.cookie.js"></script>
 			<script type="text/javascript" src="static/js/host.js"></script>
 			<script type="text/javascript" src="/static/lib/Leaflet-0.7.2/dist/leaflet-src.js"></script>
 			<script type="text/javascript" src="/static/lib/leaflet-hash/leaflet-hash.js"></script>
