@@ -80,7 +80,6 @@ class Command(BaseCommand):
         for issuerow in issuesobj:
             #Name,Description,KeyID,ThemeID,ID
             try:
-                print issuerow
                 themeobj = Theme.objects.get(keyid__exact=issuerow['ThemeID'])
             except:
                 print "could not find themeobj for ", issuerow['KeyID']
@@ -110,8 +109,13 @@ class Command(BaseCommand):
                 currentlayer.jsonStyle = layerrow['jsonStyle']
                 #currentlayer.ptsLayer = layerrow['PtsLayer']
                 currentlayer.attribution = layerrow['Attribution']
-                currentlayer.isTimeSupported = False
-                #currentlayer.timeSeriesInfo = layerrow['layerrow']
+                print "****layerrow", layerrow['isTimeSupported']
+                print type(layerrow['isTimeSupported'])
+                currentlayer.isTimeSupported = True if str(layerrow['isTimeSupported']) == "TRUE" else False
+                if layerrow['isTimeSupported'] == "TRUE":
+                    currentlayer.timeSeriesInfo = layerrow['timeSeriesInfo']
+                else:
+                    currentlayer.timeSeriesInfo = {}
                 currentlayer.save()
 
 

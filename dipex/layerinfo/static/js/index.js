@@ -53,46 +53,7 @@ $.ajax({
 	dataType: 'json',
 	//ignite(data) is found on the main index.jsp page
 	success: function(data){ignite(data);$("#loading").hide();} 
-	/*function(data) {
-		//load layer to be styled later
-		
 
-		geoJsonLayerTPAPEC = new L.geoJson(data, {style: StyleTPAPEC});
-		geoJsonLayerTPNAFTA = new L.geoJson(data, {style: StyleTPNAFTA});
-		geoJsonLayerTPWTO = new L.geoJson(data, {style: StyleTPWTO});
-		geoJsonLayerTPASEAN = new L.geoJson(data, {style: StyleTPASEAN});
-		geoJsonLayerTPCBERA = new L.geoJson(data, {style: StyleTPCBERA});
-		geoJsonLayerTPCAFTA = new L.geoJson(data, {style: StyleTPCAFTA});
-		geoJsonLayerSTI = new L.geoJson(data, {style: {
-													weight: 1,
-													opacity: 1,
-													color: 'white',
-													fillOpacity: 0.7,
-													fillColor: getColorSTI(feature.properties.Science)
-												}});
-		geoJsonLayerECC = new L.geoJson(data, {style: {
-											weight: 1,
-											opacity: 1,
-											color: 'white',
-											fillOpacity: 0.7,
-											fillColor: getColorECC(feature.properties.Env_Climate)
-										}});
-		geoJsonLayerGEWE = new L.geoJson(data, {style: {
-												weight: 1,
-												opacity: 1,
-												color: 'white',
-												fillOpacity: 0.7,
-												fillColor: getColorGEWE(feature.properties.Gender_Women)
-											}});
-		geoJsonLayerWCC = new L.geoJson(data, {style: {
-												weight: 1,
-												opacity: 1,
-												color: 'white',
-												fillOpacity: 0.7,
-												fillColor: getColorGEWE(feature.properties.Crisis_Conflict)
-											}});
-
-	}*/
 });
 
 
@@ -230,7 +191,6 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 		}
 		map.addLayer(allLayersGroup);
 		map.addLayer(allLayersGroupPts);
-
 
 		if (templayerobj['isTimeSupported']){
 			setupTimeSlider(templayerobj['timeSeriesInfo']);

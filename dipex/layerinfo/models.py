@@ -58,6 +58,7 @@ class Layer(models.Model):
     attribution = models.CharField(max_length=250, null=True, blank=True)
     isTimeSupported = models.BooleanField(default=False)
     timeSeriesInfo = JSONField(null=True)
+    #this is {label:attribute name}
 
 
     def __unicode__(self):
