@@ -626,6 +626,11 @@ $(".toggleSidePane").html("Show").click(function(){
 	}
 });
 
+/* Share */
+
+$('#shareModal').on('show.bs.modal', function () {
+	$('#hashURLText').val(window.location.href);
+});
 
 /*  Splash Screen */
 
