@@ -1,0 +1,4 @@
+
+
+
+STATIC_ROOT = "D:/Srv/DipEx/dipexapp/dipex/static"

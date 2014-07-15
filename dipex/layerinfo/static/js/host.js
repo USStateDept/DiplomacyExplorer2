@@ -1,6 +1,6 @@
 //var host = "10.10.30.52";
-var host = "localhost:8080";
-var proxy = "http://localhost:8000/proxy?url=";
+var host = "54.197.226.119:8081";
+var proxy = "http://54.197.226.119:8081/proxy?url=";
 //if not on 10.10.30.52 launch chrome --disable-web-security for cross domain restriction lift.  (Don't use this browser for other activity)
 var loc = window.location.pathname;
 var site = loc.substring(0, loc.lastIndexOf('/')) + '/';

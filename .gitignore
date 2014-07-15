@@ -1,2 +1,4 @@
 *.pyc
 .~lock.*
+dipex/static
+local_settings.py

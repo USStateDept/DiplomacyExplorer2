@@ -83,3 +83,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Load more settings from a file called local_settings.py if it exists
+try:
+    from local_settings import *
+except ImportError:
+    pass
