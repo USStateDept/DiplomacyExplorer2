@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'reversion',
     'layerinfo',
+    'lockdown',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -47,6 +48,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'lockdown.middleware.LockdownMiddleware',
 )
 
 ROOT_URLCONF = 'dipex.urls'
@@ -82,6 +84,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOCKDOWN_PASSWORDS = ("test",)
+LOCKDOWN_URL_EXCEPTIONS = (r'^/geoserver/$',)
 
 # Load more settings from a file called local_settings.py if it exists
 try:

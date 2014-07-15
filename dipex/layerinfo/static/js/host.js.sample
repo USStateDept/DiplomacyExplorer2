@@ -1,9 +1,6 @@
-//You need this for your own settings since we will all be different.  Copy host.js to the same folder and update
-
-
 //var host = "10.10.30.52";
-var host = "10.10.28.146:8080";
-var proxy = "http://localhost:8080/DiplomacyExplorer2/proxy.jsp?url=";
+var host = "54.197.226.119:8080";
+var proxy = "http://54.197.226.119:8080/proxy?url=";
 //if not on 10.10.30.52 launch chrome --disable-web-security for cross domain restriction lift.  (Don't use this browser for other activity)
 var loc = window.location.pathname;
 var site = loc.substring(0, loc.lastIndexOf('/')) + '/';
