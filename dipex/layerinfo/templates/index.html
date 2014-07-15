@@ -17,6 +17,8 @@
         <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="/static/lib/Leaflet-0.7.2/dist/leaflet.css" />
 		<link href="/static/lib/bootstrap-tour/build/css/bootstrap-tour.min.css" rel="stylesheet">
+		<link href="/static/lib/Leaflet.markercluster/dist/MarkerCluster.css" rel="stylesheet">
+		<link href="/static/lib/Leaflet.markercluster/dist/MarkerCluster.Default.css" rel="stylesheet">
 		<link rel="stylesheet" href="/static/css/main.css" />
 
 		<!-- Custom styles for this template -->
@@ -490,6 +492,7 @@
 			<script src="/static/lib/jquery-cookie-master/jquery.cookie.js"></script>
 			<script type="text/javascript" src="static/js/host.js"></script>
 			<script type="text/javascript" src="/static/lib/Leaflet-0.7.2/dist/leaflet-src.js"></script>
+			<script type="text/javascript" src="/static/lib/Leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
 			<script type="text/javascript" src="/static/lib/leaflet-hash/leaflet-hash.js"></script>
 			<script type="text/javascript">
 			var ignite = function(data){
@@ -500,6 +503,13 @@
 						//Create the function
 						if (subobj['jsonStyle']){
 							subobj['jsonLayer'] = createLayer(data, subobj['jsonStyle']);
+							if (subobj['jsonLayer'].state){
+								subobj['jsonLayer'].done(function(data){
+									var markerClusterGrp = new L.markerClusterGroup();
+									markerClusterGrp.addLayer(data);
+									subobj['jsonLayer'] = markerClusterGrp;
+								});
+							}
 						}
 					});
 				});

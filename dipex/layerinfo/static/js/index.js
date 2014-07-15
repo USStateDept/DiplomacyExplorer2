@@ -17,6 +17,7 @@ var generalBaseLayer = "DiscoverDiplomacy-Data_110m"
 var allLayersGroup = new L.LayerGroup();
 var allLayersGroupPts = new L.LayerGroup();
 
+
 var mainKey;
 var currentKey;
 
@@ -33,6 +34,20 @@ var hash;
 
 
 var createLayer = function(data, styleObj){
+
+	if (styleObj['externalresource']){
+		return $.ajax({
+		dataType: "json",
+		url: proxy + styleObj['externalresource']
+		}).then(function (data){
+				return new L.geoJson(data, {style: function(feature){ 
+								//pass attribute value to the getColor
+								styleObj['fillColor'] = getColor(styleObj['fillColorMainKey'], feature.properties[styleObj['fillColorSubKey']]);
+								return styleObj;
+								}});
+		});
+	}
+
 
 	return new L.geoJson(data, {style: function(feature){ 
 										if ($("#slidervalue").val() != "None"){
@@ -239,14 +254,17 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 	var keyLabels = [];
 	var from = layerobj['labels']['from'];
 
-	for (var i = 0; i < grades.length; i++) {
-		
-		keyLabels.push(
-			'<i style="background:' + getColor("TPMember",grades[i]) + '"></i>' +
-			from[i]
-		);
-	}	
-	//}
+	if (grades == null && layerobj['labels']['html']){
+		keyLabels.push(layerobj['labels']['html']);
+	}
+	else{
+		for (var i = 0; i < grades.length; i++) {
+			keyLabels.push(
+				'<i style="background:' + getColor("TPMember",grades[i]) + '"></i>' +
+				from[i]
+			);
+		}	
+	}
 
 	var keypanel = "<div class='legend'>" + keyLabels.join('<br>') + "</div>";
 	
