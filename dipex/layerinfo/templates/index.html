@@ -85,6 +85,7 @@
 				  <div id='slider'></div>
 				</p>
 			</div>
+
 			<div id="loading">
 				<div id="loader" style="display:block;">
 					<div class="loading-indicator">
@@ -93,7 +94,11 @@
 						</div>
 					</div>
 				</div>
+				<div class="holdscreen">
+				</div>
 			</div>
+
+
 
 			<div class="modal fade" id="aboutModal">
 				<div class="modal-dialog">
@@ -190,10 +195,21 @@
 							Welcome to our fabulous Diplmacy Explorer Application.  We see this is your first time.  We are currently testing so the splash screen will show up every time, but you can <span id="addSplashCookie" style='color:red;cursor:pointer;'>click me</span> in order to not see this screen in the future, and test the future functionality.
 							<br/>
 							<br/>
-							<span id="viewTour" style='color:red;cursor:pointer;'>View the tour</span>
-							<br/>
-							<br/>
-							<span id="noTour" style='color:red;cursor:pointer;'>Nah, I don't need a tour</span>
+							<div id="loading_splash">
+								<div id="loader_splash" style="display:block;">
+									<div class="loading-indicator">
+										<div class="progress progress-striped active">
+											<div class="progress-bar progress-bar-info" style="width: 100%"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="splash_buttons" style="display:none;">
+								<span id="viewTour" style='color:red;cursor:pointer;'>View the tour</span>
+								<br/>
+								<br/>
+								<span id="noTour" style='color:red;cursor:pointer;'>Nah, I don't need a tour</span>
+							</div>
 						</div>
 					</div><!-- /.modal-content -->
 				</div><!-- /.modal-dialog -->
@@ -232,6 +248,9 @@
 					</div><!-- /.modal-content -->
 				</div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
+
+
+
 
 			<div class="modal fade" id="themeModal">
 				<div class="modal-dialog">

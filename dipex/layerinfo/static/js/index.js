@@ -67,7 +67,7 @@ $.ajax({
 	url: baseURL.replace("*******", generalBaseLayer),
 	dataType: 'json',
 	//ignite(data) is found on the main index.jsp page
-	success: function(data){ignite(data);$("#loading").hide();} 
+	success: function(data){ignite(data);$("#loading").hide();$("#loading_splash").hide();$("#splash_buttons").show();} 
 
 });
 
@@ -654,6 +654,7 @@ $('#shareModal').on('show.bs.modal', function () {
 
 
 if ( ! $.cookie('splashScreen') || $.cookie('splashScreen') == "false"){
+	$("#loading").hide();
 	$('#splashScreen').modal('show'); 
 }
 
