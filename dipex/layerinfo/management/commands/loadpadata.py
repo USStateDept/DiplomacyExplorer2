@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from layerinfo.models import Theme,Issue,Layer, PointLayer
+from layerinfo.models import Theme,Issue,Layer, PointLayer, Points
 
 import json
 from os import listdir
@@ -7,6 +7,7 @@ from os.path import isfile, join
 import csv
 import sys
 from optparse import make_option
+from geopy import geocoders
 #from polls.models import Poll
 
 class Command(BaseCommand):
@@ -22,9 +23,58 @@ class Command(BaseCommand):
             print "Please provide the path to your SQL dir\nSuch as --path C:\\opengeo\\webapps\\DiplomacyExplorer2\\sql\\"
             sys.exit(1)
 
+
+        pointscsvfile = "Points.csv"
         layerscsvfile = "Layers.csv"
         themescsvfile = "Themes.csv"
         issuescsvfile = "Issues.csv"
+
+
+        pointsobj = []
+        #load points, we are going ot get the point layers from the point.csv file
+        #this will be the following format
+        #pointlayername;header;topic;map;country;title;story;lat;lon;locationname
+        with open(BASE_DIR + pointscsvfile, 'rb') as f:
+            headers = []
+            tempreader = csv.reader(f, delimiter=',')
+            for row in tempreader:
+                if len(headers) == 0:
+                    headers = row
+                else:
+                    pointsobj.append(dict(zip(headers, row)))
+
+        g = geocoders.GoogleV3()
+        #create pointlayer
+        for pointobj in pointsobj:
+            temppointlayer, created = PointLayer.objects.get_or_create(layername=pointobj['pointlayername'])
+            print temppointlayer
+            #build the point
+            temppoint, created = Points.objects.get_or_create(Title=pointobj['title'],pointlayer=temppointlayer)
+
+
+            if (pointobj['lon'] != "" and pointobj['lat'] != ""):
+                try:
+                    temppoint.geometry = [float(pointobj['lon']),float(pointobj['lat'])]
+                except Exception, e:
+                    print e
+
+            elif (pointobj['locationname'] != ""):
+                place, (lat,lon) = g.geocode(pointobj['locationname'])
+                print "geocoded", pointobj['locationname'], "to", lat,lon
+                print temppoint
+                temppoint.geometry = [lon, lat]
+            else:
+                print "Could not find the location for ", pointobj['pointlayername']
+                temppoint.delete()
+            if temppoint:
+                temppoint.Header = pointobj['header']
+                temppoint.Topic = pointobj['topic']
+                temppoint.Map = pointobj['map']
+                temppoint.Country = pointobj['country']
+                temppoint.Story = pointobj['story']
+                temppoint.save()
+
+
 
         layersobj = []
         themesobj = []
@@ -107,10 +157,13 @@ class Command(BaseCommand):
                 currentlayer.keyid = layerrow['KeyID']
                 currentlayer.labels = layerrow['Labels']
                 currentlayer.jsonStyle = layerrow['jsonStyle']
-                #currentlayer.ptsLayer = layerrow['PtsLayer']
+                try:
+                    temppointlayer = PointLayer.objects.get(layername__exact=layerrow['PtsLayer'])
+                    currentlayer.ptsLayer = temppointlayer
+                except:
+                    pass
                 currentlayer.attribution = layerrow['Attribution']
                 print "****layerrow", layerrow['isTimeSupported']
-                print type(layerrow['isTimeSupported'])
                 currentlayer.isTimeSupported = True if str(layerrow['isTimeSupported']) == "TRUE" else False
                 if layerrow['isTimeSupported'] == "TRUE":
                     currentlayer.timeSeriesInfo = layerrow['timeSeriesInfo']
@@ -133,3 +186,10 @@ class Command(BaseCommand):
                 print "\t\t", issue.categoryName, "has", len(layers), "Layers"
                 for layer in layers:
                     print "\t\t\tIt has", layer.subject
+                    pointlayer = layer.ptsLayer
+                    if pointlayer:
+                        print "\t\t\t\tIt has ", pointlayer.layername
+                        points = pointlayer.points_set.all()
+                        print "\t\t\t\t", pointlayer.layername, "has", len(points)
+
+

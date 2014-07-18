@@ -1,0 +1,6 @@
+pointlayername,header,topic,map,country,title,story,lat,lon,locationname
+layera,heresheader,heretopic,maping,country,mytitle,storystorystory,,,Maryland
+layerb,something,something2,something,not,nono,blah,,,Austria
+layerc,,,,,mytitle2,,10,11,India
+layerd,something,,,,needtitle,,,,Russia
+layere,something,,,,blahblah,,-10,-22,
