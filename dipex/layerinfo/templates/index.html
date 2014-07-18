@@ -513,8 +513,10 @@
 			<script type="text/javascript" src="/static/lib/Leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
 			<script type="text/javascript" src="/static/lib/leaflet-hash/leaflet-hash.js"></script>
 			<script type="text/javascript">
+			var donecheck = {"external":[],"internal":false};
 			var ignite = function(data){
 				keysets = {{ jsonObj|safe }};
+				
 
 				$.each(keysets, function(mainkey, mainobj){
 					$.each(mainobj['layers'], function(subkey, subobj){
@@ -522,19 +524,30 @@
 						if (subobj['jsonStyle']){
 							subobj['jsonLayer'] = createLayer(data, subobj['jsonStyle']);
 							if (subobj['jsonLayer'].state){
+								donecheck['external'].push(true);
 								subobj['jsonLayer'].done(function(data){
 									var markerClusterGrp = new L.markerClusterGroup();
 									markerClusterGrp.addLayer(data);
 									subobj['jsonLayer'] = markerClusterGrp;
+									donecheck['external'].pop();
+									allfinished(donecheck);
 								});
 							}
 						}
 					});
 				});
-				
-				//thjis needs to be ehre to enesure that JSON syncs after AJAx
-				hash = L.hash(map);
-				hash.on("update", function(hasharg){$('#copytext').html($(location).attr('href'))});
+				donecheck['internal'] = true;
+				allfinished(donecheck);
+
+			}
+			var allfinished = function(){
+				if (donecheck['internal'] == true && donecheck['external'].length == 0){
+					//thjis needs to be ehre to enesure that JSON syncs after AJAx
+					hash = L.hash(map);
+					hash.on("update", function(hasharg){$('#copytext').html($(location).attr('href'))});
+					return;
+				}
+				return;
 			}
 			</script>
 			<script type="text/javascript" src="/static/js/index.js"></script>
