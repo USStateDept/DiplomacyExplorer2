@@ -228,7 +228,7 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 var loadPointLayer = function(layerobj, theparent){
 	//already checked if the point layer is valid
 	$.ajax({
-		url: baseURL.replace("*******", layerobj['ptsLayer']),
+		url: "/geojson?layerid=" + layerobj['ptsLayer'],
 		dataType: 'json',
 		success: function(data){
 			allLayersGroupPts.addLayer(new L.geoJson(data, {onEachFeature: onEachFeaturePts}));

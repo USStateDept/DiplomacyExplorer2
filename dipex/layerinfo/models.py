@@ -13,12 +13,13 @@ class PointLayer(models.Model):
     def __unicode__(self):
         return u'%s' % (self.layername)
 
+
     def buildJSON(self):
         jsonobj = {"type":"FeatureCollection", "features":[],   "crs": {"type": "EPSG","properties": {"code": "4326"}}}
         points = self.points_set.all()
         for point in points:
             pointObj = model_to_dict(point)
-            temppointobj = {"geometry": pointObj['geometry'], "properties":{}, "type":"Feature"}
+            temppointobj = {"type": "Feature","geometry": {"coordinates":pointObj['geometry'], "type":"Point"}, "properties":{}}
             excludes = ["geometry", "pointlayer"]
             for pointpropkey in pointObj.keys():
                 if pointpropkey not in excludes:
@@ -68,7 +69,7 @@ class Layer(models.Model):
 
 class Points(models.Model):
     Header = models.CharField(max_length=200, null=True, blank=True)
-    Topic = models.ForeignKey(Layer, null=True, blank=True)
+    #Topic = models.ForeignKey(Layer, null=True, blank=True)
     Map = models.CharField(max_length=200, null=True, blank=True)
     Country = models.CharField(max_length=200, null=True, blank=True)
     Title = models.CharField(max_length=200, db_index=True)

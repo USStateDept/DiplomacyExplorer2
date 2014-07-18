@@ -101,10 +101,10 @@ def ajaxPost(request):
 
 
 def geoJson(request):
-    ptslayername = request.GET.get('layername', None)
+    ptslayername = request.GET.get('layerid', None)
     if not ptslayername:
         return json.dumps({})
-    ptslayer = PointLayer.objects.get(layername__exact=ptslayername)
+    ptslayer = PointLayer.objects.get(id__exact=ptslayername)
     if not ptslayer:
         return json.dumps({})
     return HttpResponse(json.dumps(ptslayer.buildJSON()), mimetype="application/json")
