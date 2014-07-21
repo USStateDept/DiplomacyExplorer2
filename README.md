@@ -14,6 +14,8 @@ Download and Install:
 
 *http://www.lfd.uci.edu/~gohlke/pythonlibs/#virtualenv
 
+*the "requiredlibrary" of this repo and install Pillow-2.5.1.win32-py2.7.exe or the 64bit version
+
 Then open command prompt
 
 First Run
