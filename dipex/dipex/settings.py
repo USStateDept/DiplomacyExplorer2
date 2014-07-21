@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'reversion',
     'layerinfo',
     'lockdown',
-	'django_wysiwyg',
+    'tinymce',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -80,15 +80,29 @@ USE_L10N = True
 
 USE_TZ = True
 
-DJANGO_WYSIWYG_FLAVOR = 'yui_advanced'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 STATIC_URL = '/static/'
 
 LOCKDOWN_PASSWORDS = ("test",)
 LOCKDOWN_URL_EXCEPTIONS = (r'^/geoserver/$',)
+
+TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "layerinfo/static/tinymce/")
+
+TINYMCE_JS_URL = 'http://localhost:8000/static/tinymce/tinymce.min.js'
+TINYMCE_DEFAULT_CONFIG = {
+    'plugins': "media,image,link",
+    'theme': "modern",
+#    'cleanup_on_startup': True,
+#    'custom_undo_redo_levels': 10,
+}
+#TINYMCE_SPELLCHECKER = True
+#TINYMCE_COMPRESSOR = True
+
 
 # Load more settings from a file called local_settings.py if it exists
 try:

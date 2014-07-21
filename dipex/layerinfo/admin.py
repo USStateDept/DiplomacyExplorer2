@@ -7,8 +7,7 @@ from layerinfo.models import Issue, Theme, Layer, PointLayer, Points
 
 
 class IssueAdmin(admin.ModelAdmin):
-    #list_display = ('categoryName','theme',)
-    change_form_template = 'admin\change_form.html'
+    list_display = ('categoryName','theme',)
     #fieldsets =[(None,{'fields': ['categoryName']}),]
 
 

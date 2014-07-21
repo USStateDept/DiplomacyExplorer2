@@ -3,6 +3,7 @@ from django.forms.models import model_to_dict
 from layerinfo.widgets import LocationField
 
 from jsonfield import JSONField
+from tinymce import models as tinymce_models
 
 #this should be cached because it's giong ot called alot
 
@@ -37,9 +38,10 @@ class Theme(models.Model):
 
 
 
+
 class Issue(models.Model):
     categoryName = models.CharField(max_length=200, db_index=True)
-    categoryDescription = models.TextField()
+    categoryDescription = tinymce_models.HTMLField()
     keyid = models.CharField(max_length=200, unique=True, db_index=True)
     theme = models.ForeignKey(Theme)
 
