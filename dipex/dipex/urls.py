@@ -13,6 +13,5 @@ urlpatterns = patterns('',
     url(r'^Combo$', 'layerinfo.views.combobox', name='proxy'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^layerinfo', include('layerinfo.urls')),
-
-    url(r'^admin/', include(admin.site.urls))
+    url(r'^admin/', include(admin.site.urls)),
 )

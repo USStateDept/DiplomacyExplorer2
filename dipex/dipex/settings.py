@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'reversion',
     'layerinfo',
     'lockdown',
+	'django_wysiwyg',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -79,6 +80,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+DJANGO_WYSIWYG_FLAVOR = 'yui_advanced'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/

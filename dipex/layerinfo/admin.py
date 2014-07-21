@@ -6,8 +6,9 @@ import reversion
 from layerinfo.models import Issue, Theme, Layer, PointLayer, Points
 
 
-class IssueAdmin(reversion.VersionAdmin):
-    list_display = ('categoryName','theme',)
+class IssueAdmin(admin.ModelAdmin):
+    #list_display = ('categoryName','theme',)
+    change_form_template = 'admin\change_form.html'
     #fieldsets =[(None,{'fields': ['categoryName']}),]
 
 
