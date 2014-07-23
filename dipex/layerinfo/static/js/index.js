@@ -65,7 +65,6 @@ var createLayer = function(data, styleObj){
 
 
 
-console.log(baseDataURL + generalBaseLayer);
 $.ajax({
 	//url: baseURL.replace("*******", generalBaseLayer),
 	url: baseDataURL + generalBaseLayer,
