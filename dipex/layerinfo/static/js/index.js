@@ -3,14 +3,17 @@
  *
  */
 
-
-var baseURL = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3A*******&outputformat=json";
+var proxy = "proxy?url=";
+var baseDataURL = "static/data/"
+//var baseURL = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3A*******&outputformat=json";
 //http%3A%2F%2F10.10.28.146%3A8080%2Fgeoserver%2Fopengeo%2Fows%3Fservice%3DWFS%26version%3D1.0.0%26request%3DGetFeature%26typeName%3Dopengeo%3APA_Data_110m%26outputformat%3Djson
+/*
 if (null != proxy){
 	baseURL = proxy + encodeURIComponent(baseURL);
 }
+*/
 
-var generalBaseLayer = "DiscoverDiplomacy-Data_110m"
+var generalBaseLayer = "DiscoverDiplomacy-Data_110m.json";
 
 
 
@@ -24,7 +27,7 @@ var currentKey;
 
 
 
-var geoJsonList = {}
+var geoJsonList = {};
 var geoJsonLayer;
 var keysets;
 var hash;
@@ -57,14 +60,15 @@ var createLayer = function(data, styleObj){
 										styleObj['fillColor'] = getColor(styleObj['fillColorMainKey'], feature.properties[styleObj['fillColorSubKey']]);
 										return styleObj;
 										}});
-}
+};
 
 
 
 
-
+console.log(baseDataURL + generalBaseLayer);
 $.ajax({
-	url: baseURL.replace("*******", generalBaseLayer),
+	//url: baseURL.replace("*******", generalBaseLayer),
+	url: baseDataURL + generalBaseLayer,
 	dataType: 'json',
 	//ignite(data) is found on the main index.jsp page
 	success: function(data){ignite(data);$("#loading").hide();$("#loading_splash").hide();$("#splash_buttons").show();} 
@@ -228,7 +232,7 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 var loadPointLayer = function(layerobj, theparent){
 	//already checked if the point layer is valid
 	$.ajax({
-		url: "/geojson?layerid=" + layerobj['ptsLayer'],
+		url: "geojson?layerid=" + layerobj['ptsLayer'],
 		dataType: 'json',
 		success: function(data){
 			allLayersGroupPts.addLayer(new L.geoJson(data, {onEachFeature: onEachFeaturePts}));

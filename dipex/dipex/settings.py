@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+BASE_URL = "diplomacyexplorer"
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -87,9 +89,11 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-STATIC_URL = '/static/'
+STATIC_URL = "/" + BASE_URL + '/static/'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = "/" + BASE_URL + '/media/'
+
+ADMIN_MEDIA_PREFIX = BASE_URL
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -98,7 +102,7 @@ LOCKDOWN_URL_EXCEPTIONS = (r'^/geoserver/$',)
 
 TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "layerinfo/static/tinymce/")
 
-TINYMCE_JS_URL = 'http://localhost:8000/static/tinymce/tinymce.min.js'
+TINYMCE_JS_URL = "/" + BASE_URL + '/static/tinymce/tinymce.min.js'
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "media,image,link",
     'theme': "modern",

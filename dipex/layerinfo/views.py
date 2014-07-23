@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from django.forms import model_to_dict
+from django.conf import settings
 
 from layerinfo.models import Theme, Issue, Layer, Points, PointLayer
 
@@ -63,6 +64,7 @@ def home(request):
     d['top_menu'] = buildTopMenu()
     d['theme_options'] = getThemeOptions()
     d['jsonObj'] = getJSONObj()
+    d['BASE_URL'] = settings.BASE_URL
 
     return render(request, 'index.html', d)
 
