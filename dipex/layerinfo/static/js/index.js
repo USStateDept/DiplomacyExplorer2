@@ -53,7 +53,7 @@ var createLayer = function(data, styleObj){
 
 
 	return new L.geoJson(data, {style: function(feature){ 
-										if ($("#slidervalue").val() != "None" && styleObj['fillColorMainKey'].indexOf("NIV")>-1){
+										if ($("#slidervalue").val() != "None"){
 											styleObj['fillColorSubKey'] = $("#slidervalue").val();
 										}
 										//pass attribute value to the getColor
