@@ -45,7 +45,7 @@ var createLayer = function(data, styleObj){
 		}).then(function (data){
 				return new L.geoJson(data, {style: function(feature){ 
 								//pass attribute value to the getColor
-								styleObj['fillColor'] = getColor(styleObj['fillColorMainKey'], feature.properties[styleObj['fillColorSubKey']]);
+								styleObj['fillColor'] = getColor(styleObj['attributeName'], feature.properties[styleObj['attributeName']]);
 								return styleObj;
 								}});
 		});
@@ -53,11 +53,11 @@ var createLayer = function(data, styleObj){
 
 
 	return new L.geoJson(data, {style: function(feature){ 
-										if ($("#slidervalue").val() != "None" && styleObj['fillColorMainKey'].indexOf("NIV")>-1){
-											styleObj['fillColorSubKey'] = $("#slidervalue").val();
+										if (styleObj['timeEnabled']){
+											styleObj['attributeName'] = $("#slidervalue").val();
 										}
 										//pass attribute value to the getColor
-										styleObj['fillColor'] = getColor(styleObj['fillColorMainKey'], feature.properties[styleObj['fillColorSubKey']]);
+										styleObj['fillColor'] = getColor(styleObj['attributeName'], feature.properties[styleObj['attributeName']]);
 										return styleObj;
 										}});
 };
@@ -129,10 +129,10 @@ var setupTimeSlider = function(timeJsonObj){
 	    var tempStyleObj = keysets[tempcurrentkey[0]]['layers'][tempcurrentkey[1]]['jsonStyle'];
 	    tempcurrentlayer.setStyle(function(feature){ 
 											if ($("#slidervalue").val() != "None"){
-												tempStyleObj['fillColorSubKey'] = currentSliderObj[$("#slidervalue").val()];
+												tempStyleObj['attributeName'] = currentSliderObj[$("#slidervalue").val()];
 											}
 											//pass attribute value to the getColor
-											tempStyleObj['fillColor'] = getColor(tempStyleObj['fillColorMainKey'], feature.properties[tempStyleObj['fillColorSubKey']]);
+											tempStyleObj['fillColor'] = getColor(tempstyleObj['attributeName'], feature.properties[tempStyleObj['attributeName']]);
 											return tempStyleObj;
 										});
       }
@@ -142,10 +142,10 @@ var setupTimeSlider = function(timeJsonObj){
     var tempStyleObj = keysets[tempcurrentkey[0]]['layers'][tempcurrentkey[1]]['jsonStyle'];
     tempcurrentlayer.setStyle(function(feature){ 
 										if ($("#slidervalue").val() != "None"){
-											tempStyleObj['fillColorSubKey'] = currentSliderObj[$("#slidervalue").val()];
+											tempStyleObj['attributeName'] = currentSliderObj[$("#slidervalue").val()];
 										}
 										//pass attribute value to the getColor
-										tempStyleObj['fillColor'] = getColor(tempStyleObj['fillColorMainKey'], feature.properties[tempStyleObj['fillColorSubKey']]);
+										tempStyleObj['fillColor'] = getColor(tempstyleObj['attributeName'], feature.properties[tempStyleObj['attributeName']]);
 										return tempStyleObj;
 									});
 
