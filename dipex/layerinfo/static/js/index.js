@@ -230,7 +230,7 @@ var renderSidePanel = function(sidekey){
 	returnhtml += "<div class=\"panel panel-primary\"> \
 						<div class=\"panel-heading\"> \
 							<h4 class=\"panel-title\"> \
-								<a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\">" + currentSideKey['categoryName'] + "</a> \
+								<a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\" class='mainKeySidebar' name='" + currentSideKey['keyid'] + "'>" + currentSideKey['categoryName'] + "</a> \
 							</h4> \
 						</div>";
 	returnhtml += "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + currentSideKey['categoryDescription'] + "</div>";
@@ -690,20 +690,38 @@ var setupTimeSlider = function(timeJsonObj){
 */
 
 
+var mainKeySidebarFunc = function(ev){
+	//clear all layers on this
+	clearLayers();
+	mainkey = $(this).attr("name");
+	map.addLayer(allLayersGroup, {insertAtTheBottom: true});
+	//add all layers as part of this key
+	$.each(keysets[mainkey]['layers'], function(index, valueset){
+		allLayersGroup.addLayer(valueset['jsonLayer']);
+	});
+
+	hash.trigger("move");
+	//trigger the hash update
+}
+
+
+
 
 
 $(".mainKey").click(function(ev, mainClickCallbacker){
 	//clear all layers on this
 	clearLayers();
-	var keyname = $(this).attr("name");
-	mainkey = keyname;
+	mainkey = $(this).attr("name");
 	map.addLayer(allLayersGroup, {insertAtTheBottom: true});
 	//add all layers as part of this key
-	$.each(keysets[keyname]['layers'], function(index, valueset){
+	$.each(keysets[mainkey]['layers'], function(index, valueset){
 		allLayersGroup.addLayer(valueset['jsonLayer']);
 	});
 
-	var returnhtml = renderSidePanel(keyname);
+	var returnhtml = renderSidePanel(mainkey);
+	$("#mapKey").html(returnhtml);
+	$(".mainKeySidebar").click(mainKeySidebarFunc);
+
 	//if the description panel is closed then open it
 	if ($("#descPane").hasClass("closed")){
 		$(".toggleSidePane").trigger("click");
@@ -712,7 +730,7 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 	//unbind previous bindings so we don't conflict
 	$(".sideBarLayerToggle").unbind("click");
 
-	$("#mapKey").html(returnhtml);
+	
 
 	//bind event to layers to turn them on
 	$(".sideBarLayerToggle").click(function(){
