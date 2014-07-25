@@ -18,6 +18,17 @@ class Command(BaseCommand):
 
 
     def handle(self, *args, **options):
+
+
+        #delete everything
+        delitems = [Theme,Issue,Layer, PointLayer, Points]
+        for delitem in delitems:
+            delobjs = delitem.objects.all()
+            for delobj in delobjs:
+                print "deleting", delobj
+                delobj.delete()
+
+
         BASE_DIR = options.get("basepath", None)
         if not BASE_DIR:
             print "Please provide the path to your SQL dir\nSuch as --path C:\\opengeo\\webapps\\DiplomacyExplorer2\\sql\\"
