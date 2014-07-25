@@ -3,16 +3,11 @@
  *
  */
 
+//used for any external resources like bids
 var proxy = "proxy?url=";
+//this will be used for all data sets served directly from our server
 var baseDataURL = "static/data/"
-//var baseURL = "http://" + host + "/geoserver/opengeo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=opengeo%3A*******&outputformat=json";
-//http%3A%2F%2F10.10.28.146%3A8080%2Fgeoserver%2Fopengeo%2Fows%3Fservice%3DWFS%26version%3D1.0.0%26request%3DGetFeature%26typeName%3Dopengeo%3APA_Data_110m%26outputformat%3Djson
-/*
-if (null != proxy){
-	baseURL = proxy + encodeURIComponent(baseURL);
-}
-*/
-
+//the file with all fo the
 var generalBaseLayer = "DiscoverDiplomacy-Data_110m.json";
 
 
@@ -30,6 +25,7 @@ var currentKey;
 var geoJsonList = {};
 var geoJsonLayer;
 var keysets;
+
 var hash;
 //load the base geoJson layer
 
@@ -56,7 +52,8 @@ var createLayer = function(data, styleObj){
 										//pass attribute value to the getColor
 										styleObj['fillColor'] = getColor(styleObj['attributeName'], feature.properties[styleObj['attributeName']]);
 										return styleObj;
-										}});
+										},
+								onEachFeature: onEachFeature});
 };
 
 
@@ -91,7 +88,8 @@ var map = new L.Map('map', {
 	zoom: 2,
 	maxZoom: 6,
 	minZoom: 2,
-	worldCopyJump: true
+	worldCopyJump: false,
+	maxBounds: L.latLngBounds(L.latLng(-180, -360), L.latLng(180, 360))
 });
 
 
@@ -117,19 +115,16 @@ var setupTimeSlider = function(timeJsonObj){
       min: 0,
       max: sliderkey.length -1,
       step: 1,
-      change: function( event, ui ) {
+      slide: function( event, ui ) {
       	$("#slidervalue").val(sliderkey[ui.value]);
       	//use currentkey
       	var tempcurrentlayer = allLayersGroup.getLayers()[0];
 	    var tempcurrentkey = currentKey.split("+");
 	    var tempStyleObj = keysets[tempcurrentkey[0]]['layers'][tempcurrentkey[1]]['jsonStyle'];
 	    tempcurrentlayer.setStyle(function(feature){ 
-
-											if ($("#slidervalue").val()){
-												tempStyleObj['attributeName'] = currentSliderObj[$("#slidervalue").val()];
-											}
+											var theattribute = currentSliderObj[$("#slidervalue").val()]
 											//pass attribute value to the getColor
-											tempStyleObj['fillColor'] = getColor(tempStyleObj['attributeName'], feature.properties[tempStyleObj['attributeName']]);
+											tempStyleObj['fillColor'] = getColor(tempStyleObj['attributeName'], feature.properties[theattribute]);
 											return tempStyleObj;
 										});
       }
@@ -137,7 +132,7 @@ var setupTimeSlider = function(timeJsonObj){
 
     var tempcurrentlayer = allLayersGroup.getLayers()[0];
 	var tempcurrentkey = currentKey.split("+");
-	var tempStyleObj = keysets[tempcurrentkey[0]]['layers'][tempcurrentkey[1]].jsonStyle;
+	var tempStyleObj = keysets[tempcurrentkey[0]]['layers'][tempcurrentkey[1]]['jsonStyle'];
     tempcurrentlayer.setStyle(function(feature){ 
 
 										//pass attribute value to the getColor
@@ -150,11 +145,7 @@ var setupTimeSlider = function(timeJsonObj){
 }
 
 
-var destoryTimeSlider = function(){
-	currentSlider = null;
-	$("#slidervalue").val("None");
-	$( "#slider" ).slider( "destroy" );
-}
+
 
 
 
@@ -277,7 +268,7 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 								</div>";
 
 
-	var keyAccordionPanel = "<div id=\"collapse" + counter + "\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + layerobj['description'] + "</div>" + keypanel + "</div>";
+	var keyAccordionPanel = "<div id=\"collapse" + counter + "\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + layerobj['description'] + "</div>" + keypanel + "<div id='hover_value'></div></div>";
 
 	return keyAccordionTitle + keyAccordionPanel;
 
@@ -313,10 +304,94 @@ var renderSidePanel = function(sidekey){
 }
 
 
+var onEachFeature = function(feature, layer){
+	layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight//,
+        //click: zoomToFeature
+    });
+}
+
+function addCommas(nStr)
+{
+	nStr += '';
+	x = nStr.split('.');
+	x1 = x[0];
+	x2 = x.length > 1 ? '.' + x[1] : '';
+	var rgx = /(\d+)(\d{3})/;
+	while (rgx.test(x1)) {
+		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	}
+	return x1 + x2;
+}
+
+var convertValuetoLabel = function(feature, attributeName, tempObj){
+		var featureval = feature.properties[attributeName];
+		if ($.type(featureval) != "string"){
+			return addCommas(featureval);
+		}
+		var tempindex = tempObj['labels']['values'].indexOf(featureval);
+	    return tempObj['labels']['labels'][tempindex];
+}
+
+
+var highlightFeature = function(e){
+	var layer = e.target;
+	var feature = e.target.feature;
+	var content = feature.properties['Country'];
+	var tempcurrentkey = currentKey.split("+");
+	if (tempcurrentkey.length < 2){
+		return;
+	}
+    var tempObj = keysets[tempcurrentkey[0]]['layers'][tempcurrentkey[1]];
+	if ($("#slidervalue").val()){
+		var attributeTimeName = currentSliderObj[$("#slidervalue").val()]
+		content += ": " + convertValuetoLabel(feature, attributeTimeName, tempObj);
+
+	}
+	else{
+		content += ": " + convertValuetoLabel(feature, tempObj['jsonStyle']['attributeName'], tempObj);
+
+	}
+	$("#hover_value").html(content);
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: ''
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera) {
+        layer.bringToFront();
+    }
+}
+
+var resetHighlight = function(e){
+	$("#hover_value").html("");
+	var tempcurrentlayer = allLayersGroup.getLayers()[0];
+	var tempcurrentkey = currentKey.split("+");
+	if (tempcurrentkey.length < 2){
+		return;
+	}
+	tempcurrentlayer.resetStyle(e.target);
+	return;
+}
+
+
+
 
  function clearLayers() {
+ 	if (currentSliderObj){
+ 		destoryTimeSlider();
+ 	}
 	allLayersGroup.clearLayers();
 	allLayersGroupPts.clearLayers();
+}
+
+var destoryTimeSlider = function(){
+	currentSliderObj = null;
+	$("#slidervalue").val("");
+	$( "#slider" ).slider( "destroy" );
 }
 
 
@@ -406,12 +481,6 @@ function zoomToFeature(e) {
 	map.fitBounds(e.target.getBounds());
 }
 
-function onEachFeature(feature, layer) {
-	layer.on({
-		//click: highlightFeature,
-		//mouseout: resetHighlight
-	});
-}
 
 
 
