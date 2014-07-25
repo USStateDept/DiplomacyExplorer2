@@ -248,19 +248,19 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 	//else{
 
 	var key1div = L.DomUtil.create('div');
-	var grades = layerobj['labels']['grades'];
+	var values = layerobj['labels']['values'];
 		// this is something like a subheader
 	var keyLabels = [];
-	var from = layerobj['labels']['from'];
+	var labels = layerobj['labels']['labels'];
 
-	if (grades == null && layerobj['labels']['html']){
+	if (values == null && layerobj['labels']['html']){
 		keyLabels.push(layerobj['labels']['html']);
 	}
 	else{
-		for (var i = 0; i < grades.length; i++) {
+		for (var i = 0; i < values.length; i++) {
 			keyLabels.push(
-				'<i style="background:' + getColor("TPMember",grades[i]) + '"></i>' +
-				from[i]
+				'<i style="background:' + getColor(layerobj['jsonStyle']['attributeName'],values[i]) + '"></i>' +
+				labels[i]
 			);
 		}	
 	}
@@ -670,8 +670,6 @@ function onEachFeaturePts(feature, layer) {
 			break;
 		case "PEPFAR_2014":
 		case "NNPTSignedDeposited_2014":
-			console.log("htting this");
-			console.log(d);
 			if (d == '3') {
 				return	'#FC4E2A'
 			} else if (d == '2') {
