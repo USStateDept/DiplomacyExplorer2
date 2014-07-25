@@ -126,6 +126,14 @@ CACHES = {
     }
 }
 
+#remove this for production
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+
+
 
 # Load more settings from a file called local_settings.py if it exists
 try:
