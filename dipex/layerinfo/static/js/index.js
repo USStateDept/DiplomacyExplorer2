@@ -53,9 +53,6 @@ var createLayer = function(data, styleObj){
 
 
 	return new L.geoJson(data, {style: function(feature){ 
-										if (styleObj['timeEnabled']){
-											styleObj['attributeName'] = $("#slidervalue").val();
-										}
 										//pass attribute value to the getColor
 										styleObj['fillColor'] = getColor(styleObj['attributeName'], feature.properties[styleObj['attributeName']]);
 										return styleObj;
@@ -123,29 +120,28 @@ var setupTimeSlider = function(timeJsonObj){
       change: function( event, ui ) {
       	$("#slidervalue").val(sliderkey[ui.value]);
       	//use currentkey
-
-	    var tempcurrentlayer = allLayersGroup.getLayers()[0];
+      	var tempcurrentlayer = allLayersGroup.getLayers()[0];
 	    var tempcurrentkey = currentKey.split("+");
 	    var tempStyleObj = keysets[tempcurrentkey[0]]['layers'][tempcurrentkey[1]]['jsonStyle'];
 	    tempcurrentlayer.setStyle(function(feature){ 
-											if ($("#slidervalue").val() != "None"){
+
+											if ($("#slidervalue").val()){
 												tempStyleObj['attributeName'] = currentSliderObj[$("#slidervalue").val()];
 											}
 											//pass attribute value to the getColor
-											tempStyleObj['fillColor'] = getColor(tempstyleObj['attributeName'], feature.properties[tempStyleObj['attributeName']]);
+											tempStyleObj['fillColor'] = getColor(tempStyleObj['attributeName'], feature.properties[tempStyleObj['attributeName']]);
 											return tempStyleObj;
 										});
       }
     });
+
     var tempcurrentlayer = allLayersGroup.getLayers()[0];
-    var tempcurrentkey = currentKey.split("+");
-    var tempStyleObj = keysets[tempcurrentkey[0]]['layers'][tempcurrentkey[1]]['jsonStyle'];
+	var tempcurrentkey = currentKey.split("+");
+	var tempStyleObj = keysets[tempcurrentkey[0]]['layers'][tempcurrentkey[1]].jsonStyle;
     tempcurrentlayer.setStyle(function(feature){ 
-										if ($("#slidervalue").val() != "None"){
-											tempStyleObj['attributeName'] = currentSliderObj[$("#slidervalue").val()];
-										}
+
 										//pass attribute value to the getColor
-										tempStyleObj['fillColor'] = getColor(tempstyleObj['attributeName'], feature.properties[tempStyleObj['attributeName']]);
+										tempStyleObj['fillColor'] = getColor(tempStyleObj['attributeName'], feature.properties[tempStyleObj['attributeName']]);
 										return tempStyleObj;
 									});
 
@@ -204,13 +200,13 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 
 		allLayersGroup.addLayer(templayerobj['jsonLayer']);
 
-		if (templayerobj['ptsLayer'] != ""){
+		if (templayerobj['ptsLayer'] != "" && templayerobj['ptsLayer'] != null){
 			loadPointLayer(templayerobj, currentKey)
 		}
 		map.addLayer(allLayersGroup);
 		map.addLayer(allLayersGroupPts);
 
-		if (templayerobj['isTimeSupported']){
+		if (templayerobj['jsonStyle']['timeEnabled']){
 			setupTimeSlider(templayerobj['timeSeriesInfo']);
 		}
 
@@ -460,28 +456,121 @@ function onEachFeaturePts(feature, layer) {
  function getColor(mainKey, prop) {
  	var d = prop;
 	switch(mainKey) {
-		case "keyNIV":
-			if (d < 2000){
-				return '#FC4E2A';
+		case "TBIncidence-100k_2012":
+			dint = parseInt(d);
+			if (dint > 399){
+				return '#CA1300';
 			}
-			else if (d > 2000 && d < 2100){
-				return	'#ddd'
+			else if (dint > 299){
+				return	'#D29200'
+			}
+			else if (dint > 124){
+				return	'#D5d500'
+			}
+			else if (dint > 49){
+				return	'#98D900'
+			}
+			else if (dint > 19){
+				return	'#59DD00'
+			}
+			else if (dint > 9){
+				return	'#17E100'
 			}
 			else {
-				if (d > 2100){
-					return '#00763F';
-				}
+				return '#00E52D';
 			}
-	    case "TPMember":
-        	if (d == 'Member') {
-					return	'#FC4E2A'
-				} else if (d == 'Observer') {
-					return	'#FC4E2A'
-				} else {
-					return	'#ddd';
-				}
-	        break;
-	    case "HT":
+			break;
+		case "ChildMort_2012":
+			dint = parseInt(d);
+			if (dint > 199){
+				return '#CA1300';
+			}
+			else if (dint > 99){
+				return	'#D29200'
+			}
+			else if (dint > 49){
+				return	'#D5d500'
+			}
+			else {
+				return '#00E52D';
+			}
+			break;
+		case "NIV_1997": 
+			dint = parseInt(d);
+			if (dint > 99999){
+				return '#CA1300';
+			}
+			else if (dint > 49999){
+				return	'#D29200'
+			}
+			else if (dint > 24999){
+				return	'#D5d500'
+			}
+			else if (dint > 9999){
+				return	'#98D900'
+			}
+			else if (dint > 4999){
+				return	'#59DD00'
+			}
+			else {
+				return '#00E52D';
+			}
+			break;
+		case "MalariaElim_2012":
+			if (d == '4') {
+				return	'#FC4E2A';
+			} else if (d == '3') {
+				return	'#CACF9B';
+			} else if (d == '2') {
+				return	'#CACF9B';
+			} else if (d == '1') {
+				return	'#CACF9B';
+			} else {
+				return	'#ddd';
+			}
+			break;
+		case "TPIndex_2014":
+			if (d == '6'){
+				return "#FC4E2A"
+			} else if (d == '5') {
+				return	'#FC4E2A'
+			} else if (d == '4') {
+				return	'#FD8D3C'
+			} else if (d == '3') {
+				return	'#CACF9B'
+			} else if (d == '2') {
+				return	'#CACF9B'
+			} else if (d == '1') {
+				return	'#CACF9B'
+			} else {
+				return	'#ddd';
+			}
+			break;
+		case "MLOIndex_2014":
+			if (d == '5') {
+				return	'#FC4E2A'
+			} else if (d == '4') {
+				return	'#FD8D3C'
+			} else if (d == '3') {
+				return	'#CACF9B'
+			} else if (d == '2') {
+				return	'#CACF9B'
+			} else if (d == '1') {
+				return	'#CACF9B'
+			} else {
+				return	'#ddd';
+			}
+			break;
+		case "AUMember_2014":
+			if (d == 'Member') {
+				return	'#FC4E2A'
+			} else if (d == 'Suspended') {
+				return	'#FD8D3C'
+			} else {
+				return	'#ddd';
+			}
+			break;
+	    case "TIPS_2013":
 			if (d == 'Special Case') {
 				return	'#499DD6'
 			} else if (d == 'Tier 3') {
@@ -498,53 +587,7 @@ function onEachFeaturePts(feature, layer) {
 				return	'#ddd';
 			}
 			break;
-		case "WatSan":
-			if (d == '1') {
-				return	'#FC4E2A'
-			} else {
-				return	'#ddd';
-			}	
-			break;	
-		case "HIGH":
-			if (d == '1') {
-				return	'#FC4E2A'
-			} else {
-				return	'#ddd';
-			}
-			break;
-		case "HIAV":
-			if (d == '3') {
-				return	'#FC4E2A'
-			} else if (d == '2') {
-				return	'#FD8D3C'
-			} else if (d == '1') {
-				return	'#CACF9B'
-			} else {
-				return	'#ddd';
-			}
-		case "HIHIVAIDS":
-			if (d == '3') {
-				return	'#FC4E2A'
-			} else if (d == '2') {
-				return	'#FD8D3C'
-			} else if (d == '1') {
-				return	'#CACF9B'
-			} else {
-				return	'#ddd';
-			}
-			break;
-		case "HIM":
-			if (d == '3') {
-				return	'#FC4E2A'
-			} else if (d == '2') {
-				return	'#FD8D3C'
-			} else if (d == '1') {
-				return	'#CACF9B'
-			} else {
-				return	'#ddd';
-			}
-			break;
-		case "HIMHAC":
+		case "MaternalHealthAccessToCare_2014":
 			if (d == 'Excellent') {
 				return	'#00BDFF'
 			} else if (d == 'Good') {
@@ -559,7 +602,8 @@ function onEachFeaturePts(feature, layer) {
 				return	'#ddd';
 			}
 			break;
-		case "HIPEPFAR":
+		case "PEPFAR_2014":
+		case "TBDrugResistance_2012":
 			if (d == '3') {
 				return	'#FC4E2A'
 			} else if (d == '2') {
@@ -570,34 +614,45 @@ function onEachFeaturePts(feature, layer) {
 				return	'#ddd';
 			}
 			break;
-		case "HIT":
-			if (d == '3') {
+		case "USAID-GlobalHealth_2014":
+		case "USAID-DHRA_2014":
+		case "USAID-WatSan_2014":
+		case "USAID-CrisisConflict_2014":
+		case "USAID-GenderWomen_2014":
+		case "USAID-EnvClimate_2014":
+		case "USAID-ScienceTech_2014":
+			if (d == '1') {
 				return	'#FC4E2A'
-			} else if (d == '2') {
-				return	'#FD8D3C'
-			} else if (d == '1') {
-				return	'#CACF9B'
-			} else {
+			}else {
 				return	'#ddd';
 			}
 			break;
-		case "MLOMember":
+		case "ICAOMember_2014":
+		case "UNESCOMember_2014":
+		case "FAOMember_2014":
+		case "OASMember_2014":
+		case "UNGAMember_2014":
+		case "OSCEMember_2014":
+		case "OECDMember_2014":
+		case "NATOMember_2014":
+		case "EUMember_2014":
+		case "UNHCRMember_2014":
+		case "APECMember_2014":
+		case "NAFTAMember_2014":
+		case "WTOMember_2014":
+		case "ASEANMember_2014":
+		case "CBERAMember_2014":
+		case "CAFTAMember_2014":
 			if (d == 'Member') {
 				return	'#FC4E2A'
-			} else if (d == 'Suspended') {
-				return	'#FD8D3C'
+			} else if (d == 'Observer') {
+				return	'#FC4E2A'
 			} else {
 				return	'#ddd';
 			}
 			break;
-		case "NucSign":
-		case "NucDepo":
-		case "WatSan":
-		case "DHRA":
-		case "STI":
-		case "ECC":
-		case "GEWE":
-		case "WCC":
+		case "NucSign_2014":
+		case "NucDepo_2014":
 			if (d == 'X') {
 			return	'#FC4E2A'
 			} else {
@@ -612,6 +667,21 @@ function onEachFeaturePts(feature, layer) {
 			} else {
 				return	'#ddd';
 			}
+			break;
+		case "PEPFAR_2014":
+		case "NNPTSignedDeposited_2014":
+			console.log("htting this");
+			console.log(d);
+			if (d == '3') {
+				return	'#FC4E2A'
+			} else if (d == '2') {
+				return	'#FD8D3C'
+			} else if (d == '1') {
+				return	'#CACF9B'
+			} else {
+				return	'#ddd';
+			}
+			break;
 	    default:
 	        return '#FC4E2A';
 	}
