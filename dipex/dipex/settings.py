@@ -53,6 +53,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'lockdown.middleware.LockdownMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
 ROOT_URLCONF = 'dipex.urls'
@@ -111,6 +114,17 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 #TINYMCE_SPELLCHECKER = True
 #TINYMCE_COMPRESSOR = True
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'caches'),
+        'TIMEOUT': 60,
+        'OPTIONS': {
+            'MAX_ENTRIES': 2000
+        }
+    }
+}
 
 
 # Load more settings from a file called local_settings.py if it exists
