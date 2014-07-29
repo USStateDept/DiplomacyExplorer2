@@ -842,9 +842,9 @@ var mainKeySidebarFunc = function(ev){
 	mainkey = $(this).attr("name");
 	map.addLayer(allLayersGroup, {insertAtTheBottom: true});
 	//add all layers as part of this key
-	$.each(keysets[mainkey]['layers'], function(index, valueset){
+	/*$.each(keysets[mainkey]['layers'], function(index, valueset){
 		allLayersGroup.addLayer(valueset['jsonLayer']);
-	});
+	});*/
 
 	hash.trigger("move");
 	//trigger the hash update
@@ -860,9 +860,9 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 	mainkey = $(this).attr("name");
 	map.addLayer(allLayersGroup, {insertAtTheBottom: true});
 	//add all layers as part of this key
-	$.each(keysets[mainkey]['layers'], function(index, valueset){
+	/*$.each(keysets[mainkey]['layers'], function(index, valueset){
 		allLayersGroup.addLayer(valueset['jsonLayer']);
-	});
+	});*/
 
 	var returnhtml = renderSidePanel(mainkey);
 	$("#mapKey").html(returnhtml);
@@ -870,6 +870,7 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 
 	//if the description panel is closed then open it
 	if ($("#descPane").hasClass("closed")){
+		clearLayers();
 		$(".toggleSidePane").trigger("click");
 	}
 
