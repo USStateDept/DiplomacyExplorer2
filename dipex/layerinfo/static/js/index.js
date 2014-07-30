@@ -159,8 +159,20 @@ var convertValuetoLabel = function(feature, attributeName, tempObj){
 		if ($.type(featureval) != "string"){
 			return addCommas(featureval);
 		}
-		var tempindex = tempObj['labels']['values'].indexOf(featureval);
-	    return tempObj['labels']['labels'][tempindex];
+
+		try{
+			var thevalue =  tempObj['labels']['labels'][$.inArray(featureval, tempObj['labels']['values'])];
+			if (thevalue && thevalue != "null"){
+				return thevalue;
+			}
+			else{
+				return "No Value";
+			}
+		}
+		catch(err){
+			return "No Value";
+
+		}
 }
 
 
