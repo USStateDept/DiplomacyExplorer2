@@ -107,6 +107,7 @@ var map = new L.Map('map', {
 	maxZoom: 6,
 	minZoom: 2,
 	worldCopyJump: false,
+	attributionControl: false,
 	maxBounds: L.latLngBounds(L.latLng(-180, -360), L.latLng(180, 360))
 });
 
@@ -116,7 +117,7 @@ L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 }).addTo(map);
 new L.Control.Zoom({ position: 'topright' }).addTo(map);
 
-
+/*
 var keyToggle = L.control({position: "bottomleft"});
 
 keyToggle.onAdd = function (map) {
@@ -130,7 +131,7 @@ keyToggle.onAdd = function (map) {
 
 keyToggle.addTo(map);
 
-
+*/
 
 
 
@@ -869,10 +870,12 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 	$(".mainKeySidebar").click(mainKeySidebarFunc);
 
 	//if the description panel is closed then open it
+	/*
 	if ($("#descPane").hasClass("closed")){
 		clearLayers();
 		$(".toggleSidePane").trigger("click");
 	}
+	*/
 
 	//unbind previous bindings so we don't conflict
 	$(".sideBarLayerToggle").unbind("click");
@@ -915,7 +918,7 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 
 
 
-
+/*
 $(".toggleSidePane").unbind("click");
 //side bar control.  Need pass after the it is added to the map and map is rendered
 $(".toggleSidePane").html("Show").click(function(){
@@ -933,6 +936,7 @@ $(".toggleSidePane").html("Show").click(function(){
 		//just close it
 	}
 });
+*/
 
 /* Share */
 
