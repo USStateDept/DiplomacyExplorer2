@@ -118,13 +118,15 @@ var precipitation = L.tileLayer.wms('http://54.197.226.119/geoserver/opengeo/wms
     noWrap: true
 }).addTo(map);
 
+new L.Control.Zoom({ position: 'topright' }).addTo(map);
+
 /*
 
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 	maxZoom: 18,
 	id: 'examples.map-20v6611k'
 }).addTo(map);
-new L.Control.Zoom({ position: 'topright' }).addTo(map);
+
 
 */
 
