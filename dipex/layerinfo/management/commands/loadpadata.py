@@ -162,19 +162,17 @@ class Command(BaseCommand):
             else:
 
                 currentlayer,created = Layer.objects.get_or_create(keyid=layerrow['KeyID'], issue=issueobj)
-                print currentlayer, created
                 currentlayer.subject = layerrow['Name']
                 currentlayer.description = layerrow['Description']
                 currentlayer.keyid = layerrow['KeyID']
                 currentlayer.labels = layerrow['Labels']
                 currentlayer.jsonStyle = layerrow['jsonStyle']
                 try:
-                    temppointlayer = PointLayer.objects.get(layername__exact=layerrow['PtsLayer'])
+                    temppointlayer = PointLayer.objects.get(layername__exact=layerrow['KeyID'])
                     currentlayer.ptsLayer = temppointlayer
                 except:
                     pass
                 currentlayer.attribution = layerrow['Attribution']
-                print "****layerrow", layerrow['isTimeSupported']
                 currentlayer.isTimeSupported = True if str(layerrow['isTimeSupported']) == "TRUE" else False
                 if layerrow['isTimeSupported'] == "TRUE":
                     currentlayer.timeSeriesInfo = layerrow['timeSeriesInfo']
