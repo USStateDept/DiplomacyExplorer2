@@ -278,7 +278,7 @@ var onEachFeature = function(feature, layer){
 var highlightFeature = function(e){
 	var layer = e.target;
 	var feature = e.target.feature;
-	var content = feature.properties['Country'];
+	var content = "<strong>" + feature.properties['Country'] + "</strong>";
 	var tempcurrentkey = currentKey.split("+");
 	if (tempcurrentkey.length < 2){
 		return;
@@ -293,7 +293,10 @@ var highlightFeature = function(e){
 		content += ": " + convertValuetoLabel(feature, tempObj['jsonStyle']['attributeName'], tempObj);
 
 	}
-	$("#hover_value").html(content);
+
+	$(".leaflet-control-infobox-interior").html(content);
+	$(".leaflet-control-infobox-interior").show();
+	//$("#hover_value").html(content);
 
     layer.setStyle({
         weight: 5,
@@ -307,7 +310,8 @@ var highlightFeature = function(e){
 }
 
 var resetHighlight = function(e){
-	$("#hover_value").html("");
+	$(".leaflet-control-infobox-interior").html("");
+	$(".leaflet-control-infobox-interior").hide();
 	var tempcurrentlayer = allLayersGroup.getLayers()[0];
 	var tempcurrentkey = currentKey.split("+");
 	if (tempcurrentkey.length < 2){
@@ -316,6 +320,25 @@ var resetHighlight = function(e){
 	tempcurrentlayer.resetStyle(e.target);
 	return;
 }
+
+L.Control.Command = L.Control.extend({
+    options: {
+        position: 'topleft',
+    },
+
+    onAdd: function (map) {
+        var controlDiv = L.DomUtil.create('div', 'leaflet-control-infobox');
+
+        var controlUI = L.DomUtil.create('div', 'closed leaflet-control-infobox-interior', controlDiv);
+        controlUI.title = 'Map Commands';
+        return controlDiv;
+    }
+});
+var mycontrol = new L.Control.Command;
+mycontrol.addTo(map);
+
+
+
 
 
 

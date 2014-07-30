@@ -171,11 +171,6 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 
-
-.closed {
-  display:none;
-}
-
 .timeSlider{
   position: absolute;
 right: 10px;
@@ -649,4 +644,26 @@ a#skip-navigation:focus {
 }
 #global-header ul li.first:after a:hover {
   color: #dddddd;
+}
+
+
+
+.leaflet-control-infobox-interior
+{
+    width: 150px;
+    height: 40px;
+    background-position: 50% 50%;
+    display: block;
+    padding: 3px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    box-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
+    cursor: auto;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+
+.closed {
+  display:none;
 }
