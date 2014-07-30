@@ -104,6 +104,15 @@ input[type="radio"], input[type="checkbox"] {
 .dropdown-menu {
 	padding: 10px;
 }
+
+.panel-heading:hover{
+  background-color:#428bca;
+  color:white;
+}
+
+.panel-heading a{
+  color:black;
+}
 /*
 .btn-default{
 	background-color: rgb(25,95,164);

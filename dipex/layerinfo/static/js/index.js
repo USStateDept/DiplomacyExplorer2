@@ -220,10 +220,8 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 
 	var keyAccordionTitle = "<div class='panel panel-default'> \
 								<div class='panel-heading'> \
-									<h4 class='panel-title'> \
-										<a data-toggle='collapse' data-parent='#accordion' href='#collapse" + counter + "' class='sideBarLayerToggle' id='" + index + "id' name='" + index + "'>"+ layerobj['subject'] + " \
+										<a data-toggle='collapse' data-parent='#accordion' href='#collapse" + counter + "' class='sideBarLayerToggle' id='" + index + "id' name='" + index + "'><h4 class='panel-title'> "+ layerobj['subject'] + "</h4> \
 										</a> \
-									</h4> \
 								</div>";
 
 
