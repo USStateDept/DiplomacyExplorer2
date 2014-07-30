@@ -226,15 +226,15 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 var renderSidePanel = function(sidekey){
 	currentSideKey = keysets[sidekey];
 	var returnhtml = "";
-	returnhtml += "<div class=\"panel-group\" id=\"accordion\">";
-	returnhtml += "<div class=\"panel panel-primary\"> \
-						<div class=\"panel-heading\"> \
-							<h4 class=\"panel-title\"> \
-								<a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapseCategory\" class='mainKeySidebar' name='" + currentSideKey['keyid'] + "'>" + currentSideKey['categoryName'] + "</a> \
+	returnhtml += "<div class=\"headwrapper\"> \
+						<div class=\"\"> \
+							<h4 class=\"\"> \
+							"+	currentSideKey['categoryName'] +"\
 							</h4> \
 						</div>";
-	returnhtml += "<div id=\"collapseCategory\" class=\"panel-collapse collapse in\"><div class=\"panel-body\">" + currentSideKey['categoryDescription'] + "</div>";
-	returnhtml += "</div></div>"
+	returnhtml += "<div class=\"in\"><div class=\"\">" + currentSideKey['categoryDescription'] + "</div></div></div>";
+	returnhtml += "<div class=\"panel-group\" id=\"accordion\">";
+	//returnhtml += "</div>"
 	var counter = 1;
 	$.each(currentSideKey['layers'], function(index, value){
 		var tempreturn = renderSidePanelPiece(index,value, counter) + "</div>";
@@ -242,7 +242,7 @@ var renderSidePanel = function(sidekey){
 		counter += 1;
 	});
 
-	returnhtml += "</div></div><br/>";
+	returnhtml += "</div><br/>";
 
 	return returnhtml;
 

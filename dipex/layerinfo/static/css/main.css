@@ -187,3 +187,135 @@ background-color: grey;
 opacity:.5;
 top: 0;
 }
+
+div.headwrapper{
+  padding: 10px;
+}
+
+
+
+
+#footer {
+  position: relative;
+  z-index: 70;
+}
+#footer #footer-top {
+  height: 33px;
+}
+#footer #footer-top #footer-left {
+  float: left;
+  height: 33px;
+  width: 50%;
+  margin-right: -512px;
+}
+#footer #footer-top #footer-left #footer-left-bg {
+  margin-top: 16px;
+  background: #424242;
+  height: 17px;
+  margin-right: 512px;
+}
+#footer #footer-top #footer-right {
+  width: 50%;
+  position: absolute;
+  right: 0;
+}
+#footer #footer-top #footer-right #footer-right-bg {
+  margin-top: 16px;
+  height: 17px;
+  background: #424242;
+  margin-left: 511px;
+}
+#footer #footer-top #footer-center {
+  position: relative;
+  height: 33px;
+  width: 1024px;
+  float: left;
+  text-align: center;
+  background: url('../img/footer_top_noprofile.png?1317230572') center;
+}
+#footer #footer-top #footer-title {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../img/sprites.png');
+  background-repeat: no-repeat;
+  background-position: -3px -625px;
+  width: 66px;
+  height: 26px;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  margin-left: -33px;
+}
+#footer #footer-body {
+  background: #424242;
+  height: 62px;
+  width: 100%;
+  min-width: 1024px;
+}
+#footer #footer-body #footer-menu {
+  font-family: "DroidSansRegular", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: white;
+  height: 18px;
+  line-height: 18px;
+  margin: 0 auto;
+  padding: 12px 0 0 0;
+  text-align: center;
+}
+#footer #footer-body #footer-menu a {
+  color: white;
+  text-decoration: none;
+}
+#footer #footer-body #footer-menu a:hover, #footer #footer-body #footer-menu a.here {
+  color: #ababab;
+}
+#footer #footer-body #footer-menu li {
+  display: inline;
+  padding-right: 32px;
+  margin-right: 32px;
+  border-right: 1px solid white;
+}
+#footer #footer-body #footer-menu li.last {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+#footer #footer-body #footer-smallprint {
+  font-family: "DroidSansRegular", Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #ababab;
+  height: 17px;
+  line-height: 17px;
+  margin: 0 auto;
+  padding: 10px 40px 0 40px;
+  width: 944px;
+  text-align: center;
+}
+#footer #footer-body #footer-smallprint a {
+  color: #ababab;
+  text-decoration: none;
+}
+#footer #footer-body #footer-smallprint a:hover, #footer #footer-body #footer-smallprint a.here {
+  color: white;
+}
+#footer #footer-body #footer-smallprint li {
+  height: 12px;
+  line-height: 12px;
+  display: inline-block;
+  padding-right: 8px;
+  margin-right: 6px;
+  border-right: 1px solid #ababab;
+}
+#footer #footer-body #footer-smallprint li.last {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+#footer #footer-body #footer-smallprint #footer-credit {
+  background: url('../img/sprites.png') no-repeat -8px -600px;
+  height: 17px;
+  line-height: 17px;
+  padding-left: 21px;
+}
