@@ -44,9 +44,18 @@ input[type="radio"], input[type="checkbox"] {
   letter-spacing: 1px;
 }
 
+.navbar{
+  /*left:0px;
+  right:0px;*/
+  z-index:1002;
+  position:relative;
+  margin-bottom:0px;
+}
+
 .navbar-inverse {
 	background-color: rgb(25,95,164);
 }
+
 
 .expanded{
   margin-left:25%;
@@ -327,4 +336,317 @@ div.headwrapper{
 
 #mapKey{
   padding-bottom:93px;
+}
+
+
+#global-header {
+  position: relative;
+  z-index: 70;
+  background: #2eace3;
+  width: 100%;
+  height: 16px;
+}
+#global-header ul {
+  font-family: "DroidSansBold", Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: white;
+  line-height: 12px;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  *zoom: 1;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: 944px;
+  margin: 0 auto;
+  padding-top: 2px;
+}
+#global-header ul a {
+  color: white;
+  text-decoration: none;
+}
+#global-header ul a:hover {
+  color: #dddddd;
+}
+#global-header ul li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+  white-space: nowrap;
+  display: inline;
+  float: right;
+  padding-left: 0;
+  padding-right: 0;
+}
+#global-header ul li:first-child, #global-header ul li.first {
+  padding-right: 0;
+}
+#global-header ul li:last-child {
+  padding-left: 0;
+}
+#global-header ul li.last {
+  padding-left: 0;
+}
+#global-header ul li.first:after {
+  font-family: "DroidSansBold", Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: white;
+  margin-left: 8px;
+  margin-right: 8px;
+  content: "|";
+}
+#global-header ul li.first:after a {
+  color: white;
+  text-decoration: none;
+}
+#global-header ul li.first:after a:hover {
+  color: #dddddd;
+}
+
+a#skip-navigation, a#skip-navigation:hover, a#skip-navigation:visited {
+  font-family: "DroidSansBold", Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: white;
+  position: absolute;
+  left: -10000px;
+  overflow: hidden;
+  text-decoration: none;
+}
+a#skip-navigation a, a#skip-navigation:hover a, a#skip-navigation:visited a {
+  color: white;
+  text-decoration: none;
+}
+a#skip-navigation a:hover, a#skip-navigation:hover a:hover, a#skip-navigation:visited a:hover {
+  color: #dddddd;
+}
+
+a#skip-navigation:focus {
+  left: 40px;
+}
+
+#header {
+  width: 100%;
+  position: relative;
+  z-index: 70;
+  height: 64px;
+  background: white;
+  border-bottom: 1px solid #424242;
+}
+
+#inner-header {
+  position: relative;
+  width: 944px;
+  padding-top: 16px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin: 0 auto;
+}
+
+#navigation {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  *zoom: 1;
+  position: relative;
+  width: 944px;
+  height: 24px;
+  display: block;
+}
+#navigation li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+  white-space: nowrap;
+  display: inline;
+  float: left;
+  padding-left: 0;
+  padding-right: 0;
+}
+#navigation li:first-child, #navigation li.first {
+  padding-left: 0;
+}
+#navigation li:last-child {
+  padding-right: 0;
+}
+#navigation li.last {
+  padding-right: 0;
+}
+#navigation li a {
+  display: block;
+  height: 24px;
+}
+#navigation #nav-discover-diplomacy a {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../img/navigation.png?1317230572');
+  background-repeat: no-repeat;
+  background-position: -12px -8px;
+  height: 24px;
+  width: 305px;
+  margin-right: 55px;
+}
+#navigation #nav-diplomacy101 {
+  background: url('../img/navigation.png?1317230572') no-repeat -372px -8px;
+  background-position: right middle;
+  width: 185px;
+}
+#navigation #nav-diplomacy101 a {
+  background: white;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../img/navigation.png?1317230572');
+  background-repeat: no-repeat;
+  background-position: -372px -8px;
+  height: 24px;
+  width: 168px;
+  margin-right: 17px;
+}
+#navigation #nav-diplomacy101 a:hover, #navigation #nav-diplomacy101 a.here {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../img/navigation.png?1317230572');
+  background-repeat: no-repeat;
+  background-position: -372px -80px;
+  height: 24px;
+}
+#navigation #nav-explorer a {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../img/navigation.png?1317230572');
+  background-repeat: no-repeat;
+  background-position: -557px -8px;
+  height: 24px;
+  width: 124px;
+}
+#navigation #nav-explorer a:hover, #navigation #nav-explorer a.here {
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../img/navigation.png?1317230572');
+  background-repeat: no-repeat;
+  background-position: -557px -80px;
+  height: 24px;
+}
+
+#header-search-form {
+  height: 34px;
+  width: 224px;
+  position: absolute;
+  top: 12px;
+  left: 768px;
+}
+#header-search-form #header-search-label {
+  display: none;
+}
+#header-search-form #header-search-box {
+  width: 200px;
+  height: 24px;
+  padding: 0 8px;
+  padding-top: 8px;
+  background-color: #dddddd;
+  border: 1px solid #d6d6d5;
+  -webkit-border-radius: 4px 4px;
+  -moz-border-radius: 4px / 4px;
+  -o-border-radius: 4px / 4px;
+  -ms-border-radius: 4px / 4px;
+  -khtml-border-radius: 4px / 4px;
+  border-radius: 4px / 4px;
+  font-family: "DroidSansRegular", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #ababab;
+  outline: none;
+}
+#header-search-form #header-search-btn {
+  position: absolute;
+  top: 0px;
+  right: 12px;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../img/sprites.png?1317230572');
+  background-repeat: no-repeat;
+  background-position: -16px -560px;
+  text-transform: capitalize;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  padding: 0;
+}
+#header-search-form #header-search-btn.active {
+  background-position: -16px -2584px;
+}
+
+
+
+#global-header {
+  position: relative;
+  z-index: 70;
+  background: #2eace3;
+  width: 100%;
+  height: 16px;
+}
+#global-header ul {
+  font-family: "DroidSansBold", Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: white;
+  line-height: 12px;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  *zoom: 1;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: 944px;
+  margin: 0 auto;
+  padding-top: 2px;
+}
+#global-header ul a {
+  color: white;
+  text-decoration: none;
+}
+#global-header ul a:hover {
+  color: #dddddd;
+}
+#global-header ul li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+  white-space: nowrap;
+  display: inline;
+  float: right;
+  padding-left: 0;
+  padding-right: 0;
+}
+#global-header ul li:first-child, #global-header ul li.first {
+  padding-right: 0;
+}
+#global-header ul li:last-child {
+  padding-left: 0;
+}
+#global-header ul li.last {
+  padding-left: 0;
+}
+#global-header ul li.first:after {
+  font-family: "DroidSansBold", Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: white;
+  margin-left: 8px;
+  margin-right: 8px;
+  content: "|";
+}
+#global-header ul li.first:after a {
+  color: white;
+  text-decoration: none;
+}
+#global-header ul li.first:after a:hover {
+  color: #dddddd;
 }
