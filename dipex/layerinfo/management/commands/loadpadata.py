@@ -158,7 +158,7 @@ class Command(BaseCommand):
             try:
                 issueobj = Issue.objects.get(keyid__exact=layerrow['IssueID'])
             except:
-                print "could not find issueobj for ", layerrow['KeyID']
+                print "could not find issueobj for ", layerrow['IssueID'], "and layer name", layerrow['KeyID']
             else:
 
                 currentlayer,created = Layer.objects.get_or_create(keyid=layerrow['KeyID'], issue=issueobj)
