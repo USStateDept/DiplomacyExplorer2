@@ -111,11 +111,22 @@ var map = new L.Map('map', {
 	maxBounds: L.latLngBounds(L.latLng(-180, -360), L.latLng(180, 360))
 });
 
+var precipitation = L.tileLayer.wms('http://54.197.226.119/geoserver/opengeo/wms', {
+    format: 'image/png',
+    transparent: true,
+    layers: 'opengeo:baselayer',
+    noWrap: true
+}).addTo(map);
+
+/*
+
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 	maxZoom: 18,
 	id: 'examples.map-20v6611k'
 }).addTo(map);
 new L.Control.Zoom({ position: 'topright' }).addTo(map);
+
+*/
 
 /*
 var keyToggle = L.control({position: "bottomleft"});
