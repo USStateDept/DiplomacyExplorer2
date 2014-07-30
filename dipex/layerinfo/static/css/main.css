@@ -3,6 +3,10 @@
     width: 100%;
     overflow: hidden;
   }
+
+  #mapPane{
+    height:100%;
+  }
   /*
   body {
     padding-top: 38px;
@@ -121,6 +125,8 @@ input[type="radio"], input[type="checkbox"] {
   }
   #mapPane{
     margin-left:0;
+    height: 50%;
+    width: 100%;
   }
   #mainContainer{
         margin-top:0px;
