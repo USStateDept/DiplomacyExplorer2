@@ -1,1 +1,1 @@
-alert("Unfortuantely, you are using an older browser.  Some of the features of this web application use the modern technologies for better visualization and interactivity.  For best results, please use teh latest Chrome or FireFox ");
+alert("Unfortuantely, you are using an older browser.  Some of the features of this web application use the modern technologies for better visualization and interactivity.  For best results, please use the latest Chrome or FireFox browser");
