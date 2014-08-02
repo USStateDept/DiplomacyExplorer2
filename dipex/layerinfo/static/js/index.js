@@ -46,7 +46,18 @@ var createLayer = function(data, styleObj){
 								//pass attribute value to the getColor
 								styleObj['fillColor'] = getColor(styleObj['attributeName'], feature.properties[styleObj['attributeName']]);
 								return styleObj;
-								}});
+								},
+								onEachFeature: function (feature, layer) {
+								//layer.bindPopup(feature.properties.Project_Title);
+								layer.bindPopup("<h3>" + feature.properties.Project_Title + 
+								"</h3><br>Sector: " + feature.properties.Sector +
+								"<br> US$: " + feature.properties.Project_Size + 
+								"<br> Status: " + feature.properties.Status +
+								"<br>Date Added: " + feature.properties.Project_Announced + 
+								"<br>Primary Funding Source: " + feature.properties.Project_Funding_Source + 
+								"<br><a href='"+feature.properties.Link_To_Project +"'>Project Website</a><br><a href='#' target='_blank' onclick='javascript:ga('send', 'event', 'Business_Tab_Link', '" + feature.properties.Business_URL + "_Lead_Details', {'nonInteraction': 1});'>Contact</a>");
+								}
+								});
 		});
 	}
 
