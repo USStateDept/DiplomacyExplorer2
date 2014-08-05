@@ -58,7 +58,7 @@ var createLayer = function(data, styleObj){
 									var tempdate = new Date(feature.properties.Project_Announced);
 									projectannounceddate = "<br>Date Added: " + tempdate.toDateString();
 								}
-								
+
 								layer.bindPopup("<h3>" + feature.properties.Project_Title + 
 								"</h3><br>Sector: " + feature.properties.Sector +
 								"<br> US$: " + addCommas(feature.properties.Project_Size) + 
@@ -253,10 +253,10 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 	
 
 	var keyAccordionTitle = "<div class='panel panel-default'> \
+								<a data-toggle='collapse' data-parent='#accordion' href='#collapse" + counter + "' class='sideBarLayerToggle' id='" + index + "id' name='" + index + "'> \
 								<div class='panel-heading'> \
-										<a data-toggle='collapse' data-parent='#accordion' href='#collapse" + counter + "' class='sideBarLayerToggle' id='" + index + "id' name='" + index + "'><h4 class='panel-title'> "+ layerobj['subject'] + "</h4> \
-										</a> \
-								</div>";
+										<h4 class='panel-title'> "+ layerobj['subject'] + "</h4> \
+								</div></a>";
 
 
 	var keyAccordionPanel = "<div id=\"collapse" + counter + "\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + layerobj['description'] + "</div>" + keypanel + "<div id='hover_value'></div></div>";
