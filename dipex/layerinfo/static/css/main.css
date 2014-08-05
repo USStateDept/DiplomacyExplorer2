@@ -800,6 +800,7 @@ a#skip-navigation:focus {
   display:none;
   overflow-y:auto;
   height:inherit;
+  padding:5px;
 }
 
 .currenttab{

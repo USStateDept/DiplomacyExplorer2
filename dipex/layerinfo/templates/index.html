@@ -53,19 +53,28 @@
 								<div class="btn-group">
 								  <a class="btn btn-default btnon" id="mapKeybutton">Info</a>
 								  <a class="btn btn-default" id="searchKeybutton">Search</a>
-								  <a class="btn btn-default" id="settingsKeybutton">Tour</a>
+								  <a class="btn btn-default" id="tourKeybutton">Tour</a>
 								</div>
 
-								<div id='mapKey' class='sideBarTabContent currenttab'>
+								<div id='mapKey' class='sideBarTabContent mapKeybutton currenttab'>
 									<h2>Reminder Welcome Text</h2>
 									<p>The splash screen was brief to say where the person has gone.</p>
 									<p> This is a little more detailed to say what you do here</p>
 									<p>Once the person starts clicking on the different maps, they will never see this screen again.  We can assume similar text lives in the about section</p>
 								</div>
-								<div id='searchKey' class='sideBarTabContent'>
-									Search me
+								<div id='searchKey' class='sideBarTabContent searchKeybutton'>
+									<form id="searchform">
+									        <input type="text" class="form-control" id="inputSearch" placeholder="Search">
+									    <button type="submit" class="btn btn-primary">Search</button>
+									</form>
+									<div class="progress progress-striped active resultsloader closed">
+										<div class="progress-bar progress-bar-info" style="width: 100%"></div>
+									</div>
+									<div id="resultsblock">
+
+									</div>
 								</div>
-								<div id='settingsKey' class='sideBarTabContent'>
+								<div id='settingsKey' class='sideBarTabContent tourKeybutton'>
 									Put settings here
 								</div>
 							</div>

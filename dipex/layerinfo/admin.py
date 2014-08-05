@@ -19,6 +19,7 @@ class ThemeAdmin(reversion.VersionAdmin):
 
 class LayerAdmin(reversion.VersionAdmin):
     list_display = ('subject', 'issue',)
+    exclude = ('description_search',)
     #fieldsets =[(None,{'fields': ['subject']}),]
 
 class PointLayerAdmin(reversion.VersionAdmin):

@@ -1,9 +1,12 @@
 from django.db import models
 from django.forms.models import model_to_dict
 from layerinfo.widgets import LocationField
+import re
 
 from jsonfield import JSONField
 from tinymce import models as tinymce_models
+#do the searching
+import watson
 
 #this should be cached because it's giong ot called alot
 
@@ -54,6 +57,7 @@ class Issue(models.Model):
 class Layer(models.Model):
     subject = models.CharField(max_length=200, db_index=True)
     description = tinymce_models.HTMLField()
+    description_search = models.TextField(null=True, blank=True)
     keyid = models.CharField(max_length=200, unique=True, db_index=True)
     issue = models.ForeignKey(Issue)
     labels = JSONField()
@@ -64,10 +68,16 @@ class Layer(models.Model):
     timeSeriesInfo = JSONField(null=True)
 
     #this is {label:attribute name}
+    def save(self, *args, **kwargs):
+        self.description_search = re.sub("<.*?>", " ", self.description)
+        super(Layer, self).save(*args, **kwargs)
 
 
     def __unicode__(self):
         return u'%s' % (self.subject)
+
+#maybe include connections future to aggregate to layers
+watson.register(Layer)
 
 class Points(models.Model):
     Header = models.CharField(max_length=200, null=True, blank=True)
@@ -82,6 +92,11 @@ class Points(models.Model):
 
     def __unicode__(self):
         return u'%s' % (self.Title)
+
+
+
+
+
 
 
 

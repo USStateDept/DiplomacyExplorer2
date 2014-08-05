@@ -981,7 +981,77 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 
 
 
-$(".btn-group").children()
+$(".btn-group").children().click(function(ev){
+	$(".btn-group").children().removeClass("btnon");
+	$(".sideBarTabContent").hide();
+	$(this).addClass("btnon");
+
+	var tempcallkey = $(this).attr('id');
+	$("." + tempcallkey).show();
+	return false;
+
+	//show the approparite panel
+
+	//stuff happens
+
+});
+
+
+var renderResultItem = function(valueobj, counter){
+
+
+	
+	var keyAccordionTitle = "<a data-toggle='collapse' data-parent='#accordion' href='#collapse" + counter + "' class='resultItem' id='" + valueobj['keyid'] + "id' name='" + valueobj['keyid'] + "'> \
+								<div class='panel-heading'> \
+										<h4 class='panel-title'> "+ valueobj['subject'] + "</h4> \
+								</div></a>";
+
+
+	return keyAccordionTitle;
+}
+
+
+$("#searchform").submit(function(ev){
+	var tempq = $("#inputSearch").val();
+	$(".resultItem").unbind('click');
+	//clear results and show loader
+	$(".resultsloader").removeClass("closed");
+
+	$.ajax({
+		url: "searchLayers?q=" + tempq,
+		dataType: 'json',
+		success: function(data){
+			if (data.length==0){
+				$('#resultsblock').html("No results found.");
+			}
+			else{
+				var outputhtml = "";
+				$.each(data, function(index, valueobj){
+					outputhtml += renderResultItem(valueobj, index) + "<br/>";
+				});
+				$("#resultsblock").html(outputhtml);
+				$(".resultItem").click(function(ev){
+					currentKey = $(this).attr('id');
+					console.log(hash.formatHash(map));
+					temphasher = hash.formatHash(map);
+					location.replace(temphasher);
+					hash.trigger("move");
+				});
+			}
+
+			$(".resultsloader").addClass("closed");
+			//hide loader
+		}
+	});
+
+	//get mainkey and subkey results
+	//iterate to render side panels with index,layerobj,and counter
+	//render side panels
+
+
+	ev.preventDefault();
+	return false;
+})
 
 
 

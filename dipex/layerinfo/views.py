@@ -10,6 +10,7 @@ from layerinfo.models import Theme, Issue, Layer, Points, PointLayer
 import urllib2
 
 import json
+import watson
 
 # Create your views here.
 
@@ -110,6 +111,21 @@ def geoJson(request):
     if not ptslayer:
         return json.dumps({})
     return HttpResponse(json.dumps(ptslayer.buildJSON()), mimetype="application/json")
+
+
+def searchLayers(request):
+    querystring = request.GET.get('q', None)
+    print querystring
+    search_results = watson.search(querystring)
+    resultobj = []
+    counter = 1
+    for result in search_results:
+        resultobj.append({"subject": result.object.subject, "keyid":result.object.issue.keyid + "+" + result.object.keyid})
+        if counter > 10:
+            break
+        counter +=1
+
+    return HttpResponse(json.dumps(resultobj), content_type="application/json")
 
 
 
