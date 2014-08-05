@@ -963,6 +963,10 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 		if (templayerobj['jsonStyle']['timeEnabled']){
 			setupTimeSlider(templayerobj['timeSeriesInfo']);
 		}
+/* in format   "bbox": [[-10, -10 ], [ 10, 10]] */
+		if (templayerobj['jsonStyle']['bbox']){
+			 map.fitBounds(templayerobj['jsonStyle']['bbox']);
+		}
 
 
 		hash.trigger("move");
