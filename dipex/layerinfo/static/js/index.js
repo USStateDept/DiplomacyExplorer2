@@ -438,18 +438,11 @@ function onEachFeaturePts(feature, layer) {
 }
 
 var destoryTimeSlider = function(){
+	$( ".timeSlider" ).fadeOut( "slow", function() {});
 	currentSliderObj = null;
 	$("#slidervalue").val("");
 	$( "#slider" ).slider( "destroy" );
 }
-
-
-
-
-
-
-
-
 
 
 
