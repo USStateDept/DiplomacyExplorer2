@@ -15,7 +15,7 @@ L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 		spiderfyOnMaxZoom: true,
 		showCoverageOnHover: true,
-		zoomToBoundsOnClick: true,
+		zoomToBoundsOnClick: false,
 		singleMarkerMode: false,
 
 		disableClusteringAtZoom: null,
@@ -626,17 +626,20 @@ L.MarkerClusterGroup = L.FeatureGroup.extend({
 	//Default functionality
 	_defaultIconCreateFunction: function (cluster) {
 		var childCount = cluster.getChildCount();
-
+		var size=0;
 		var c = ' marker-cluster-';
 		if (childCount < 10) {
 			c += 'small';
-		} else if (childCount < 100) {
+			size=23;
+		} else if (childCount < 80) {
 			c += 'medium';
+			size=27;
 		} else {
 			c += 'large';
+			size=35;
 		}
 
-		return new L.DivIcon({ html: '<div><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(40, 40) });
+		return new L.DivIcon({ html: '<div style="width:' + size + 'px;height:' + size + 'px;"><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(size, size) });
 	},
 
 	_bindEvents: function () {
