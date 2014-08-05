@@ -251,7 +251,6 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 
 	var keypanel = "<div class='legend'>" + keyLabels.join('<br>') + "</div>";
 	
-
 	var keyAccordionTitle = "<div class='panel panel-default'> \
 								<a data-toggle='collapse' data-parent='#accordion' href='#collapse" + counter + "' class='sideBarLayerToggle' id='" + index + "id' name='" + index + "'> \
 								<div class='panel-heading'> \
@@ -259,7 +258,8 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 								</div></a>";
 
 
-	var keyAccordionPanel = "<div id=\"collapse" + counter + "\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + layerobj['description'] + "</div>" + keypanel + "<div id='hover_value'></div></div>";
+	var keyAccordionPanel = "<div id=\"collapse" + counter + "\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + layerobj['description'] + "</div>" + keypanel + "<div id='hover_value'></div> \
+							<p><small>" + layerobj['attribution'] + "</small></p></div>";
 
 	return keyAccordionTitle + keyAccordionPanel;
 
