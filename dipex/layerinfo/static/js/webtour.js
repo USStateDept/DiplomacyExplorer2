@@ -70,7 +70,7 @@ var tour = new Tour({
     content: "Some maps have stories associated to them.  Click on the flag will open the story.",
     duration: tourduration,
     //onStart: function(tour) {$("#businessDrop").trigger('click');},
-    onShown: function (tour) {map.panTo([10,10]);map.setZoom(5);$(".leaflet-marker-icon").first().trigger('click');} 
+    onShown: function (tour) {map.panTo([10,10]);map.setZoom(1);$(".leaflet-marker-icon").first().trigger('click');} 
     //onShown: function (tour) {map.panTo([39,-37.698]);map.setZoom(6)} 
   },
   {
