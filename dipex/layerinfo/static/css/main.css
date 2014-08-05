@@ -97,7 +97,6 @@ float:none;
   height:100%;
   padding-right:0px;
   padding-left:0px;
-  overflow-y: auto;
 }
 
 .row{
@@ -246,10 +245,10 @@ float:none;
 }
 
 
-.timeSlider{
+.timeSlider {
   position: absolute;
 right: 10px;
-bottom: 90px;
+bottom: 130px;
 }
 
 .timeinfobox{
@@ -259,11 +258,16 @@ bottom: 90px;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
   cursor: auto;
   text-align: center;
   background-color: #FFFFFF;
   padding:10px;
+}
+
+.shareInfoBox{
+  position: absolute;
+right: 10px;
+bottom: 80px;
 }
 
 
@@ -766,6 +770,49 @@ a#skip-navigation:focus {
     text-align: center;
     background-color: #FFFFFF;
 }
+
+#splash_buttons{
+  margin:auto;
+  width:250px;
+}
+
+.panel-body .btn-group{
+  width:100%;
+}
+
+.panel-body .btn-group .btn{
+  width:33%;
+}
+/*
+.panel-body .btn-group .gear{
+  width:20%;
+  background: url('../img/gear.png') no-repeat center center;
+  height:34px;
+}
+*/
+
+.panel-body .btn-group .btnon{
+  background-color:#2eace3;
+  color:white;
+}
+
+.sideBarTabContent{
+  display:none;
+  overflow-y:auto;
+  height:inherit;
+}
+
+.currenttab{
+  display:block;
+}
+
+#collapseSide{
+  height:inherit;
+}
+
+
+
+
 
 .closed {
   display:none;

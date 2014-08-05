@@ -35,13 +35,6 @@
 <div id="header"><div id="inner-header"><ul id="navigation"><li id="nav-discover-diplomacy"><a title="Discover Diplomacy" href="http://diplomacy.state.gov/discoverdiplomacy/">Discover Diplomacy</a></li><li id="nav-diplomacy101"><a title="Diplomacy 101" href="http://diplomacy.state.gov/discoverdiplomacy/diplomacy101/">Diplomacy 101</a></li><li id="nav-explorer"><a title="Explorer" href="./explorer_files/explorer.htm" class="here">Explorer</a></li></ul><form id="header-search-form" name="gs" action="http://search.state.gov/search" method="get" class="search"><fieldset><label id="header-search-label" for="header-search-box">Search Site</label><input value="Search Site" id="header-search-box" name="q"><input value="state_diplomacy_en" name="site" type="hidden"><input value="state_diplomacy_en" name="client" type="hidden"><input value="xml_no_dtd" name="output" type="hidden"><input value="state_diplomacy_en" name="proxystylesheet" type="hidden"><input value="3" name="entqr" type="hidden"><input value="lang_en" name="lr" type="hidden"><input value="utf8" name="oe" type="hidden"><input value="utf8" name="ie" type="hidden"><input value="date:D:S:d1" name="sort" type="hidden"><input value="*" name="getfields" type="hidden"><input value="Go" type="submit" id="header-search-btn"></fieldset></form></div></div>
 
 			<div class="navbar navbar-inverse navbar-fixed-top">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
 				<div class="navbar-collapse collapse" id="navbar-collapse">
 					<ul class="nav navbar-nav">
 						{{ top_menu|safe }}
@@ -57,11 +50,23 @@
 					<div class="row" id = "rowId" style="height:100%;width:100%">
 						<div class="col-lg-3 col-md-3 col-sm-3" id="descPane">
 							<div class='panel-body panel-collapse collapse in' id='collapseSide' style='padding: 0px !important;'>
-								<div id='mapKey'>
+								<div class="btn-group">
+								  <a class="btn btn-default btnon" id="mapKeybutton">Info</a>
+								  <a class="btn btn-default" id="searchKeybutton">Search</a>
+								  <a class="btn btn-default" id="settingsKeybutton">Tour</a>
+								</div>
+
+								<div id='mapKey' class='sideBarTabContent currenttab'>
 									<h2>Reminder Welcome Text</h2>
 									<p>The splash screen was brief to say where the person has gone.</p>
 									<p> This is a little more detailed to say what you do here</p>
 									<p>Once the person starts clicking on the different maps, they will never see this screen again.  We can assume similar text lives in the about section</p>
+								</div>
+								<div id='searchKey' class='sideBarTabContent'>
+									Search me
+								</div>
+								<div id='settingsKey' class='sideBarTabContent'>
+									Put settings here
 								</div>
 							</div>
 						</div>
@@ -202,49 +207,25 @@
 								</div>
 							</div>
 							<div id="splash_buttons" style="display:none;">
-								<span id="viewTour" style='color:red;cursor:pointer;'>View the tour</span>
-								<br/>
-								<br/>
-								<span id="noTour" style='color:red;cursor:pointer;'>Nah, I don't need a tour</span>
+								<button id="viewTour" type="submit" class="btn btn-default">View the tour</button>
+								<button id="noTour" type="submit" class="btn btn-default">Skip tour</button>
 							</div>
 						</div>
 					</div><!-- /.modal-content -->
 				</div><!-- /.modal-dialog -->
 			</div><!-- /.modal -->
 
-			<div class="modal fade" id="shareModal">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title">Share</h4>
-						</div>
-						<div class="modal-body">
-							<div class="tab-pane fade active in" id="shareMethods">
-								<p>Please share this map with a friend!</p>
-								<div class="panel panel-primary">
-									<div class="panel-heading">
-										Methods
-									</div>
-									<ul class="list-group">
-										<li class="list-group-item"><fb:share-button id="fb" href="https://developers.facebook.com/docs/plugins/" width="100" type="button"></fb:share-button></li>
-										<li class="list-group-item">
-											<a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a>
-										</li>
-										<li class="list-group-item">
-											<label for="hashURLText">Ctrl-C, Enter to Copy</label>
-											<input type="text" class="form-control" name="hashURLText" id="hashURLText" autofocus="" placeholder="Ctrl-C, Enter to Copy"> 
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- DELETE this -->
+			<div class="shareInfoBox">
+				<fb:share-button id="fb" href="https://developers.facebook.com/docs/plugins/" width="100" type="button"></fb:share-button>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a>
+			</div>
+
+
+						<!-- Tour Section
 						<span id="removeSplashCookie" style="color:red;cursor:pointer;">See Splash Screen again - secret</span><br/>
 						<span id="viewTour" style='color:red;cursor:pointer;'>View the tour - secret</span>
-					</div><!-- /.modal-content -->
-				</div><!-- /.modal-dialog -->
-			</div><!-- /.modal -->
+						-->
+
 
 
 			<div id="fb-root">
