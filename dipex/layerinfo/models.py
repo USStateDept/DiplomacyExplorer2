@@ -30,7 +30,7 @@ class PointLayer(models.Model):
 
 class Theme(models.Model):
     title = models.CharField(max_length=200, unique=True, db_index=True)
-    description = models.TextField()
+    description = tinymce_models.HTMLField()
     keyid = models.CharField(max_length=200, unique=True, db_index=True)
     order = models.IntegerField(default=0)
     def __unicode__(self):
@@ -53,7 +53,7 @@ class Issue(models.Model):
 
 class Layer(models.Model):
     subject = models.CharField(max_length=200, db_index=True)
-    description = models.TextField(null=True, blank=True)
+    description = tinymce_models.HTMLField()
     keyid = models.CharField(max_length=200, unique=True, db_index=True)
     issue = models.ForeignKey(Issue)
     labels = JSONField()
@@ -75,7 +75,7 @@ class Points(models.Model):
     Map = models.CharField(max_length=200, null=True, blank=True)
     Country = models.CharField(max_length=200, null=True, blank=True)
     Title = models.CharField(max_length=200, db_index=True)
-    Story = models.TextField(null=True, blank=True)
+    Story = tinymce_models.HTMLField()
     pointlayer = models.ForeignKey(PointLayer)
     #[125.6, 10.1] for geometry format --- potential for geoJSON object as well
     geometry = LocationField(blank=True)
