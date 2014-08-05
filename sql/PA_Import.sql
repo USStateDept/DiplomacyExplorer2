@@ -3,11 +3,11 @@ CREATE TABLE public."PA_Data"
 (
 	"Country" text,
 	"PEPFAR_2014" text,
-	"Signed_2014" text,
-	"Deposited_2014" text,
-	"SignedDeposited_2014" text,
+	"NNPTSigned_2014" text,
+	"NNPTDeposited_2014" text,
+	"NNPTSignedDeposited_2014" text,
 	"MaternalHealthAccessToCare_2014" text,
-	"TIPS_2014" text,
+	"TIPS_2013" text,
 	"ICAOMember_2014" text,
 	"UNESCOMember_2014" text,
 	"FAOMember_2014" text,
@@ -19,6 +19,8 @@ CREATE TABLE public."PA_Data"
 	"EUMember_2014" text,
 	"AUMember_2014" text,
 	"UNHCRMember_2014" text,
+	"AGOAMember_2014" text,
+	"WFP-Board_2014" text,
 	"MLOIndex_2014" real,
 	"APECMember_2014" text,
 	"NAFTAMember_2014" text,
@@ -50,7 +52,19 @@ CREATE TABLE public."PA_Data"
 	"NIV_2010" real,
 	"NIV_2011" real,
 	"NIV_2012" real,
-	"NIV_2013" real
+	"NIV_2013" real,
+	"CITES-Species_2014" real,
+	"Malaria-Elimination_2013" real,
+	"TB-Drug-Resistance_2012" real,
+	"Inf-Mort_2012" real,
+	"TB-Incidence_2012" real,
+	"Polio-Cases_2013" real,
+	"Polio-Cases_2014" real,
+	"301-List_2014" text,
+	"Money-Laundering_2014" text,
+	"Precursor-Chemical-Sources_2014" real,
+	"HEU-Free_2014" real,
+	"Internet-Freedom_2013" text
 );
 
 set client_encoding to 'UTF-8';
