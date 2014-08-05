@@ -217,8 +217,23 @@ float:none;
 .timeSlider{
   position: absolute;
 right: 10px;
-bottom: 40px;
+bottom: 90px;
 }
+
+.timeinfobox{
+  background-position: 50% 50%;
+  display: block;
+  padding: 3px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
+  cursor: auto;
+  text-align: center;
+  background-color: #FFFFFF;
+  padding:10px;
+}
+
 
 
 .navbar-nav > li > .dropdown-menu{
