@@ -75,6 +75,7 @@ var createLayer = function(data, styleObj){
 	return new L.geoJson(data, {style: function(feature){ 
 										//pass attribute value to the getColor
 										styleObj['fillColor'] = getColor(styleObj['attributeName'], feature.properties[styleObj['attributeName']]);
+										styleObj['color'] = '#666';
 										return styleObj;
 										},
 								onEachFeature: onEachFeature});
