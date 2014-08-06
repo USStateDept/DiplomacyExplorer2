@@ -1152,6 +1152,10 @@ $("#viewTour").click(function(ev){
 	return false;
 });
 
+$("#viewSplash").click(function(ev){
+	$('#splashScreen').modal('show');
+});
+
 $("#noTour").click(function(ev){
 	$('#splashScreen').modal('hide');
 	return false;

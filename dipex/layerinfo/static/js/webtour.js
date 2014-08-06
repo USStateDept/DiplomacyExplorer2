@@ -1,5 +1,5 @@
 // Instance the tour
-var tourduration = 4000;
+var tourduration = 5000;
 var tour = new Tour({
   storage:false,
   steps: [
@@ -9,7 +9,7 @@ var tour = new Tour({
     title: "Welcome",
     content: "Welcome to the Diplomacy Explorer Tour.  You will see some features of the application and learn a little about Diplomacy along the way.",
     duration: tourduration,
-    onShow: function (tour) {}
+    onShow: function (tour) {map.panTo([10,10]);map.setZoom(1);$("#mapKeybutton").trigger('click');}
     //backdrop:true
   },
   {
