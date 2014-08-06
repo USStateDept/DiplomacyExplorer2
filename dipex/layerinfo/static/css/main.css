@@ -783,6 +783,11 @@ a#skip-navigation:focus {
   margin-top:5px;
 }
 
+.noSplashLink{
+  font-size: 68%;
+  cursor:pointer;
+}
+
 @media (min-width: 768px){
 .navbar-nav>li>a{
   padding-top:2px;

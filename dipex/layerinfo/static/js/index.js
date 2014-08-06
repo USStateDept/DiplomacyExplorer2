@@ -1127,7 +1127,7 @@ if ( (! $.cookie('splashScreen') || $.cookie('splashScreen') == "false") && $("#
 	$("#loading").hide();
 	$('#splashScreen').modal('show'); 
 }
-
+/*
 $("#addSplashCookie").click(function(ev){
 	$.cookie('splashScreen', "true");
 	$(this).html(" Got it, you won't see the splash again.  For testing you can reset this setting under the share button ");
@@ -1140,7 +1140,9 @@ $("#removeSplashCookie").click(function(ev){
 	$(this).html(" Got it, You can now reload this page, and you will see the splash screen ");
 	$(this).unbind('click');
 	return false;
-})
+});
+*/
+
 
 $("#viewTour").click(function(ev){
 	$('#splashScreen').modal('hide');
@@ -1160,5 +1162,12 @@ $("#noTour").click(function(ev){
 	$('#splashScreen').modal('hide');
 	return false;
 });
+
+$("#noSplash").click(function(ev){
+	$.cookie('splashScreen', "true");
+	$('#splashScreen').modal('hide');
+	ev.preventDefault();
+	return false;
+})
 
 
