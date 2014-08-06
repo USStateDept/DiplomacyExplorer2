@@ -1032,22 +1032,25 @@ $("#searchform").submit(function(ev){
 			else{
 				var outputhtml = "";
 				$.each(data, function(index, valueobj){
-					outputhtml += renderResultItem(valueobj, index) + "<br/>";
+					outputhtml += renderResultItem(valueobj, index);
 				});
 				$("#resultsblock").html(outputhtml);
 				$(".resultItem").click(function(ev){
 					currentKey = $(this).attr('id');
 					var tempsplit = currentKey.split("+");
-					var layername = tempsplit[1];
-					var mainkey = tempsplit[0];
+					layername = tempsplit[1];
+					mainkey = tempsplit[0];
 					var returnhtml = renderSidePanel(mainkey);
 					$("#mapKey").html(returnhtml);
 
+
+
 					$(".sideBarLayerToggle").unbind('click');
+					$("#" + layername + "id").trigger("click");
 					//bind event to layers to turn them on
 					$(".sideBarLayerToggle").click(sideBarClick);
 
-					//$("#" + layername + "id").collapse('show');
+					
 					$("#mapKeybutton").trigger('click');
 
 

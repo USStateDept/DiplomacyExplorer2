@@ -803,6 +803,11 @@ a#skip-navigation:focus {
   padding:5px;
 }
 
+#resultsblock{
+  overflow-y: auto;
+  height: inherit;
+}
+
 .currenttab{
   display:block;
 }
@@ -811,7 +816,9 @@ a#skip-navigation:focus {
   height:inherit;
 }
 
-
+.resultItem .panel-heading{
+  margin-top:5px;
+}
 
 
 
