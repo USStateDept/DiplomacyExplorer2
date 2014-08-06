@@ -913,7 +913,35 @@ var mainKeySidebarFunc = function(ev){
 }
 
 
+var sideBarClick = function(ev){
 
+	var layername = $(this).attr('name');
+	currentKey = mainkey + "+" + layername
+	var templayerobj = keysets[mainkey]['layers'][layername];
+
+	allLayersGroup.clearLayers();
+	allLayersGroupPts.clearLayers();
+
+	allLayersGroup.addLayer(templayerobj['jsonLayer']);
+
+	if (templayerobj['ptsLayer'] != "" && templayerobj['ptsLayer'] != null){
+		loadPointLayer(templayerobj, currentKey)
+	}
+	map.addLayer(allLayersGroup);
+	map.addLayer(allLayersGroupPts);
+
+	if (templayerobj['jsonStyle']['timeEnabled']){
+		setupTimeSlider(templayerobj['timeSeriesInfo']);
+	}
+/* in format   "bbox": [[-10, -10 ], [ 10, 10]] */
+	if (templayerobj['jsonStyle']['bbox']){
+		 map.fitBounds(templayerobj['jsonStyle']['bbox']);
+	}
+
+
+	hash.trigger("move");
+
+}
 
 
 $(".mainKey").click(function(ev, mainClickCallbacker){
@@ -944,33 +972,7 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 	
 
 	//bind event to layers to turn them on
-	$(".sideBarLayerToggle").click(function(){
-		var layername = $(this).attr('name');
-		currentKey = mainkey + "+" + layername
-		var templayerobj = keysets[mainkey]['layers'][layername];
-
-		allLayersGroup.clearLayers();
-		allLayersGroupPts.clearLayers();
-
-		allLayersGroup.addLayer(templayerobj['jsonLayer']);
-
-		if (templayerobj['ptsLayer'] != "" && templayerobj['ptsLayer'] != null){
-			loadPointLayer(templayerobj, currentKey)
-		}
-		map.addLayer(allLayersGroup);
-		map.addLayer(allLayersGroupPts);
-
-		if (templayerobj['jsonStyle']['timeEnabled']){
-			setupTimeSlider(templayerobj['timeSeriesInfo']);
-		}
-/* in format   "bbox": [[-10, -10 ], [ 10, 10]] */
-		if (templayerobj['jsonStyle']['bbox']){
-			 map.fitBounds(templayerobj['jsonStyle']['bbox']);
-		}
-
-
-		hash.trigger("move");
-	});
+	$(".sideBarLayerToggle").click(sideBarClick);
 	if (mainClickCallbacker){
 		mainClickCallbacker();
 	}
@@ -1001,7 +1003,7 @@ var renderResultItem = function(valueobj, counter){
 
 
 	
-	var keyAccordionTitle = "<a data-toggle='collapse' data-parent='#accordion' href='#collapse" + counter + "' class='resultItem' id='" + valueobj['keyid'] + "id' name='" + valueobj['keyid'] + "'> \
+	var keyAccordionTitle = "<a data-toggle='collapse' data-parent='#accordion' href='#collapse" + counter + "' class='resultItem' id='" + valueobj['keyid'] + "' name='" + valueobj['keyid'] + "'> \
 								<div class='panel-heading'> \
 										<h4 class='panel-title'> "+ valueobj['subject'] + "</h4> \
 								</div></a>";
@@ -1009,6 +1011,9 @@ var renderResultItem = function(valueobj, counter){
 
 	return keyAccordionTitle;
 }
+
+
+
 
 
 $("#searchform").submit(function(ev){
@@ -1032,10 +1037,44 @@ $("#searchform").submit(function(ev){
 				$("#resultsblock").html(outputhtml);
 				$(".resultItem").click(function(ev){
 					currentKey = $(this).attr('id');
-					console.log(hash.formatHash(map));
-					temphasher = hash.formatHash(map);
-					location.replace(temphasher);
+					var tempsplit = currentKey.split("+");
+					var layername = tempsplit[1];
+					var mainkey = tempsplit[0];
+					var returnhtml = renderSidePanel(mainkey);
+					$("#mapKey").html(returnhtml);
+
+					$(".sideBarLayerToggle").unbind('click');
+					//bind event to layers to turn them on
+					$(".sideBarLayerToggle").click(sideBarClick);
+
+					//$("#" + layername + "id").collapse('show');
+					$("#mapKeybutton").trigger('click');
+
+
+					var templayerobj = keysets[mainkey]['layers'][layername];
+
+					allLayersGroup.clearLayers();
+					allLayersGroupPts.clearLayers();
+
+					allLayersGroup.addLayer(templayerobj['jsonLayer']);
+
+					if (templayerobj['ptsLayer'] != "" && templayerobj['ptsLayer'] != null){
+						loadPointLayer(templayerobj, currentKey)
+					}
+					map.addLayer(allLayersGroup);
+					map.addLayer(allLayersGroupPts);
+
+					if (templayerobj['jsonStyle']['timeEnabled']){
+						setupTimeSlider(templayerobj['timeSeriesInfo']);
+					}
+					if (templayerobj['jsonStyle']['bbox']){
+						 map.fitBounds(templayerobj['jsonStyle']['bbox']);
+					}
+
+
 					hash.trigger("move");
+
+
 				});
 			}
 
