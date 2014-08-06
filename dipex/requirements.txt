@@ -3,5 +3,7 @@ django-jsonfield==0.9.13
 django-lockdown==1.0
 django-reversion==1.8.1
 django-tinymce==1.5.2
+django-watson==1.1.3
+futures==2.1.6
 geopy==0.99
 pillow==2.5.1
