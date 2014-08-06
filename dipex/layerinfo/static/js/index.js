@@ -1123,7 +1123,7 @@ $(".toggleSidePane").html("Show").click(function(){
 /*  Splash Screen */
 
 
-if ( ! $.cookie('splashScreen') || $.cookie('splashScreen') == "false"){
+if ( (! $.cookie('splashScreen') || $.cookie('splashScreen') == "false") && $("#descPane").css('min-height') != "250px"){
 	$("#loading").hide();
 	$('#splashScreen').modal('show'); 
 }

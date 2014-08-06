@@ -34,13 +34,18 @@
 
 <div id="header"><div id="inner-header"><ul id="navigation"><li id="nav-discover-diplomacy"><a title="Discover Diplomacy" href="http://diplomacy.state.gov/discoverdiplomacy/">Discover Diplomacy</a></li><li id="nav-diplomacy101"><a title="Diplomacy 101" href="http://diplomacy.state.gov/discoverdiplomacy/diplomacy101/">Diplomacy 101</a></li><li id="nav-explorer"><a title="Explorer" href="./explorer_files/explorer.htm" class="here">Explorer</a></li></ul><form id="header-search-form" name="gs" action="http://search.state.gov/search" method="get" class="search"><fieldset><label id="header-search-label" for="header-search-box">Search Site</label><input value="Search Site" id="header-search-box" name="q"><input value="state_diplomacy_en" name="site" type="hidden"><input value="state_diplomacy_en" name="client" type="hidden"><input value="xml_no_dtd" name="output" type="hidden"><input value="state_diplomacy_en" name="proxystylesheet" type="hidden"><input value="3" name="entqr" type="hidden"><input value="lang_en" name="lr" type="hidden"><input value="utf8" name="oe" type="hidden"><input value="utf8" name="ie" type="hidden"><input value="date:D:S:d1" name="sort" type="hidden"><input value="*" name="getfields" type="hidden"><input value="Go" type="submit" id="header-search-btn"></fieldset></form></div></div>
 
+
 			<div class="navbar navbar-inverse navbar-fixed-top">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
 				<div class="navbar-collapse collapse" id="navbar-collapse">
 					<ul class="nav navbar-nav">
 						{{ top_menu|safe }}
-
-						<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#shareModal').modal('show'); return false;">Share</a></li>
-						<li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" onclick="$('#aboutModal').modal('show'); return false;">About</a></li>
 					</ul>
 				</div><!--/.navbar-collapse -->
 			</div>
@@ -110,91 +115,6 @@
 				<div class="holdscreen">
 				</div>
 			</div>
-
-
-
-			<div class="modal fade" id="aboutModal">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title">Diplomacy Explorer</h4>
-						</div>
-						<div class="modal-body">
-							 <ul id="aboutTabs" class="nav nav-tabs">
-								<li class="active">
-									<a href="#faqs" data-toggle="tab"><i class="fa fa-question-circle"></i>&nbsp;FAQs</a>
-								</li>
-								<li>
-									<a href="#about" data-toggle="tab"><i class="fa fa-check-square"></i>&nbsp;About the project</a>
-								</li>
-								<li>
-									<a href="#disclaimer" data-toggle="tab"><i class="fa fa-exclamation-circle"></i>&nbsp;Disclaimer</a>
-								</li>
-								<li>
-									<a href="#contact" data-toggle="tab"><i class="fa fa-envelope"></i>&nbsp;Contact us</a>
-								</li>
-							</ul>
-							<div id="aboutTabsContent" class="tab-content" style="padding-top: 10px;">
-								<div class="tab-pane fade active in" id="faqs">
-									<p>Below are a number of frequently asked questions (FAQs). If an answer to your specific need is not provided, please contact our support team!</p>
-									<div class="panel panel-primary">
-										<div class="panel-heading">
-											Questions
-										</div>
-										<ul class="list-group">
-											<li class="list-group-item">Question 1</li>
-											<li class="list-group-item">Question 2</li>
-											<li class="list-group-item">Question 3</li>
-											<li class="list-group-item">Question 4</li>
-											<li class="list-group-item">Question 5</li>
-											<li class="list-group-item">Question 6</li>
-											<li class="list-group-item">Question 7</li>
-											<li class="list-group-item">Question 8</li>
-											<li class="list-group-item">Question 9</li>
-											<li class="list-group-item">Question 10</li>
-										</ul>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="about">
-									<p>This is a proof-of-concept for a revamped and updated Diplomacy Explorer web app.</p>
-									<div class="panel panel-primary">
-										<div class="panel-heading">
-											Features
-										</div>
-										<ul class="list-group">
-											<li class="list-group-item">This app is mobile ready!</li>
-											<li class="list-group-item">Data citations and downloads</li>
-										</ul>
-									</div>
-								</div>
-								<div class="tab-pane fade text-danger" id="disclaimer">
-									<p>This tool and the information provided herein are solely a proof-of-concept being developed by the Office of eDiplomacy's Geo|DST, on behalf of Public Affairs. If you are interested in this project, please direct your feedback to eDip and Public Affairs!</p>
-								</div>
-								<div class="tab-pane fade" id="contact">
-									<form id="contact-form">
-										<fieldset>
-											<div class="form-group">
-												<label for="name">Name:</label>
-												<input type="text" class="form-control" id="name">
-											</div>
-											<div class="form-group">
-												<label for="email">Email:</label>
-												<input type="text" class="form-control" id="email">
-											</div>
-											<div class="form-group">
-												<label for="comment">Comment:</label>
-												<textarea class="form-control" rows="3" id="comment"></textarea>
-											</div>
-											<button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Submit</button>
-										</fieldset>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div><!-- /.modal-content -->
-				</div><!-- /.modal-dialog -->
-			</div><!-- /.modal -->
 
 
 			<div class="modal" id="splashScreen">
