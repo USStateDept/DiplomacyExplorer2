@@ -7,7 +7,7 @@ class LocationPickerWidget(forms.TextInput):
     class Media:
         css = {
             'all': (
-                "/" + BASE_URL + "/static/css/locationpicker.css",
+                "/" + settings.BASE_URL + "/static/css/locationpicker.css",
             )
         }
 #<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -17,8 +17,8 @@ class LocationPickerWidget(forms.TextInput):
         js = (
             #'/static/lib/jquery/jquery-1.11.0.min.js',
             'http://maps.google.com/maps/api/js?sensor=false&libraries=places',
-            "/" + BASE_URL + "/static/lib/jquery-locationpicker-plugin-master/locationpicker.jquery.js",
-            "/" + BASE_URL + "/static/js/locationpicker.js",
+            "/" + settings.BASE_URL + "/static/lib/jquery-locationpicker-plugin-master/locationpicker.jquery.js",
+            "/" + settings.BASE_URL + "/static/js/locationpicker.js",
         )
 
     def __init__(self, language=None, attrs=None):
