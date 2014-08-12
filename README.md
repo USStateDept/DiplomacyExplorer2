@@ -32,7 +32,10 @@ c:\some\folder\virtualenvs>dipex\Scripts\activate
 Might have to use git bash for this
 (dipex) C:\path\to\DiplomacyExRepo\dipex>git submodule init
 (dipex) C:\path\to\DiplomacyExRepo\dipex>git submodule update
+(dipex) C:\path\to\DiplomacyExRepo\dipex>python manage.py buildwatson
+(dipex) C:\path\to\DiplomacyExRepo\dipex>python manage.py installwatson
 (dipex) C:\path\to\DiplomacyExRepo\dipex>python manage.py runserver
+
 
 ```
 
