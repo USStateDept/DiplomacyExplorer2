@@ -35,6 +35,34 @@ var hash;
 
 */
 
+var bidsPopup = function(feature, layer){
+	//layer.bindPopup(feature.properties.Project_Title);
+	var linktoproject = "";
+	if (feature.properties.Link_To_Project != null){
+		linktoproject = "<br><a target='_blank' href='"+feature.properties.Link_To_Project +"'>Project Website</a><br/>"
+	}
+	projectannounceddate = ""
+	if (feature.properties.Project_Announced != null){
+		var tempdate = new Date(feature.properties.Project_Announced);
+		projectannounceddate = "<br>Date Added: " + tempdate.toDateString();
+	}
+
+	layer.bindPopup("<h3>" + feature.properties.Project_Title + 
+	"</h3><br>Sector: " + feature.properties.Sector +
+	"<br> US$: " + addCommas(feature.properties.Project_Size) + 
+	"<br> Status: " + feature.properties.Status +
+	projectannounceddate + 
+	"<br>Primary Funding Source: " + feature.properties.Project_Funding_Source + 
+	"<br>" + linktoproject + "<a href='" + feature.properties.Business_URL + "' target='_blank'>Contact</a>");
+
+}
+
+var IMOPopup = function(feature, layer){
+	layer.bindPopup("Ship Name: " + feature.properties['Ship Name'] +
+	"<br> Incident: " + feature.properties['Incident d'] + 
+	"<br> Action Taken: " + feature.properties['Action tak']);
+}
+
 var createLayer = function(data, styleObj){
 
 	if (styleObj['externalresource']){
@@ -42,32 +70,17 @@ var createLayer = function(data, styleObj){
 		dataType: "json",
 		url: proxy + styleObj['externalresource']
 		}).then(function (data){
+				var onEachPopup = bidsPopup;
+				if (styleObj['attributeName'] == "IMO"){
+					var onEachPopup = IMOPopup;
+				}
 				return new L.geoJson(data, {style: function(feature){ 
 								//pass attribute value to the getColor
 								styleObj['fillColor'] = getColor(styleObj['attributeName'], feature.properties[styleObj['attributeName']]);
 								return styleObj;
 								},
-								onEachFeature: function (feature, layer) {
-								//layer.bindPopup(feature.properties.Project_Title);
-								var linktoproject = "";
-								if (feature.properties.Link_To_Project != null){
-									linktoproject = "<br><a target='_blank' href='"+feature.properties.Link_To_Project +"'>Project Website</a><br/>"
-								}
-								projectannounceddate = ""
-								if (feature.properties.Project_Announced != null){
-									var tempdate = new Date(feature.properties.Project_Announced);
-									projectannounceddate = "<br>Date Added: " + tempdate.toDateString();
-								}
-
-								layer.bindPopup("<h3>" + feature.properties.Project_Title + 
-								"</h3><br>Sector: " + feature.properties.Sector +
-								"<br> US$: " + addCommas(feature.properties.Project_Size) + 
-								"<br> Status: " + feature.properties.Status +
-								projectannounceddate + 
-								"<br>Primary Funding Source: " + feature.properties.Project_Funding_Source + 
-								"<br>" + linktoproject + "<a href='" + feature.properties.Business_URL + "' target='_blank'>Contact</a>");
-								}
-								});
+								onEachFeature: onEachPopup
+							});
 		});
 	}
 
