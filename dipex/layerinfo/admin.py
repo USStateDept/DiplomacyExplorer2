@@ -20,7 +20,13 @@ class ThemeAdmin(reversion.VersionAdmin):
 class LayerAdmin(reversion.VersionAdmin):
     list_display = ('subject', 'issue',)
     exclude = ('description_search',)
-    #fieldsets =[(None,{'fields': ['subject']}),]
+
+    def get_form(self, request, obj=None, **kwargs):
+        self.exclude = ['description_search']
+        if not request.user.is_superuser:
+            self.exclude.append('labels')
+            self.exclude.append('jsonStyle')
+        return super(LayerAdmin, self).get_form(request, obj, **kwargs)
 
 class PointLayerAdmin(reversion.VersionAdmin):
     list_display = ('layername',)
