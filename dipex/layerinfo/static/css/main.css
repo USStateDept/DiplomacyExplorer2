@@ -786,6 +786,46 @@ a#skip-navigation:focus {
   cursor:pointer;
 }
 
+
+/*------------- Brown top Bottom----------*/ 
+.MBT-readmore{ 
+background:#fff;  
+cursor:pointer; 
+color:#2eace3; 
+margin:5px 0; 
+border-top:2px solid #ddd; 
+border-bottom:2px solid #ddd; 
+padding:5px; 
+-moz-border-radius:6px; 
+-webkit-border-radius:6px; 
+font:bold 10px sans-serif; 
+text-decoration:none; 
+} 
+.MBT-readmore:hover{ 
+background:#fff; 
+color:#2eace3; 
+border-top:2px solid #2eace3; 
+border-bottom:2px solid #2eace3; 
+} 
+
+.readmore-js-toggle, .readmore-js-section{
+  width:inherit;
+}
+
+.fadetext{
+  margin: 0; padding: 10px 0; 
+  
+  /* "transparent" only works here because == rgba(0,0,0,0) */ 
+background: -moz-linear-gradient(top,  rgba(255,255,255,0) 75%, rgba(255,255,255,0.08) 77%, rgba(204,204,204,1) 99%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(75%,rgba(255,255,255,0)), color-stop(77%,rgba(255,255,255,0.08)), color-stop(99%,rgba(204,204,204,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 75%,rgba(255,255,255,0.08) 77%,rgba(204,204,204,1) 99%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(255,255,255,0) 75%,rgba(255,255,255,0.08) 77%,rgba(204,204,204,1) 99%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(255,255,255,0) 75%,rgba(255,255,255,0.08) 77%,rgba(204,204,204,1) 99%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(255,255,255,0) 75%,rgba(255,255,255,0.08) 77%,rgba(204,204,204,1) 99%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+}
+
 @media (min-width: 768px){
 .navbar-nav>li>a{
   padding-top:2px;
@@ -861,3 +901,4 @@ a#skip-navigation:focus {
     display: none !important;
   }
 }
+

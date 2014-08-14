@@ -284,6 +284,7 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 
 var renderSidePanel = function(sidekey){
 	currentSideKey = keysets[sidekey];
+
 	var returnhtml = "";
 	returnhtml += "<div class=\"headwrapper\"> \
 						<div class=\"\"> \
@@ -291,7 +292,7 @@ var renderSidePanel = function(sidekey){
 							"+	currentSideKey['categoryName'] +"\
 							</h4> \
 						</div>";
-	returnhtml += "<div class=\"in\"><div class=\"\">" + currentSideKey['categoryDescription'] + "</div></div></div>";
+	returnhtml += "<div class=\"in\"><div class=\"more\">" + currentSideKey['categoryDescription'] + "</div></div></div>";
 	returnhtml += "<div class=\"panel-group\" id=\"accordion\">";
 	//returnhtml += "</div>"
 	var counter = 1;
@@ -904,7 +905,6 @@ var setupTimeSlider = function(timeJsonObj){
 
 
 
-
 /* UI Controls of the site.  This will bind all listeners
  *
  *
@@ -970,6 +970,8 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 
 	var returnhtml = renderSidePanel(mainkey);
 	$("#mapKey").html(returnhtml);
+
+	$(".more").each(moreFunction);
 	$(".mainKeySidebar").click(mainKeySidebarFunc);
 
 	//if the description panel is closed then open it
@@ -1011,6 +1013,33 @@ $(".btn-group").children().click(function(ev){
 	//stuff happens
 
 });
+
+
+
+
+var moreFunction = function() {
+
+	if($(this).innerHeight() > 200){
+		$(this).addClass("fadetext");
+		$(this).readmore({
+		  moreLink: '<a class="read-more-link MBT-readmore">Read more ></a>',
+		  lessLink: '<a class="read-less-lin MBT-readmore">< Read less</a>',
+		  maxHeight: 185,
+		  speed: 200,
+		  afterToggle: function(trigger, element, expanded) {
+			if(! expanded) { // The "Close" link was clicked
+			  $('html, body').animate( { scrollTop: element.offset().top }, {duration: 100 } );
+			}
+		  }
+		});
+	}
+}
+
+
+
+
+
+
 
 
 var renderResultItem = function(valueobj, counter){
@@ -1066,6 +1095,7 @@ $("#searchform").submit(function(ev){
 					mainkey = tempsplit[0];
 					var returnhtml = renderSidePanel(mainkey);
 					$("#mapKey").html(returnhtml);
+					$(".more").each(moreFunction);
 
 
 

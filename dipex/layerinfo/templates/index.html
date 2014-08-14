@@ -189,6 +189,7 @@
 			<script src="/{{BASE_URL}}/static/lib/jquery-ui-1.11.0.slider/jquery-ui.min.js"></script>
 			<script src="/{{BASE_URL}}/static/lib/bootstrap-3.1.1/dist/js/bootstrap.min.js"></script>
 			<script src="/{{BASE_URL}}/static/lib/jquery-cookie-master/jquery.cookie.js"></script>
+			<script type="text/javascript" src="/{{BASE_URL}}/static/lib/Readmore/readmore.min.js"></script>
 			<script type="text/javascript" src="/{{BASE_URL}}/static/js/host.js"></script>
 			<script type="text/javascript" src="/{{BASE_URL}}/static/lib/Leaflet-0.7.2/dist/leaflet.js"></script>
 			<script type="text/javascript" src="/{{BASE_URL}}/static/lib/Leaflet.markercluster/dist/leaflet.markercluster.js"></script>
@@ -245,7 +246,7 @@
 					//thjis needs to be ehre to enesure that JSON syncs after AJAx
 					hash = L.hash(map);
 					//if there is a hash make sure that the map info button is pressed first
-					if (hash.lastHash.split("&").length > 1){
+					if (hash.lastHash && hash.lastHash.split("&").length > 1){
 						$("#mapKeybutton").trigger("click");
 					}
 					hash.on("update", function(hasharg){$('#copytext').html($(location).attr('href'))});
