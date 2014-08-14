@@ -1049,6 +1049,7 @@ $("#searchform").submit(function(ev){
 				});
 				$("#resultsblock").html(outputhtml);
 				$(".resultItem").click(function(ev){
+					clearLayers();
 					currentKey = $(this).attr('id');
 					var tempsplit = currentKey.split("+");
 					layername = tempsplit[1];
