@@ -1028,7 +1028,11 @@ var moreFunction = function() {
 		  speed: 200,
 		  afterToggle: function(trigger, element, expanded) {
 			if(! expanded) { // The "Close" link was clicked
+				$(element).addClass("fadetext");
 			  $('html, body').animate( { scrollTop: element.offset().top }, {duration: 100 } );
+			}
+			else{
+				$(element).removeClass("fadetext");
 			}
 		  }
 		});
