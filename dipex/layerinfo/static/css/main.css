@@ -828,6 +828,11 @@ border-bottom:2px solid #2eace3;
 
 }
 
+.small-instructions{
+color: rgb(172, 172, 172);
+font-size: 75%;
+}
+
 @media (min-width: 768px){
 .navbar-nav>li>a{
   padding-top:2px;

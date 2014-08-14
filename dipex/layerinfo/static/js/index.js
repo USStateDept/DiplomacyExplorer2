@@ -293,6 +293,7 @@ var renderSidePanel = function(sidekey){
 							</h4> \
 						</div>";
 	returnhtml += "<div class=\"in\"><div class=\"more\">" + currentSideKey['categoryDescription'] + "</div></div></div>";
+	returnhtml += "<p class='small-instructions'><small>Click the buttons to update the map</small></p>";
 	returnhtml += "<div class=\"panel-group\" id=\"accordion\">";
 	//returnhtml += "</div>"
 	var counter = 1;
