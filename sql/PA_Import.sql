@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS public."PA_Data";
 CREATE TABLE public."PA_Data"
 (
 	"Country" text,
+	"Bureau" text,
 	"PEPFAR_2014" text,
 	"NNPTSigned_2014" text,
 	"NNPTDeposited_2014" text,

@@ -3,6 +3,7 @@ CREATE TABLE public."PA_Data_50m" AS
 SELECT 
 	sovereignt,
 	"PA_Data"."Country",
+	"PA_Data"."Bureau",
 	"PA_Data"."PEPFAR_2014",
 	"PA_Data"."NNPTSigned_2014",
 	"PA_Data"."NNPTDeposited_2014",
