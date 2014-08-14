@@ -104,10 +104,6 @@ float:none;
   margin-right:0px;
 }
 
-
-.navbar-collapse, .navbar-inverse .navbar-form {
-	/*border-color: rgb(25,95,164);*/
-}
 .navbar-inverse .navbar-collapse, .navbar-inverse{
   background-color:white;
   border-color:white;
@@ -117,6 +113,7 @@ float:none;
 
 .navbar-inverse .navbar-nav>li>a{
   color:#ababab;
+  margin-top: -3px;
 }
 
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus{
