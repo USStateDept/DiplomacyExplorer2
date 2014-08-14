@@ -220,6 +220,7 @@ bottom: 130px;
   position: absolute;
 right: 10px;
 bottom: 80px;
+z-index:50000;
 }
 
 
