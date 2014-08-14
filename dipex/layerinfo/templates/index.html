@@ -56,16 +56,14 @@
 						<div class="col-lg-3 col-md-3 col-sm-3" id="descPane">
 							<div class='panel-body panel-collapse collapse in' id='collapseSide' style='padding: 0px !important;'>
 								<div class="btn-group">
-								  <a class="btn btn-default btnon" id="mapKeybutton">Info</a>
-								  <a class="btn btn-default" id="searchKeybutton">Search</a>
-								  <a class="btn btn-default" id="tourKeybutton">Tour</a>
+								  <a class="btn btn-default" id="mapKeybutton">Map Control</a>
+								  <a class="btn btn-default" id="searchKeybutton">Search Data</a>
+								  <a class="btn btn-default btnon" id="tourKeybutton">Get Started</a>
 								</div>
 
-								<div id='mapKey' class='sideBarTabContent mapKeybutton currenttab'>
-									<h2>Reminder Welcome Text</h2>
-									<p>The splash screen was brief to say where the person has gone.</p>
-									<p> This is a little more detailed to say what you do here</p>
-									<p>Once the person starts clicking on the different maps, they will never see this screen again.  We can assume similar text lives in the about section</p>
+								<div id='mapKey' class='sideBarTabContent mapKeybutton'>
+									<p>You are currently looking at the location of diplomactic posts around the world.  The Department of State splits the world into five regions highlighted by the colors.</p>
+									<p>Get started exploring the data by clicking on one of the themes (Securing Peace, Respecting Rights, Saving Lives, Protecting Resources, or Promoting Prosperity) above.</p>
 								</div>
 								<div id='searchKey' class='sideBarTabContent searchKeybutton'>
 									<form id="searchform">
@@ -76,11 +74,15 @@
 										<div class="progress-bar progress-bar-info" style="width: 100%"></div>
 									</div>
 									<div id="resultsblock">
-
+										<p>Search keywords from any of the data layers on this map.  For example, Endangered species or climate change.</p>
 									</div>
 								</div>
-								<div id='tourKey' class='sideBarTabContent tourKeybutton'>
-									Tour text and help goes here
+								<div id='tourKey' class='sideBarTabContent tourKeybutton currenttab'>
+									<h2>Welcome</h2>
+									<p>Explore diplomacy using maps.  To get started click on a theme named Securing Peace, Respecting Rights, Saving Lives, Protecting Resources, or Promoting Prosperity.  These are the five main themes of diplomacy.  Each theme has a list of issues and each issue allows you to explore data related to that issue. <p>
+									<p>In some cases, there will be points <img src="/{{BASE_URL}}/static/img/marker-icon.png" /> that will highlight stories related to the particular dataset.</p>
+									<p>You can still take a quick tour or view the first infographic below.</p> 
+									<p>
 									<button id="viewTour" type="submit" class="btn btn-default">View the tour</button>
 									<button id="viewSplash" type="submit" class="btn btn-default">See infographic</button>
 								</div>
