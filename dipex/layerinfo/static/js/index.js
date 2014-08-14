@@ -959,6 +959,7 @@ var sideBarClick = function(ev){
 
 $(".mainKey").click(function(ev, mainClickCallbacker){
 	//clear all layers on this
+	$("#mapKeybutton").trigger("click");
 	clearLayers();
 	mainkey = $(this).attr("name");
 	map.addLayer(allLayersGroup, {insertAtTheBottom: true});

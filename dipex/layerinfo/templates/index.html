@@ -244,6 +244,10 @@
 				if (donecheck['internal'] == true && donecheck['external'].length == 0){
 					//thjis needs to be ehre to enesure that JSON syncs after AJAx
 					hash = L.hash(map);
+					//if there is a hash make sure that the map info button is pressed first
+					if (hash.lastHash.split("&").length > 1){
+						$("#mapKeybutton").trigger("click");
+					}
 					hash.on("update", function(hasharg){$('#copytext').html($(location).attr('href'))});
 					return;
 				}
