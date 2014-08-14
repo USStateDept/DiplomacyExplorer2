@@ -1026,6 +1026,15 @@ var renderResultItem = function(valueobj, counter){
 }
 
 
+$(".externalSearchForm").submit(function(ev){
+	$("#searchKeybutton").trigger("click");
+	$("#inputSearch").val($("#header-search-box").val());
+	$("#header-search-box").val("See Results Below");
+	$("#searchform").trigger("submit");
+	ev.preventDefault();
+	return false;
+});	
+
 
 
 
