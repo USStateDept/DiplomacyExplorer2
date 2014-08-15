@@ -154,7 +154,7 @@
 
 			<div class="shareInfoBox">
 				<fb:share-button id="fb" href="https://developers.facebook.com/docs/plugins/" width="100" type="icon"></fb:share-button>
-				<a href="https://twitter.com/share" class="twitter-share-button"  data-count="none">Tweet</a>
+				<a id = "twit" href="https://twitter.com/intent/tweet"><img src="/{{BASE_URL}}/static/img/bird_blue_16.png" alt="Tweet" /></a>
 			</div>
 
 
@@ -195,6 +195,9 @@
 			<script type="text/javascript" src="/{{BASE_URL}}/static/lib/Leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 			<script type="text/javascript" src="/{{BASE_URL}}/static/lib/leaflet-hash/leaflet-hash.js"></script>
 			<script type="text/javascript">
+			
+			$('a').click( function() { document.getElementById('twit').setAttribute('href', "https://twitter.com/intent/tweet?text=Discover%20Diplomacy&url="+window.location); } );
+			
 			var donecheck = {"external":[],"internal":false};
 
 			var iconCreateCluster = 	function (cluster) {
