@@ -529,328 +529,328 @@ var setupTimeSlider = function(timeJsonObj){
 		case "TBIncidence-100k_2012":
 			dint = parseInt(d);
 			if (dint > 399){
-				return '#CA1300';
+				return '#be3e48';
 			}
 			else if (dint > 299){
-				return	'#D29200'
+				return	'#e54c58'
 			}
 			else if (dint > 124){
-				return	'#D5d500'
+				return	'#e96e6e'
 			}
 			else if (dint > 49){
-				return	'#98D900'
+				return	'#ed8b87'
 			}
 			else if (dint > 19){
-				return	'#59DD00'
+				return	'#f1a8a3'
 			}
 			else if (dint > 9){
-				return	'#17E100'
+				return	'#f6c6c3'
 			}
 			else {
-				return '#00E52D';
+				return '#fce6e7';
 			}
 			break;
 		case "ChildMort_2012":
 			dint = parseInt(d);
 			if (dint > 199){
-				return '#0868ac';
+				return '#e54c58';
 			}
 			else if (dint > 99){
-				return	'#43a2ca'
+				return	'#ed8b87'
 			}
 			else if (dint > 49){
-				return	'#7bccc4'
+				return	'#f6c6c3'
 			}
 			else {
-				return '#bae4bc';
+				return '#e6e7e8';
 			}
 			break;
 		case "NIV_1997": 
 			dint = parseInt(d);
 			if (dint > 99999){
-				return '#253494';
+				return '#f26722';
 			}
 			else if (dint > 49999){
-				return	'#2c7fb8'
+				return	'#f38333'
 			}
 			else if (dint > 24999){
-				return	'#41b6c4'
+				return	'#f49d4b'
 			}
 			else if (dint > 9999){
-				return	'#7fcdbb'
+				return	'#f6b965'
 			}
 			else if (dint > 4999){
-				return	'#c7e9b4'
+				return	'#f8d57f'
 			}
 			else {
-				return '#ffffcc';
+				return '#e6e7e8';
 			}
 			break;
 		case "MalariaElim_2012":
 			if (d == '4') {
-				return	'#FC4E2A';
+				return	'#be3e48';
 			} else if (d == '3') {
-				return	'#CACF9B';
+				return	'#e96e6e';
 			} else if (d == '2') {
-				return	'#CACF9B';
+				return	'#f1a8a3';
 			} else if (d == '1') {
-				return	'#CACF9B';
+				return	'#fce6e7';
 			} else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "TPIndex_2014":
 			if (d == '6'){
-				return "#6e016b"
+				return "#c8551a"
 			} else if (d == '5') {
-				return	'#88419d'
+				return	'#f26722'
 			} else if (d == '4') {
-				return	'#8c6bb1'
+				return	'#f38333'
 			} else if (d == '3') {
-				return	'#8c96c6'
+				return	'#f49d4b'
 			} else if (d == '2') {
-				return	'#9ebcda'
+				return	'#f6b965'
 			} else if (d == '1') {
-				return	'#bfd3e6'
+				return	'#f8d57f'
 			} else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "MLOIndex_2014":
 			if (d == '5') {
-				return	'#006837'
+				return	'#f26722'
 			} else if (d == '4') {
-				return	'#31a354'
+				return	'#f38333'
 			} else if (d == '3') {
-				return	'#78c679'
+				return	'#f49d4b'
 			} else if (d == '2') {
-				return	'#addd8e'
+				return	'#f6b965'
 			} else if (d == '1') {
-				return	'#d9f0a3'
+				return	'#f8d57f'
 			} else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "AUMember_2014":
 			if (d == 'Member') {
-				return	'#de2d26'
+				return	'#f38333'
 			} else if (d == 'Suspended') {
-				return	'#fc9272'
+				return	'#f8d57f'
 			} else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 	    case "TIPS_2013":
 			if (d == 'Special Case') {
-				return	'#a63603'
+				return	'#2f7d89'
 			} else if (d == 'Tier 3') {
-				return	'#e6550d'
+				return	'#3992a1'
 			} else if (d == 'Tier 3 Auto-Downgrade') {
-				return	'#fd8d3c'
+				return	'#5ea1af'
 			} else if (d == 'Tier 2 Watch List') {
-				return	'#fdae6b'
+				return	'#7db0be'
 			} else if (d == 'Tier 2') {
-				return	'#fdd0a2'
+				return	'#99c2cf'
 			} else if (d == 'Tier 1') {
-				return	'#feedde'
+				return	'#b8d6e1'
 			} else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "MaternalHealthAccessToCare_2014":
 			if (d == 'Excellent') {
-				return	'#00BDFF'
+				return	'#e54c58'
 			} else if (d == 'Good') {
-				return	'#009DD4'
+				return	'#e96e6e'
 			} else if (d == 'Fair') {
-				return	'#007BA6'
+				return	'#ed8b87'
 			} else if (d == 'Poor') {
-				return	'#004E69'
+				return	'#f1a8a3'
 			} else if (d == 'Unsuitable') {
-				return	'#002430'
+				return	'#f6c6c3'
 			} else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "PEPFAR_2014":
 			if (d == '3') {
-				return	'#78c679'
+				return	'#e54c58'
 			} else if (d == '2') {
-				return	'#addd8e'
+				return	'#ed8b87'
 			} else if (d == '1') {
-				return	'#d9f0a3'
+				return	'#f6c6c3'
 			} else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "TBDrugResistance-2012":
 			if (d == '0') {
-				return	'#1bf782'
+				return	'#e96e6e'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "USAID-GlobalHealth_2014":
 			if (d == '1') {
-				return	'#843f0f'
+				return	'#e96e6e'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "USAID-DHRA_2014":
 			if (d == '1') {
-				return	'#FC4E2A'
+				return	'#5ea1af'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "USAID-WatSan_2014":
 			if (d == '1') {
-				return	'#1f78b4'
+				return	'#95b353'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "USAID-CrisisConflict_2014":
 			if (d == '1') {
-				return	'#717973'
+				return	'#e96e6e'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "USAID-GenderWomen_2014":
 			if (d == '1') {
-				return	'#717dc4'
+				return	'#5ea1af'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "USAID-EnvClimate_2014":
 			if (d == '1') {
-				return	'#7ec329'
+				return	'#95b353'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "USAID-ScienceTech_2014":
 			if (d == '1') {
-				return	'#FC4E2A'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "ICAOMember_2014":
 			if (d == 'Member') {
-				return	'#e42632'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "UNESCOMember_2014":
 			if (d == 'Member') {
-				return	'#636363'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "FAOMember_2014":
 			if (d == 'Member') {
-				return	'#79BD8F'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "OASMember_2014":
 			if (d == 'Member') {
-				return	'#d95f0e'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "UNGAMember_2014":
 			if (d == 'Member') {
-				return	'#C7C59F'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "OSCEMember_2014":
 			if (d == 'Member') {
-				return	'#FDC173'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "OECDMember_2014":
 			if (d == 'Member') {
-				return	'#B62B3C'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "NATOMember_2014":
 			if (d == 'Member') {
-				return	'#7fcdbb'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "EUMember_2014":
 			if (d == 'Member') {
-				return	'#14618D'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "UNHCRMember_2014":
 			if (d == 'Member') {
-				return	'#618E99'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "APECMember_2014":
 			if (d == 'Member') {
-				return	'#8F9E95'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "NAFTAMember_2014":
 			if (d == 'Member') {
-				return	'#062943'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "WTOMember_2014":
 			if (d == 'Member') {
-				return	'#424DA1'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "ASEANMember_2014":
 			if (d == 'Member') {
-				return	'#70523A'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "CBERAMember_2014":
 			if (d == 'Member') {
-				return	'#A15979'
+				return	'#f38333'
 			}else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "CAFTAMember_2014":
 			if (d == 'Member') {
-				return	'#F1BA4E'
+				return	'#f38333'
 			} else if (d == 'Observer') {
-				return	'#C0C44E'
+				return	'#f8d57f'
 			} else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "NucSign_2014":
@@ -873,27 +873,27 @@ var setupTimeSlider = function(timeJsonObj){
 		case "PEPFAR_2014":
 		case "NNPTSigned_2014":
 			if (d == 'X') {
-			return	'#FC4E2A'
+			return	'#b37ead'
 			} else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "NNPTDeposited_2014":
 			if (d == 'X') {
-			return	'#FC4E2A'
+			return	'#b37ead'
 			} else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 		case "NNPTSignedDeposited_2014":
 			if (d == '2') {
-				return	'#FC4E2A'
+				return	'#aa73a6'
 			} else if (d == '1') {
-				return	'#FD8D3C'
+				return	'#bc89b5'
 			} else if (d == '0') {
-				return	'#CACF9B'
+				return	'#d0a2c6'
 			} else {
-				return	'#ddd';
+				return	'#e6e7e8';
 			}
 			break;
 	    default:
