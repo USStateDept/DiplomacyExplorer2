@@ -272,8 +272,10 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 								</div></a>";
 
 
+	var attrObj = $.parseJSON( layerobj['attribution'] );
+
 	var keyAccordionPanel = "<div id=\"collapse" + counter + "\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + layerobj['description'] + "</div>" + keypanel + "<div id='hover_value'></div> \
-							<p><small>" + layerobj['attribution'] + "</small></p></div>";
+							<p><small>Source: <a target=\"_blank\" href=\"" + attrObj.url + "\">" + attrObj.source+"</a></small></p></div>";
 
 	return keyAccordionTitle + keyAccordionPanel;
 
