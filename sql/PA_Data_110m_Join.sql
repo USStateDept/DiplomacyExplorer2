@@ -57,6 +57,7 @@ SELECT
 	"PA_Data"."NIV_2013",
 	"PA_Data"."CITES-Species_2014",
 	"PA_Data"."Malaria-Elimination_2013",
+	"PA_Data"."Malaria-Incidence_2013",
 	"PA_Data"."TB-Drug-Resistance_2012",
 	"PA_Data"."Inf-Mort_2012",
 	"PA_Data"."TB-Incidence_2012",
