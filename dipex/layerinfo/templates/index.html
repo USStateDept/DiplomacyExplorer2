@@ -153,8 +153,10 @@
 			</div><!-- /.modal -->
 
 			<div class="shareInfoBox">
-				<fb:share-button id="fb" href="https://developers.facebook.com/docs/plugins/" width="100" type="icon"></fb:share-button>
-				<a id = "twit" href="https://twitter.com/intent/tweet"><img src="/{{BASE_URL}}/static/img/bird_blue_16.png" alt="Tweet" /></a>
+				<!--<fb:share-button id="fb" href="https://developers.facebook.com/docs/plugins/" type="icon"></fb:share-button>-->
+				<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdipex.edip-maps.net%3A8080%2Fdiplomacyexplorer%2F%232%2F8.8%2F10.0&t=" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL),'','width=350, height=100'); return false;"><img src="/{{BASE_URL}}/static/img/Facebook.png"></a>
+				
+				<a id = "twit" href="https://twitter.com/intent/tweet"><img src="/{{BASE_URL}}/static/img/bird_blue_32.png" alt="Tweet" /></a>
 			</div>
 
 
@@ -172,14 +174,14 @@
 			        <a href="http://www.state.gov/">U.S. Department of State</a>.
 			      </li></ul></div></div>
 			</div>
-			<script>(function(d, s, id) {
+			<!--<script>(function(d, s, id) {
 				document.getElementById('fb').setAttribute('href', window.location);
 			  var js, fjs = d.getElementsByTagName(s)[0];
 			  if (d.getElementById(id)) return;
 			  js = d.createElement(s); js.id = id;
 			  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=316935318474576&version=v2.0";
 			  fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));</script>
+			}(document, 'script', 'facebook-jssdk'));</script>-->
 
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
