@@ -287,11 +287,11 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 
 
 
-var renderSidePanel = function(sidekey){
+var renderSidePanel = function(sidekey, centraltheme){
 	currentSideKey = keysets[sidekey];
 
 	var returnhtml = "";
-	returnhtml += "<div class=\"headwrapper\"> \
+	returnhtml += "<div class=\"headwrapper " + centraltheme + "\"> \
 						<div class=\"\"> \
 							<h4 class=\"\"> \
 							"+	currentSideKey['categoryName'] +"\
@@ -968,13 +968,14 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 	$("#mapKeybutton").trigger("click");
 	clearLayers();
 	mainkey = $(this).attr("name");
+	var centraltheme = $(this).attr("class").split(" ")[1];
 	map.addLayer(allLayersGroup, {insertAtTheBottom: true});
 	//add all layers as part of this key
 	/*$.each(keysets[mainkey]['layers'], function(index, valueset){
 		allLayersGroup.addLayer(valueset['jsonLayer']);
 	});*/
 
-	var returnhtml = renderSidePanel(mainkey);
+	var returnhtml = renderSidePanel(mainkey, centraltheme);
 	$("#mapKey").html(returnhtml);
 
 	$(".more").each(moreFunction);

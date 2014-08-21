@@ -109,11 +109,13 @@ float:none;
   border-color:white;
   min-height:25px;
   margin-top: 5px;
+  padding-bottom: 5px;
 }
 
 .navbar-inverse .navbar-nav>li>a{
   color:#ababab;
-  margin-top: -3px;
+  border-top: 3px solid black;
+
 }
 
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus{
@@ -123,10 +125,58 @@ float:none;
 
 .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus{
   color: rgb(0, 76, 153);
-  border-top: 3px solid black;
-  border-color: rgb(0, 76, 153);
-  margin-top: -6px;
 }
+
+
+.navbar-inverse .navbar-nav>li>a#security{
+  border-color: rgb(219, 176, 208);
+
+}
+
+.navbar-inverse .navbar-nav>li>a#business{
+  border-color: rgb(249, 243, 155);
+
+}
+
+.navbar-inverse .navbar-nav>li>a#environment{
+  border-color: rgb(228, 238, 195);
+}
+
+.navbar-inverse .navbar-nav>li>a#rights{
+  border-color: rgb(215, 239, 247);
+
+}
+
+.navbar-inverse .navbar-nav>li>a#lives{
+  border-color: rgb(252, 230, 231);
+}
+
+
+
+.navbar-inverse .navbar-nav>li>a#security:hover{
+  border-color: #8e608b;
+
+}
+
+.navbar-inverse .navbar-nav>li>a#business:hover{
+  border-color: #c8551a;
+
+}
+
+.navbar-inverse .navbar-nav>li>a#environment:hover{
+  border-color: #668831;
+}
+
+.navbar-inverse .navbar-nav>li>a#rights:hover{
+  border-color: #2f7d89;
+
+}
+
+.navbar-inverse .navbar-nav>li>a#lives:hover{
+  border-color: #be3e48;
+}
+
+
 
 .dropdown-menu {
 	padding: 10px;
@@ -251,12 +301,43 @@ top: 0;
 
 div.headwrapper{
   padding: 10px;
+  -webkit-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -khtml-border-radius: 8px;
+  border-radius: 8px;
+  background-color:rgba(245, 132, 31, 0.62);
   
 }
 
 #splashScreen{
   overflow:hidden;
 }
+
+.mapKeybutton .security{
+  background-color: rgba(219, 176, 208, 0.59);
+
+}
+
+.mapKeybutton .business{
+  background-color: rgba(249, 243, 155, 0.49);
+
+}
+
+.mapKeybutton .environment{
+  background-color: rgba(228, 238, 195, 0.8);
+}
+
+.mapKeybutton .rights{
+  background-color: rgba(215, 239, 247, 0.54);
+
+}
+
+.mapKeybutton .lives{
+  background-color: rgba(252, 230, 231, 0.51);
+
+}
+
 
 
 
@@ -799,12 +880,10 @@ a#skip-navigation:focus {
 
 /*------------- Brown top Bottom----------*/ 
 .MBT-readmore{ 
-background:#fff;  
+background-color:inherit;  
 cursor:pointer; 
 color:#2eace3; 
 margin:5px 0; 
-border-top:2px solid #ddd; 
-border-bottom:2px solid #ddd; 
 padding:5px; 
 -moz-border-radius:6px; 
 -webkit-border-radius:6px; 
@@ -812,10 +891,8 @@ font:bold 10px sans-serif;
 text-decoration:none; 
 } 
 .MBT-readmore:hover{ 
-background:#fff; 
+background-color:inherit; 
 color:#2eace3; 
-border-top:2px solid #2eace3; 
-border-bottom:2px solid #2eace3; 
 } 
 
 .readmore-js-toggle, .readmore-js-section{
