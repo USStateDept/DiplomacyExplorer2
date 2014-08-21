@@ -28,7 +28,7 @@ def buildTopMenu():
 
         theme_issues = temptheme.issue_set.all()
         for theme_issue in theme_issues:
-            output += "<h4><a style=\"color:#333\" class=\"mainKey " + temptheme.keyid + "\" name=\"" + theme_issue.keyid + "\" class=\"" + temptheme.keyid + "\">" + theme_issue.categoryName + "</a></h4>"
+            output += "<a style=\"color:#333\" class=\"mainKey " + temptheme.keyid + "\" name=\"" + theme_issue.keyid + "\" class=\"" + temptheme.keyid + "\"><h4>" + theme_issue.categoryName + "</h4></a>"
 
         output += "</ul>"
         output += "</li>"
