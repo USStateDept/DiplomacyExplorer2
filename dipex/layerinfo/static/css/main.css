@@ -843,6 +843,13 @@ color: rgb(172, 172, 172);
 font-size: 75%;
 }
 
+
+path.leaflet-clickable{
+  cursor:help;
+}
+
+
+
 @media (min-width: 768px){
 .navbar-nav>li>a{
   padding-top:2px;
