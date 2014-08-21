@@ -944,6 +944,18 @@ path.leaflet-clickable{
 }
 }
 
+@media all and (max-width: 1130px) and (min-width: 768px){
+  body{
+    font-size:11px;
+  }
+  .btn{
+    font-size:11px;
+    padding: 6px 5px;
+  }
+
+}
+
+
 
 /*
 .btn-default{
