@@ -364,8 +364,8 @@ var highlightFeature = function(e){
 	//$("#hover_value").html(content);
 
     layer.setStyle({
-        weight: 5,
-        color: '#666',
+        weight: 3,
+        //color: '#666',
         dashArray: ''
     });
 
