@@ -225,6 +225,10 @@ bottom: 80px;
 z-index:50000;
 }
 
+a:hover, a:focus{
+  text-decoration: none;
+}
+
 
 
 .navbar-nav > li > .dropdown-menu{
