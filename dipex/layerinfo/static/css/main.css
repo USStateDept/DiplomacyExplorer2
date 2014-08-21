@@ -274,7 +274,7 @@ box-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
   position: absolute;
 right: 10px;
 bottom: 80px;
-z-index:50000;
+z-index: 100;
 }
 
 a:hover, a:focus{
@@ -936,12 +936,35 @@ path.leaflet-clickable{
 }
 
 
+.modal-dialog{
+  height:90%;
+}
+
+.modal-content{
+  height:inherit;
+  width:inherit;
+}
+
+ .modal-body{
+  height:inherit;
+  width:inherit;
+ }
+
+.modal-body img{
+  margin: auto;
+  display: block;
+  height:85%;
+}
+
+
 
 @media (min-width: 768px){
 .navbar-nav>li>a{
   padding-top:2px;
   padding-bottom:2px;
 }
+
+
 }
 
 @media all and (max-width: 1130px) and (min-width: 768px){
@@ -952,8 +975,8 @@ path.leaflet-clickable{
     font-size:11px;
     padding: 6px 5px;
   }
-
 }
+
 
 
 
