@@ -1209,15 +1209,6 @@ $("#removeSplashCookie").click(function(ev){
 */
 
 
-$("#viewTour").click(function(ev){
-	$('#splashScreen').modal('hide');
-	// Initialize the tour
-	tour.init();
-
-	// Start the tour
-	tour.start();
-	return false;
-});
 
 $("#viewSplash").click(function(ev){
 	$('#splashScreen').modal('show');
@@ -1227,6 +1218,18 @@ $("#noTour").click(function(ev){
 	$('#splashScreen').modal('hide');
 	return false;
 });
+
+$(".viewTour").click(function(ev){
+
+	$('#splashScreen').modal('hide');
+	// Initialize the tour
+	//tour.init();
+	tour.restart();
+	// Start the tour
+	tour.start(true);
+	return false;
+});
+
 
 $("#noSplash").click(function(ev){
 	$.cookie('splashScreen', "true");
