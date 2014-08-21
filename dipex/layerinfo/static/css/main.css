@@ -909,20 +909,21 @@ color:#2eace3;
 }
 
 .fadetext{
-  margin: 0; padding: 10px 0; 
+  margin: 0; 
+  padding: 10px 0; 
+  color:black;
+ -webkit-text-fill-color: transparent;
+ background: -webkit-linear-gradient(black, transparent),
+             url('../img/bg_image.png') repeat;
+ background: -o-linear-gradient(black, transparent);
+ -webkit-background-clip: text;
 
-    /* "transparent" only works here because == rgba(0,0,0,0) */ 
-  background: -moz-linear-gradient(top,  rgba(0,0,0,1) 75%, rgba(0,0,0,0) 99%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(75%,rgba(0,0,0,1)), color-stop(99%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  rgba(0,0,0,1) 75%,rgba(0,0,0,0) 99%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  rgba(0,0,0,1) 75%,rgba(0,0,0,0) 99%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  rgba(0,0,0,1) 75%,rgba(0,0,0,0) 99%); /* IE10+ */
-  background: linear-gradient(to bottom,  rgba(0,0,0,1) 75%,rgba(0,0,0,0) 99%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+
 
 }
+
+
+
 
 .small-instructions{
 color: rgb(172, 172, 172);
