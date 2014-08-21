@@ -184,7 +184,9 @@ a:hover, a:focus{
   border-color: #be3e48;
 }
 
-
+.buffer_bottom{
+  height:500px;
+}
 
 
 
@@ -487,10 +489,6 @@ width: 100%;
   padding-left: 21px;
 }
 
-
-#mapKey{
-  padding-bottom:200px;
-}
 
 
 #global-header {

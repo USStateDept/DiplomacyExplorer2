@@ -88,6 +88,9 @@
 									<button id="viewTour" type="submit" class="btn btn-default viewTour">View the tour</button>
 									<button id="viewSplash" type="submit" class="btn btn-default">See infographic</button>
 								</div>
+								<div class="buffer_bottom">
+
+								</div>
 							</div>
 						</div>
 						<div class="expanded" id="mapPane">
@@ -204,6 +207,14 @@
 			<script type="text/javascript">
 			
 			$('a').click( function() { document.getElementById('twit').setAttribute('href', "https://twitter.com/intent/tweet?text=Discover%20Diplomacy&url="+window.location); } );
+
+			$( window ).resize(function() {
+				if ($(this).width() > 767){
+			  		$(".sideBarTabContent ").height($(this).height() - 235);
+			  	}
+			});
+			//do the first time
+			$(window).trigger("resize");
 			
 			var donecheck = {"external":[],"internal":false};
 
