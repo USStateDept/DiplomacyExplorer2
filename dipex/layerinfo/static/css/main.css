@@ -104,6 +104,14 @@ float:none;
   margin-right:0px;
 }
 
+.btn-primary{
+  background-color:#2eace3;
+}
+
+a:hover, a:focus{
+  background-color:#2eace3;
+}
+
 .navbar-inverse .navbar-collapse, .navbar-inverse{
   background-color:white;
   border-color:white;
@@ -119,7 +127,7 @@ float:none;
 }
 
 .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus{
-  background-color: rgb(0, 76, 153);
+  background-color:#2eace3;
   color:white;
 }
 
@@ -189,7 +197,7 @@ float:none;
 }
 
 .panel-heading:hover{
-  background-color:#428bca;
+  background-color:#2eace3;
   color:white;
 }
 
@@ -922,8 +930,23 @@ color:#2eace3;
 
 }
 
+.mainKey h4:hover{
+  background-color:#2eace3;
+  color:white;
+}
+
+.popover-title{
+    background-color:#2eace3;
+  color:white;
+}
+
 .popover-navigation [data-role=prev]{
   display:none;
+}
+
+.popover-navigation .btn-group .btn, .popover-navigation .btn {
+  background-color:#2eace3;
+  color:white;
 }
 
 
