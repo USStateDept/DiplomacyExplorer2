@@ -922,7 +922,9 @@ color:#2eace3;
 
 }
 
-
+.popover-navigation [data-role=prev]{
+  display:none;
+}
 
 
 .small-instructions{

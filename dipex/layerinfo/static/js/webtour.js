@@ -1,5 +1,5 @@
 // Instance the tour
-var tourduration = 5000;
+var tourduration = 10000;
 var tour = new Tour({
   storage:false,
   steps: [
