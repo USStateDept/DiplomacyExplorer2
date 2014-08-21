@@ -125,6 +125,7 @@ float:none;
   color: rgb(0, 76, 153);
   border-top: 3px solid black;
   border-color: rgb(0, 76, 153);
+  margin-top: -6px;
 }
 
 .dropdown-menu {
