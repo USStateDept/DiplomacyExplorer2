@@ -49,7 +49,7 @@ var bidsPopup = function(feature, layer){
 
 	layer.bindPopup("<h3>" + feature.properties.Project_Title + 
 	"</h3><br>Sector: " + feature.properties.Sector +
-	"<br> US$: " + addCommas(feature.properties.Project_Size) + 
+	"<br> US: $" + addCommas(feature.properties.Project_Size) + 
 	"<br> Status: " + feature.properties.Status +
 	projectannounceddate + 
 	"<br>Primary Funding Source: " + feature.properties.Project_Funding_Source + 
