@@ -45,13 +45,14 @@ def getThemeOptions():
 
 def getJSONObj():
     mainObj = {}
-    issues = Issue.objects.all()
+    issues = Issue.objects.all().order_by('categoryName')
     for issue in issues:
         issuekey = issue.keyid
 
         mainObj[issuekey] = model_to_dict(issue)
         mainObj[issuekey]['layers'] = {}
-        layers = issue.layer_set.all()
+        layers = issue.layer_set.all().order_by('subject')
+        #order layers
         for layer in layers:
             layerkey = layer.keyid
 
