@@ -56,7 +56,7 @@ CREATE TABLE public."PA_Data"
 	"NIV_2013" real,
 	"CITES-Species_2014" real,
 	"Malaria-Elimination_2013" real,
-	"Malaria-Indicence_2013" real,
+	"Malaria-Incidence_2013" real,
 	"TB-Drug-Resistance_2012" real,
 	"Inf-Mort_2012" real,
 	"TB-Incidence_2012" real,

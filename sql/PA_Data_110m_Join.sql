@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS public."PA_Data_110m";
-CREATE TABLE public."PA_Data_110m" AS
+DROP TABLE IF EXISTS public."DiscoverDiplomacy-Data_110m";
+CREATE TABLE public."DiscoverDiplomacy-Data_110m" AS
 SELECT 
 	sovereignt,
 	"PA_Data"."Country",

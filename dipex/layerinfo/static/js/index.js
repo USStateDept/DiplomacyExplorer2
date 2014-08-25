@@ -35,6 +35,8 @@ var hash;
 
 */
 
+
+
 var bidsPopup = function(feature, layer){
 	//layer.bindPopup(feature.properties.Project_Title);
 	var linktoproject = "";
@@ -1237,5 +1239,12 @@ $("#noSplash").click(function(ev){
 	ev.preventDefault();
 	return false;
 })
+/*Share*/
+function openShare() {
+    $('#shareModal').modal('show');
+    
+};
 
-
+$('#shareModal').on('show.bs.modal', function () {
+	$('#hashURLText').val(window.location.href);
+});
