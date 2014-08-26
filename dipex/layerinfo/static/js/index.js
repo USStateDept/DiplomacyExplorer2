@@ -224,25 +224,36 @@ function addCommas(nStr)
 	return x1 + x2;
 }
 
-var convertValuetoLabel = function(feature, attributeName, tempObj){
+var convertValuetoLabel = function(feature, attributeName, layerObj){
 		var featureval = feature.properties[attributeName];
-		if ($.type(featureval) != "string"){
+		if ($.type(featureval) == "string" || ! featureval){
+			try{
+				var thevalue =  layerObj['labels']['labels'][$.inArray(featureval, layerObj['labels']['values'])];
+
+				if (thevalue && thevalue != "null" && thevalue != null){
+					return thevalue;
+				}
+				else{
+					return "No Value";
+				}
+			}
+			catch(err){
+				return "No Value";
+
+			}
+		}
+		
+		if (layerObj['jsonStyle']['extralabel']){
+			var tempending = layerObj['jsonStyle']['extralabel'];
+			if (featureval > 1){
+				tempending = tempending + "s";
+			}
+			return addCommas(featureval) + " " + tempending;
+		}
+		else {
 			return addCommas(featureval);
 		}
-
-		try{
-			var thevalue =  tempObj['labels']['labels'][$.inArray(featureval, tempObj['labels']['values'])];
-			if (thevalue && thevalue != "null"){
-				return thevalue;
-			}
-			else{
-				return "No Value";
-			}
-		}
-		catch(err){
-			return "No Value";
-
-		}
+		
 }
 
 
