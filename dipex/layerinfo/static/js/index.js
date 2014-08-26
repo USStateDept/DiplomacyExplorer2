@@ -64,7 +64,6 @@ var IMOPopup = function(feature, layer){
 }
 
 var UNHCRPopup = function(feature, layer){
-	console.log("doing this");
 	var tempoutput = "";
 	tempoutput += "<strong>" + feature.properties['name'] + "</strong><br/>";
 	if (feature.properties.hasOwnProperty("value")){
@@ -86,7 +85,6 @@ var createLayer = function(data, styleObj){
 		url: proxy + styleObj['externalresource']
 		}).then(function (data){
 				var onEachPopup = bidsPopup;
-				console.log(styleObj['attributeName']);
 				if (styleObj['attributeName'] == "IMO"){
 					var onEachPopup = IMOPopup;
 				}
@@ -322,8 +320,6 @@ var renderSidePanel = function(sidekey, centraltheme){
 	//returnhtml += "</div>"
 	var counter = 1;
 	$.each(currentSideKey['layers'], function(index, value){
-		console.log(value['subject']);
-		console.log(index);
 		var tempreturn = renderSidePanelPiece(index,value, counter) + "</div>";
 		returnhtml += tempreturn
 		counter += 1;
