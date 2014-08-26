@@ -840,6 +840,13 @@ var setupTimeSlider = function(timeJsonObj){
 				return	'#e6e7e8';
 			}
 			break;
+		case "AGOAMember_2014":
+			if (d == 'Member') {
+				return	'#f38333'
+			}else {
+				return	'#e6e7e8';
+			}
+			break;
 		case "WTOMember_2014":
 			if (d == 'Member') {
 				return	'#f38333'
@@ -911,6 +918,61 @@ var setupTimeSlider = function(timeJsonObj){
 				return	'#d0a2c6'
 			} else {
 				return	'#e6e7e8';
+			}
+			break;
+		case "HEU-Free_2014":
+			if (d == '1') {
+			return	'#b37ead'
+			} else {
+				return	'#e6e7e8';
+			}
+			break;
+		case "Money-Laundering_2014":
+			if (d == 'Primary Concern') {
+				return	'#aa73a6'
+			} else if (d == 'Concern') {
+				return	'#bc89b5'
+			} else if (d == 'Monitored') {
+				return	'#d0a2c6'
+			} else {
+				return	'#e6e7e8';
+			}
+			break;
+		case "Precursor-Chemical-Sources_2014":
+			if (d == '1') {
+			return	'#b37ead'
+			} else {
+				return	'#e6e7e8';
+			}
+			break;
+		case "301-List_2014":
+			if (d == 'Priority Watch List') {
+			return	'#d0dca4'
+			} else if (d == 'Watch List') {
+				return	'#95b353'
+			}else {
+				return	'#e6e7e8';
+			}
+			break;
+		case "CITES-Species_2014":
+			dint = parseInt(d);
+			if (dint > 99){
+				return '#82a93f';
+			}
+			else if (dint > 49){
+				return	'#95b353'
+			}
+			else if (dint > 24){
+				return	'#a7c06f'
+			}
+			else if (dint > 9){
+				return	'#bbcd89'
+			}
+			else if (dint > 0){
+				return	'#d0dca4'
+			}
+			else {
+				return '#e6e7e8';
 			}
 			break;
 	    default:
