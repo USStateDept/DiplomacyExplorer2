@@ -1051,11 +1051,19 @@ var moreFunction = function() {
 
 
 
+$("#header-search-box").focus(function(elem){
+  if ($(this).val() == "Search Site"){
+  	$(this).val("");
+  }
+});
 
+/*
 
+	OLD SEARCH FUNCTIONALITY
 
+*/
 
-
+/*
 var renderResultItem = function(valueobj, counter){
 
 
@@ -1162,6 +1170,7 @@ $("#searchform").submit(function(ev){
 	ev.preventDefault();
 	return false;
 })
+*/
 
 
 
