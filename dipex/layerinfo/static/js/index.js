@@ -1008,10 +1008,13 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 
 	//bind event to layers to turn them on
 	$(".sideBarLayerToggle").click(sideBarClick);
+	//mainClickCallbacker will only be called when there is a hash
 	if (mainClickCallbacker){
 		mainClickCallbacker();
 	}
-	$(".sideBarLayerToggle:first").trigger("click");
+	else{
+		$(".sideBarLayerToggle:first").trigger("click");
+	}
 
 	//hash.trigger("move");
 	//trigger the hash update
