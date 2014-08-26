@@ -322,6 +322,8 @@ var renderSidePanel = function(sidekey, centraltheme){
 	//returnhtml += "</div>"
 	var counter = 1;
 	$.each(currentSideKey['layers'], function(index, value){
+		console.log(value['subject']);
+		console.log(index);
 		var tempreturn = renderSidePanelPiece(index,value, counter) + "</div>";
 		returnhtml += tempreturn
 		counter += 1;
@@ -407,7 +409,7 @@ var resetHighlight = function(e){
 
 L.Control.Command = L.Control.extend({
     options: {
-        position: 'topleft',
+        position: 'topright',
     },
 
     onAdd: function (map) {
