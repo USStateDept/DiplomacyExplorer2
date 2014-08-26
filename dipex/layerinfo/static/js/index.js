@@ -1000,7 +1000,9 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 	if (mainClickCallbacker){
 		mainClickCallbacker();
 	}
-	hash.trigger("move");
+	$(".sideBarLayerToggle:first").trigger("click");
+
+	//hash.trigger("move");
 	//trigger the hash update
 
 });
@@ -1027,12 +1029,12 @@ $(".btn-group").children().click(function(ev){
 
 var moreFunction = function() {
 
-	if($(this).innerHeight() > 200){
+	if($(this).innerHeight() > 100){
 		$(this).addClass("fadetext");
 		$(this).readmore({
 		  moreLink: '<a class="read-more-link MBT-readmore">Read more ></a>',
 		  lessLink: '<a class="read-less-lin MBT-readmore">< Read less</a>',
-		  maxHeight: 185,
+		  maxHeight: 85,
 		  speed: 200,
 		  afterToggle: function(trigger, element, expanded) {
 			if(! expanded) { // The "Close" link was clicked
