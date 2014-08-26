@@ -29,7 +29,7 @@ def buildTopMenu():
         output += "<ul class=\"dropdown-menu\" style=\"padding:10px;\">"
         output += "<h4><small>" + temptheme.description + "</small></h4>"
 
-        theme_issues = temptheme.issue_set.all()
+        theme_issues = temptheme.issue_set.order_by('categoryName').all()
         for theme_issue in theme_issues:
             output += "<a style=\"color:#333\" class=\"mainKey " + temptheme.keyid + "\" name=\"" + theme_issue.keyid + "\" class=\"" + temptheme.keyid + "\"><h4>" + theme_issue.categoryName + "</h4></a>"
 
@@ -48,13 +48,13 @@ def getThemeOptions():
 
 def getJSONObj():
     mainObj = {}
-    issues = Issue.objects.all().order_by('categoryName')
+    issues = Issue.objects.order_by('categoryName').all()
     for issue in issues:
         issuekey = issue.keyid
 
         mainObj[issuekey] = model_to_dict(issue)
         mainObj[issuekey]['layers'] = {}
-        layers = issue.layer_set.all().order_by('subject')
+        layers = issue.layer_set.order_by('subject').all()
         #order layers
         for layer in layers:
             layerkey = layer.keyid
