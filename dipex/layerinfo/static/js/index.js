@@ -1228,6 +1228,11 @@ $("#removeSplashCookie").click(function(ev){
 */
 
 
+$('#openShare').click(function(){
+	$('#hashURLText').val(window.location.href);
+    $('#shareModal').modal('show');
+});
+
 
 $("#viewSplash").click(function(ev){
 	$('#splashScreen').modal('show');

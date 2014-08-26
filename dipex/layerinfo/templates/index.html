@@ -171,13 +171,10 @@
 							<div class="tab-pane fade active in" id="shareMethods">
 								<p>Please share this map with a friend!</p>
 								<div class="panel panel-primary">
-									<div class="panel-heading">
-										
-									</div>
 									<ul class="list-group">
 										
 										<li class="list-group-item">
-											<label for="hashURLText">Ctrl-C, Enter to Copy</label>
+											<label for="hashURLText">Copy the text below to return to the same map view in the future</label>
 											<input type="text" class="form-control" name="hashURLText" id="hashURLText" autofocus="" placeholder="Ctrl-C, Enter to Copy"> 
 										</li>
 									</ul>
@@ -190,7 +187,7 @@
 			</div><!-- /.modal -->
 
 			<div class="shareInfoBox">
-				<img onclick="javascript:openShare()" src="/{{BASE_URL}}/static/img/share.png">
+				<img id="openShare" src="/{{BASE_URL}}/static/img/share.png">
 				<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdipex.edip-maps.net%3A8080%2Fdiplomacyexplorer%2F%232%2F8.8%2F10.0&t=" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL),'','width=350, height=100'); return false;"><img src="/{{BASE_URL}}/static/img/Facebook.png"></a>
 				
 				<a id = "twit" href="https://twitter.com/intent/tweet"><img src="/{{BASE_URL}}/static/img/bird_blue_32.png" alt="Tweet" /></a>

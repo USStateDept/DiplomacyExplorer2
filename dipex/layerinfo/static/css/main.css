@@ -166,6 +166,10 @@ a:hover, a:focus{
 
 }
 
+#openShare{
+  cursor:pointer;
+}
+
 .navbar-inverse .navbar-nav>li>a#business:hover{
   border-color: #c8551a;
 
