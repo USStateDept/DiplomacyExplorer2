@@ -4,6 +4,8 @@ from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from django.forms import model_to_dict
 from django.conf import settings
+from lockdown.decorators import lockdown
+from django.views.decorators.csrf import csrf_exempt
 
 from layerinfo.models import Theme, Issue, Layer, Points, PointLayer
 
@@ -11,6 +13,7 @@ import urllib2
 
 import json
 import watson
+from dateutil.parser import *
 
 # Create your views here.
 
@@ -60,7 +63,8 @@ def getJSONObj():
 
     return json.dumps(mainObj)
 
-
+@lockdown(passwords=('test',))
+@csrf_exempt
 def home(request):
     d = {}
     d['top_menu'] = buildTopMenu()
@@ -77,7 +81,7 @@ def proxy(request):
     #we may need to decode
     req = urllib2.Request(url)
     response = urllib2.urlopen(req)
-    return HttpResponse(response.read(), mimetype=type)
+    return HttpResponse(response.read(), content_type=type)
 
 def combobox(request):
     type = request.POST.get('type')
@@ -111,7 +115,7 @@ def geoJson(request):
     ptslayer = PointLayer.objects.get(id__exact=ptslayername)
     if not ptslayer:
         return json.dumps({})
-    return HttpResponse(json.dumps(ptslayer.buildJSON()), mimetype="application/json")
+    return HttpResponse(json.dumps(ptslayer.buildJSON()), content_type="application/json")
 
 
 def searchLayers(request):
@@ -127,6 +131,39 @@ def searchLayers(request):
         counter +=1
 
     return HttpResponse(json.dumps(resultobj), content_type="application/json")
+
+
+def externalSources(request):
+    url = request.GET.get('url')
+    type = request.GET.get('type', "unjson")
+    #we may need to decode
+    req = urllib2.Request(url)
+    response = urllib2.urlopen(req)
+
+    #transform
+    if type == "unjson":
+        geojson = {"type":"FeatureCollection", "features":[]}
+        try:
+            jsonobj = json.loads(response.read())
+        except:
+            print "could not load JSON object"
+            return HttpResponse("{}", content_type="application/json")
+
+        for feature in jsonobj:
+            if (float(feature['longitude']) == 0 and float(feature['latitude']) == 0):
+                continue
+            featureobj = {"type":"Feature", "properties":{"name":feature['name']}, "geometry":{"type":"Point", "coordinates":[feature['longitude'], feature['latitude']]}}
+            if len(feature['population']) > 0:
+                if feature['population'][0]["value"]:
+                    featureobj['properties']['value'] = feature['population'][0]['value']
+                if feature['population'][0]["updated_at"]:
+                    featureobj['properties']['updated_at'] = parse(feature['population'][0]['updated_at']).strftime("%b %d, %Y")
+
+            geojson['features'].append(featureobj)
+
+
+
+    return HttpResponse(json.dumps(geojson), content_type="application/json")
 
 
 

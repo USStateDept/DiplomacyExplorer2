@@ -35,8 +35,6 @@ var hash;
 
 */
 
-
-
 var bidsPopup = function(feature, layer){
 	//layer.bindPopup(feature.properties.Project_Title);
 	var linktoproject = "";
@@ -65,6 +63,21 @@ var IMOPopup = function(feature, layer){
 	"<br> Action Taken: " + feature.properties['Action tak']);
 }
 
+var UNHCRPopup = function(feature, layer){
+	console.log("doing this");
+	var tempoutput = "";
+	tempoutput += "<strong>" + feature.properties['name'] + "</strong><br/>";
+	if (feature.properties.hasOwnProperty("value")){
+		tempoutput += addCommas(feature.properties["value"]) + " People<br/>";
+	}
+	if (feature.properties.hasOwnProperty("updated_at")){
+		tempoutput += "Last Updated: " + feature.properties["updated_at"];
+	}
+
+	layer.bindPopup(tempoutput);
+
+}
+
 var createLayer = function(data, styleObj){
 
 	if (styleObj['externalresource']){
@@ -73,8 +86,12 @@ var createLayer = function(data, styleObj){
 		url: proxy + styleObj['externalresource']
 		}).then(function (data){
 				var onEachPopup = bidsPopup;
+				console.log(styleObj['attributeName']);
 				if (styleObj['attributeName'] == "IMO"){
 					var onEachPopup = IMOPopup;
+				}
+				else if (styleObj['attributeName'] == "UNHCR"){
+					var onEachPopup = UNHCRPopup;
 				}
 				return new L.geoJson(data, {style: function(feature){ 
 								//pass attribute value to the getColor
@@ -1238,13 +1255,8 @@ $("#noSplash").click(function(ev){
 	$('#splashScreen').modal('hide');
 	ev.preventDefault();
 	return false;
-})
-/*Share*/
-function openShare() {
-    $('#shareModal').modal('show');
-    
-};
-
-$('#shareModal').on('show.bs.modal', function () {
-	$('#hashURLText').val(window.location.href);
 });
+
+
+
+

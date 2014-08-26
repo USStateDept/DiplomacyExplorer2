@@ -53,7 +53,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'lockdown.middleware.LockdownMiddleware',
+#    'lockdown.middleware.LockdownMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
@@ -101,8 +101,8 @@ ADMIN_MEDIA_PREFIX = BASE_URL
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOCKDOWN_PASSWORDS = ("test",)
-LOCKDOWN_URL_EXCEPTIONS = (r'^/geoserver/$',)
+#LOCKDOWN_PASSWORDS = ("test",)
+#LOCKDOWN_URL_EXCEPTIONS = (r'^/geoserver/$',)
 
 TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "layerinfo/static/tinymce/")
 
