@@ -543,7 +543,7 @@ var setupTimeSlider = function(timeJsonObj){
  function getColor(mainKey, prop) {
  	var d = prop;
 	switch(mainKey) {
-		case "TBIncidence-100k_2012":
+		case "TB-Incidence_2012":
 			dint = parseInt(d);
 			if (dint > 399){
 				return '#be3e48';
@@ -567,7 +567,7 @@ var setupTimeSlider = function(timeJsonObj){
 				return '#fce6e7';
 			}
 			break;
-		case "ChildMort_2012":
+		case "Inf-Mort_2012":
 			dint = parseInt(d);
 			if (dint > 199){
 				return '#e54c58';
@@ -603,7 +603,7 @@ var setupTimeSlider = function(timeJsonObj){
 				return '#e6e7e8';
 			}
 			break;
-		case "MalariaElim_2012":
+		case "Malaria-Elimination_2013":
 			if (d == '4') {
 				return	'#be3e48';
 			} else if (d == '3') {
@@ -612,6 +612,23 @@ var setupTimeSlider = function(timeJsonObj){
 				return	'#f1a8a3';
 			} else if (d == '1') {
 				return	'#fce6e7';
+			} else {
+				return	'#e6e7e8';
+			}
+			break;
+		case "Malaria-Incidence_2013":
+			if (d == '6') {
+				return	'#be3e48';
+			} else if (d == '5') {
+				return	'#e54c58';
+			} else if (d == '4') {
+				return	'#e96e6e';
+			} else if (d == '3') {
+				return	'#ed8b87';
+			}else if (d == '2') {
+				return	'#f1a8a3';
+			}else if (d == '1') {
+				return	'#f6c6c3';
 			} else {
 				return	'#e6e7e8';
 			}
@@ -700,7 +717,7 @@ var setupTimeSlider = function(timeJsonObj){
 				return	'#e6e7e8';
 			}
 			break;
-		case "TBDrugResistance-2012":
+		case "TB-Drug-Resistance_2012":
 			if (d == '0') {
 				return	'#e96e6e'
 			}else {
@@ -813,6 +830,13 @@ var setupTimeSlider = function(timeJsonObj){
 			}
 			break;
 		case "EUMember_2014":
+			if (d == 'Member') {
+				return	'#f38333'
+			}else {
+				return	'#e6e7e8';
+			}
+			break;
+		case "WFP-Board_2014":
 			if (d == 'Member') {
 				return	'#f38333'
 			}else {
@@ -970,6 +994,39 @@ var setupTimeSlider = function(timeJsonObj){
 			}
 			else if (dint > 0){
 				return	'#d0dca4'
+			}
+			else {
+				return '#e6e7e8';
+			}
+			break;
+		case "Internet-Freedom_2013":
+			if (d == 'Free') {
+				return	'#3992a1'
+			}else if (d == 'Partly Free') {
+				return	'#7db0be'
+			}else if (d == 'Not Free') {
+				return	'#b8d6e1'
+			}else {
+				return	'#e6e7e8';
+			}
+			break;
+		case "FOTP-Status_2013":
+			if (d == 'F') {
+				return	'#3992a1'
+			}else if (d == 'PF') {
+				return	'#7db0be'
+			}else if (d == 'NF') {
+				return	'#b8d6e1'
+			}else {
+				return	'#e6e7e8';
+			}
+			break;
+		case "Polio-Cases_2014":
+			dint = parseInt(d);
+			if (dint > 10){
+				return	'#f6c6c3'
+			}else if (dint > 0){
+				return	'#e96e6e'
 			}
 			else {
 				return '#e6e7e8';
