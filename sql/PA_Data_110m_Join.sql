@@ -114,5 +114,6 @@ SELECT
 	"PA_Data"."FOTP-Status_2013",
 	"PA_Data"."FOTP-Score_2014",
 	"PA_Data"."FOTP-Status_2014",
+	"PA_Data"."Post-LEEDS-Certification_2014",
 	the_geom
 FROM opengeo."ne_110m_admin_0_countries_lakes" LEFT OUTER JOIN public."PA_Data" ON (ne_110m_admin_0_countries_lakes.sovereignt = "PA_Data"."Country");
