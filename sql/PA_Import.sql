@@ -2,10 +2,9 @@ DROP TABLE IF EXISTS public."PA_Data";
 CREATE TABLE public."PA_Data"
 (
 	"Country" text,
+	"ISO_3166" text,
 	"Bureau" text,
 	"PEPFAR_2014" text,
-	"NNPTSigned_2014" text,
-	"NNPTDeposited_2014" text,
 	"NNPTSignedDeposited_2014" text,
 	"MaternalHealthAccessToCare_2014" text,
 	"TIPS_2013" text,

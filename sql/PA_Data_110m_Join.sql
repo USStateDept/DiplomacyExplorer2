@@ -3,10 +3,9 @@ CREATE TABLE public."DiscoverDiplomacy-Data_110m" AS
 SELECT 
 	sovereignt,
 	"PA_Data"."Country",
+	"PA_Data"."ISO_3166",
 	"PA_Data"."Bureau",
 	"PA_Data"."PEPFAR_2014",
-	"PA_Data"."NNPTSigned_2014",
-	"PA_Data"."NNPTDeposited_2014",
 	"PA_Data"."NNPTSignedDeposited_2014",
 	"PA_Data"."MaternalHealthAccessToCare_2014",
 	"PA_Data"."TIPS_2013",
