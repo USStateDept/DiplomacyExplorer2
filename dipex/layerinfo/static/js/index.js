@@ -175,7 +175,7 @@ var precipitation = L.tileLayer.wms('http://54.197.226.119/geoserver/opengeo/wms
     noWrap: true
 }).addTo(map);
 
-new L.Control.Zoom({ position: 'topright' }).addTo(map);
+map.addControl(new L.Control.ZoomMin({ position: 'topright' }));
 
 /*
 
