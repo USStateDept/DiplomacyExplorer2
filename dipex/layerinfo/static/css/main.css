@@ -991,7 +991,6 @@ path.leaflet-clickable{
 
  .modal-body{
   height:inherit;
-  width:inherit;
  }
 
 .modal-body img{
@@ -1009,6 +1008,10 @@ path.leaflet-clickable{
   padding-top:2px;
   padding-bottom:2px;
 }
+.modal-dialog{
+  width:80%;
+}
+
 
 
 }
