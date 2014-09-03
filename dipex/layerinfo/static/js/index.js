@@ -506,7 +506,7 @@ function onEachFeaturePts(feature, layer) {
 	var popupContent = "";
 	
 
-	popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><h6 style='height:140px; overflow-y:scroll; font-size: small; font-weight: normal' >" + feature.properties.Story + "</h6>";
+	popupContent = "<h4>" + feature.properties.Title + "</h4><h5>" + feature.properties.Country + "</h5><h6 style='height:140px; overflow-y:auto; font-size: small; font-weight: normal' >" + feature.properties.Story + "</h6>";
 	layer.bindPopup(popupContent, {"maxWidth":500});
 
 }
