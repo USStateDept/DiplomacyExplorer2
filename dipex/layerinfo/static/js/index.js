@@ -77,28 +77,81 @@ var UNHCRPopup = function(feature, layer){
 
 }
 
-var createLayer = function(data, styleObj){
 
-	if (styleObj['externalresource']){
-		return $.ajax({
+externalLayerLoad = function(templayerobj){
+	$("#loading").show();
+	$.ajax({
 		dataType: "json",
-		url: proxy + styleObj['externalresource']
-		}).then(function (data){
+		url: proxy + templayerobj['jsonStyle']['externalresource']
+		}).done(function (data){
 				var onEachPopup = bidsPopup;
-				if (styleObj['attributeName'] == "IMO"){
+				if (templayerobj['jsonStyle']['attributeName'] == "IMO"){
 					var onEachPopup = IMOPopup;
 				}
-				else if (styleObj['attributeName'] == "UNHCR"){
+				else if (templayerobj['jsonStyle']['attributeName'] == "UNHCR"){
 					var onEachPopup = UNHCRPopup;
 				}
-				return new L.geoJson(data, {style: function(feature){ 
+
+
+				var markerClusterGrp = new L.markerClusterGroup({ spiderfyOnMaxZoom: true, showCoverageOnHover: false, zoomToBoundsOnClick: true, iconCreateFunction: iconCreateCluster});
+
+				var tempMarkerLayer = new L.geoJson(data, {style: function(feature){ 
+								var styleObj = templayerobj['jsonStyle'];
 								//pass attribute value to the getColor
 								styleObj['fillColor'] = getColor(styleObj['attributeName'], feature.properties[styleObj['attributeName']]);
 								return styleObj;
 								},
 								onEachFeature: onEachPopup
 							});
+
+
+				markerClusterGrp.addLayer(tempMarkerLayer);
+				templayerobj['jsonLayer'] = markerClusterGrp;
+
+
+				allLayersGroup.addLayer(templayerobj['jsonLayer']);
+
+				if (templayerobj['ptsLayer'] != "" && templayerobj['ptsLayer'] != null){
+					loadPointLayer(templayerobj, currentKey)
+				}
+				map.addLayer(allLayersGroup);
+				map.addLayer(allLayersGroupPts);
+
+				if (templayerobj['jsonStyle']['timeEnabled']){
+					setupTimeSlider(templayerobj['timeSeriesInfo']);
+				}
+			/* in format   "bbox": [[-10, -10 ], [ 10, 10]] */
+				if (templayerobj['jsonStyle']['bbox']){
+					 map.fitBounds(templayerobj['jsonStyle']['bbox']);
+				}
+
+
+				hash.trigger("move");
+				$("#loading").hide();
+
+
+/*
+				return 
+*/
 		});
+
+
+
+
+
+
+
+
+
+}
+
+
+var createLayer = function(data, styleObj){
+
+	if (styleObj['externalresource']){
+		//create deferred function to run
+		return externalLayerLoad;
+
 	}
 
 
@@ -1072,24 +1125,32 @@ var sideBarClick = function(ev){
 	allLayersGroup.clearLayers();
 	allLayersGroupPts.clearLayers();
 
-	allLayersGroup.addLayer(templayerobj['jsonLayer']);
+	//if jsonLayer is a function add loader then run deferred clenaup
 
-	if (templayerobj['ptsLayer'] != "" && templayerobj['ptsLayer'] != null){
-		loadPointLayer(templayerobj, currentKey)
+	if (_.isFunction(templayerobj['jsonLayer'])){
+		templayerobj['jsonLayer'] = templayerobj['jsonLayer'](templayerobj);
 	}
-	map.addLayer(allLayersGroup);
-	map.addLayer(allLayersGroupPts);
+	else{
 
-	if (templayerobj['jsonStyle']['timeEnabled']){
-		setupTimeSlider(templayerobj['timeSeriesInfo']);
+		allLayersGroup.addLayer(templayerobj['jsonLayer']);
+
+		if (templayerobj['ptsLayer'] != "" && templayerobj['ptsLayer'] != null){
+			loadPointLayer(templayerobj, currentKey)
+		}
+		map.addLayer(allLayersGroup);
+		map.addLayer(allLayersGroupPts);
+
+		if (templayerobj['jsonStyle']['timeEnabled']){
+			setupTimeSlider(templayerobj['timeSeriesInfo']);
+		}
+	/* in format   "bbox": [[-10, -10 ], [ 10, 10]] */
+		if (templayerobj['jsonStyle']['bbox']){
+			 map.fitBounds(templayerobj['jsonStyle']['bbox']);
+		}
+
+
+		hash.trigger("move");
 	}
-/* in format   "bbox": [[-10, -10 ], [ 10, 10]] */
-	if (templayerobj['jsonStyle']['bbox']){
-		 map.fitBounds(templayerobj['jsonStyle']['bbox']);
-	}
-
-
-	hash.trigger("move");
 
 }
 
