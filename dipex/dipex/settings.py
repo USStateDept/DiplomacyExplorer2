@@ -108,7 +108,7 @@ TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "layerinfo/static/tinymce/")
 
 TINYMCE_JS_URL = "/" + BASE_URL + '/static/tinymce/tinymce.min.js'
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "media,image,link",
+    'plugins': "media,image,link, table, preview",
     'theme': "modern",
 #    'cleanup_on_startup': True,
 #    'custom_undo_redo_levels': 10,
