@@ -144,22 +144,23 @@ def externalSources(request):
     if type == "unjson":
         geojson = {"type":"FeatureCollection", "features":[]}
         try:
-            jsonobj = json.loads(response.read())
+            jsonobjs = json.loads(response.read())
         except:
             print "could not load JSON object"
             return HttpResponse("{}", content_type="application/json")
 
-        for feature in jsonobj:
-            if (float(feature['longitude']) == 0 and float(feature['latitude']) == 0):
-                continue
-            featureobj = {"type":"Feature", "properties":{"name":feature['name']}, "geometry":{"type":"Point", "coordinates":[feature['longitude'], feature['latitude']]}}
-            if len(feature['population']) > 0:
-                if feature['population'][0]["value"]:
-                    featureobj['properties']['value'] = feature['population'][0]['value']
-                if feature['population'][0]["updated_at"]:
-                    featureobj['properties']['updated_at'] = parse(feature['population'][0]['updated_at']).strftime("%b %d, %Y")
+        for jsonobj in jsonobjs:    
+            for feature in jsonobj:
+                if (float(feature['longitude']) == 0 and float(feature['latitude']) == 0):
+                    continue
+                featureobj = {"type":"Feature", "properties":{"name":feature['name']}, "geometry":{"type":"Point", "coordinates":[feature['longitude'], feature['latitude']]}}
+                if len(feature['population']) > 0:
+                    if feature['population'][0]["value"]:
+                        featureobj['properties']['value'] = feature['population'][0]['value']
+                    if feature['population'][0]["updated_at"]:
+                        featureobj['properties']['updated_at'] = parse(feature['population'][0]['updated_at']).strftime("%b %d, %Y")
 
-            geojson['features'].append(featureobj)
+                geojson['features'].append(featureobj)
 
 
 
