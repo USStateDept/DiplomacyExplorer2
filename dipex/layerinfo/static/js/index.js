@@ -147,6 +147,8 @@ externalLayerLoad = function(templayerobj){
 
 
 				hash.trigger("move");
+
+
 				$("#loading").hide();
 
 
@@ -386,12 +388,11 @@ var renderSidePanel = function(sidekey, centraltheme){
 	returnhtml += "<div class=\"panel-group\" id=\"accordion\">";
 	//returnhtml += "</div>"
 	var counter = 1;
-	if (! currentSideKey['sorted']){
-		currentSideKey['layers'] = _(currentSideKey['layers']).sortBy(function(obj) { return obj.subject })
-		currentSideKey['sorted'] = true;
+	if (! _.has(currentSideKey, "sorted")){
+		currentSideKey['sorted'] = _(currentSideKey['layers']).sortBy(function(obj) { return obj.subject })
 	}
-	$.each(currentSideKey['layers'], function(index, value){
-		var tempreturn = renderSidePanelPiece(index,value, counter) + "</div>";
+	$.each(currentSideKey['sorted'], function(index, value){
+		var tempreturn = renderSidePanelPiece(value['keyid'],value, counter) + "</div>";
 		returnhtml += tempreturn
 		counter += 1;
 	});
@@ -470,7 +471,9 @@ var resetHighlight = function(e){
 	if (tempcurrentkey.length < 2){
 		return;
 	}
-	tempcurrentlayer.resetStyle(e.target);
+	tempcurrentlayer.setStyle({weight: 1,
+        //color: '#666',
+        dashArray: ''});
 	return;
 }
 
@@ -1134,12 +1137,14 @@ var sideBarClick = function(ev){
 	allLayersGroupPts.clearLayers();
 
 	//if jsonLayer is a function add loader then run deferred clenaup
-	console.log(templayerobj['jsonLayer']);
-	if (templayerobj['jsonLayer'] != null){
-		if (_.isFunction(templayerobj['jsonLayer'])){
+	if (templayerobj["jsonLayer"] != null){
+		if (! templayerobj['jsonLayer']['_leaflet_id']){
+
 			templayerobj['jsonLayer'] = templayerobj['jsonLayer'](templayerobj);
 		}
-		else {
+		else{
+			allLayersGroup.addLayer(templayerobj['jsonLayer']);
+
 			if (templayerobj['ptsLayer'] != "" && templayerobj['ptsLayer'] != null){
 				loadPointLayer(templayerobj, currentKey)
 			}
@@ -1157,6 +1162,8 @@ var sideBarClick = function(ev){
 
 			hash.trigger("move");
 		}
+
+
 	}
 	else{
 		
