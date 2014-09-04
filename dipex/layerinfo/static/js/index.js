@@ -165,29 +165,7 @@ externalLayerLoad = function(templayerobj){
 
 }
 
-//this doesn't get hit any mopre
-var createLayer = function(data, styleObj){
 
-	if (styleObj['externalresource']){
-		//create deferred function to run
-		return externalLayerLoad;
-
-	}
-
-
-	return new L.geoJson(data, {style: function(feature){ 
-										//pass attribute value to the getColor
-										if (styleObj['attributeName'] == ""){
-											styleObj['fillOpacity'] = 0;
-										}
-										else{
-											styleObj['fillColor'] = getColor(styleObj['attributeName'], feature.properties[styleObj['attributeName']]);
-											styleObj['color'] = '#666';
-										}
-										return styleObj;
-									},
-								onEachFeature: onEachFeature});
-};
 
 var loadPointLayer = function(layerobj, theparent){
 	//already checked if the point layer is valid
@@ -1156,9 +1134,29 @@ var sideBarClick = function(ev){
 	allLayersGroupPts.clearLayers();
 
 	//if jsonLayer is a function add loader then run deferred clenaup
+	console.log(templayerobj['jsonLayer']);
+	if (templayerobj['jsonLayer'] != null){
+		if (_.isFunction(templayerobj['jsonLayer'])){
+			templayerobj['jsonLayer'] = templayerobj['jsonLayer'](templayerobj);
+		}
+		else {
+			if (templayerobj['ptsLayer'] != "" && templayerobj['ptsLayer'] != null){
+				loadPointLayer(templayerobj, currentKey)
+			}
+			map.addLayer(allLayersGroup);
+			map.addLayer(allLayersGroupPts);
 
-	if (_.isFunction(templayerobj['jsonLayer'])){
-		templayerobj['jsonLayer'] = templayerobj['jsonLayer'](templayerobj);
+			if (templayerobj['jsonStyle']['timeEnabled']){
+				setupTimeSlider(templayerobj['timeSeriesInfo']);
+			}
+		/* in format   "bbox": [[-10, -10 ], [ 10, 10]] */
+			if (templayerobj['jsonStyle']['bbox']){
+				 map.fitBounds(templayerobj['jsonStyle']['bbox']);
+			}
+
+
+			hash.trigger("move");
+		}
 	}
 	else{
 		
