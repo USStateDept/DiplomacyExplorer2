@@ -1047,8 +1047,8 @@ path.leaflet-clickable{
   }
   #descPane{
     width:100%;
-    height:33%;
-    min-height:250px;
+    height:285px;
+
     /*overflow-y:scroll;*/
     padding-right:0px;
     padding-left:0px;
@@ -1081,9 +1081,20 @@ path.leaflet-clickable{
   .navbar-collapse.in{
     overflow-y:auto;
   }
-  #tourKeybutton{
+  #global-header{
     display:none;
   }
+  .navbar-header{
+    background-color:#2eace3;
+  }
+  .sideBarTabContent {
+    height:250px;
+  }
+  
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus{
+  background-color:rgba(46, 227, 227, 0.56);
 
 }
 

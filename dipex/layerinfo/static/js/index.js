@@ -245,7 +245,8 @@ var map = new L.Map('map', {
 	maxBounds: L.latLngBounds(L.latLng(-180, -360), L.latLng(180, 360))
 });
 
-var precipitation = L.tileLayer.wms('http://54.197.226.119/geoserver/opengeo/wms', {
+//base layer here
+L.tileLayer.wms('http://54.197.226.119/geoserver/opengeo/wms', {
     format: 'image/png',
     transparent: true,
     layers: 'opengeo:baselayer',

@@ -219,6 +219,12 @@
 			$( window ).resize(function() {
 				if ($(this).width() > 767){
 			  		$(".sideBarTabContent ").height($(this).height() - 235);
+			  		$("#map").height($(this).height() - 144);
+			  		$("#mainContainer").height($(this).height() - 144);
+
+			  	}
+			  	else{
+			  		$("#mapPane").height($(this).height() - 339);
 			  	}
 			});
 			//do the first time
