@@ -407,6 +407,10 @@ var renderSidePanel = function(sidekey, centraltheme){
 	returnhtml += "<div class=\"panel-group\" id=\"accordion\">";
 	//returnhtml += "</div>"
 	var counter = 1;
+	if (! currentSideKey['sorted']){
+		currentSideKey['layers'] = _(currentSideKey['layers']).sortBy(function(obj) { return obj.subject })
+		currentSideKey['sorted'] = true;
+	}
 	$.each(currentSideKey['layers'], function(index, value){
 		var tempreturn = renderSidePanelPiece(index,value, counter) + "</div>";
 		returnhtml += tempreturn
