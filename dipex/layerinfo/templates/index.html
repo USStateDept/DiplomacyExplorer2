@@ -251,30 +251,28 @@
 				}
 
 			var ignite = function(data){
+				countryJSONLayer = new L.geoJson(data, {onEachFeature: onEachFeature});
+
+
+
+				//register the keysets
 				keysets = {{ jsonObj|safe }};
 				
 
 				$.each(keysets, function(mainkey, mainobj){
 					$.each(mainobj['layers'], function(subkey, subobj){
-						//Create the function
-						if (subobj['jsonStyle']){
-							subobj['jsonLayer'] = createLayer(data, subobj['jsonStyle']);
-							/*
-							if (subobj['jsonLayer'].state){
-								donecheck['external'].push(true);
-								subobj['jsonLayer'].done(function(data){
-									var markerClusterGrp = new L.markerClusterGroup({ spiderfyOnMaxZoom: true, showCoverageOnHover: false, zoomToBoundsOnClick: true, iconCreateFunction: iconCreateCluster });
-									markerClusterGrp.addLayer(data);
-									subobj['jsonLayer'] = markerClusterGrp;
-									donecheck['external'].pop();
-									allfinished(donecheck);
-								});
-							}
-							*/
+
+						if (subobj['jsonStyle']['externalresource']){
+							//create deferred function to run
+							return externalLayerLoad;
+
+						}
+						else {
+							subobj['jsonLayer'] = null;
 						}
 					});
 				});
-				donecheck['internal'] = true;
+
 				allfinished(donecheck);
 
 			}
@@ -286,19 +284,7 @@
 				}
 				hash.on("update", function(hasharg){$('#copytext').html($(location).attr('href'))});
 				return;
-/*
-				if (donecheck['internal'] == true && donecheck['external'].length == 0){
-					//thjis needs to be ehre to enesure that JSON syncs after AJAx
-					hash = L.hash(map);
-					//if there is a hash make sure that the map info button is pressed first
-					if (hash.lastHash && hash.lastHash.split("&").length > 1){
-						$("#mapKeybutton").trigger("click");
-					}
-					hash.on("update", function(hasharg){$('#copytext').html($(location).attr('href'))});
-					return;
-				}
-				return;
-				*/
+
 			}
 			</script>
 			<script type="text/javascript" src="/{{BASE_URL}}/static/js/index.js"></script>

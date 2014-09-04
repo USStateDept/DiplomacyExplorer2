@@ -165,7 +165,7 @@ externalLayerLoad = function(templayerobj){
 
 }
 
-
+//this doesn't get hit any mopre
 var createLayer = function(data, styleObj){
 
 	if (styleObj['externalresource']){
@@ -207,7 +207,7 @@ var loadPointLayer = function(layerobj, theparent){
 }
 
 
-
+var countryJSONLayer;
 
 
 $.ajax({
@@ -1145,6 +1145,7 @@ var mainKeySidebarFunc = function(ev){
 }
 
 
+
 var sideBarClick = function(ev){
 
 	var layername = $(this).attr('name');
@@ -1160,8 +1161,23 @@ var sideBarClick = function(ev){
 		templayerobj['jsonLayer'] = templayerobj['jsonLayer'](templayerobj);
 	}
 	else{
+		
+		countryJSONLayer.setStyle(function(feature){ 
+										//pass attribute value to the getColor
+										if (templayerobj['jsonStyle']['attributeName'] == ""){
+											templayerobj['jsonStyle']['fillOpacity'] = 0;
+										}
+										else{
+											templayerobj['jsonStyle']['fillColor'] = getColor(templayerobj['jsonStyle']['attributeName'], feature.properties[templayerobj['jsonStyle']['attributeName']]);
+											templayerobj['jsonStyle']['color'] = '#666';
+										}
+										return templayerobj['jsonStyle'];
+									});
 
-		allLayersGroup.addLayer(templayerobj['jsonLayer']);
+
+
+
+		allLayersGroup.addLayer(countryJSONLayer);
 
 		if (templayerobj['ptsLayer'] != "" && templayerobj['ptsLayer'] != null){
 			loadPointLayer(templayerobj, currentKey)
