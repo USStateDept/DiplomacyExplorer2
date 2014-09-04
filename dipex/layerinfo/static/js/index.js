@@ -77,7 +77,28 @@ var UNHCRPopup = function(feature, layer){
 
 }
 
-
+var redIcon = L.icon({
+    iconUrl: 'static/lib/Leaflet-0.7.2/dist/images/marker-red.png',
+    iconRetinaUrl: 'static/lib/Leaflet-0.7.2/dist/images/marker-red2x.png',
+    iconSize: [20, 25],
+    //iconAnchor: [22, 94],
+    //popupAnchor: [-3, -76],
+    //shadowUrl: 'my-icon-shadow.png',
+    //shadowRetinaUrl: 'my-icon-shadow@2x.png',
+    //shadowSize: [68, 95],
+    //shadowAnchor: [22, 94]
+});
+var storyIcon = L.icon({
+    iconUrl: 'static/lib/Leaflet-0.7.2/dist/images/story-marker.png',
+    iconRetinaUrl: 'static/lib/Leaflet-0.7.2/dist/images/story-marker.png',
+    iconSize: [40, 40],
+    //iconAnchor: [22, 94],
+    //popupAnchor: [-3, -76],
+    //shadowUrl: 'my-icon-shadow.png',
+    //shadowRetinaUrl: 'my-icon-shadow@2x.png',
+    //shadowSize: [68, 95],
+    //shadowAnchor: [22, 94]
+});
 externalLayerLoad = function(templayerobj){
 	$("#loading").show();
 	$.ajax({
@@ -95,12 +116,11 @@ externalLayerLoad = function(templayerobj){
 
 				var markerClusterGrp = new L.markerClusterGroup({ spiderfyOnMaxZoom: true, showCoverageOnHover: false, zoomToBoundsOnClick: true, iconCreateFunction: iconCreateCluster});
 
-				var tempMarkerLayer = new L.geoJson(data, {style: function(feature){ 
-								var styleObj = templayerobj['jsonStyle'];
-								//pass attribute value to the getColor
-								styleObj['fillColor'] = getColor(styleObj['attributeName'], feature.properties[styleObj['attributeName']]);
-								return styleObj;
-								},
+				var tempMarkerLayer = new L.geoJson(data, {
+							 pointToLayer: function (feature, latlng) {
+							 		return L.marker(latlng, {icon: redIcon});
+							        //return L.circleMarker(latlng, geojsonMarkerOptions);
+							    },
 								onEachFeature: onEachPopup
 							});
 
@@ -175,7 +195,11 @@ var loadPointLayer = function(layerobj, theparent){
 		url: "geojson?layerid=" + layerobj['ptsLayer'],
 		dataType: 'json',
 		success: function(data){
-			allLayersGroupPts.addLayer(new L.geoJson(data, {onEachFeature: onEachFeaturePts}));
+			allLayersGroupPts.addLayer(new L.geoJson(data, {pointToLayer: function (feature, latlng) {
+							 		return L.marker(latlng, {icon: storyIcon});
+							        //return L.circleMarker(latlng, geojsonMarkerOptions);
+							    },
+							    onEachFeature: onEachFeaturePts}));
 			map.addLayer(allLayersGroupPts)
 		}
 	});
