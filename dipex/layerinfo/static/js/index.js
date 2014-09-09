@@ -126,10 +126,32 @@ externalLayerLoad = function(templayerobj){
 
 
 				markerClusterGrp.addLayer(tempMarkerLayer);
+
+				if (templayerobj['jsonStyle']['secondarystyle']){
+					countryJSONLayer.setStyle(function(feature){ 
+								//pass attribute value to the getColor
+								if (templayerobj['jsonStyle']['attributeName'] == ""){
+									templayerobj['jsonStyle']['fillOpacity'] = 0;
+								}
+								else{
+									templayerobj['jsonStyle']['fillColor'] = getColor(templayerobj['jsonStyle']['attributeName'], feature.properties[templayerobj['jsonStyle']['attributeName']]);
+									templayerobj['jsonStyle']['color'] = '#666';
+								}
+								return templayerobj['jsonStyle'];
+							});
+					markerClusterGrp = [markerClusterGrp, countryJSONLayer];
+				}
+
 				templayerobj['jsonLayer'] = markerClusterGrp;
 
-
-				allLayersGroup.addLayer(templayerobj['jsonLayer']);
+				if (templayerobj['jsonLayer'].length != undefined){
+					$.each(templayerobj['jsonLayer'], function(index, layer){
+						allLayersGroup.addLayer(layer);
+					});
+				}
+				else{
+					allLayersGroup.addLayer(templayerobj['jsonLayer']);
+				}
 
 				if (templayerobj['ptsLayer'] != "" && templayerobj['ptsLayer'] != null){
 					loadPointLayer(templayerobj, currentKey)
@@ -754,6 +776,13 @@ var setupTimeSlider = function(timeJsonObj){
 				return	'#e6e7e8';
 			}
 			break;
+		case "UNHCRCamps":
+			if (d == 'Refugees') {
+				return	'#e54c58'
+			} else {
+				return	'#e6e7e8';
+			}
+			break;
 		case "MaternalHealthAccessToCare_2014":
 			if (d == 'Excellent') {
 				return	'#e54c58'
@@ -1143,7 +1172,14 @@ var sideBarClick = function(ev){
 			templayerobj['jsonLayer'] = templayerobj['jsonLayer'](templayerobj);
 		}
 		else{
-			allLayersGroup.addLayer(templayerobj['jsonLayer']);
+			if (templayerobj['jsonLayer'].length != undefined){
+				$.each(templayerobj['jsonLayer'], function(index, layer){
+					allLayersGroup.addLayer(layer);
+				});
+			}
+			else{
+				allLayersGroup.addLayer(templayerobj['jsonLayer']);
+			}
 
 			if (templayerobj['ptsLayer'] != "" && templayerobj['ptsLayer'] != null){
 				loadPointLayer(templayerobj, currentKey)
