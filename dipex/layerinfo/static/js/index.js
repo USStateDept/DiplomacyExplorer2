@@ -1127,6 +1127,19 @@ var setupTimeSlider = function(timeJsonObj){
 				return '#e6e7e8';
 			}
 			break;
+		case "FOTP-Status_2013":
+			if (d == 'Certified') {
+				return	'#e4eec3'
+			}else if (d == 'Silver') {
+				return	'#bbcd89'
+			}else if (d == 'Gold') {
+				return	'#95b353'
+			}else if (d == 'Platinum') {
+				return	'#668831'
+			}else {
+				return	'#e6e7e8';
+			}
+			break;
 		case "OES-Hubs_2014":
 			if (d == 'Baltic and Nordic States Hub') {
 				return	'#b8d6e1'
