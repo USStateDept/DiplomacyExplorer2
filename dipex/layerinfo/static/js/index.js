@@ -248,11 +248,12 @@ var map = new L.Map('map', {
 });
 
 //base layer here
-L.tileLayer.wms('http://54.197.226.119/natural-earth-rasters/opengeo/wms', {
+L.tileLayer.wms('http://54.197.226.119/geoserver/natural-earth-rasters/wms', {
     format: 'image/png',
     transparent: true,
     layers: 'natural-earth-rasters:GRAY_LR_SR_OB_DR',
-    noWrap: true
+    noWrap: true,
+    crs: L.CRS.EPSG3857
 }).addTo(map);
 
 map.addControl(new L.Control.ZoomMin({ position: 'topright' }));
