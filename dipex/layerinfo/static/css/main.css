@@ -857,6 +857,10 @@ a#skip-navigation:focus {
   width:250px;
 }
 
+.leaflet-container {
+    background: rgba(166,166,166,0);
+}
+
 .panel-body .btn-group{
   width:100%;
 }
