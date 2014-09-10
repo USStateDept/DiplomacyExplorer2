@@ -114,7 +114,8 @@ CREATE TABLE public."PA_Data"
 	"FOTP-Score_2014" text,
 	"FOTP-Status_2014" text,
 	"Post-LEEDS-Certification_2014" text,
-	"OES-Hubs_2014" text
+	"OES-Hubs_2014" text,
+	"UNHCRcamps" text
 );
 
 set client_encoding to 'UTF-8';
