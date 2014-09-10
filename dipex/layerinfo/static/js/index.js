@@ -251,7 +251,7 @@ var map = new L.Map('map', {
 L.tileLayer.wms('http://54.197.226.119/geoserver/natural-earth-rasters/wms', {
     format: 'image/png',
     transparent: true,
-    layers: 'natural-earth-rasters:GRAY_LR_SR_OB_DR',
+    layers: 'natural-earth-rasters:GRAY_50M_SR',
     noWrap: true,
     crs: L.CRS.EPSG3857
 }).addTo(map);
