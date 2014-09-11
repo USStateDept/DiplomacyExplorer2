@@ -234,7 +234,6 @@ set up the map
 
 
 var cmAttr = "<a href='mailto:dittemoremb@state.gov'>eDiplomacy Geo|DST</a>"
-//cmAttr = 'Data: <a href="http://www.eia.gov/countries/data.cfm" title="U.S. Energy Information Administration">EIA</a>, <a href="http://www.openstreetmap.org/" title="&copy; OpenStreetMap contributors">OpenStreetMap</a>, <a href="http://www.cloudmade.com/" title="&copy; 2011 CloudMade">CloudMade</a>, <a href="http://www.stamen.com/" title="Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.">Stamen Design</a>',
 
 var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 var deviceZoom ;
@@ -243,11 +242,11 @@ if (width < 400) {
 	deviceZoom = "1"
 } else if (width < 900) {
 	deviceZoom = "2"
- else if (width < 2000) {
+} else if (width < 2000) {
 	deviceZoom = "3"
 } else {
 	deviceZoom = "4"
-};
+}
 			
 var southWest = L.latLng(-67,-179.5),
 	northEast = L.latLng(80, 179.5),
