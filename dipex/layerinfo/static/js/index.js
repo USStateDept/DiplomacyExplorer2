@@ -103,7 +103,18 @@ externalLayerLoad = function(templayerobj){
 	$("#loading").show();
 	$.ajax({
 		dataType: "json",
-		url: proxy + templayerobj['jsonStyle']['externalresource']
+		url: proxy + templayerobj['jsonStyle']['externalresource'],
+		timeout:5000
+		}).fail(function(error){ 
+			countryJSONLayer.setStyle(function(feature){ 
+						//pass attribute value to the getColor
+						styleobj = {};
+						styleobj['fillOpacity'] = 0;
+						return styleobj;
+					});
+			$("#loading").hide();
+			alert("Data published from external organization is unavailable at this time.");
+
 		}).done(function (data){
 				var onEachPopup = bidsPopup;
 				if (templayerobj['jsonStyle']['attributeName'] == "IMO"){
@@ -130,14 +141,14 @@ externalLayerLoad = function(templayerobj){
 				if (templayerobj['jsonStyle']['secondarystyle']){
 					countryJSONLayer.setStyle(function(feature){ 
 								//pass attribute value to the getColor
-								if (templayerobj['jsonStyle']['attributeName'] == ""){
-									templayerobj['jsonStyle']['fillOpacity'] = 0;
+								if (templayerobj['jsonStyle']['secondarystyle']['attributeName'] == ""){
+									templayerobj['jsonStyle']['secondarystyle']['fillOpacity'] = 0;
 								}
 								else{
-									templayerobj['jsonStyle']['fillColor'] = getColor(templayerobj['jsonStyle']['attributeName'], feature.properties[templayerobj['jsonStyle']['attributeName']]);
-									templayerobj['jsonStyle']['color'] = '#666';
+									templayerobj['jsonStyle']['secondarystyle']['fillColor'] = getColor(templayerobj['jsonStyle']['secondarystyle']['attributeName'], feature.properties[templayerobj['jsonStyle']['secondarystyle']['attributeName']]);
+									templayerobj['jsonStyle']['secondarystyle']['color'] = '#666';
 								}
-								return templayerobj['jsonStyle'];
+								return templayerobj['jsonStyle']['secondarystyle'];
 							});
 					markerClusterGrp = [markerClusterGrp, countryJSONLayer];
 				}
@@ -795,9 +806,9 @@ var setupTimeSlider = function(timeJsonObj){
 				return	'#e6e7e8';
 			}
 			break;
-		case "UNHCRCamps":
+		case "UNHCRcamps":
 			if (d == 'Refugees') {
-				return	'#e54c58'
+				return	'#91151F';
 			} else {
 				return	'#e6e7e8';
 			}
