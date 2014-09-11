@@ -281,7 +281,7 @@ L.tileLayer.wms('http://54.197.226.119/geoserver/natural-earth-rasters/wms', {
     format: 'image/png',
     transparent: true,
     layers: 'natural-earth-rasters:GRAY_50M_SR',
-    noWrap: true,
+    noWrap: false,
     crs: L.CRS.EPSG3857
 }).addTo(map);
 
