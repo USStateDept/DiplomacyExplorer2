@@ -1156,7 +1156,7 @@ var setupTimeSlider = function(timeJsonObj){
 				return '#e6e7e8';
 			}
 			break;
-		case "FOTP-Status_2013":
+		case "Post-LEEDS-Certification_2014":
 			if (d == 'Certified') {
 				return	'#e4eec3'
 			}else if (d == 'Silver') {
