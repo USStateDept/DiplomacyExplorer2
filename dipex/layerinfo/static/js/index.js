@@ -325,11 +325,11 @@ function addCommas(nStr)
 
 var convertValuetoLabel = function(feature, attributeName, layerObj){
 		var featureval = feature.properties[attributeName];
-		if ($.type(featureval) == "string" || ! featureval){
+		if ($.type(featureval) == "string" || ! featureval || layerObj['jsonStyle']['isstring']){
 			try{
 				var thevalue =  layerObj['labels']['labels'][$.inArray(featureval, layerObj['labels']['values'])];
 
-				if (thevalue && thevalue != "null" && thevalue != null){
+				if (thevalue && thevalue != null){
 					return thevalue;
 				}
 				else{
