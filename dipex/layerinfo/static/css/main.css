@@ -188,6 +188,10 @@ a:hover, a:focus{
   border-color: #be3e48;
 }
 
+li#nav-explorer a:hover{
+  background-color: white;
+}
+
 .buffer_bottom{
   height:500px;
 }
