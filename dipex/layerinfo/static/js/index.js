@@ -236,16 +236,35 @@ set up the map
 var cmAttr = "<a href='mailto:dittemoremb@state.gov'>eDiplomacy Geo|DST</a>"
 //cmAttr = 'Data: <a href="http://www.eia.gov/countries/data.cfm" title="U.S. Energy Information Administration">EIA</a>, <a href="http://www.openstreetmap.org/" title="&copy; OpenStreetMap contributors">OpenStreetMap</a>, <a href="http://www.cloudmade.com/" title="&copy; 2011 CloudMade">CloudMade</a>, <a href="http://www.stamen.com/" title="Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under CC BY SA.">Stamen Design</a>',
 
+var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+var deviceZoom ;
+			
+if (width < 400) {
+	deviceZoom = "1"
+} else if (width < 900) {
+	deviceZoom = "2"
+ else if (width < 2000) {
+	deviceZoom = "3"
+} else {
+	deviceZoom = "4"
+};
+			
+var southWest = L.latLng(-67,-179.5),
+	northEast = L.latLng(80, 179.5),
+	bounds = L.latLngBounds(southWest, northEast);
+
 var map = new L.Map('map', {
 	zoomControl: false,
 	center: [20, 10],
-	zoom: 2,
+	zoom: deviceZoom,
 	maxZoom: 6,
 	minZoom: 2,
 	worldCopyJump: false,
 	attributionControl: false,
-	maxBounds: L.latLngBounds(L.latLng(-180, -360), L.latLng(180, 360))
+	maxBounds: bounds
 });
+
+map.fitBounds(bounds);
 
 //base layer here
 L.tileLayer.wms('http://54.197.226.119/geoserver/natural-earth-rasters/wms', {
