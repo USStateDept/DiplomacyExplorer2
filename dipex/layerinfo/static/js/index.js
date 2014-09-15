@@ -1311,7 +1311,7 @@ var sideBarClick = function(ev){
 
 		hash.trigger("move");
 	}
-
+	ga('send', 'event', 'button', 'click', layername);
 }
 
 

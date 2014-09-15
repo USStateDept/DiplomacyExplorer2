@@ -11,9 +11,9 @@ function siteParams() {
 	
 	if (host === 'dev.edip-maps.net') {
 		formSite = host;
-		gaID = "UA-42151027-1";
+		gaID = "UA-42151027-5";
 	} else {
 		formSite = '10.47.115.214:8080';
-		gaID = "UA-42151027-2";
+		gaID = "UA-42151027-5";
 	}
 }
