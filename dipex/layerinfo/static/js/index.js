@@ -4,7 +4,7 @@
  */
 
 //used for any external resources like bids
-var proxy = "proxy?url=";
+var proxy = "geoproxy/?url=";
 //this will be used for all data sets served directly from our server
 var baseDataURL = "static/data/"
 //the file with all fo the
@@ -205,7 +205,7 @@ externalLayerLoad = function(templayerobj){
 var loadPointLayer = function(layerobj, theparent){
 	//already checked if the point layer is valid
 	$.ajax({
-		url: "geojson?layerid=" + layerobj['ptsLayer'],
+		url: "geojson/?layerid=" + layerobj['ptsLayer'],
 		dataType: 'json',
 		success: function(data){
 			allLayersGroupPts.addLayer(new L.geoJson(data, {pointToLayer: function (feature, latlng) {
