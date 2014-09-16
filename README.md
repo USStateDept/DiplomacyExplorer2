@@ -16,7 +16,7 @@ Download and Install:
 
 *[Python Virtual Environment](http://www.lfd.uci.edu/~gohlke/pythonlibs/#virtualenv)
 
-*[the "requiredlibrary" of this repo](https://github.com/USStateDept/DiplomacyExplorer2/tree/master/requiredlibrary) or [Pillow-2.5.1.win32-py2.7.exe or the 64bit version](https://pypi.python.org/packages/2.7/P/Pillow/)
+*[the "requiredlibrary" of this repo](https://github.com/USStateDept/DiplomacyExplorer2/tree/master/requiredlibrary) or [Pillow-2.5.1.win32-py2.7.exe or the 64bit version](http://www.lfd.uci.edu/~gohlke/pythonlibs/#pillow)
 
 Then open command prompt
 
