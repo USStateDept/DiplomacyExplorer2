@@ -1241,7 +1241,8 @@ var sideBarClick = function(ev){
 
 	//if jsonLayer is a function add loader then run deferred clenaup
 	if (templayerobj["jsonLayer"] != null){
-		if (! templayerobj['jsonLayer']['_leaflet_id']){
+		console.log(templayerobj['jsonLayer'].length);
+		if (! templayerobj['jsonLayer']['_leaflet_id'] && templayerobj['jsonLayer'].length < 2){
 
 			templayerobj['jsonLayer'] = templayerobj['jsonLayer'](templayerobj);
 		}
