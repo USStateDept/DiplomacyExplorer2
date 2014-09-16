@@ -8,15 +8,15 @@ Install
 
 Download and Install:
 
-*https://www.python.org/downloads/
+*[Python 2.7](https://www.python.org/downloads/)
 
 *[Pip](http://www.lfd.uci.edu/~gohlke/pythonlibs/#pip)
 
-*http://www.lfd.uci.edu/~gohlke/pythonlibs/#setuptools
+*[Python Setup Tools](http://www.lfd.uci.edu/~gohlke/pythonlibs/#setuptools)
 
-*http://www.lfd.uci.edu/~gohlke/pythonlibs/#virtualenv
+*[Python Virtual Environment](http://www.lfd.uci.edu/~gohlke/pythonlibs/#virtualenv)
 
-*the "requiredlibrary" of this repo and install [Pillow-2.5.1.win32-py2.7.exe or the 64bit version](https://pypi.python.org/packages/2.7/P/Pillow/)
+*[the "requiredlibrary" of this repo](https://github.com/USStateDept/DiplomacyExplorer2/tree/master/requiredlibrary) or [Pillow-2.5.1.win32-py2.7.exe or the 64bit version](https://pypi.python.org/packages/2.7/P/Pillow/)
 
 Then open command prompt
 
