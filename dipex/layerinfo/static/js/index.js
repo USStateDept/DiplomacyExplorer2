@@ -1241,13 +1241,24 @@ var sideBarClick = function(ev){
 
 	//if jsonLayer is a function add loader then run deferred clenaup
 	if (templayerobj["jsonLayer"] != null){
-		console.log(templayerobj['jsonLayer'].length);
 		if (! templayerobj['jsonLayer']['_leaflet_id'] && templayerobj['jsonLayer'].length < 2){
 
 			templayerobj['jsonLayer'] = templayerobj['jsonLayer'](templayerobj);
 		}
 		else{
 			if (templayerobj['jsonLayer'].length != undefined){
+				//set the style before 
+				countryJSONLayer.setStyle(function(feature){ 
+					//pass attribute value to the getColor
+					if (templayerobj['jsonStyle']['secondarystyle']['attributeName'] == ""){
+						templayerobj['jsonStyle']['secondarystyle']['fillOpacity'] = 0;
+					}
+					else{
+						templayerobj['jsonStyle']['secondarystyle']['fillColor'] = getColor(templayerobj['jsonStyle']['secondarystyle']['attributeName'], feature.properties[templayerobj['jsonStyle']['secondarystyle']['attributeName']]);
+						templayerobj['jsonStyle']['secondarystyle']['color'] = '#666';
+					}
+					return templayerobj['jsonStyle']['secondarystyle'];
+				});
 				$.each(templayerobj['jsonLayer'], function(index, layer){
 					allLayersGroup.addLayer(layer);
 				});
@@ -1261,6 +1272,8 @@ var sideBarClick = function(ev){
 			}
 			map.addLayer(allLayersGroup);
 			map.addLayer(allLayersGroupPts);
+
+
 
 			if (templayerobj['jsonStyle']['timeEnabled']){
 				setupTimeSlider(templayerobj['timeSeriesInfo']);
