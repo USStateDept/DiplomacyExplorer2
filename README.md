@@ -10,6 +10,8 @@ Download and Install:
 
 *https://www.python.org/downloads/
 
+*[Pip](http://www.lfd.uci.edu/~gohlke/pythonlibs/#pip)
+
 *http://www.lfd.uci.edu/~gohlke/pythonlibs/#setuptools
 
 *http://www.lfd.uci.edu/~gohlke/pythonlibs/#virtualenv
