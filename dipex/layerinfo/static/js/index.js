@@ -8,7 +8,7 @@ var proxy = "geoproxy/?url=";
 //this will be used for all data sets served directly from our server
 var baseDataURL = "static/data/"
 //the file with all fo the
-var generalBaseLayer = "DiscoverDiplomacy-Data_110m.json";
+var generalBaseLayer = "DiscoverDiplomacy-Data_50m.json";
 
 
 
@@ -277,16 +277,103 @@ var map = new L.Map('map', {
 map.fitBounds(bounds);
 
 //base layer here
-L.tileLayer.wms('http://54.197.226.119/geoserver/natural-earth-rasters/wms', {
+L.tileLayer.wms('http://localhost/geoserver/natural-earth-rasters/wms', {
     format: 'image/png',
     transparent: true,
-    layers: 'natural-earth-rasters:GRAY_50M_SR',
+    layers: 'natural-earth-rasters:NE2_50M_SR_W',
     noWrap: false,
     crs: L.CRS.EPSG3857
 }).addTo(map);
 
 map.addControl(new L.Control.ZoomMin({ position: 'topright' }));
 
+
+//L.geoJson('static/data/posts.json').addTo(map);
+
+
+
+var bureausJson = (function() {
+	var json = null;
+	$.ajax({
+		'async': false,
+		'global': false,
+		'url': "static/data/bureaus.json",
+		'dataType': "json",
+		'success': function (data) {
+		json = data;
+		}
+	});
+	return json;
+})();
+
+function bureausLayerPolygonOptions(feature) {
+	return {
+		weight: 1,
+		opacity: 1,
+		color: 'white',
+		//fillOpacity: 0.7,
+		fillOpacity: 0.85,
+		fillColor: getColorBureaus(feature.properties.Bureau)
+	};
+};
+
+function getColorBureaus(d) {
+	if (d == 'AF') {
+		return	'#f8c373'
+	}else if (d == 'EAP') {
+		return	'#fdf08f'
+	}else if (d == 'EUR') {
+		return	'#efbbd1'
+	}else if (d == 'NEA') {
+		return	'#b8da72'
+	}else if (d == 'SCA') {
+		return	'#c9beda'
+	}else if (d == 'WHA') {
+		return	'#a8c9ea'
+	}else {
+		return	'#d6d6d6';
+		//return	'#e6e7e8';
+	}
+}
+			
+// load the geojson to the map with marker styling
+allLayersGroup.addLayer(new L.geoJson(bureausJson, {style: bureausLayerPolygonOptions}
+));
+map.addLayer(allLayersGroup)
+
+var postsLayer = (function() {
+	var json = null;
+	$.ajax({
+		'async': false,
+		'global': false,
+		'url': "static/data/posts.json",
+		'dataType': "json",
+		'success': function (data) {
+		json = data;
+		}
+	});
+	return json;
+})();
+ 
+var postsLayerMarkerOptions = {
+	radius: 3,
+	fillColor: "#333385",
+	color: "#8080B2",
+	weight: 1,
+	opacity: 1,
+	fillOpacity: 1
+};
+ 
+// load the geojson to the map with marker styling
+allLayersGroupPts.addLayer(new L.geoJson(postsLayer, {
+	pointToLayer: function (feature, latlng) {
+		var popupOptions = {maxWidth: 200};
+		var popupContent = feature.properties.PostName;
+		return L.circleMarker(latlng, postsLayerMarkerOptions).bindPopup(popupContent,popupOptions);
+	}
+})
+)
+map.addLayer(allLayersGroupPts);
 /*
 
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
@@ -1196,6 +1283,24 @@ var setupTimeSlider = function(timeJsonObj){
 				return	'#3992a1'
 			}else {
 				return	'#e6e7e8';
+			}
+			break;
+		case "Bureaus":
+			if (d == 'AF') {
+				return	'#f8c373'
+			}else if (d == 'EAP') {
+				return	'#fdf08f'
+			}else if (d == 'EUR') {
+				return	'#efbbd1'
+			}else if (d == 'NEA') {
+				return	'#b8da72'
+			}else if (d == 'SCA') {
+				return	'#c9beda'
+			}else if (d == 'WHA') {
+				return	'#a8c9ea'
+			}else {
+				return	'#d6d6d6';
+				//return	'#e6e7e8';
 			}
 			break;
 	    default:
