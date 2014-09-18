@@ -8,7 +8,7 @@ Install
 
 Download and Install:
 
-*[Python 2.7](https://www.python.org/downloads/)
+*[Python 2.7.7](https://www.python.org/downloads/)
 
 *[Pip](http://www.lfd.uci.edu/~gohlke/pythonlibs/#pip)
 
