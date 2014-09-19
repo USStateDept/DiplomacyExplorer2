@@ -779,9 +779,15 @@ var setupTimeSlider = function(timeJsonObj){
 				return '#e54c58';
 			}
 			else if (dint > 99){
-				return	'#ed8b87'
+				return	'#e96e6e'
 			}
 			else if (dint > 49){
+				return	'#ed8b87'
+			}
+			else if (dint > 9){
+				return	'#f1a8a3'
+			}
+			else if (dint > 0){
 				return	'#f6c6c3'
 			}
 			else {
