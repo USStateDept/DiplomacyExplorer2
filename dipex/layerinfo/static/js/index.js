@@ -930,11 +930,11 @@ var setupTimeSlider = function(timeJsonObj){
 			break;
 		case "PEPFAR_2014":
 			if (d == '3') {
-				return	'#e54c58'
+				return	'#f6c6c3'
 			} else if (d == '2') {
 				return	'#ed8b87'
 			} else if (d == '1') {
-				return	'#f6c6c3'
+				return	'#e54c58'
 			} else {
 				return	'#e6e7e8';
 			}
