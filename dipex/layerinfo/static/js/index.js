@@ -1261,29 +1261,29 @@ var setupTimeSlider = function(timeJsonObj){
 			break;
 		case "OES-Hubs_2014":
 			if (d == 'Baltic and Nordic States Hub') {
-				return	'#77FF8D'
+				return	'#e592b5'
 			}else if (d == 'Central American and Caribbean Hub') {
-				return	'#32E821'
+				return	'#7fb0e0'
 			}else if (d == 'Central and Eastern European Hub') {
-				return	'#FFFE55'
+				return	'#efbbd1'
 			}else if (d == 'Central Asian Hub') {
-				return	'#D3FF84'
+				return	'#ae9ec8'
 			}else if (d == 'East African Hub') {
-				return	'#86E842'
-			}else if (d == 'East Asian Hub') {
-				return	'#E8D721'
+				return	'#fad8a4'
+			}else if (d == 'East Asia Hub') {
+				return	'#fdf08f'
 			}else if (d == 'Middle Eastern Hub') {
-				return	'#FFB938'
+				return	'#b8da72'
 			}else if (d == 'Pacific Hub') {
-				return	'#FFC213'
-			}else if (d == 'South America Hub') {
-				return	'#BFFF31'
+				return	'#fce644'
+			}else if (d == 'South American Hub') {
+				return	'#bdd6ef'
 			}else if (d == 'South Asian Hub') {
-				return	'#BFFF31'
-			}else if (d == 'Southern Hub') {
-				return	'#52FF9B'
-			}else if (d == 'Western and Central African Hub') {
-				return	'#E8CA42'
+				return	'#c9beda'
+			}else if (d == 'Southern Africa Hub') {
+				return	'#f8c373'
+			}else if (d == 'Western and Central Africa Hub') {
+				return	'#f6ae42'
 			}else {
 				return	'#e6e7e8';
 			}
