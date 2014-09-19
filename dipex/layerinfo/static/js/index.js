@@ -1247,10 +1247,10 @@ var setupTimeSlider = function(timeJsonObj){
 			break;
 		case "Polio-Cases_2014":
 			dint = parseInt(d);
-			if (dint > 10){
-				return	'#f6c6c3'
-			}else if (dint > 0){
+			if (dint > 10) {
 				return	'#e96e6e'
+			}else if (dint > 0){
+				return	'#f6c6c3'
 			}
 			else {
 				return '#e6e7e8';
