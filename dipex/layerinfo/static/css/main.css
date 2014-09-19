@@ -109,7 +109,7 @@ float:none;
 }
 
 a:hover, a:focus{
-  background-color:#2eace3;
+  /*background-color:#2eace3;*/
 }
 
 .navbar-inverse .navbar-collapse, .navbar-inverse{
