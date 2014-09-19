@@ -1111,6 +1111,7 @@ var setupTimeSlider = function(timeJsonObj){
 				return	'#e6e7e8';
 			}
 			break;
+		/*
 		case "NucSign_2014":
 		case "NucDepo_2014":
 			if (d == 'X') {
@@ -1128,7 +1129,9 @@ var setupTimeSlider = function(timeJsonObj){
 				return	'#ddd';
 			}
 			break;
+		*/
 		case "PEPFAR_2014":
+		/*
 		case "NNPTSigned_2014":
 			if (d == 'X') {
 			return	'#b37ead'
@@ -1143,15 +1146,14 @@ var setupTimeSlider = function(timeJsonObj){
 				return	'#e6e7e8';
 			}
 			break;
+		*/
 		case "NNPTSignedDeposited_2014":
-			if (d == '2') {
-				return	'#7cabb1'
-			} else if (d == 'Signed') {
-				return	'#bc89b5'
+			if (d == 'Signed') {
+				return	'#da71fa'
 			} else if (d == 'Deposited') {
-				return	'#abb17c'
+				return	'#7192fa'
 			} else if (d == 'Signed and Deposited') {
-				return	'#b37ead'
+				return	'#9571fa'
 			}else {
 				return	'#e6e7e8';
 			}
