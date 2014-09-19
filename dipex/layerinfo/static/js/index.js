@@ -1183,10 +1183,10 @@ var setupTimeSlider = function(timeJsonObj){
 			break;
 		case "301-List_2014":
 			if (d == 'Priority Watch List') {
-			return	'#d0dca4'
+				return	'#f38333'
 			} else if (d == 'Watch List') {
-				return	'#95b353'
-			}else {
+				return	'#f8d57f'
+			} else {
 				return	'#e6e7e8';
 			}
 			break;
