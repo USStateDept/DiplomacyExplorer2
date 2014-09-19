@@ -960,6 +960,7 @@ color:#2eace3;
 .mainKey h4:hover{
   background-color:#2eace3;
   color:white;
+  border-radius: 3px;
 }
 
 .popover-title{
