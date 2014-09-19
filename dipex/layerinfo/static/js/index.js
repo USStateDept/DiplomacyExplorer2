@@ -1261,29 +1261,29 @@ var setupTimeSlider = function(timeJsonObj){
 			break;
 		case "OES-Hubs_2014":
 			if (d == 'Baltic and Nordic States Hub') {
-				return	'#b8d6e1'
+				return	'#77FF8D'
 			}else if (d == 'Central American and Caribbean Hub') {
-				return	'#3992a1'
+				return	'#32E821'
 			}else if (d == 'Central and Eastern European Hub') {
-				return	'#7db0be'
+				return	'#FFFE55'
 			}else if (d == 'Central Asian Hub') {
-				return	'#3992a1'
+				return	'#D3FF84'
 			}else if (d == 'East African Hub') {
-				return	'#3992a1'
+				return	'#86E842'
 			}else if (d == 'East Asian Hub') {
-				return	'#3992a1'
+				return	'#E8D721'
 			}else if (d == 'Middle Eastern Hub') {
-				return	'#b8d6e1'
+				return	'#FFB938'
 			}else if (d == 'Pacific Hub') {
-				return	'#b8d6e1'
+				return	'#FFC213'
 			}else if (d == 'South America Hub') {
-				return	'#3992a1'
+				return	'#BFFF31'
 			}else if (d == 'South Asian Hub') {
-				return	'#3992a1'
+				return	'#BFFF31'
 			}else if (d == 'Southern Hub') {
-				return	'#3992a1'
+				return	'#52FF9B'
 			}else if (d == 'Western and Central African Hub') {
-				return	'#3992a1'
+				return	'#E8CA42'
 			}else {
 				return	'#e6e7e8';
 			}
