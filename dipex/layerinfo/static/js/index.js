@@ -258,7 +258,7 @@ if (width < 400) {
 } else {
 	deviceZoom = "4"
 }
-			
+
 var southWest = L.latLng(-67,-179.5),
 	northEast = L.latLng(80, 179.5),
 	bounds = L.latLngBounds(southWest, northEast);
@@ -268,20 +268,21 @@ var map = new L.Map('map', {
 	center: [20, 10],
 	zoom: deviceZoom,
 	maxZoom: 6,
-	minZoom: 2,
+	minZoom: deviceZoom,
 	worldCopyJump: false,
 	attributionControl: false,
 	maxBounds: bounds
 });
 
-map.fitBounds(bounds);
+//removing fitBounds for initial load
+//map.fitBounds(bounds);
 
 //base layer here
 L.tileLayer.wms('http://54.197.226.119/geoserver/natural-earth-rasters/wms', {
     format: 'image/png',
     transparent: true,
     layers: 'natural-earth-rasters:NE2_50M_SR_W',
-    noWrap: false,
+    noWrap: true,
     crs: L.CRS.EPSG3857
 }).addTo(map);
 
