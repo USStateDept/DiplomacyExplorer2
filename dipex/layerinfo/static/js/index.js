@@ -791,18 +791,21 @@ var setupTimeSlider = function(timeJsonObj){
 		case "NIV_1997": 
 			dint = parseInt(d);
 			if (dint > 99999){
-				return '#f26722';
+				return '#c8551a';
 			}
 			else if (dint > 49999){
-				return	'#f38333'
+				return	'#f26722'
 			}
 			else if (dint > 24999){
-				return	'#f49d4b'
+				return	'#f38333'
 			}
 			else if (dint > 9999){
-				return	'#f6b965'
+				return	'#f49d4b'
 			}
 			else if (dint > 4999){
+				return	'#f6b965'
+			}
+			else if (dint > 0){
 				return	'#f8d57f'
 			}
 			else {
