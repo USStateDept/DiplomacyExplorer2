@@ -1154,12 +1154,10 @@ var setupTimeSlider = function(timeJsonObj){
 			break;
 		*/
 		case "NNPTSignedDeposited_2014":
-			if (d == 'Signed') {
-				return	'#da71fa'
-			} else if (d == 'Deposited') {
-				return	'#7192fa'
+			if (d == 'Deposited') {
+				return	'#d0a2c6'
 			} else if (d == 'Signed and Deposited') {
-				return	'#9571fa'
+				return	'#b37ead'
 			}else {
 				return	'#e6e7e8';
 			}
