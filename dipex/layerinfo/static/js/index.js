@@ -766,8 +766,11 @@ var setupTimeSlider = function(timeJsonObj){
 			else if (dint > 9){
 				return	'#f6c6c3'
 			}
+			else if (dint > 0){
+				return	'#fce6e7'
+			}
 			else {
-				return '#fce6e7';
+				return '#e6e7e8';
 			}
 			break;
 		case "Inf-Mort_2012":
