@@ -313,9 +313,9 @@ box-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
 
 .shareInfoBox{
   position: absolute;
-right: 10px;
-bottom: 80px;
-z-index: 100;
+  right: 12px;
+  bottom: 100px;
+  z-index: 100;
 }
 
 a:hover, a:focus{
@@ -1109,6 +1109,13 @@ path.leaflet-clickable{
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus{
   background-color:rgba(46, 227, 227, 0.56);
 
+}
+
+.leaflet-control-attribution.leaflet-control {
+	margin-bottom: 50px;
+	margin-right: 10px;
+	background: rgba(255, 255, 255, 0.3);
+	border-radius: 2px;
 }
 
 /* Print Handling */

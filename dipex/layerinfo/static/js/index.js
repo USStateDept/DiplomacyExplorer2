@@ -270,7 +270,7 @@ var map = new L.Map('map', {
 	maxZoom: 6,
 	minZoom: deviceZoom,
 	worldCopyJump: false,
-	attributionControl: false,
+	attributionControl: true,
 	maxBounds: bounds
 });
 
@@ -287,7 +287,7 @@ L.tileLayer.wms('http://54.197.226.119/geoserver/natural-earth-rasters/wms', {
 }).addTo(map);
 
 map.addControl(new L.Control.ZoomMin({ position: 'topright' }));
-
+map.attributionControl.setPrefix('Names and boundary representation are not necessarily authoritative.');
 
 //L.geoJson('static/data/posts.json').addTo(map);
 
