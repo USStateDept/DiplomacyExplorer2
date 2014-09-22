@@ -209,6 +209,7 @@
 			<script type="text/javascript" src="/{{BASE_URL}}/static/lib/Readmore/readmore.min.js"></script>
 			<script type="text/javascript" src="/{{BASE_URL}}/static/js/host.js"></script>
 			<script type="text/javascript" src="/{{BASE_URL}}/static/lib/Leaflet-0.7.2/dist/leaflet.js"></script>
+			<script type="text/javascript" src="/{{BASE_URL}}/static/lib/leaflet-omnivore-master/leaflet-omnivore.js"></script>
 			<script src="/{{BASE_URL}}/static/js/L.Control.ZoomMin.js"></script>
 			<script type="text/javascript" src="/{{BASE_URL}}/static/lib/Leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 			<script type="text/javascript" src="/{{BASE_URL}}/static/lib/leaflet-hash/leaflet-hash.js"></script>
@@ -250,8 +251,9 @@
 					return new L.DivIcon({ html: '<div style="background-color:rgba(255, 141, 141, .5); width:' + size + 'px;height:' + size + 'px;"><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(size, size) });
 				}
 
-			var ignite = function(data){
-				countryJSONLayer = new L.geoJson(data, {onEachFeature: onEachFeature});
+			var ignite = function(){
+
+				//countryJSONLayer = new L.geoJson(data, {onEachFeature: onEachFeature});
 
 
 

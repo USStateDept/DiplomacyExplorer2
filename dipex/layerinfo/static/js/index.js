@@ -8,7 +8,9 @@ var proxy = "geoproxy/?url=";
 //this will be used for all data sets served directly from our server
 var baseDataURL = "static/data/"
 //the file with all fo the
-var generalBaseLayer = "DiscoverDiplomacy-Data_50m.json";
+//var generalBaseLayer = "DiscoverDiplomacy-Data_50m.json";
+var generalBaseLayer = "DiscoverDiplomacy-Topo_50m.json";
+
 
 
 
@@ -222,16 +224,31 @@ var loadPointLayer = function(layerobj, theparent){
 
 var countryJSONLayer;
 
+$( document ).ready(function() {
+	countryJSONLayer = new L.geoJson(null, {onEachFeature: onEachFeature});
+	countryJSONLayer = omnivore.topojson(baseDataURL + generalBaseLayer,{}, countryJSONLayer)
+	.on('ready', function() {
+		ignite();
+	    loadBureaus();
+	    $("#loading").hide();
+	    $("#loading_splash").hide();
+	    $("#splash_buttons").show();
+    })
+    .on('error', function() {
+    	console.log("there was an error");
+    });
 
+});
+/*
 $.ajax({
 	//url: baseURL.replace("*******", generalBaseLayer),
 	url: baseDataURL + generalBaseLayer,
 	dataType: 'json',
 	//ignite(data) is found on the main index.jsp page
-	success: function(data){ignite(data);loadBureaus();$("#loading").hide();$("#loading_splash").hide();$("#splash_buttons").show();} 
+	success: function(data){} 
 
 });
-
+*/
 
 
 
@@ -293,7 +310,7 @@ map.attributionControl.setPrefix('Names and boundary representation are not nece
 
 
 
-var loadBureaus = function(data){
+var loadBureaus = function(){
 	
 	countryJSONLayer.setStyle(bureausLayerPolygonOptions);
 
