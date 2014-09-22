@@ -570,9 +570,10 @@ var onEachFeature = function(feature, layer){
 
 
 var highlightFeature = function(e){
+	if (currentKey == undefined){return;}
 	var layer = e.target;
 	var feature = e.target.feature;
-	var content = "<strong>" + feature.properties['Country'] + "</strong>";
+	var content = "<strong>" + feature.properties['Country'] + "</strong>"; 
 	var tempcurrentkey = currentKey.split("+");
 	if (tempcurrentkey.length < 2){
 		return;
@@ -604,6 +605,7 @@ var highlightFeature = function(e){
 }
 
 var resetHighlight = function(e){
+	if (currentKey == undefined){return;}
 	$(".leaflet-control-infobox-interior").html("");
 	$(".leaflet-control-infobox-interior").hide();
 	var tempcurrentlayer = allLayersGroup.getLayers()[0];
@@ -647,11 +649,6 @@ function zoomToFeature(e) {
 
 
 function onEachFeaturePts(feature, layer) {
-	layer.on({
-	//mouseover: highlightFeature,
-	//mouseout: resetHighlight
-	//click: zoomToFeature
-	});
 
 	var popupContent = "";
 	
