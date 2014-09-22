@@ -228,7 +228,7 @@ $.ajax({
 	url: baseDataURL + generalBaseLayer,
 	dataType: 'json',
 	//ignite(data) is found on the main index.jsp page
-	success: function(data){ignite(data);$("#loading").hide();$("#loading_splash").hide();$("#splash_buttons").show();} 
+	success: function(data){ignite(data);loadBureaus();$("#loading").hide();$("#loading_splash").hide();$("#splash_buttons").show();} 
 
 });
 
@@ -293,21 +293,39 @@ map.attributionControl.setPrefix('Names and boundary representation are not nece
 
 
 
-var bureausJson = (function() {
+var loadBureaus = function(data){
+	
+	countryJSONLayer.setStyle(bureausLayerPolygonOptions);
+
+	allLayersGroup.addLayer(countryJSONLayer);
+	var postsLayer = (function() {
 	var json = null;
 	$.ajax({
-		'async': false,
 		'global': false,
-		'url': "static/data/bureaus.json",
+		'url': "static/data/posts.json",
 		'dataType': "json",
 		'success': function (data) {
-		json = data;
-		}
-	});
-	return json;
-})();
+			// load the geojson to the map with marker styling
+			allLayersGroupPts.addLayer(new L.geoJson(data, {
+				pointToLayer: function (feature, latlng) {
+					var popupOptions = {maxWidth: 200};
+					var popupContent = feature.properties.PostName;
+					return L.circleMarker(latlng, postsLayerMarkerOptions).bindPopup(popupContent,popupOptions);
+				},
+				style:postsLayerMarkerOptions
+			}));
+			
+			}
+		});
+		return json;
+	})();
 
-function bureausLayerPolygonOptions(feature) {
+
+}
+
+
+
+var bureausLayerPolygonOptions  = function (feature) {
 	return {
 		weight: 1,
 		opacity: 1,
@@ -337,44 +355,26 @@ function getColorBureaus(d) {
 	}
 }
 			
-// load the geojson to the map with marker styling
-allLayersGroup.addLayer(new L.geoJson(bureausJson, {style: bureausLayerPolygonOptions}
-));
-map.addLayer(allLayersGroup)
 
-var postsLayer = (function() {
-	var json = null;
-	$.ajax({
-		'async': false,
-		'global': false,
-		'url': "static/data/posts.json",
-		'dataType': "json",
-		'success': function (data) {
-		json = data;
-		}
-	});
-	return json;
-})();
- 
+
+
 var postsLayerMarkerOptions = {
 	radius: 3,
 	fillColor: "#333385",
 	color: "#8080B2",
 	weight: 1,
 	opacity: 1,
-	fillOpacity: 1
+	fillOpacity: 1,
+	zIndexOffset: 10
 };
- 
-// load the geojson to the map with marker styling
-allLayersGroupPts.addLayer(new L.geoJson(postsLayer, {
-	pointToLayer: function (feature, latlng) {
-		var popupOptions = {maxWidth: 200};
-		var popupContent = feature.properties.PostName;
-		return L.circleMarker(latlng, postsLayerMarkerOptions).bindPopup(popupContent,popupOptions);
-	}
-})
-)
+
 map.addLayer(allLayersGroupPts);
+map.addLayer(allLayersGroup);
+ 
+
+
+
+
 /*
 
 L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
