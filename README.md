@@ -41,3 +41,26 @@ Might have to use git bash for this
 
 ```
 
+Update Dataset
+==============================
+
+Update the json file dipex/layerinfo/static/data/DiscoverDiplomacy-Data_50m.json using QGIS 
+
+Save as a geoJSON
+
+Install [TopoJSON](https://github.com/mbostock/topojson)If you don't already have it
+
+*Install NodeJS
+
+```
+npm -g topojson
+```
+
+*Navigate to the DiscoverDiplomacy-Data_50m.json directory and run 
+
+```
+topojson -o DiscoverDiplomacy-Topo_50m.json --no-stitch-poles -p -- DiscoverDiplomacy-Data_50m.json
+```
+
+
+
