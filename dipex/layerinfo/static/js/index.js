@@ -10,7 +10,7 @@ var baseDataURL = "static/data/"
 //the file with all fo the
 //var generalBaseLayer = "DiscoverDiplomacy-Data_50m.json";
 var generalBaseLayer = "DiscoverDiplomacy-Topo_50m.json";
-
+var disputedAreasLayer = "DisputedAreas_50m.json";
 
 
 
@@ -311,6 +311,17 @@ L.tileLayer.wms('http://54.197.226.119/geoserver/natural-earth-rasters/wms', {
 
 map.addControl(new L.Control.ZoomMin({ position: 'topright' }));
 map.attributionControl.setPrefix('Names and boundary representation are not necessarily authoritative.');
+
+var disputedAreasStyle = {
+	weight: 0,
+	fillOpacity: 0.85,
+	fillColor: '#E6E6E6'
+};
+
+$.getJSON(baseDataURL + disputedAreasLayer, function(data) {
+	var disputedAreasJson = new L.GeoJSON(data, {style: disputedAreasStyle});
+	map.addLayer(disputedAreasJson);
+});
 
 //L.geoJson('static/data/posts.json').addTo(map);
 
