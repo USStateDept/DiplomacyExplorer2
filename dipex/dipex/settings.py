@@ -110,6 +110,8 @@ TINYMCE_JS_URL = "/" + BASE_URL + '/static/tinymce/tinymce.min.js'
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "media,image,link, table, preview",
     'theme': "modern",
+    'relative_urls': False
+#    'remove_script_host': False
 #    'cleanup_on_startup': True,
 #    'custom_undo_redo_levels': 10,
 }
