@@ -51,7 +51,7 @@ var tour = new Tour({
     content: "You will notice a lot has changed on the map.  Let's explore each part.",
     duration: tourduration,
     //onStart: function(tour) {$("#businessDrop").trigger('click');},
-    onShown: function (tour) {$("#NIV_1997_Keyid").trigger('click');} 
+    onShown: function (tour) {} 
     //onShown: function (tour) {map.panTo([39,-37.698]);map.setZoom(6)} 
   },
   {
