@@ -31,7 +31,7 @@ var tour = new Tour({
   {
     element: "#business",
     title: "For example.",
-    content: "For example, diplomacy can be a tool for building businesses through issuing visas and supporting tourism.  Let's click on the Visa and Tourism issue to explore further.",
+    content: "For example, diplomacy can be a tool for building businesses through issuing visas and supporting tourism.",
     duration: tourduration,
     //onStart: function(tour) {$("#businessDrop").trigger('click');},
     onShown: function (tour) {$("#business").trigger('click');}
@@ -39,7 +39,7 @@ var tour = new Tour({
   {
     element: "#mapKey",
     title: "",
-    content: "You can read about the issue at the top.  Below are a number a maps that visually represent the issue.  Let's click on one.",
+    content: "You can read about the issue at the top.  Below are a number a maps that visually represent the issue.",
     duration: tourduration,
     //onStart: function(tour) {$("#businessDrop").trigger('click');},
     onShown: function (tour) {$("[name=VisasAndTourism_Key]").trigger('click');}
@@ -91,6 +91,28 @@ var tour = new Tour({
     duration: tourduration,
     //onStart: function(tour) {$("#businessDrop").trigger('click');},
     onShown: function (tour) {} 
+    //onShown: function (tour) {map.panTo([39,-37.698]);map.setZoom(6)} 
+  },
+  {
+    element: "",
+    title: "",
+    placement: "left",
+    orphan: true,
+    content: "Thank you for taking the tour.  Please click around and explore on your own.  The application will not be reset to start from the beginning.",
+    duration: tourduration,
+    //onStart: function(tour) {$("#businessDrop").trigger('click');},
+    onShown: function (tour) {} 
+    //onShown: function (tour) {map.panTo([39,-37.698]);map.setZoom(6)} 
+  },
+  {
+    element: "",
+    title: "",
+    placement: "left",
+    orphan: true,
+    content: "Closing",
+    duration: tourduration,
+    //onStart: function(tour) {$("#businessDrop").trigger('click');},
+    onShown: function (tour) {tour.end();map.panTo([10,10]);map.setZoom(1);} 
     //onShown: function (tour) {map.panTo([39,-37.698]);map.setZoom(6)} 
   }
   

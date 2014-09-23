@@ -103,6 +103,12 @@ var storyIcon = L.icon({
 });
 externalLayerLoad = function(templayerobj){
 	$("#loading").show();
+	if (templayerobj['jsonStyle']['attributeName'] == "Bureaus"){
+		//append the layers into 
+		loadBureaus();
+		$("#loading").hide();
+		return externalLayerLoad;
+	}
 	$.ajax({
 		dataType: "json",
 		url: proxy + templayerobj['jsonStyle']['externalresource'],
@@ -308,35 +314,40 @@ map.attributionControl.setPrefix('Names and boundary representation are not nece
 
 //L.geoJson('static/data/posts.json').addTo(map);
 
-
+var postLayer = null;
 
 var loadBureaus = function(){
+	clearLayers();
+	allLayersGroup.clearLayers();
+	allLayersGroupPts.clearLayers();
 	
 	countryJSONLayer.setStyle(bureausLayerPolygonOptions);
 
 	allLayersGroup.addLayer(countryJSONLayer);
-	var postsLayer = (function() {
-	var json = null;
-	$.ajax({
-		'global': false,
-		'url': "static/data/posts.json",
-		'dataType': "json",
-		'success': function (data) {
-			// load the geojson to the map with marker styling
-			allLayersGroupPts.addLayer(new L.geoJson(data, {
-				pointToLayer: function (feature, latlng) {
-					var popupOptions = {maxWidth: 200};
-					var popupContent = feature.properties.PostName;
-					return L.circleMarker(latlng, postsLayerMarkerOptions).bindPopup(popupContent,popupOptions);
-				},
-				style:postsLayerMarkerOptions
-			}));
-			
-			}
-		});
-		return json;
-	})();
-
+	if (postLayer == null){
+		$.ajax({
+			'url': "static/data/posts.json",
+			'dataType': "json",
+			'success': function (data) {
+				// load the geojson to the map with marker styling
+				postLayer = new L.geoJson(data, {
+					pointToLayer: function (feature, latlng) {
+						var popupOptions = {maxWidth: 200};
+						var popupContent = feature.properties.PostName;
+						return L.circleMarker(latlng, postsLayerMarkerOptions).bindPopup(popupContent,popupOptions);
+					},
+					style:postsLayerMarkerOptions
+				});
+				allLayersGroupPts.addLayer(postLayer);
+				
+				}
+			});
+	}
+	else{
+		allLayersGroupPts.addLayer(postLayer);
+	}
+	map.addLayer(allLayersGroup);
+	map.addLayer(allLayersGroupPts);
 
 }
 
@@ -596,6 +607,7 @@ var highlightFeature = function(e){
 		return;
 	}
     var tempObj = keysets[tempcurrentkey[0]]['layers'][tempcurrentkey[1]];
+    if (tempObj['jsonStyle']['attributeName'] == "Bureaus"){return;}
 	if ($("#slidervalue").val()){
 		var attributeTimeName = currentSliderObj[$("#slidervalue").val()]
 		content += ": " + convertValuetoLabel(feature, attributeTimeName, tempObj);
