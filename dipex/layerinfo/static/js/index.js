@@ -977,9 +977,11 @@ var setupTimeSlider = function(timeJsonObj){
 			}
 			break;
 		case "TB-Drug-Resistance_2012":
-			if (d == '0') {
+			if (d == 'At least one case reported') {
 				return	'#e96e6e'
-			}else {
+			} else if (d == 'No cases reported') {
+				return	'#e6e7e8'
+			} else {
 				return	'#e6e7e8';
 			}
 			break;
