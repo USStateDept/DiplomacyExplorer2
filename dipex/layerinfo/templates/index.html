@@ -175,9 +175,9 @@
 
 			<div class="shareInfoBox">
 				<img id="openShare" src="/{{BASE_URL}}/static/img/share.png">
-				<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdipex.edip-maps.net%3A8080%2Fdiplomacyexplorer%2F%232%2F8.8%2F10.0&t=" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL),'','width=350, height=100'); return false;"><img src="/{{BASE_URL}}/static/img/Facebook.png"></a>
+				<a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdipex.edip-maps.net%3A8080%2Fdiplomacyexplorer%2F%232%2F8.8%2F10.0&t=" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(getTinyURL(window.location.href)) + '&t=' + encodeURIComponent(getTinyURL(window.location.href)),'','width=350, height=100'); return false;"><img src="/{{BASE_URL}}/static/img/Facebook.png"></a>
 				
-				<a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fdipex.edip-maps.net%3A8080%2Fdiplomacyexplorer%2F&text=:%20http%3A%2F%2Fdipex.edip-maps.net%3A8080%2Fdiplomacyexplorer%2F" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;"><img src="/{{BASE_URL}}/static/img/Twitter.png"></a>
+				<a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fdipex.edip-maps.net%3A8080%2Fdiplomacyexplorer%2F&text=:%20http%3A%2F%2Fdipex.edip-maps.net%3A8080%2Fdiplomacyexplorer%2F" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + 'Discover Diplomacy' + ':%20'  + encodeURIComponent(getTinyURL(window.location.href)),'','width=350, height=200'); return false;"><img src="/{{BASE_URL}}/static/img/Twitter.png"></a>
 				
 			</div>
 
@@ -197,7 +197,7 @@
 			      </li></ul></div></div>
 			</div>
 
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+			<!--<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->
 
 			<script src="/{{BASE_URL}}/static/lib/modernizr/modernizr.custom.95810.js"></script>
 			<script src="/{{BASE_URL}}/static/js/modernizr.js"></script>
