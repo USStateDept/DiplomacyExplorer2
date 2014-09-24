@@ -1747,7 +1747,7 @@ $("#removeSplashCookie").click(function(ev){
 
 
 $('#openShare').click(function(){
-	$('#hashURLText').val(window.location.href);
+	$('#hashURLText').val(getTinyURL(window.location.href));
     $('#shareModal').modal('show');
 });
 
@@ -1780,6 +1780,12 @@ $("#noSplash").click(function(ev){
 	return false;
 });
 
-
+function getTinyURL(url){
+	 var xhReq = new XMLHttpRequest();
+	 xhReq.open("GET", "http://localhost:8000/diplomacyexplorer/geoproxy/?url=http://tinyurl.com/api-create.php?url="+url, false);
+	 xhReq.send(null);
+	 var serverResponse = xhReq.responseText;
+	 return serverResponse;
+}
 
 
