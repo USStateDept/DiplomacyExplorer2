@@ -1253,19 +1253,19 @@ var setupTimeSlider = function(timeJsonObj){
 		case "CITES-Species_2014":
 			dint = parseInt(d);
 			if (dint > 99){
-				return '#82a93f';
+				return '#51751A';
 			}
 			else if (dint > 49){
-				return	'#95b353'
+				return	'#86A641'
 			}
 			else if (dint > 24){
-				return	'#a7c06f'
+				return	'#A7C06F'
 			}
 			else if (dint > 9){
-				return	'#bbcd89'
+				return	'#D8E3AF'
 			}
 			else if (dint > 0){
-				return	'#d0dca4'
+				return	'#ECF5D0'
 			}
 			else {
 				return '#e6e7e8';
