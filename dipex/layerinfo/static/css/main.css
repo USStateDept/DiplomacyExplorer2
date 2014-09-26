@@ -1131,3 +1131,62 @@ path.leaflet-clickable{
 #shareContent{
 	height:250px;
 }
+#peace {
+	background-color: #E9CFE2;
+	border-radius: 10px;
+	padding-top: 2px;
+	margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+#prosperity {
+	background-color: #FBF8CD;
+	border-radius: 10px;
+	padding-top: 2px;
+	margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+#democracy {
+	background-color: #E8F5FA;
+	border-radius: 10px;
+	padding-top: 2px;
+	margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+#development {
+	background-color: #FCF1F2;
+	border-radius: 10px;
+	padding-top: 2px;
+	margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+/*
+#peace {
+	background:url('../img/peace.png') no-repeat center center;
+	background-size: auto 100px;
+	margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+#prosperity {
+	background:url('../img/prosperity.png') no-repeat center center;
+	background-size: auto 100px;
+	margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+#democracy {
+	background:url('../img/democracy.png') no-repeat center center;
+	background-size: auto 100px;
+	margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+#development {
+	background:url('../img/development.png') no-repeat center center;
+	background-size: auto 100px;
+	margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
