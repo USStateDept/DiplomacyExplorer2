@@ -299,7 +299,7 @@ var map = new L.Map('map', {
 	maxZoom: 6,
 	minZoom: deviceZoom,
 	worldCopyJump: false,
-	attributionControl: true,
+	attributionControl: false,
 	noWrap: true,
 	maxBounds: bounds
 });
@@ -317,7 +317,17 @@ L.tileLayer.wms('http://54.197.226.119/geoserver/natural-earth-rasters/wms', {
 }).addTo(map);
 
 map.addControl(new L.Control.ZoomMin({ position: 'topright' }));
-map.attributionControl.setPrefix('Names and boundary representation are not necessarily authoritative.');
+
+/* Attribution control */
+var attributionControl = L.control({
+  position: "bottomright"
+});
+attributionControl.onAdd = function (map) {
+  var div = L.DomUtil.create("div", "leaflet-control-attribution");
+  div.innerHTML = "<a href='#' onclick='$(\"#disclaimerModal\").modal(\"show\"); return false;'>Boundary disclaimer</a>";
+  return div;
+};
+map.addControl(attributionControl);
 
 var disputedAreasStyle = {
 	weight: 0,
