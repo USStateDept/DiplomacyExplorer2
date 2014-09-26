@@ -871,6 +871,8 @@ var setupTimeSlider = function(timeJsonObj){
 				return	'#f1a8a3';
 			} else if (d == '1') {
 				return	'#fce6e7';
+			} else if (d == '0') {
+				return	'#e6e7e8';
 			} else {
 				return	'#e6e7e8';
 			}
