@@ -269,21 +269,27 @@ set up the map
 
 var cmAttr = "<a href='mailto:dittemoremb@state.gov'>eDiplomacy Geo|DST</a>"
 
-var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-var deviceZoom ;
-			
-if (width < 400) {
+var width = (window.innerWidth);
+var deviceZoom;
+
+if (width <= 500) {
 	deviceZoom = "1"
-} else if (width < 900) {
+} else if (width <= 900) {
 	deviceZoom = "2"
-} else if (width < 2000) {
+} else if (width <= 1200) {
+	deviceZoom = "2"
+} else if (width <= 1600) {
+	deviceZoom = "3"
+} else if (width <= 2000) {
+	deviceZoom = "3"
+} else if (width <= 3200) {
 	deviceZoom = "3"
 } else {
 	deviceZoom = "4"
 }
 
-var southWest = L.latLng(-67,-179.5),
-	northEast = L.latLng(80, 179.5),
+var southWest = L.latLng(-67,-180),
+	northEast = L.latLng(80, 190),
 	bounds = L.latLngBounds(southWest, northEast);
 
 var map = new L.Map('map', {
@@ -294,6 +300,7 @@ var map = new L.Map('map', {
 	minZoom: deviceZoom,
 	worldCopyJump: false,
 	attributionControl: true,
+	noWrap: true,
 	maxBounds: bounds
 });
 
@@ -305,7 +312,7 @@ L.tileLayer.wms('http://54.197.226.119/geoserver/natural-earth-rasters/wms', {
     format: 'image/png',
     transparent: true,
     layers: 'natural-earth-rasters:NE2_50M_SR_W_Edit',
-    noWrap: true,
+    noWrap: false,
     crs: L.CRS.EPSG3857
 }).addTo(map);
 
