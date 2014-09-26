@@ -56,7 +56,7 @@ CREATE TABLE public."PA_Data"
 	"CITES-Species_2014" real,
 	"Malaria-Elimination_2013" real,
 	"Malaria-Incidence_2013" real,
-	"TB-Drug-Resistance_2012" real,
+	"TB-Drug-Resistance_2012" text,
 	"Inf-Mort_2012" real,
 	"TB-Incidence_2012" real,
 	"Polio-Cases_2013" real,
@@ -118,6 +118,6 @@ CREATE TABLE public."PA_Data"
 	"UNHCRcamps" text
 );
 
-set client_encoding to 'UTF-8';
+set client_encoding to 'WIN1252';
 
 COPY "PA_Data" FROM 'C:\OpenGeo\webapps\DiplomacyExplorer2\sql\PA_Data.csv' DELIMITER ',' CSV;

@@ -301,10 +301,10 @@ var map = new L.Map('map', {
 //map.fitBounds(bounds);
 
 //base layer here
-L.tileLayer.wms('http://54.197.226.119/geoserver/natural-earth-rasters/wms', {
+L.tileLayer.wms('http://localhost/geoserver/natural-earth-rasters/wms', {
     format: 'image/png',
     transparent: true,
-    layers: 'natural-earth-rasters:NE2_50M_SR_W_Edit',
+    layers: 'natural-earth-rasters:NE2_50M_SR_W_Lakes',
     noWrap: true,
     crs: L.CRS.EPSG3857
 }).addTo(map);
@@ -634,7 +634,7 @@ var highlightFeature = function(e){
 	//$("#hover_value").html(content);
 
     layer.setStyle({
-        weight: 3,
+        weight: 2,
         //color: '#666',
         dashArray: ''
     });
