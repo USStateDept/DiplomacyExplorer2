@@ -56,7 +56,7 @@
 			<div class="container" id="mainContainer">
 				<div class="panel panel-default" style="height:100%;">
 					<div class="row" id = "rowId" style="height:100%;width:100%">
-						<div class="col-lg-3 col-md-3 col-sm-3" id="descPane">
+						<div class="col-lg-2 col-md-3 col-sm-3 col-xs-5" id="descPane">
 							<div class='panel-body panel-collapse collapse in' id='collapseSide' style='padding: 0px !important;'>
 								<div class="btn-group">
 								  <a class="btn btn-default" id="mapKeybutton">Navigation</a>
@@ -78,7 +78,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="expanded" id="mapPane">
+						<div class="col-lg-10 col-md-9 col-sm-9 col-xs-7" id="mapPane">
 							<div id="map"></div>
 
 						</div>
@@ -294,14 +294,15 @@
 			
 			/*$('a').click( function() { document.getElementById('twit').setAttribute('href', "https://twitter.com/intent/tweet?text=Discover%20Diplomacy&url="+window.location); } );*/
 
+			
 			$( window ).resize(function() {
 				if ($(this).width() > 767){
 			  		$("#mapPane").height($(document).height() - 175);
 					$(".sideBarTabContent ").height($(document).height() - 225);
 			  	}
 			  	else{
-			  		$("#mapPane").height($(document).height() - 264);
-					$(".sideBarTabContent ").height($(200));
+			  		$("#mapPane").height($(document).height() - 62);
+					$(".sideBarTabContent ").height($(document).height() - 70);
 			  	}
 			});
 			//do the first time
