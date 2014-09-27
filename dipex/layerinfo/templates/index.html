@@ -310,7 +310,11 @@
 			
 			var donecheck = {"external":[],"internal":false};
 
-			var iconCreateCluster = 	function (cluster) {
+			$('.mainKey').on('click', function(){
+				$(".navbar-toggle").click() //bootstrap 3.x by Richard
+			});
+			
+				var iconCreateCluster = 	function (cluster) {
 					var childCount = cluster.getChildCount();
 					var size=0;
 					var c = ' marker-cluster-';
