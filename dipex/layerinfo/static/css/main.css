@@ -101,6 +101,9 @@ float:none;
   margin-right:0px;
 }
 
+.panel {
+	border: none;
+}
 .btn-primary{
   background-color:#2eace3;
 }
@@ -113,9 +116,8 @@ a:hover, a:focus{
   background-color:white;
   border-color:white;
   min-height:25px;
-  margin-top: 5px;
-  padding-bottom: 5px;
-}
+  border: none;
+  }
 
 .navbar-inverse .navbar-nav>li>a{
   color:#ababab;
