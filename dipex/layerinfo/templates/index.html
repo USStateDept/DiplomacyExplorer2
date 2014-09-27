@@ -76,9 +76,6 @@
 									<button id="viewTour" type="submit" class="btn btn-default viewTour">View the tour</button>
 									<button id="viewSplash" type="submit" class="btn btn-default">See infographic</button>
 								</div>
-								<div class="buffer_bottom">
-
-								</div>
 							</div>
 						</div>
 						<div class="expanded" id="mapPane">
@@ -300,12 +297,10 @@
 			$( window ).resize(function() {
 				if ($(this).width() > 767){
 			  		$(".sideBarTabContent ").height($(this).height() - 235);
-			  		$("#map").height($(this).height() - 144);
-			  		$("#mainContainer").height($(this).height() - 144);
-
+			  		$("#mapPane").height($(this).height() - 144);
 			  	}
 			  	else{
-			  		$("#mapPane").height($(this).height() - 289);
+			  		$("#mapPane").height($(this).height() - 264);
 			  	}
 			});
 			//do the first time
