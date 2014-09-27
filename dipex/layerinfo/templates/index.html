@@ -296,12 +296,12 @@
 
 			$( window ).resize(function() {
 				if ($(this).width() > 767){
-			  		$(".sideBarTabContent ").height($(this).height() - 235);
-			  		$("#mapPane").height($(this).height() - 144);
+			  		$("#mapPane").height($(document).height() - 175);
+					$(".sideBarTabContent ").height($(document).height() - 225);
 			  	}
 			  	else{
-			  		$("#mapPane").height($(this).height() - 264);
-					$(".sideBarTabContent ").height($(this).height() - $("#mapPane").height);
+			  		$("#mapPane").height($(document).height() - 264);
+					$(".sideBarTabContent ").height($(200));
 			  	}
 			});
 			//do the first time

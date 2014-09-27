@@ -1121,7 +1121,7 @@ path.leaflet-clickable{
 }
 */
 .leaflet-control-attribution.leaflet-control {
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 	margin-right: 10px;
 	background: rgba(255, 255, 255, 0.3);
 	border-radius: 2px;
