@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-BASE_URL = "diplomacyexplorer"
+BASE_URL = "discoverdiplomacy/explorer/issues"
+
 
 
 # Quick-start development settings - unsuitable for production
