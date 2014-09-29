@@ -481,11 +481,11 @@ function addCommas(nStr)
 var convertValuetoLabel = function(feature, attributeName, layerObj){
 		var featureval = feature.properties[attributeName];
 
-		
-		if ($.type(featureval) == "string" || ! featureval || layerObj['jsonStyle']['isstring']){
+		if ($.type(featureval) == "string" || featureval=="null" || layerObj['jsonStyle']['isstring']){
 			try{
+			
 				var thevalue =  layerObj['labels']['labels'][$.inArray(String(featureval), layerObj['labels']['values'])];
-
+				
 				if (thevalue && thevalue != null){
 					return thevalue;
 				}
@@ -1156,7 +1156,10 @@ var setupTimeSlider = function(timeJsonObj){
 		case "WTOMember_2014":
 			if (d == 'Member') {
 				return	'#f38333'
-			}else {
+			}else if(d=='Observer'){
+				return '#f8d57f'
+			}
+			else{
 				return	'#e6e7e8';
 			}
 			break;
