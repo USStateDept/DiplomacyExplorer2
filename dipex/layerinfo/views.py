@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from django.forms import model_to_dict
 from django.conf import settings
-from lockdown.decorators import lockdown
+#from lockdown.decorators import lockdown
 from django.views.decorators.csrf import csrf_exempt
 
 from layerinfo.models import Theme, Issue, Layer, Points, PointLayer
@@ -63,7 +63,7 @@ def getJSONObj():
 
     return json.dumps(mainObj)
 
-@lockdown(passwords=('test',))
+#@lockdown(passwords=('test',))
 @csrf_exempt
 def home(request):
     d = {}

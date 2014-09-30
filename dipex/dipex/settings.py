@@ -42,7 +42,7 @@ INSTALLED_APPS = (
     'reversion',
     'layerinfo',
     'filemanager',
-    'lockdown',
+#    'lockdown',
     'tinymce',
     'watson',
 )
