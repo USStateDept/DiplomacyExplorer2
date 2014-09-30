@@ -1792,6 +1792,7 @@ $(".viewTour").click(function(ev){
 	//tour.init();
 	tour.restart();
 	// Start the tour
+	ga('send', 'event', 'button', 'click', 'viewTour');
 	tour.start(true);
 	return false;
 });
