@@ -292,9 +292,10 @@ li#nav-explorer a:hover{
 
 .timeSlider {
   position: absolute;
-right: 10px;
-bottom: 130px;
 box-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
+width: 15%;
+max-width: 200px;
+min-width: 125px;
 }
 
 .timeinfobox{
@@ -307,7 +308,13 @@ box-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
   cursor: auto;
   text-align: center;
   background-color: #FFFFFF;
-  padding:10px;
+  padding: 5px 10px 0px 10px;
+}
+
+.ui-slider .ui-slider-handle {
+	width: 1.3em;
+	height: 1.3em;
+	border: 1px solid #B3B3B3;
 }
 
 .shareInfoBox{
@@ -978,10 +985,11 @@ color:#2eace3;
   color:white;
 }
 
-
 .small-instructions{
 color: rgb(172, 172, 172);
 font-size: 100%;
+line-height: 1.1;
+padding-top: 10px;
 }
 
 
@@ -1103,7 +1111,11 @@ path.leaflet-clickable{
 .marker-cluster .securingPeace {
     background-color: blue;
 }
-
+.leaflet-popup-scrolled {
+	overflow: auto;
+	border-bottom: 0px;
+	border-top: 0px;
+}
 
 
 
@@ -1117,7 +1129,7 @@ path.leaflet-clickable{
 }
 */
 .leaflet-control-attribution.leaflet-control {
-	margin-bottom: 20px;
+	margin-bottom: 35px;
 	margin-right: 10px;
 	background: rgba(255, 255, 255, 0.3);
 	border-radius: 2px;
@@ -1126,6 +1138,10 @@ path.leaflet-clickable{
   margin-left:0px;
   padding-left: 0px;
   padding-right: 0px;
+}
+.timeSlider {
+right: 10px;
+bottom: 140px;
 }
 }
 
@@ -1142,7 +1158,10 @@ path.leaflet-clickable{
 	padding-left: 0px;
 	padding-right: 0px;
   }
-
+.timeSlider {
+right: 10px;
+bottom: 140px;
+}
 }
 
 
@@ -1212,6 +1231,10 @@ path.leaflet-clickable{
 	background: rgba(255, 255, 255, 0.3);
 	border-radius: 2px;
   }
+  .timeSlider {
+right: 10px;
+bottom: 10px;
+}
 }
 
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus{
