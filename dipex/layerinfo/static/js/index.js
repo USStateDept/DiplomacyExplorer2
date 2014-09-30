@@ -234,8 +234,8 @@ $( document ).ready(function() {
 	countryJSONLayer = new L.geoJson(null, {onEachFeature: onEachFeature});
 	countryJSONLayer = omnivore.topojson(baseDataURL + generalBaseLayer,{}, countryJSONLayer)
 	.on('ready', function() {
+		loadBureaus();
 		ignite();
-	    loadBureaus();
 	    $("#loading").hide();
 	    $("#loading_splash").hide();
 	    $("#splash_buttons").show();
