@@ -614,9 +614,9 @@ a#skip-navigation:focus {
   width: 100%;
   position: relative;
   z-index: 70;
-  height: 50px;
+  height: 64px;
   background: white;
-  border-bottom: 2px solid #CCC;
+  border-bottom: 1px solid #424242;
 }
 
 
@@ -749,10 +749,11 @@ a#skip-navigation:focus {
   font-size: 14px;
   color: #ababab;
   outline: none;
+  box-sizing: initial;
 }
 #header-search-form #header-search-btn {
   position: absolute;
-  top: 0px;
+  top: 5px;
   right: 12px;
   text-indent: -119988px;
   overflow: hidden;
