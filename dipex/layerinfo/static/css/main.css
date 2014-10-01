@@ -292,10 +292,8 @@ li#nav-explorer a:hover{
 
 .timeSlider {
   position: absolute;
-box-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
-width: 15%;
-max-width: 200px;
-min-width: 125px;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.65);
+  width: 153px;
 }
 
 .timeinfobox{
@@ -308,9 +306,12 @@ min-width: 125px;
   cursor: auto;
   text-align: center;
   background-color: #FFFFFF;
-  padding: 5px 10px 0px 10px;
+  padding: 5px 6px 0px 6px;
 }
 
+.sliderHeader {
+	white-space: nowrap;
+}
 .ui-slider .ui-slider-handle {
 	width: 1.3em;
 	height: 1.3em;
@@ -570,6 +571,7 @@ width: 100%;
   float: right;
   padding-left: 0;
   padding-right: 0;
+  font-weight: bold;
 }
 #global-header ul li:first-child, #global-header ul li.first {
   padding-right: 0;
@@ -850,11 +852,9 @@ a#skip-navigation:focus {
 
 .leaflet-control-infobox-interior
 {
-    width: 150px;
-    /*height: 40px;*/
     background-position: 50% 50%;
     display: block;
-    padding: 3px;
+    padding: 0px 6px 0px 6px;
     border-radius: 4px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -862,6 +862,7 @@ a#skip-navigation:focus {
     cursor: auto;
     text-align: center;
     background-color: #FFFFFF;
+	max-width: 100px;
 }
 
 #splash_buttons{
@@ -990,6 +991,7 @@ color: rgb(172, 172, 172);
 font-size: 100%;
 line-height: 1.1;
 padding-top: 10px;
+	font-size: 11px;
 }
 
 
@@ -1140,14 +1142,15 @@ path.leaflet-clickable{
   padding-right: 0px;
 }
 .timeSlider {
-right: 10px;
-bottom: 140px;
+	z-index: 100;
+	left: 10px;
+	bottom: 36px;
 }
 }
 
 @media all and (max-width: 1130px) and (min-width: 768px){
   body{
-    font-size:11px;
+    /*font-size:11px;*/
   }
   .btn{
     font-size:11px;
@@ -1159,8 +1162,9 @@ bottom: 140px;
 	padding-right: 0px;
   }
 .timeSlider {
-right: 10px;
-bottom: 140px;
+	z-index: 100;
+	left: 10px;
+	bottom: 28px;
 }
 }
 
@@ -1227,13 +1231,14 @@ bottom: 140px;
   }
   .leaflet-control-attribution.leaflet-control {
 	margin-bottom:0px;
-	margin-right: 0px;
+	margin-right: 10px;
 	background: rgba(255, 255, 255, 0.3);
 	border-radius: 2px;
   }
   .timeSlider {
-right: 10px;
-bottom: 10px;
+	z-index: 100;
+	left: 10px;
+	bottom: 140px;
 }
 }
 
