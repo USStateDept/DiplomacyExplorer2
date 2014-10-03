@@ -317,18 +317,18 @@
 					var childCount = cluster.getChildCount();
 					var size=0;
 					var c = ' marker-cluster-';
-					if (childCount < 10) {
+					if (childCount < 25) {
 						c += 'small';
-						size=23;
-					} else if (childCount < 80) {
+						size=20;
+					} else if (childCount < 50) {
 						c += 'medium';
-						size=27;
+						size=35;
 					} else {
 						c += 'large';
-						size=35;
+						size=55;
 					}
 
-					return new L.DivIcon({ html: '<div style="background-color:rgba(255, 141, 141, .5); width:' + size + 'px;height:' + size + 'px;"><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(size, size) });
+					return new L.DivIcon({ html: '<div style="background-color:rgba(0, 0, 255, .80); width:' + size + 'px;height:' + size + 'px;"><span>' + childCount + '</span></div>', className: 'marker-cluster' + c, iconSize: new L.Point(size, size) });
 				}
 
 			var ignite = function(){

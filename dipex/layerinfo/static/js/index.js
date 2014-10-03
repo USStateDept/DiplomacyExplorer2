@@ -80,9 +80,9 @@ var UNHCRPopup = function(feature, layer){
 }
 
 var redIcon = L.icon({
-    iconUrl: 'static/lib/Leaflet-0.7.2/dist/images/marker-red.png',
-    iconRetinaUrl: 'static/lib/Leaflet-0.7.2/dist/images/marker-red2x.png',
-    iconSize: [20, 25],
+    iconUrl: 'static/lib/Leaflet-0.7.2/dist/images/marker-icon.png',
+    iconRetinaUrl: 'static/lib/Leaflet-0.7.2/dist/images/marker-icon-2x.png',
+	//iconSize: [20, 25],
     //iconAnchor: [22, 94],
     //popupAnchor: [-3, -76],
     //shadowUrl: 'my-icon-shadow.png',
@@ -133,7 +133,7 @@ externalLayerLoad = function(templayerobj){
 				}
 
 
-				var markerClusterGrp = new L.markerClusterGroup({ spiderfyOnMaxZoom: true, showCoverageOnHover: false, zoomToBoundsOnClick: true, iconCreateFunction: iconCreateCluster});
+				var markerClusterGrp = new L.markerClusterGroup({ spiderfyOnMaxZoom: true, showCoverageOnHover: false, zoomToBoundsOnClick: true, iconCreateFunction: iconCreateCluster, disableClusteringAtZoom: maxZoom});
 
 				var tempMarkerLayer = new L.geoJson(data, {
 							 pointToLayer: function (feature, latlng) {
@@ -288,6 +288,8 @@ if (width <= 500) {
 	deviceZoom = "4"
 }
 
+var maxZoom = "6";
+
 var southWest = L.latLng(-67,-180),
 	northEast = L.latLng(80, 190),
 	bounds = L.latLngBounds(southWest, northEast);
@@ -296,7 +298,7 @@ var map = new L.Map('map', {
 	zoomControl: false,
 	center: [20, 10],
 	zoom: deviceZoom,
-	maxZoom: 6,
+	maxZoom: maxZoom,
 	minZoom: deviceZoom,
 	worldCopyJump: false,
 	attributionControl: false,
