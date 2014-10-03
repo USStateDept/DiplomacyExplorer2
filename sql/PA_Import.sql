@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS public."PA_Data";
 CREATE TABLE public."PA_Data"
 (
+	"Geounit" text,
 	"Country" text,
 	"ISO_3166" text,
 	"Bureau" text,
