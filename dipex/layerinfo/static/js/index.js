@@ -274,31 +274,31 @@ var deviceZoom;
 
 if (width <= 480) {
 	deviceZoom = "1";
-	initZoom = "1";
+	//initZoom = "1";
 } else if (width <= 800) {
 	deviceZoom = "1";
-	initZoom = "2";
+	//initZoom = "2";
 } else if (width <= 1024) {
 	deviceZoom = "2";
-	initZoom = "2";
+	//initZoom = "2";
 } else if (width <= 1400) {
 	deviceZoom = "2";
-	initZoom = "3";
+	//initZoom = "3";
 } else if (width <= 1600) {
 	deviceZoom = "3";
-	initZoom = "3";
+	//initZoom = "3";
 } else if (width <= 3200) {
 	deviceZoom = "3";
-	initZoom = "4";
+	//initZoom = "4";
 } else if (width <= 3840) {
 	deviceZoom = "4";
-	initZoom = "4";
+	//initZoom = "4";
 } else if (width <= 10000) {
 	deviceZoom = "5";
-	initZoom = "5";
+	//initZoom = "5";
 } else {
 	deviceZoom = "5";
-	initZoom = "6";
+	//initZoom = "6";
 }
 
 var maxZoom = "6";
