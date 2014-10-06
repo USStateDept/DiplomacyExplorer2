@@ -1,10 +1,11 @@
 DROP TABLE IF EXISTS public."DiscoverDiplomacy-Data_50m";
 CREATE TABLE public."DiscoverDiplomacy-Data_50m" AS
 SELECT 
-	sovereignt,
+	"ne_50m_admin_0_countries_lakes_usg"."sovereignt",
+	"PA_Data"."Geounit",
 	"PA_Data"."Country",
 	"PA_Data"."ISO_3166",
-	"PA_Data"."Bureau",
+	"ne_50m_admin_0_countries_lakes_usg"."bureau" as "Bureau",
 	"PA_Data"."PEPFAR_2014",
 	"PA_Data"."NNPTSignedDeposited_2014",
 	"PA_Data"."MaternalHealthAccessToCare_2014",
