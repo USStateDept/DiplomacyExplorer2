@@ -1,3 +1,5 @@
-# robotstxt.org/
+# robots.txt for http://dipex.edip-maps.net/discoverdiplomacy/explorer/issues
 
 User-agent: *
+Allow: /discoverdiplomacy/explorer/issues/
+Disallow: /discoverdiplomacy/explorer/issues/admin/ 
