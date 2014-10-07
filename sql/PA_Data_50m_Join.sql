@@ -1,11 +1,11 @@
 DROP TABLE IF EXISTS public."DiscoverDiplomacy-Data_50m";
 CREATE TABLE public."DiscoverDiplomacy-Data_50m" AS
 SELECT 
-	"ne_50m_admin_0_countries_lakes_usg"."sovereignt",
+	"ne_50m_admin_0_countries_usg"."sovereignt",
 	"PA_Data"."Geounit",
 	"PA_Data"."Country",
 	"PA_Data"."ISO_3166",
-	"ne_50m_admin_0_countries_lakes_usg"."bureau" as "Bureau",
+	"ne_50m_admin_0_countries_usg"."bureau" as "Bureau",
 	"PA_Data"."PEPFAR_2014",
 	"PA_Data"."NNPTSignedDeposited_2014",
 	"PA_Data"."MaternalHealthAccessToCare_2014",
@@ -119,4 +119,4 @@ SELECT
 	"PA_Data"."OES-Hubs_2014",
 	"PA_Data"."UNHCRcamps",
 	the_geom
-FROM opengeo."ne_50m_admin_0_countries_lakes_usg" LEFT OUTER JOIN public."PA_Data" ON ("ne_50m_admin_0_countries_lakes_usg"."geounit" = "PA_Data"."Geounit");
+FROM opengeo."ne_50m_admin_0_countries_usg" LEFT OUTER JOIN public."PA_Data" ON ("ne_50m_admin_0_countries_usg"."geounit" = "PA_Data"."Geounit");

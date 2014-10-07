@@ -119,4 +119,4 @@ SELECT
 	"PA_Data"."OES-Hubs_2014",
 	"PA_Data"."UNHCRcamps",
 	the_geom
-FROM opengeo."ne_110m_admin_0_countries_lakes_usg" LEFT OUTER JOIN public."PA_Data" ON ("ne_110m_admin_0_countries_lakes_usg"."geounit" = "PA_Data"."Geounit");
+FROM opengeo."ne_110m_admin_0_countries_usg" LEFT OUTER JOIN public."PA_Data" ON ("ne_110m_admin_0_countries_usg"."geounit" = "PA_Data"."Geounit");
