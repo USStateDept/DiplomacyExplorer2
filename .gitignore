@@ -2,3 +2,4 @@
 .~lock.*
 dipex/static
 local_settings.py
+tests/node_modules
