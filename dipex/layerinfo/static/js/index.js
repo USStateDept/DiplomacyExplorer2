@@ -323,7 +323,7 @@ var map = new L.Map('map', {
 //map.fitBounds(bounds);
 
 //base layer here
-L.tileLayer.wms('http://54.197.226.119/geoserver/natural-earth-rasters/wms', {
+L.tileLayer.wms('http://54.197.226.119:8080/geoserver/natural-earth-rasters/wms', {
     format: 'image/png',
     transparent: true,
     layers: 'natural-earth-rasters:NE2_50M_SR_W_Edit',
