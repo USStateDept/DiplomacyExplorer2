@@ -561,8 +561,8 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 	else{
 		for (var i = 0; i < values.length; i++) {
 			keyLabels.push(
-				'<i style="background:' + getColor(layerobj['jsonStyle']['attributeName'],values[i]) + '"></i>' +
-				labels[i]
+				'<div class="legendItem"><i style="background:' + getColor(layerobj['jsonStyle']['attributeName'],values[i]) + '"></i>' +
+				'<div class="legendLabel">' + labels[i] + '</div></div>'
 			);
 		}	
 	}
@@ -577,7 +577,7 @@ var renderSidePanelPiece = function(index, layerobj, counter){
 
 
 	var keyAccordionPanel = "<div id=\"collapse" + counter + "\" class=\"panel-collapse collapse\"><div class=\"panel-body\">" + layerobj['description'] + "</div>" + keypanel + "<div id='hover_value'></div> \
-							<p><small>" + layerobj['attribution'] + "</small></p></div>";
+							<div class='attribution'><p><small>" + layerobj['attribution'] + "</small></p></div></div>";
 
 	return keyAccordionTitle + keyAccordionPanel;
 
@@ -646,7 +646,7 @@ var highlightFeature = function(e){
 	if (currentKey == undefined){return;}
 	var layer = e.target;
 	var feature = e.target.feature;
-	var content = "<strong>" + feature.properties['Country'] + "</strong>"; 
+	var content = "<strong>" + feature.properties['Geounit'] + "</strong>"; 
 	var tempcurrentkey = currentKey.split("+");
 	if (tempcurrentkey.length < 2){
 		return;
