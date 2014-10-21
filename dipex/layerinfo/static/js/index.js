@@ -1565,6 +1565,8 @@ $(".mainKey").click(function(ev, mainClickCallbacker){
 	else{
 		$(".sideBarLayerToggle:first").trigger("click");
 	}
+	ev.preventDefault();
+	return false;
 
 	//hash.trigger("move");
 	//trigger the hash update

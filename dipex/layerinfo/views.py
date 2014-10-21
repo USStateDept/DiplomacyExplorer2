@@ -31,7 +31,7 @@ def buildTopMenu():
 
         theme_issues = temptheme.issue_set.order_by('categoryName').all()
         for theme_issue in theme_issues:
-            output += "<a style=\"color:#333\" class=\"mainKey " + temptheme.keyid + "\" name=\"" + theme_issue.keyid + "\" class=\"" + temptheme.keyid + "\"><h4>" + theme_issue.categoryName + "</h4></a>"
+            output += "<a style=\"color:#333\" class=\"mainKey " + temptheme.keyid + "\" name=\"" + theme_issue.keyid + "\" class=\"" + temptheme.keyid + "\"  href><h4>" + theme_issue.categoryName + "</h4></a>"
 
         output += "</ul>"
         output += "</li>"
