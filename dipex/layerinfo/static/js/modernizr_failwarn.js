@@ -1,1 +1,2 @@
-alert("Unfortuantely, you are using an older browser.  Some of the features of this web application use the modern technologies for better visualization and interactivity.  For best results, please use the latest Chrome or FireFox browser");
+alert("Unfortunately, you are using an older browser.  Some of the features of this web application use the modern technologies for better visualization and interactivity.  For best results, please use the latest Chrome or FireFox browser.\n\nYou will now be redirected to the main page.");
+window.location="http://diplomacy.state.gov/discoverdiplomacy/explorer/";
